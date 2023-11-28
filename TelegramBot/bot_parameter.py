@@ -1,0 +1,4 @@
+token = '6922855406:AAGG2BwFZM4RTFCWZI-5K2TlThB2QFj5XVw'
+api_id = 14717839
+api_hash = "603588204f22bbcafbe9db294ecad195"
+

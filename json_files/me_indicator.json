@@ -1,0 +1,62 @@
+{
+    "countries": {
+        "USA": {
+            "name":"USA",
+            "indicators": {
+                "GDP-Country":{
+                    "GDP": "GDP",
+                    "GDP_REAL": "GDPC1",
+                    "GDI":"GDI",
+                    "Debito_pubblico":"GFDEGDQ188S",
+                    "Consumi_reali":"PCEC96"
+                },
+                "Inflation": "FPCPITOTLZGUSA",
+                "Politica_monetaria":{
+                    "Tassi_interesse":"FEDFUNDS",
+                    "Asset_FED":"WALCL",
+                    "BOND-10Y":"DGS10",
+                    "BOND-2Y":"DGS2",
+                    "BOND-5Y":"DGS5"
+                },
+                "Lavoro": {
+                    "Disoccupazione": "UNRATE", 
+                    "richieste-disoccupazione-week":"ICSA",
+                    "POSTI_VACANTI_LAVORO":"JTSJOL" ,
+                    "Offerte_lavoro":"JOLTS", 
+                    "NONFARM_PAYROLL": "NPPTTL", 
+                    "VARIAZIONE_STIPENDI_MESE'": "CES0500000003", 
+                    "ORE_MEDIE_LAVORATE":"AWHAETP"
+                },
+                "immobiliare":{
+                    "Permessi_costruzione":"PERMIT",
+                    "Vendita_nuove_case":"HSN1F",
+                    "VEndita_case_esistenti":"EXHOSLUSM495S",
+                    "Prezzi_medi_casa":"MSPUS",
+                    "Tassi_mutui_30Y":"MORTGAGE30US",
+                    "Prezzi_casa_S&P":"CSUSHPINSA",
+                    "richiesta_mutui":"M0264AUSM500NNBR"
+                }
+            },
+            "last_update": "2000",
+            "start_date": "2000-01-01"
+        },
+        "China": {
+            "name":"China",
+            "indicators": {
+                "GDP": "NY.GDP.MKTP.CD",
+                "GDP_REAL": "NY.GDP.MKTP.KD.ZG",
+                "Government Debt": "GC.DOD.TOTL.GD.ZS",
+                "Current Account Balance": "BN.CAB.XOKA.GD.ZS"
+            },
+            "last_update": "2000"
+        }
+    },
+    "api_key": "955ebac0237a55c3d3de2f4b0c9eac20",
+    "indicator_description":{
+        "GDP": " PIL è un indicatore chiave per valutare la dimensione e la salute dell'economia di un paese ed è spesso utilizzato per confrontare il benessere economico tra paesi diversi.",
+        "GDP_REAL":"Il Real GDP è un indicatore chiave per valutare l'andamento economico di una nazione, poiché consente di isolare l'effetto dei cambiamenti dei prezzi e di fornire una stima più accurata della produzione reale e della capacità economica di un paese. È spesso utilizzato per analizzare la crescita economica nel tempo, identificare periodi di recessione o espansione economica e confrontare le performance economiche tra paesi diversi.",
+        "Inflation":"L'inflazione è un indicatore chiave dell'economia che misura il tasso di aumento generale dei prezzi dei beni e dei servizi in un'economia durante un determinato periodo di tempo",
+        "Unemployment":" è un indicatore chiave dell'economia che misura la percentuale di persone in età lavorativa che sono senza lavoro e attivamente alla ricerca di lavoro in un dato periodo di tempo all'interno di un'economia",
+        "S&P500":"SP500"
+    }
+}
