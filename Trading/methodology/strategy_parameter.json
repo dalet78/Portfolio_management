@@ -1,0 +1,32 @@
+{
+    "Strategies": [
+        {
+            "name": "triple_sma",
+            "parameters": {
+                "short_window": 10,
+                "long_window": 50,
+                "extra_window": 30,
+                "stop_loss_percent": 0.05,
+                "take_profit_percent": 0.10,
+                "transaction_cost": 0.01,
+                "slippage": 0.005
+            }
+        },
+        {
+            "name": "breakout_lateral_move",
+            "parameters": {
+                "window": 20,
+                "num_of_std": 1.8,
+                "lateral_periods": 7,
+                "atr_threshold": 0.5
+            }
+        },
+        {
+            "name": "breakout_lateral_move_second",
+            "parameters": {
+                "percentage": 5,
+                "min_periods": 15
+            }
+        }
+    ]
+}
