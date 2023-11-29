@@ -9,9 +9,9 @@ class StockDataDownloader:
         self.interval = interval
 
         if interval == '1d':
-            self.data_path = 'portfolio_management/Trading/Data/Daily/'
+            self.data_path = 'Trading/Data/Daily/'
         elif interval == '1wk':
-            self.data_path = 'portfolio_management/Trading/Data/Weekly/'
+            self.data_path = 'Trading/Data/Weekly/'
         else:
             raise ValueError("Invalid interval. Choose '1d' for daily or '1wk' for weekly data.")
 

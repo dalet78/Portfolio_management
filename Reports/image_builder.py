@@ -2,7 +2,7 @@ import pandas as pd
 import mplfinance as mpf
 import os
 import uuid
-from portfolio_management.libs.file_checker import FileChecker
+from libs.file_checker import FileChecker
 import shutil
 
 class CandlestickChartGenerator:

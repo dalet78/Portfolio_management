@@ -87,6 +87,7 @@ class ReportGenerator:
                 y -= (img_height + 24)
 
         c.save()
+        return (f"{self.report_path}/{filename}_{self.date}.pdf")
 # report = ReportGenerator()
 # report.add_title('Analisi dei Dati 2023')
 # report.add_content('Introduzione al report.')

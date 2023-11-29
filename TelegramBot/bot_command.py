@@ -2,8 +2,7 @@ from Trading.methodology.download_data.download_data_yahoo import StockDataDownl
 import json
 import os
 def download_data_weekly():
-    current_path = os.path.dirname(os.path.abspath(__file__))
-    with open(os.path.join(current_path, "../../json_files/SP500-stock.json"), 'r') as file:
+    with open( "json_files/SP500-stock.json", 'r') as file:
         tickers = json.load(file)
     # Lista dei ticker
     tickers_list = list(tickers.keys())
@@ -12,8 +11,7 @@ def download_data_weekly():
     downloader.update_data()
 
 def download_data_daily():
-    current_path = os.path.dirname(os.path.abspath(__file__))
-    with open(os.path.join(current_path, "../../json_files/SP500-stock.json"), 'r') as file:
+    with open( "json_files/SP500-stock.json", 'r') as file:
         tickers = json.load(file)
 
     # Lista dei ticker

@@ -100,29 +100,33 @@ class TradingAnalyzer:
         return result, image
 
 
-#Example usage with the same mock data as before
-parameters_dict = {}
-report= ReportGenerator()
-report.add_title(title="Lateral movement breaks analisys second")
+def main():
+    #Example usage with the same mock data as before
+    parameters_dict = {}
+    report= ReportGenerator()
+    report.add_title(title="Lateral movement breaks analisys second")
 
-with open("../strategy_parameter.json", 'r') as file:
-    param_data = json.load(file)
+    with open("../strategy_parameter.json", 'r') as file:
+        param_data = json.load(file)
 
-# for strategy in param_data['Strategies']:
-#     if strategy['name'] == "breakout_lateral_move_second":
-#         parameters_dict = strategy['parameters']
-#         break
-with open("../../../json_files/SP500-stock.json", 'r') as file:
-        tickers = json.load(file)
-        tickers_list = list(tickers.keys())
+    # for strategy in param_data['Strategies']:
+    #     if strategy['name'] == "breakout_lateral_move_second":
+    #         parameters_dict = strategy['parameters']
+    #         break
+    with open("../../../json_files/SP500-stock.json", 'r') as file:
+            tickers = json.load(file)
+            tickers_list = list(tickers.keys())
 
-for item in tickers_list:
-    data = pd.read_csv(f"../../Data/Daily/{item}_historical_data.csv")
-    enhanced_strategy = TradingAnalyzer(data, max_price=50)
-    result, image = enhanced_strategy.check_price_range()
-    if result:
-        print(f'stock = {item} -- FOUND ')
-        report.add_content(f'stock = {item} ')
-        report.add_commented_image(df=data, comment=f'Description = {result["details"]}', image_path=image)
-    print(f"checked stock {item}")
-report.save_report(filename="Report_blocked_stock")
+    for item in tickers_list:
+        data = pd.read_csv(f"../../Data/Daily/{item}_historical_data.csv")
+        enhanced_strategy = TradingAnalyzer(data, max_price=50)
+        result, image = enhanced_strategy.check_price_range()
+        if result:
+            print(f'stock = {item} -- FOUND ')
+            report.add_content(f'stock = {item} ')
+            report.add_commented_image(df=data, comment=f'Description = {result["details"]}', image_path=image)
+        print(f"checked stock {item}")
+    report.save_report(filename="Report_blocked_stock")
+
+if __name__ == '__main__':
+    main()

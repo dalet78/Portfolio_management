@@ -93,8 +93,8 @@ class CommandBot:
             callback_query.message.reply_text("Download weekly data finish!")
         elif action == "findblockedstock":
             try:
-                subprocess.run(["python", "path/to/generate_pdf.py"], check=True)
-                self.send_generated_pdf(callback_query.message.chat.id, "Report_blocked_stock.pdf")
+                file_report = subprocess.run(["python", "Trading/methodology/blocked_stock/blocked_stock.py"], check=True)
+                self.send_generated_pdf(callback_query.message.chat.id, file_report)
                 callback_query.message.reply_text("PDF generato e inviato!")
             except subprocess.CalledProcessError as e:
                 callback_query.message.reply_text(f"Si è verificato un errore: {e}")
