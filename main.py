@@ -1,4 +1,4 @@
-from portfolio_management.TelegramBot.bot_handler import CommandBot
+from TelegramBot.bot_handler import CommandBot
 
 
 def start_bot():

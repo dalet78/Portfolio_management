@@ -1,8 +1,8 @@
 import logging
-from .bot_parameter import token, api_id, api_hash
-from pyrogram import Client, filters, ReplyKeyboardMarkup, ReplyKeyboardRemove
+from TelegramBot.bot_parameter import token, api_id, api_hash
+from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
-from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
+from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, ReplyKeyboardMarkup, ReplyKeyboardRemove
 import json
 from .bot_command import download_data_daily, download_data_weekly
 import subprocess
