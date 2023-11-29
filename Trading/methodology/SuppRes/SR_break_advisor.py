@@ -1,12 +1,12 @@
 import pandas as pd
-from portfolio_management.Reports.image_builder import CandlestickChartGenerator
+from Reports.image_builder import CandlestickChartGenerator
 
 class StockBreakAnalyzer:
     def __init__(self, data, max_price=None):
         self.stock_name = data
         self.max_price = max_price
-        self.data = pd.read_csv(f'portfolio_managment/Trading/Data/Daily/{data}_historical_data.csv')
-        self.support_resistance_data = pd.read_csv(f'portfolio_managment/Trading/Data/SuppResist/{data}_SR.csv', skiprows=1, header=None, names=['Level', 'Weight']).set_index('Level')['Weight'].to_dict()
+        self.data = pd.read_csv(f'Trading/Data/Daily/{data}_historical_data.csv')
+        self.support_resistance_data = pd.read_csv(f'Trading/Data/SuppResist/{data}_SR.csv', skiprows=1, header=None, names=['Level', 'Weight']).set_index('Level')['Weight'].to_dict()
         self.image = CandlestickChartGenerator(self.data)
 
     def _analyze_last_price(self, threshold=0.02):

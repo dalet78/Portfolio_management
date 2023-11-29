@@ -1,8 +1,8 @@
 import json
 import os
-from portfolio_management.Trading.methodology.SuppRes.SR_construction import StockAnalysis
-from portfolio_management.Trading.methodology.SuppRes.SR_break_advisor import StockBreakAnalyzer
-from portfolio_management.Reports.report_builder import ReportGenerator
+from Trading.methodology.SuppRes.SR_construction import StockAnalysis
+from Trading.methodology.SuppRes.SR_break_advisor import StockBreakAnalyzer
+from Reports.report_builder import ReportGenerator
 
 
 def create_support_resistance():

@@ -1,9 +1,9 @@
 import pandas as pd
 import os, json
-from portfolio_management.Reports.report_builder import ReportGenerator
-from portfolio_management.Reports.image_builder import CandlestickChartGenerator
+from Reports.report_builder import ReportGenerator
+from Reports.image_builder import CandlestickChartGenerator
 import matplotlib.pyplot as plt
-from portfolio_management.Trading.methodology.Indicators.triple_sma import EnhancedMovingAverageCrossoverStrategy
+from Trading.methodology.Indicators.triple_sma import EnhancedMovingAverageCrossoverStrategy
 import numpy as np
 
 
@@ -82,7 +82,7 @@ def bt():
     enhanced_strategy = EnhancedMovingAverageCrossoverStrategy(short_window=10, long_window=50, extra_window=30, stop_loss_percent=0.05, take_profit_percent=0.10, transaction_cost=0.01, slippage=0.005)
 
     for item in tickers_list:
-        data = pd.read_csv(f"portfolio_managment/Trading/Data/Daily/{item}_historical_data.csv")
+        data = pd.read_csv(f"Trading/Data/Daily/{item}_historical_data.csv")
         backtester = Backtester(enhanced_strategy, data)
         backtest_results = backtester.execute_backtest()
         performance_metrics = backtester.calculate_performance_metrics()

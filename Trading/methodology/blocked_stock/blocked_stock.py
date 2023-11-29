@@ -101,10 +101,8 @@ class TradingAnalyzer:
 
 
 def main():
-    #Example usage with the same mock data as before
-    parameters_dict = {}
-    report= ReportGenerator()
-    report.add_title(title="Lateral movement breaks analisys second")
+    report = ReportGenerator()
+    report.add_title(title="Report blocked stock")
 
     with open("../strategy_parameter.json", 'r') as file:
         param_data = json.load(file)
@@ -126,7 +124,8 @@ def main():
             report.add_content(f'stock = {item} ')
             report.add_commented_image(df=data, comment=f'Description = {result["details"]}', image_path=image)
         print(f"checked stock {item}")
-    report.save_report(filename="Report_blocked_stock")
+    file_report = report.save_report(filename="Report_blocked_stock")
+    print(file_report)
 
 if __name__ == '__main__':
     main()

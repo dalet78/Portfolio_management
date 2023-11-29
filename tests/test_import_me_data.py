@@ -1,7 +1,7 @@
 # from macro_economic.import_me_data import WorldBankDataDownloader as wbd
-from portfolio_management.macro_economic.import_fred_data import FredDataDownloader
-from portfolio_management.libs.json_dict_extractor import JsonToDictConverter
-from portfolio_management.macro_economic.create_me_report import CreateReport
+from macro_economic.import_fred_data import FredDataDownloader
+from libs.json_dict_extractor import JsonToDictConverter
+from macro_economic.create_me_report import CreateReport
 
 def test_json_extract ():
         indicators_dict = JsonToDictConverter(config_path='file_path.microeconomics_indicator')

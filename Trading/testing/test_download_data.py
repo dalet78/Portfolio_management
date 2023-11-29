@@ -1,4 +1,4 @@
-from portfolio_management.Trading.methodology.download_data.download_data_yahoo import StockDataDownloader
+from Trading.methodology.download_data.download_data_yahoo import StockDataDownloader
 import json
 import os
 

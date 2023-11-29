@@ -64,18 +64,18 @@ class EnhancedMovingAverageCrossoverStrategy:
         return signals
 
 #Example usage with the same mock data as before
-with open("portfolio_management/Trading/methodology/strategy_parameter.json", 'r') as file:
+with open("Trading/methodology/strategy_parameter.json", 'r') as file:
             param_data = json.load(file)
 if param_data['Strategy']['name'] == "triple_sma":
     parameters_dict = param_data['Strategy']['parameters']
 
-with open("portfolio_management/json_files/SP500-stock.json", 'r') as file:
+with open("json_files/SP500-stock.json", 'r') as file:
         tickers = json.load(file)
         tickers_list = list(tickers.keys())
     
 enhanced_strategy = EnhancedMovingAverageCrossoverStrategy(parameters_dict)
 
 for item in tickers_list:
-    data = pd.read_csv(f"portfolio_management/Trading/Data/Daily/{item}_historical_data.csv")
+    data = pd.read_csv(f"Trading/Data/Daily/{item}_historical_data.csv")
     enhanced_signals = enhanced_strategy.apply_strategy(data)
     print(enhanced_signals.tail())  # Display the last few rows to see the signals and adjusted prices

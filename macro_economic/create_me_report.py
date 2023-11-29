@@ -13,11 +13,11 @@ class CreateReport():
     def __init__(self, config_dict, country):
         self.report_dict = config_dict
         self.country_data = self.report_dict['countries'][country]
-        self.me_report_path = "portfolio_management/macro_economic/report"
+        self.me_report_path = "macro_economic/report"
         self.date = datetime.datetime.now().strftime("%Y-%m-%d")
         self.country = country
         self.pdf_file = ""
-        self.data_path = "portfolio_management/macro_economic/Data"
+        self.data_path = "macro_economic/Data"
         
         
     def _pdf_name_report(self):    

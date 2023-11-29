@@ -1,9 +1,7 @@
-import os
 from reportlab.lib.pagesizes import letter, A4
 from reportlab.pdfgen import canvas
 from reportlab.lib.utils import ImageReader
 import datetime
-# from portfolio_management.Reports.image_builder import CandlestickChartGenerator
 from PIL import Image
 
 
@@ -20,8 +18,7 @@ class ReportGenerator:
     def __init__(self):
         self.title = ""
         self.contents = []
-        self.report_path = '/home/dp/PycharmProjects/portfolio_management/portfolio_management/Reports/Data/tmp'
-        # self.toggle = True
+        self.report_path = 'Reports/Data/tmp'
         self.date = datetime.datetime.now().strftime("%Y-%m-%d")
 
     def add_title(self, title):

@@ -10,7 +10,7 @@ class JSONPathExtractor:
     print(f"Percorso per 'microeconomics_indicator': {microeconomics_indicator_path}")
     """
     def __init__(self):
-        self.json_file_name = f"/workspaces/main/portfolio_managment/json_files/config_files.json"
+        self.json_file_name = f"json_files/config_files.json"
         self.data = self._load_json()
 
     def _load_json(self):

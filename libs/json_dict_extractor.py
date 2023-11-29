@@ -1,4 +1,4 @@
-from portfolio_management.libs.json_path_extractor import JSONPathExtractor
+from libs.json_path_extractor import JSONPathExtractor
 
 
 class JsonToDictConverter():

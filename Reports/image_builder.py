@@ -9,7 +9,7 @@ class CandlestickChartGenerator:
     def __init__(self, df):
         self.df = df
         self.mpf_style = mpf.make_mpf_style(base_mpf_style='nightclouds', rc={'figure.facecolor': 'black', 'axes.facecolor': 'black'})
-        self.tmp_dir = "portfolio_management/Reports/Data/tmp/img"
+        self.tmp_dir = "Reports/Data/tmp/img"
         self.created_files = []  # Lista per tenere traccia dei file creati
         self.check_file= FileChecker()
 

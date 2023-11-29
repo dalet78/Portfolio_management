@@ -1,6 +1,6 @@
 from itertools import product
-from portfolio_management.Trading.methodology.Indicators.triple_sma import EnhancedMovingAverageCrossoverStrategy
-from portfolio_management.Trading.methodology.Indicators.triple_sma_backtest import Backtester
+from Trading.methodology.Indicators.triple_sma import EnhancedMovingAverageCrossoverStrategy
+from Trading.methodology.Indicators.triple_sma_backtest import Backtester
 import numpy as np
 
 class SMAOptimizer:

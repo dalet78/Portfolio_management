@@ -1,7 +1,7 @@
 import pandas as pd
 
-from portfolio_management.Trading.methodology.breakout_lateral_mov.break_lateral_mov_second import BreakoutSignalAnalyzer_lateral_move_second
-from portfolio_management.Reports.report_builder import ReportGenerator
+from Trading.methodology.breakout_lateral_mov.break_lateral_mov_second import BreakoutSignalAnalyzer_lateral_move_second
+from Reports.report_builder import ReportGenerator
 #from portfolio_management.Reports.image_builder import CandlestickChartGenerator
 import json
 
@@ -9,14 +9,14 @@ parameters_dict = {}
 report= ReportGenerator()
 report.add_title(title="Lateral movement breaks analisys second")
 
-with open("portfolio_management/Trading/methodology/strategy_parameter.json", 'r') as file:
+with open("Trading/methodology/strategy_parameter.json", 'r') as file:
     param_data = json.load(file)
 
 for strategy in param_data['Strategies']:
     if strategy['name'] == "breakout_lateral_move_second":
         parameters_dict = strategy['parameters']
         break
-with open("portfolio_management/json_files/SP500-short.json", 'r') as file:
+with open("json_files/SP500-short.json", 'r') as file:
         tickers = json.load(file)
         tickers_list = list(tickers.keys())
 

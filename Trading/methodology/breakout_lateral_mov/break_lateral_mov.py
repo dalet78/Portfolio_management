@@ -1,7 +1,7 @@
 import pandas as pd
 import json
-from portfolio_management.Reports.report_builder import ReportGenerator
-from portfolio_management.Reports.image_builder import CandlestickChartGenerator
+from Reports.report_builder import ReportGenerator
+from Reports.image_builder import CandlestickChartGenerator
 
 class BreakoutSignalAnalyzer_lateral_move:
     def __init__(self, data, params):
@@ -75,7 +75,7 @@ parameters_dict = {}
 report= ReportGenerator()
 report.add_title(title="Lateral movement breaks analisys")
 
-with open("portfolio_management/Trading/methodology/strategy_parameter.json", 'r') as file:
+with open("Trading/methodology/strategy_parameter.json", 'r') as file:
     param_data = json.load(file)
 
 for strategy in param_data['Strategies']:
@@ -87,7 +87,7 @@ with open("../../../json_files/SP500-stock.json", 'r') as file:
         tickers_list = list(tickers.keys())
 
 for item in tickers_list:
-    data = pd.read_csv(f"portfolio_management/Trading/Data/Daily/{item}_historical_data.csv")
+    data = pd.read_csv(f"Trading/Data/Daily/{item}_historical_data.csv")
     enhanced_strategy = BreakoutSignalAnalyzer_lateral_move(data, parameters_dict)
     enhanced_signals, content, image = enhanced_strategy.detect_breakout()
     if enhanced_signals != 0.0: 
