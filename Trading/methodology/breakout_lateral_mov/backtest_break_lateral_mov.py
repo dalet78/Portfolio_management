@@ -2,7 +2,6 @@ import pandas as pd
 
 from Trading.methodology.breakout_lateral_mov.break_lateral_mov_second import BreakoutSignalAnalyzer_lateral_move_second
 from Reports.report_builder import ReportGenerator
-#from portfolio_management.Reports.image_builder import CandlestickChartGenerator
 import json
 
 parameters_dict = {}
@@ -21,7 +20,7 @@ with open("json_files/SP500-short.json", 'r') as file:
         tickers_list = list(tickers.keys())
 
 for item in tickers_list:
-    data = pd.read_csv(f"portfolio_management/Trading/Data/Daily/{item}_historical_data.csv")
+    data = pd.read_csv(f"Trading/Data/Daily/{item}_historical_data.csv")
     analyzer = BreakoutSignalAnalyzer_lateral_move_second(data, parameters_dict)
     # Variabili per il backtest
     total_signals = 0
