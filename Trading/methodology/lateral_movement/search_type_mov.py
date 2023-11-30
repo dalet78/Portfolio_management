@@ -26,7 +26,7 @@ class TrendMovementAnalyzer:
 
         return is_trend_up
 
-   def is_downward_trend_SMA(self, window=20):
+    def is_downward_trend_SMA(self, window=20):
         """
         Identify if moovemnte is downware.
         :param window: SMA period.
@@ -47,7 +47,7 @@ class TrendMovementAnalyzer:
 
         return is_trend_down
 
-      def _calculate_RSI(self, window=14):
+    def _calculate_RSI(self, window=14):
         """
         Calcola l'indicatore Relative Strength Index (RSI).
         :param window: Numero di periodi da usare per calcolare l'RSI.
@@ -161,7 +161,7 @@ class TrendMovementAnalyzer:
     
         return self.data['ADX'].iloc[-1] < adx_threshold # Define a low ADX threshold
 
-     def is_lateral_movement_percent(self, last_periods=5, threshold=0.05):
+    def is_lateral_movement_percent(self, last_periods=5, threshold=0.05):
          """
         Determines if there is a lateral movement based on the percentage change.
         :param window: Number of periods for calculating percentage change.
