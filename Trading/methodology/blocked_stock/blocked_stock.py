@@ -99,6 +99,9 @@ class TradingAnalyzer:
             image = None
         return result, image
 
+    def clear_img_temp_files(self):
+        self.image.clear_temp_files()
+
 
 def main():
     report = ReportGenerator()
@@ -125,6 +128,7 @@ def main():
             report.add_commented_image(df=data, comment=f'Description = {result["details"]}', image_path=image)
         print(f"checked stock {item}")
     file_report = report.save_report(filename="Report_blocked_stock")
+    enhanced_strategy.clear_img_temp_files()
     print(file_report)
 
 if __name__ == '__main__':

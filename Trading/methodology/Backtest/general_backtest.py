@@ -1,10 +1,7 @@
 import pandas as pd
-import os, json
-from Reports.report_builder import ReportGenerator
-from Reports.image_builder import CandlestickChartGenerator
-import matplotlib.pyplot as plt
+import  json
 from Trading.methodology.Indicators.triple_sma import EnhancedMovingAverageCrossoverStrategy
-import numpy as np
+
 
 
 class Backtester:

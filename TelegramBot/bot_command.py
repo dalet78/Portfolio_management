@@ -1,6 +1,6 @@
 from Trading.methodology.download_data.download_data_yahoo import StockDataDownloader
 import json
-import os
+
 def download_data_weekly():
     with open( "json_files/SP500-stock.json", 'r') as file:
         tickers = json.load(file)
