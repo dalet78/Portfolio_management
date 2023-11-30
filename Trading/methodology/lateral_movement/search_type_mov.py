@@ -32,7 +32,7 @@ class TrendMovementAnalyzer:
 
    def is_downward_trend(self, window=20):
         """
-        Identify if moovemnte is upware.
+        Identify if moovemnte is downware.
         :param window: SMA period.
         :return: return boolean value if trand is upware.
         """
@@ -46,7 +46,7 @@ class TrendMovementAnalyzer:
         # SMA calculation
         self.data['Moving_Average'] = self.data['Close'].rolling(window=window).mean()
 
-        # Verify if movement is upware
+        # Verify if movement is downware
         is_trend_down = self.data['Close'] < self.data['Moving_Average']
 
         return is_trend_down
@@ -75,5 +75,57 @@ class TrendMovementAnalyzer:
         is_lateral = cum_change < threshold
 
         return is_lateral
+
+      def _calculate_RSI(self, window=14):
+        """
+        Calcola l'indicatore Relative Strength Index (RSI).
+        :param window: Numero di periodi da usare per calcolare l'RSI.
+        :return: Serie RSI.
+        """
+        delta = self.data['Close'].diff()
+        gain = (delta.where(delta > 0, 0)).rolling(window=window).mean()
+        loss = (-delta.where(delta < 0, 0)).rolling(window=window).mean()
+
+        rs = gain / loss
+        rsi = 100 - (100 / (1 + rs))
+
+        return rsi
+
+    def is_upward_trend_using_RSI(self, rsi_threshold=50, window=14):
+        """
+        Identify if moovement is upware  with RSI support.
+        :param rsi_threshold: threshold for to verify if trend is up
+        :param window: period number for to define RSI.
+        :return: Bool, True if trend is up, False otherwise.
+        """
+        if self.data is None:
+            raise ValueError("Data not found.")
+
+        # RSI
+        self.data['RSI'] = self._calculate_RSI(window)
+
+        # Verify if movement is upware
+        is_trend_up = self.data['RSI'] > rsi_threshold
+
+        return is_trend_up
+
+    def is_downward_trend_using_RSI(self, rsi_threshold=50, window=14):
+        """
+        Identify if moovement is downware  with RSI support.
+        :param rsi_threshold: threshold for to verify if trend is down
+        :param window: period number for to devine RSI.
+        :return: Bool, True if trend is down, False otherwise.
+        """
+        if self.data is None:
+            raise ValueError("Data not found.")
+
+        # RSI
+        self.data['RSI'] = self.calculate_RSI(window)
+
+        # Verify if movement is downware
+        is_trend_down = self.data['RSI'] < rsi_threshold
+
+        return is_trend_down
+
 
     
