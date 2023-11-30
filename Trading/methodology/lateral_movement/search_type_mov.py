@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-class TrendAnalyzer:
+class TrendMovementAnalyzer:
     def __init__(self):
         self.data = None
 
