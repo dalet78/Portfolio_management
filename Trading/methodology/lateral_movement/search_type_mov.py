@@ -2,14 +2,10 @@ import pandas as pd
 import numpy as np
 
 class TrendMovementAnalyzer:
-    def __init__(self):
-        self.data = None
+    def __init__(self, df):
+        self.data = df
 
-    def load_data(self, file_path):
-        # Carica i dati da un file CSV
-        self.data = pd.read_csv(file_path)
-
-    def is_upward_trend(self, window=20):
+    def is_upward_trend_SMA(self, window=20):
         """
         Identify if moovemnte is upware.
         :param window: SMA period.
@@ -30,7 +26,7 @@ class TrendMovementAnalyzer:
 
         return is_trend_up
 
-   def is_downward_trend(self, window=20):
+   def is_downward_trend_SMA(self, window=20):
         """
         Identify if moovemnte is downware.
         :param window: SMA period.
@@ -50,31 +46,6 @@ class TrendMovementAnalyzer:
         is_trend_down = self.data['Close'] < self.data['Moving_Average']
 
         return is_trend_down
-
-
-    def is_lateral_movement(self, last_periods=5, threshold=0.05):
-        """
-        Identify if we have lateral movement.
-        :param last_periods: number of last period checked.
-        :param threshold: level of threshold variation .
-        :return: Bool, True if moovement is lateral, False otherwise.
-        """
-        if self.data is None:
-            raise ValueError("Data not found.")
-
-        # Verify that dataset contain close column
-        if 'Close' not in self.data.columns:
-            raise ValueError("Close column is not present.")
-
-        # Verify variation price
-        self.data['Price_Change'] = self.data['Close'].pct_change()
-
-        cum_change = self.data['Price_Change'].rolling(window=last_periods).sum().abs()
-
-        # Verify if movement is lateral
-        is_lateral = cum_change < threshold
-
-        return is_lateral
 
       def _calculate_RSI(self, window=14):
         """
@@ -162,3 +133,55 @@ class TrendMovementAnalyzer:
 
         self._calculate_MACD()
         return self.data['MACD'].iloc[-1] < self.data['Signal_Line'].iloc[-1]
+
+    def is_lateral_movement_bollinger_bands(self, window=20, num_std_dev=2):
+        """
+        Determines if there is a lateral movement using Bollinger Bands.
+        :param window: Number of periods for the moving average.
+        :param num_std_dev: Number of standard deviations for the bands.
+        :return: Bool, True if there is a lateral movement, False otherwise.
+        """
+        self.data['SMA'] = self.data['Close'].rolling(window=window).mean()
+        self.data['STD_DEV'] = self.data['Close'].rolling(window=window).std()
+        
+        self.data['Upper_Band'] = self.data['SMA'] + (self.data['STD_DEV'] * num_std_dev)
+        self.data['Lower_Band'] = self.data['SMA'] - (self.data['STD_DEV'] * num_std_dev)
+    
+        band_width = (self.data['Upper_Band'] - self.data['Lower_Band']) / self.data['SMA']
+        return band_width.iloc[-1] < some_threshold # Define a threshold for narrow bands
+
+    def is_lateral_movement_ADX(self, window=14):
+        """
+        Determines if there is a lateral movement using the Average Directional Index (ADX).
+        :param window: Number of periods for the ADX calculation.
+        :return: Bool, True if there is a lateral movement, False otherwise.
+        """
+        # Implement the ADX calculation here (it's a bit complex)
+        # ...
+    
+        return self.data['ADX'].iloc[-1] < adx_threshold # Define a low ADX threshold
+
+     def is_lateral_movement_percent(self, last_periods=5, threshold=0.05):
+         """
+        Determines if there is a lateral movement based on the percentage change.
+        :param window: Number of periods for calculating percentage change.
+        :param threshold: Threshold for defining a lateral movement.
+        :return: Bool, True if there is a lateral movement, False otherwise.
+        """
+        if self.data is None:
+            raise ValueError("Data not found.")
+
+        # Verify that dataset contain close column
+        if 'Close' not in self.data.columns:
+            raise ValueError("Close column is not present.")
+
+        # Verify variation price
+        self.data['Price_Change'] = self.data['Close'].pct_change()
+
+        cum_change = self.data['Price_Change'].rolling(window=last_periods).sum().abs()
+
+        # Verify if movement is lateral
+        is_lateral = cum_change < threshold
+
+        return is_lateral
+
