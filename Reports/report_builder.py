@@ -3,6 +3,7 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.utils import ImageReader
 import datetime
 from PIL import Image
+import os
 
 
 class ReportGenerator:
@@ -18,7 +19,8 @@ class ReportGenerator:
     def __init__(self):
         self.title = ""
         self.contents = []
-        self.report_path = 'Reports/Data/tmp'
+        self.project_root = os.path.dirname(os.path.abspath(__file__))
+        self.report_path = os.path.join(self.project_root,'Data/tmp')
         self.date = datetime.datetime.now().strftime("%Y-%m-%d")
 
     def add_title(self, title):
@@ -43,8 +45,6 @@ class ReportGenerator:
 
         # Aggiungi l'immagine (ora ridimensionata) e il commento ai contenuti del report
         self.contents.append(('commented_image', (comment, image_path)))
-
-
 
     def save_report(self, filename):
         c = canvas.Canvas(f"{self.report_path}/{filename}_{self.date}.pdf", pagesize=A4)

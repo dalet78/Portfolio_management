@@ -4,13 +4,13 @@ from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, ReplyKeyboardMarkup, ReplyKeyboardRemove
 import json
-from .bot_command import download_data_daily, download_data_weekly
+from .bot_command import download_data_daily, download_data_weekly, blocked_stock
 import subprocess
 
 class CommandBot:
     def __init__(self):
         """Initialize the bot."""
-        self.bot = Client("Bubugaga", api_id=api_id, api_hash=api_hash, bot_token=token)
+        self.bot = Client("BOT", api_id=api_id, api_hash=api_hash, bot_token=token)
         self.user_states = {}
         self.bot.add_handler(MessageHandler(self.start_command, filters.command("start")))
         self.bot.add_handler(MessageHandler(self.cancel, filters.command("stop")))
@@ -82,9 +82,9 @@ class CommandBot:
                 self.logger.error(f'menu dont found {data.split("_")[1]}')
         # Verifica se il callback è per eseguire un'azione
         elif data.startswith("action_"):
-            self.perform_action(callback_query, data.split("_")[1])
+            self.perform_action(client,callback_query, data.split("_")[1])
 
-    def perform_action(self, callback_query, action):
+    def perform_action(self, client, callback_query, action):
         if action == "updatedaily":
             download_data_daily()
             callback_query.message.reply_text("Download daily data finish!")
@@ -93,15 +93,15 @@ class CommandBot:
             callback_query.message.reply_text("Download weekly data finish!")
         elif action == "findblockedstock":
             try:
-                file_report = subprocess.run(["python", "Trading/methodology/blocked_stock/blocked_stock.py"], check=True)
-                self.send_generated_pdf(callback_query.message.chat.id, file_report)
-                callback_query.message.reply_text("PDF generato e inviato!")
+                file_report = blocked_stock()
+                self.send_generated_pdf(client, callback_query.message.chat.id, file_report)
+                callback_query.message.reply_text("PDF generate and sent!")
             except subprocess.CalledProcessError as e:
-                callback_query.message.reply_text(f"Si è verificato un errore: {e}")
+                callback_query.message.reply_text(f"Error generate: {e}")
 
-    def send_generated_pdf(self, chat_id, file_path):
+    def send_generated_pdf(self, client, chat_id, file_path):
         # Invia il PDF generato al client
-        app.send_document(chat_id, file_path)
+        client.send_document(chat_id, file_path)
 
     @Client.on_message(filters.command("stop"))
     def cancel(self, client, message):

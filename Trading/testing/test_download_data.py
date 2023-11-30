@@ -4,7 +4,7 @@ import os
 
 def download_data_daily():
     current_path = os.path.dirname(os.path.abspath(__file__))
-    with open(os.path.join(current_path, "../../json_files/SP500-stock.json"), 'r') as file:
+    with open(os.path.join(current_path, "json_files/SP500-stock.json"), 'r') as file:
         tickers = json.load(file)
 
 # Lista dei ticker
@@ -16,7 +16,7 @@ def download_data_daily():
 
 def download_data_weekly():
     current_path = os.path.dirname(os.path.abspath(__file__))
-    with open(os.path.join(current_path, "../../json_files/SP500-stock.json"), 'r') as file:
+    with open(os.path.join(current_path, "json_files/SP500-stock.json"), 'r') as file:
         tickers = json.load(file)
 
 # Lista dei ticker

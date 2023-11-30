@@ -82,7 +82,7 @@ for strategy in param_data['Strategies']:
     if strategy['name'] == "breakout_lateral_move":
         parameters_dict = strategy['parameters']
         break
-with open("../../../json_files/SP500-stock.json", 'r') as file:
+with open("json_files/SP500-stock.json", 'r') as file:
         tickers = json.load(file)
         tickers_list = list(tickers.keys())
 

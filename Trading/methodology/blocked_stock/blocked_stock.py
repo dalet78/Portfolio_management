@@ -107,19 +107,19 @@ def main():
     report = ReportGenerator()
     report.add_title(title="Report blocked stock")
 
-    with open("../strategy_parameter.json", 'r') as file:
+    with open("Trading/methodology/strategy_parameter.json", 'r') as file:
         param_data = json.load(file)
 
     # for strategy in param_data['Strategies']:
     #     if strategy['name'] == "breakout_lateral_move_second":
     #         parameters_dict = strategy['parameters']
     #         break
-    with open("../../../json_files/SP500-stock.json", 'r') as file:
+    with open("json_files/SP500-stock.json", 'r') as file:
             tickers = json.load(file)
             tickers_list = list(tickers.keys())
 
     for item in tickers_list:
-        data = pd.read_csv(f"../../Data/Daily/{item}_historical_data.csv")
+        data = pd.read_csv(f"Trading/Data/Daily/{item}_historical_data.csv")
         enhanced_strategy = TradingAnalyzer(data, max_price=50)
         result, image = enhanced_strategy.check_price_range()
         if result:
@@ -129,7 +129,8 @@ def main():
         print(f"checked stock {item}")
     file_report = report.save_report(filename="Report_blocked_stock")
     enhanced_strategy.clear_img_temp_files()
-    print(file_report)
+    return file_report
 
 if __name__ == '__main__':
-    main()
+    file_report = main()
+    print(file_report)

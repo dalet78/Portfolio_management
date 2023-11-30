@@ -73,7 +73,7 @@ class Backtester:
 
 def bt():
     # Using the same data and strategy as before
-    with open("../../json_files/SP500-stock.json", 'r') as file:
+    with open("json_files/SP500-stock.json", 'r') as file:
         tickers = json.load(file)
     tickers_list = list(tickers.keys())
     enhanced_strategy = EnhancedMovingAverageCrossoverStrategy(short_window=10, long_window=50, extra_window=30, stop_loss_percent=0.05, take_profit_percent=0.10, transaction_cost=0.01, slippage=0.005)

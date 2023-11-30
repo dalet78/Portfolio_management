@@ -7,7 +7,7 @@ from Reports.report_builder import ReportGenerator
 
 def create_support_resistance():
     current_path = os.path.dirname(os.path.abspath(__file__))
-    with open(os.path.join(current_path, "../../json_files/SP500-stock.json"), 'r') as file:
+    with open(os.path.join(current_path, "json_files/SP500-stock.json"), 'r') as file:
         tickers = json.load(file)
 
 # Lista dei ticker
@@ -20,7 +20,7 @@ def create_support_resistance():
 def breaker_analyzer(max_price= None):
     report= ReportGenerator()
     current_path = os.path.dirname(os.path.abspath(__file__))
-    with open(os.path.join(current_path, "../../json_files/SP500-stock.json"), 'r') as file:
+    with open(os.path.join(current_path, "json_files/SP500-stock.json"), 'r') as file:
         tickers = json.load(file)
     tickers_list = list(tickers.keys())
     report.add_title(title="Resistence and Support Breaks")
@@ -38,7 +38,7 @@ def breaker_analyzer(max_price= None):
 def near_breaker_analyzer(max_price= None):
     report= ReportGenerator()
     current_path = os.path.dirname(os.path.abspath(__file__))
-    with open(os.path.join(current_path, "../../json_files/SP500-stock.json"), 'r') as file:
+    with open(os.path.join(current_path, "json_files/SP500-stock.json"), 'r') as file:
         tickers = json.load(file)
     tickers_list = list(tickers.keys())
     report.add_title(title="Resistence and Support near breaks analisys")
