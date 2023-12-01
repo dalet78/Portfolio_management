@@ -1,9 +1,11 @@
 import pandas as pd
 import numpy as np
-
+from Reports.image_builder import CandlestickChartGenerator
 class TrendMovementAnalyzer:
     def __init__(self, df):
         self.data = df
+        self.image = CandlestickChartGenerator(self.data)
+
 
     def is_upward_trend_SMA(self, window=20):
         """
@@ -12,7 +14,7 @@ class TrendMovementAnalyzer:
         :return: return boolean value if trand is upware.
         """
         if self.data is None:
-            raise ValueError("Data not found."))
+            raise ValueError("Data not found.")
 
         # Verify that dataset contain close column
         if 'Close' not in self.data.columns:
@@ -23,8 +25,10 @@ class TrendMovementAnalyzer:
 
         # Verify if movement is upware
         is_trend_up = self.data['Close'] > self.data['Moving_Average']
+        if is_trend_up:
+            image =self.image.create_chart_with_SMA(max_points=90)
 
-        return is_trend_up
+        return is_trend_up, image
 
     def is_downward_trend_SMA(self, window=20):
         """
@@ -33,7 +37,7 @@ class TrendMovementAnalyzer:
         :return: return boolean value if trand is upware.
         """
         if self.data is None:
-            raise ValueError("Data not found."))
+            raise ValueError("Data not found.")
 
         # Verify that dataset contain close column
         if 'Close' not in self.data.columns:
@@ -44,8 +48,9 @@ class TrendMovementAnalyzer:
 
         # Verify if movement is downware
         is_trend_down = self.data['Close'] < self.data['Moving_Average']
-
-        return is_trend_down
+        if is_trend_down:
+            image =self.image.create_chart_with_SMA(max_points=90)
+        return is_trend_down, image
 
     def _calculate_RSI(self, window=14):
         """
@@ -77,8 +82,10 @@ class TrendMovementAnalyzer:
 
         # Verify if movement is upware
         is_trend_up = self.data['RSI'] > rsi_threshold
+        if is_trend_up:
+            image =self.image.create_chart_with_RSI(max_points=90)
 
-        return is_trend_up
+        return is_trend_up, image
 
     def is_downward_trend_using_RSI(self, rsi_threshold=50, window=14):
         """
@@ -95,8 +102,10 @@ class TrendMovementAnalyzer:
 
         # Verify if movement is downware
         is_trend_down = self.data['RSI'] < rsi_threshold
+        if is_trend_down:
+            image =self.image.create_chart_with_RSI(max_points=90)
 
-        return is_trend_down
+        return is_trend_down, image
 
     def _calculate_MACD(self, span_short=12, span_long=26, span_signal=9):
         """
@@ -121,7 +130,12 @@ class TrendMovementAnalyzer:
         self._calculate_MACD()
 
         # Check if MACD is above the signal line
-        return self.data['MACD'].iloc[-1] > self.data['Signal_Line'].iloc[-1]
+        is_trend_up = self.data['MACD'].iloc[-1] > self.data['Signal_Line'].iloc[-1]
+        if is_trend_up:
+            image =self.image.create_chart_with_MACD(max_points=90)
+
+        return is_trend_up, image
+
 
     def is_downward_trend_using_MACD(self):
         """
@@ -132,7 +146,11 @@ class TrendMovementAnalyzer:
             raise ValueError("Data not loaded.")
 
         self._calculate_MACD()
-        return self.data['MACD'].iloc[-1] < self.data['Signal_Line'].iloc[-1]
+        is_trend_down= self.data['MACD'].iloc[-1] < self.data['Signal_Line'].iloc[-1]
+        if is_trend_down:
+            image =self.image.create_chart_with_MACD(max_points=90)
+
+        return is_trend_down, image
 
     def is_lateral_movement_bollinger_bands(self, window=20, num_std_dev=2):
         """
@@ -162,7 +180,7 @@ class TrendMovementAnalyzer:
         return self.data['ADX'].iloc[-1] < adx_threshold # Define a low ADX threshold
 
     def is_lateral_movement_percent(self, last_periods=5, threshold=0.05):
-         """
+        """
         Determines if there is a lateral movement based on the percentage change.
         :param window: Number of periods for calculating percentage change.
         :param threshold: Threshold for defining a lateral movement.

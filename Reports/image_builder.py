@@ -53,9 +53,49 @@ class CandlestickChartGenerator:
         sma = self.df['Close'].rolling(window=period).mean()
         return self._plot_to_file(max_points, addplot=mpf.make_addplot(sma))
 
+    def create_chart_with_RSI(self, period=14, max_points=None, file_name='rsi_chart.png'):
+        # Calcolo dell'RSI
+        delta = self.df['Close'].diff()
+        gain = (delta.where(delta > 0, 0)).rolling(window=period).mean()
+        loss = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
+
+        rs = gain / loss
+        rsi = 100 - (100 / (1 + rs))
+
+        # Troncare i dati per il numero massimo di punti se specificato
+        df_to_plot = self.df if max_points is None else self.df[-max_points:]
+        rsi_to_plot = rsi if max_points is None else rsi[-max_points:]
+
+        # Preparazione dell'addplot per RSI
+        apd = mpf.make_addplot(rsi_to_plot, type='line', secondary_y=True)
+
+        # Uso della funzione _plot_to_file per creare il grafico
+        return self._plot_to_file(max_points, addplot=apd)
+
     def create_chart_with_EMA(self, period=20, max_points=None):
         ema = self.df['Close'].ewm(span=period, adjust=False).mean()
         return self._plot_to_file(max_points, addplot=mpf.make_addplot(ema))
+
+    def create_chart_with_MACD(self, short_period=12, long_period=26, signal_period=9, max_points=None):
+        # Calcolo delle EMA a breve e lungo termine
+        ema_short = self.df['Close'].ewm(span=short_period, adjust=False).mean()
+        ema_long = self.df['Close'].ewm(span=long_period, adjust=False).mean()
+
+        # Calcolo del MACD e del segnale MACD
+        macd = ema_short - ema_long
+        macd_signal = macd.ewm(span=signal_period, adjust=False).mean()
+
+        # Troncare i dati per il numero massimo di punti se specificato
+        df_to_plot = self.df if max_points is None else self.df[-max_points:]
+        macd_to_plot = macd if max_points is None else macd[-max_points:]
+        macd_signal_to_plot = macd_signal if max_points is None else macd_signal[-max_points:]
+
+        # Preparazione dell'addplot per MACD e il segnale MACD
+        apd_macd = mpf.make_addplot(macd_to_plot, type='bar', panel=2, color='dimgray', secondary_y=False)
+        apd_signal = mpf.make_addplot(macd_signal_to_plot, type='line', panel=2, color='fuchsia', secondary_y=False)
+
+        # Uso della funzione _plot_to_file per creare il grafico
+        return self._plot_to_file(max_points, addplot=[apd_macd, apd_signal])
 
     def clear_temp_files(self):
         for item in os.listdir(self.tmp_dir):
