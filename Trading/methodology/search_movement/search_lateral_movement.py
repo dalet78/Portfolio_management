@@ -27,8 +27,8 @@ class TradingLateralMovAnalyzer:
 
         for item in tickers_list:
             data = pd.read_csv(f"Trading/Data/Daily/{item}_historical_data.csv")
-            enhanced_strategy = TradingLateralMovAnalyzer(data, max_price=50)
-            result, image = enhanced_strategy.check_price_range()
+            enhanced_strategy = TrendMovementAnalyzer(data, max_price=50)
+            result, image = enhanced_strategy.is_lateral_movement_percent()
             if result:
                 print(f'stock = {item} -- FOUND ')
                 report.add_content(f'stock = {item} ')
@@ -38,5 +38,7 @@ class TradingLateralMovAnalyzer:
         enhanced_strategy.clear_img_temp_files()
         return file_report
 
-    def clear_img_temp_files(self):
-        self.image.clear_temp_files()
+if __name__ == '__main__':
+    file_report = TradingLateralMovAnalyzer
+    report= file_report.find_lateral_mov()
+    print(report)

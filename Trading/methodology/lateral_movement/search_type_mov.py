@@ -1,9 +1,12 @@
 import pandas as pd
-import numpy as np
+import json
+from Reports.report_builder import ReportGenerator
 from Reports.image_builder import CandlestickChartGenerator
 class TrendMovementAnalyzer:
-    def __init__(self, df):
+    def __init__(self, df, max_price=None):
         self.data = df
+        if max_price is not None:
+            self.data = self.data[self.data['Close'] <= max_price]
         self.image = CandlestickChartGenerator(self.data)
 
 
@@ -152,7 +155,7 @@ class TrendMovementAnalyzer:
 
         return is_trend_down, image
 
-    def is_lateral_movement_bollinger_bands(self, window=20, num_std_dev=2):
+    def is_lateral_movement_bollinger_bands(self, window=20, num_std_dev=2,threshold_percentage=0.05):
         """
         Determines if there is a lateral movement using Bollinger Bands.
         :param window: Number of periods for the moving average.
@@ -166,16 +169,41 @@ class TrendMovementAnalyzer:
         self.data['Lower_Band'] = self.data['SMA'] - (self.data['STD_DEV'] * num_std_dev)
     
         band_width = (self.data['Upper_Band'] - self.data['Lower_Band']) / self.data['SMA']
-        return band_width.iloc[-1] < some_threshold # Define a threshold for narrow bands
+        return band_width.iloc[-1] < threshold_percentage # Define a threshold for narrow bands
 
-    def is_lateral_movement_ADX(self, window=14):
+    def calculate_ADX(self, window=14):
+        # Calcolo delle differenze positive e negative
+        self.data['+DM'] = self.data['High'].diff()
+        self.data['-DM'] = self.data['Low'].diff()
+
+        # Determina quali differenze devono essere considerate
+        self.data['+DM'] = self.data.apply(lambda row: row['+DM'] if row['+DM'] > row['-DM'] and row['+DM'] > 0 else 0,
+                                           axis=1)
+        self.data['-DM'] = self.data.apply(lambda row: -row['-DM'] if row['-DM'] > row['+DM'] and row['-DM'] > 0 else 0,
+                                           axis=1)
+
+        # Calcola la True Range (TR)
+        self.data['TR'] = self.data.apply(lambda row: max(abs(row['High'] - row['Low']),
+                                                          abs(row['High'] - row['Close'].shift()),
+                                                          abs(row['Low'] - row['Close'].shift())), axis=1)
+
+        # Calcola gli indicatori direzionali lisciati
+        self.data['+DMI'] = self.data['+DM'].rolling(window=window).mean() / self.data['TR'].rolling(
+            window=window).mean()
+        self.data['-DMI'] = self.data['-DM'].rolling(window=window).mean() / self.data['TR'].rolling(
+            window=window).mean()
+
+        # Calcola l'ADX
+        self.data['DX'] = (abs(self.data['+DMI'] - self.data['-DMI']) / (self.data['+DMI'] + self.data['-DMI'])) * 100
+        self.data['ADX'] = self.data['DX'].rolling(window=window).mean()
+
+    def is_lateral_movement_ADX(self, window=14, adx_threshold=25):
         """
         Determines if there is a lateral movement using the Average Directional Index (ADX).
         :param window: Number of periods for the ADX calculation.
         :return: Bool, True if there is a lateral movement, False otherwise.
         """
-        # Implement the ADX calculation here (it's a bit complex)
-        # ...
+        self.calculate_ADX(window)
     
         return self.data['ADX'].iloc[-1] < adx_threshold # Define a low ADX threshold
 
@@ -201,5 +229,39 @@ class TrendMovementAnalyzer:
         # Verify if movement is lateral
         is_lateral = cum_change < threshold
 
-        return is_lateral
+        image_path = None
+        if is_lateral:
+            image_path = self.image.create_chart_with_MACD(max_points=90)
 
+        return is_lateral, image_path
+
+    def clear_img_temp_files(self):
+        self.image.clear_temp_files()
+
+def main():
+    report = ReportGenerator()
+    report.add_title(title="Report blocked stock")
+
+    with open("Trading/methodology/strategy_parameter.json", 'r') as file:
+        param_data = json.load(file)
+
+    with open("json_files/SP500-stock.json", 'r') as file:
+        tickers = json.load(file)
+        tickers_list = list(tickers.keys())
+
+    for item in tickers_list:
+        data = pd.read_csv(f"Trading/Data/Daily/{item}_historical_data.csv")
+        enhanced_strategy = TrendMovementAnalyzer(data, max_price=50)
+        result, image = enhanced_strategy.is_lateral_movement_percent()
+        if result:
+            print(f'stock = {item} -- FOUND ')
+            report.add_content(f'stock = {item} ')
+            report.add_commented_image(df=data, comment=f'Description = {result["details"]}', image_path=image)
+        print(f"checked stock {item}")
+    file_report = report.save_report(filename="Report_blocked_stock")
+    enhanced_strategy.clear_img_temp_files()
+    return file_report
+
+if __name__ == '__main__':
+    file_report = main()
+    print(file_report)
