@@ -52,6 +52,32 @@ class TradingAnalyzer:
         above_support_count = 0
         touch_support_count = 0
 
+        for index in range(-period, 0):  # Utilizza un indice per accedere a più colonne
+            row = self.dataset.iloc[index]  # Ottieni la riga corrente
+            open_price = row['Open']
+            close_price = row['Close']
+
+            if self.max_price is not None and (pd.isna(open_price) or pd.isna(close_price)):
+                continue
+
+            if self.max_price is not None and (open_price > self.max_price or close_price > self.max_price):
+                continue
+
+            # Checking for resistance interactions
+            if resistance is not None:
+                if open_price < resistance and close_price < resistance:
+                    below_resistance_count += 1
+                    if resistance * 0.99 <= close_price <= resistance or resistance * 0.99 <= open_price <= resistance:
+                        touch_resistance_count += 1
+
+            # Checking for support interactions
+            if support is not None:
+                if open_price > support and close_price > support:
+                    above_support_count += 1
+                    if support <= close_price <= support * 1.01 or support <= open_price <= support * 1.01:
+                        touch_support_count += 1
+
+        """ 
         for price in self.dataset["Close"][-period:]:
             if self.max_price is not None and pd.isna(price):
                 continue
@@ -70,7 +96,7 @@ class TradingAnalyzer:
                 above_support_count += 1
                 if support <= price <= support * 1.01:
                     touch_support_count += 1
-
+"""
         interesting_below_resistance = below_resistance_count >45 and touch_resistance_count > 3
         interesting_above_support = above_support_count > 45 and touch_support_count > 3
 
