@@ -4,7 +4,7 @@ from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, ReplyKeyboardMarkup, ReplyKeyboardRemove
 import json
-from .bot_command import download_data_daily, download_data_weekly, blocked_stock
+from .bot_command import *
 import subprocess
 
 class CommandBot:
@@ -42,7 +42,7 @@ class CommandBot:
         elif menu == 'catchtrade':
             keyboard = [
                 [InlineKeyboardButton("find blocked stock", callback_data="action_findblockedstock"),
-                 InlineKeyboardButton("method 2", callback_data="action_option_2")],
+                 InlineKeyboardButton("find lateral move", callback_data="action_findlateralmov")],
                 [InlineKeyboardButton("method 3", callback_data="action_option_3"),
                  InlineKeyboardButton("method 4", callback_data="action_option_4")],
                 [InlineKeyboardButton("Back to main menu", callback_data="menu_top")]
@@ -94,6 +94,13 @@ class CommandBot:
         elif action == "findblockedstock":
             try:
                 file_report = blocked_stock()
+                self.send_generated_pdf(client, callback_query.message.chat.id, file_report)
+                callback_query.message.reply_text("PDF generate and sent!")
+            except subprocess.CalledProcessError as e:
+                callback_query.message.reply_text(f"Error generate: {e}")
+        elif action == "findlateralmov":
+            try:
+                file_report = find_lateral_mov()
                 self.send_generated_pdf(client, callback_query.message.chat.id, file_report)
                 callback_query.message.reply_text("PDF generate and sent!")
             except subprocess.CalledProcessError as e:

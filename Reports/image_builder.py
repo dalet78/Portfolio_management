@@ -5,26 +5,48 @@ import uuid
 from libs.file_checker import FileChecker
 import shutil
 
+source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
+
+
 class CandlestickChartGenerator:
     def __init__(self, df):
         self.df = df
-        self.mpf_style = mpf.make_mpf_style(base_mpf_style='nightclouds', rc={'figure.facecolor': 'black', 'axes.facecolor': 'black'})
-        self.tmp_dir = "Reports/Data/tmp/img"
+        # Crea uno stile personalizzato
+        self.mpf_style = mpf.make_mpf_style(base_mpf_style='nightclouds',
+                                            marketcolors=mpf.make_marketcolors(up='red', down='white', inherit=True),
+                                            rc={'figure.facecolor': 'black', 'axes.facecolor': 'black'})
+        self.tmp_dir = "/tmp/img"  # Modifica il percorso secondo le tue esigenze
         self.created_files = []  # Lista per tenere traccia dei file creati
-        self.check_file= FileChecker()
+        self.check_file = FileChecker()  # Assicurati che FileChecker sia definito correttamente
 
     def _plot_to_file(self, max_points=None, **kwargs):
         if not isinstance(self.df.index, pd.DatetimeIndex):
             self.df.index = pd.to_datetime(self.df.index)
         df_to_plot = self.df if max_points is None else self.df[-max_points:]
         temp_file_path = self._generate_temp_file_path()
-        mpf.plot(df_to_plot, type='candlestick', style=self.mpf_style, savefig=temp_file_path, **kwargs)
+        # Configura l'asse x per mostrare la data ogni 5 intervalli
+        mpf.plot(df_to_plot, type='candlestick', style=self.mpf_style,
+                 xrotation=45, datetime_format='%Y-%m-%d',
+                 show_nontrading=False, savefig=temp_file_path, **kwargs)
         file_return = self.check_file.wait_for_file_creation(file_path=temp_file_path)
         if file_return:
-            self.created_files.append(temp_file_path)  # Aggiungi il percorso del file alla lista
+            self.created_files.append(temp_file_path)
             return temp_file_path
-        else: 
+        else:
             print("problem with image creation")
+    #
+    # def _plot_to_file(self, max_points=None, **kwargs):
+    #     if not isinstance(self.df.index, pd.DatetimeIndex):
+    #         self.df.index = pd.to_datetime(self.df.index)
+    #     df_to_plot = self.df if max_points is None else self.df[-max_points:]
+    #     temp_file_path = self._generate_temp_file_path()
+    #     mpf.plot(df_to_plot, type='candlestick', style=self.mpf_style, savefig=temp_file_path, **kwargs)
+    #     file_return = self.check_file.wait_for_file_creation(file_path=temp_file_path)
+    #     if file_return:
+    #         self.created_files.append(temp_file_path)  # Aggiungi il percorso del file alla lista
+    #         return temp_file_path
+    #     else:
+    #         print("problem with image creation")
 
     def _generate_temp_file_path(self):
         if not os.path.exists(self.tmp_dir):
@@ -91,11 +113,14 @@ class CandlestickChartGenerator:
         macd_signal_to_plot = macd_signal if max_points is None else macd_signal[-max_points:]
 
         # Preparazione dell'addplot per MACD e il segnale MACD
-        apd_macd = mpf.make_addplot(macd_to_plot, type='bar', panel=2, color='dimgray', secondary_y=False)
-        apd_signal = mpf.make_addplot(macd_signal_to_plot, type='line', panel=2, color='fuchsia', secondary_y=False)
+        apd_macd = mpf.make_addplot(macd_to_plot, type='bar', panel=1, color='dimgray', secondary_y='auto')
+        apd_signal = mpf.make_addplot(macd_signal_to_plot, type='line', panel=1, color='fuchsia', secondary_y='auto')
+
+        # Specifica il rapporto tra i pannelli
+        panel_ratios = (1, 0.5)  # Ad esempio, il pannello MACD è la metà dell'altezza del pannello principale
 
         # Uso della funzione _plot_to_file per creare il grafico
-        return self._plot_to_file(max_points, addplot=[apd_macd, apd_signal])
+        return self._plot_to_file(max_points, addplot=[apd_macd, apd_signal], panel_ratios=panel_ratios)
 
     def clear_temp_files(self):
         for item in os.listdir(self.tmp_dir):

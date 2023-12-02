@@ -2,13 +2,14 @@ import pandas as pd
 import json
 from Reports.report_builder import ReportGenerator
 from Reports.image_builder import CandlestickChartGenerator
+
+
 class TrendMovementAnalyzer:
     def __init__(self, df, max_price=None):
         self.data = df
         if max_price is not None:
             self.data = self.data[self.data['Close'] <= max_price]
         self.image = CandlestickChartGenerator(self.data)
-
 
     def is_upward_trend_SMA(self, window=20):
         """
@@ -17,11 +18,13 @@ class TrendMovementAnalyzer:
         :return: return boolean value if trand is upware.
         """
         if self.data is None:
-            raise ValueError("Data not found.")
+            print("Data not found.")
+            return False, None
 
         # Verify that dataset contain close column
         if 'Close' not in self.data.columns:
-            raise ValueError("Close column is not present.")
+            print("Close column is not present.")
+            return False, None
 
         # SMA calculation
         self.data['Moving_Average'] = self.data['Close'].rolling(window=window).mean()
@@ -40,11 +43,13 @@ class TrendMovementAnalyzer:
         :return: return boolean value if trand is upware.
         """
         if self.data is None:
-            raise ValueError("Data not found.")
+            print("Data not found.")
+            return False, None
 
         # Verify that dataset contain close column
         if 'Close' not in self.data.columns:
-            raise ValueError("Close column is not present.")
+            print("Close column is not present.")
+            return False, None
 
         # SMA calculation
         self.data['Moving_Average'] = self.data['Close'].rolling(window=window).mean()
@@ -78,7 +83,8 @@ class TrendMovementAnalyzer:
         :return: Bool, True if trend is up, False otherwise.
         """
         if self.data is None:
-            raise ValueError("Data not found.")
+            print("Data not found.")
+            return False, None
 
         # RSI
         self.data['RSI'] = self._calculate_RSI(window)
@@ -98,7 +104,8 @@ class TrendMovementAnalyzer:
         :return: Bool, True if trend is down, False otherwise.
         """
         if self.data is None:
-            raise ValueError("Data not found.")
+            print("Data not found.")
+            return False, None
 
         # RSI
         self.data['RSI'] = self._calculate_RSI(window)
@@ -128,7 +135,8 @@ class TrendMovementAnalyzer:
         :return: Bool, True if there is an upward trend, False otherwise.
         """
         if self.data is None:
-            raise ValueError("Data not loaded.")
+            print("Data not loaded.")
+            return False, None
 
         self._calculate_MACD()
 
@@ -146,7 +154,8 @@ class TrendMovementAnalyzer:
         :return: Bool, True if there is a downward trend, False otherwise.
         """
         if self.data is None:
-            raise ValueError("Data not loaded.")
+            print("Data not loaded.")
+            return False, None
 
         self._calculate_MACD()
         is_trend_down= self.data['MACD'].iloc[-1] < self.data['Signal_Line'].iloc[-1]
@@ -182,10 +191,13 @@ class TrendMovementAnalyzer:
         self.data['-DM'] = self.data.apply(lambda row: -row['-DM'] if row['-DM'] > row['+DM'] and row['-DM'] > 0 else 0,
                                            axis=1)
 
-        # Calcola la True Range (TR)
+        # Shift the 'Close' column by one to get the previous value
+        self.data['Prev_Close'] = self.data['Close'].shift()
+
+        # Now apply your function
         self.data['TR'] = self.data.apply(lambda row: max(abs(row['High'] - row['Low']),
-                                                          abs(row['High'] - row['Close'].shift()),
-                                                          abs(row['Low'] - row['Close'].shift())), axis=1)
+                                                          abs(row['High'] - row['Prev_Close']),
+                                                          abs(row['Low'] - row['Prev_Close'])), axis=1)
 
         # Calcola gli indicatori direzionali lisciati
         self.data['+DMI'] = self.data['+DM'].rolling(window=window).mean() / self.data['TR'].rolling(
@@ -204,10 +216,18 @@ class TrendMovementAnalyzer:
         :return: Bool, True if there is a lateral movement, False otherwise.
         """
         self.calculate_ADX(window)
-    
-        return self.data['ADX'].iloc[-1] < adx_threshold # Define a low ADX threshold
 
-    def is_lateral_movement_percent(self, last_periods=5, threshold=0.05):
+        if not self.data['ADX'].empty:
+            is_lateral = self.data['ADX'].iloc[-1] < adx_threshold
+        else:
+            print("ADX empty")
+        image_path = None
+        if is_lateral:
+            image_path = self.image.create_chart_with_MACD(max_points=90)
+
+        return is_lateral, image_path
+
+    def is_lateral_movement_percent(self, last_periods=10, threshold=0.05):
         """
         Determines if there is a lateral movement based on the percentage change.
         :param window: Number of periods for calculating percentage change.
@@ -215,19 +235,24 @@ class TrendMovementAnalyzer:
         :return: Bool, True if there is a lateral movement, False otherwise.
         """
         if self.data is None:
-            raise ValueError("Data not found.")
+            print("Data not found.")
+            return False, None
 
         # Verify that dataset contain close column
         if 'Close' not in self.data.columns:
-            raise ValueError("Close column is not present.")
+            print("Close column is not present.")
+            return False, None
 
-        # Verify variation price
+        if len(self.data) < last_periods:
+            return False, None
+
+            # Verify variation price
         self.data['Price_Change'] = self.data['Close'].pct_change()
 
         cum_change = self.data['Price_Change'].rolling(window=last_periods).sum().abs()
 
         # Verify if movement is lateral
-        is_lateral = cum_change < threshold
+        is_lateral = cum_change.iloc[-1] < threshold
 
         image_path = None
         if is_lateral:
@@ -238,6 +263,7 @@ class TrendMovementAnalyzer:
     def clear_img_temp_files(self):
         self.image.clear_temp_files()
 
+
 def main():
     report = ReportGenerator()
     report.add_title(title="Report blocked stock")
@@ -245,7 +271,7 @@ def main():
     with open("Trading/methodology/strategy_parameter.json", 'r') as file:
         param_data = json.load(file)
 
-    with open("json_files/SP500-stock.json", 'r') as file:
+    with open("Portfolio_management/json_files/SP500-stock.json", 'r') as file:
         tickers = json.load(file)
         tickers_list = list(tickers.keys())
 
