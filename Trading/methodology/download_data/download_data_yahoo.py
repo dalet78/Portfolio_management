@@ -42,17 +42,24 @@ class StockDataDownloader:
             csv_file = f"{self.data_path}/{ticker}_historical_data.csv"
             
             try:
-                df = pd.read_csv(csv_file)
+                df = pd.read_csv(csv_file, index_col='Date')
+                df.index = pd.to_datetime(df.index)
+
                 if df.empty:
                     raise Exception("CSV file is empty")
-                
-                last_record = df.iloc[-1]
-                last_date = pd.to_datetime(last_record['Date'])
+
+                last_date = df.index[-1]
                 start_date = last_date + pd.Timedelta(days=1 if self.interval == '1d' else 7)
 
                 if start_date < end_date:
                     new_data = yf.download(ticker, start=start_date, end=end_date, interval=self.interval)
-                    new_data.to_csv(csv_file, mode='a', header=False)
+                    new_data.index = pd.to_datetime(new_data.index)
+
+                    # Rimuovere i duplicati
+                    combined_df = pd.concat([df, new_data]).drop_duplicates()
+
+                    # Salvare i dati aggiornati
+                    combined_df.to_csv(csv_file)
                     print(f"Dati aggiornati per {ticker}")
                 else:
                     print(f"{ticker} è già aggiornato.")

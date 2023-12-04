@@ -8,57 +8,71 @@ class TrendMovementAnalyzer:
     def __init__(self, df, max_price=None):
         self.data = df
         if max_price is not None:
-            self.data = self.data[self.data['Close'] <= max_price]
+            self.data= self.data[self.data['Close'] <= max_price]
         self.image = CandlestickChartGenerator(self.data)
 
-    def is_upward_trend_SMA(self, window=20):
+    def is_upward_trend_SMA(self, window=20, lookback_period=20, threshold=0.5):
         """
         Identify if moovemnte is upware.
         :param window: SMA period.
         :return: return boolean value if trand is upware.
         """
-        if self.data is None:
+        self.data_copy = self.data.copy()
+        if self.data_copy is None:
             print("Data not found.")
             return False, None
 
         # Verify that dataset contain close column
-        if 'Close' not in self.data.columns:
+        if 'Close' not in self.data_copy.columns:
             print("Close column is not present.")
             return False, None
 
-        # SMA calculation
-        self.data['Moving_Average'] = self.data['Close'].rolling(window=window).mean()
+        # Calculate SMA
+        self.data_copy['Moving_Average'] = self.data_copy['Close'].rolling(window=window).mean()
 
-        # Verify if movement is upware
-        is_trend_up = self.data['Close'] > self.data['Moving_Average']
-        if is_trend_up:
-            image =self.image.create_chart_with_SMA(max_points=90)
+        # Determine if Close is above Moving Average
+        self.data_copy['Above_MA'] = self.data_copy['Close'] > self.data_copy['Moving_Average']
 
-        return is_trend_up, image
+        # Calculate the proportion of recent periods where Close is above MA
+        recent_trend = self.data_copy['Above_MA'].iloc[-lookback_period:]
+        upward_trend_proportion = recent_trend.sum() / len(recent_trend)
+        is_trend_up= upward_trend_proportion >= threshold
+        # if is_trend_up:
+        #     image =self.image.create_chart_with_SMA(max_points=90
 
-    def is_downward_trend_SMA(self, window=20):
+        return is_trend_up#, image
+
+    def is_downward_trend_SMA(self, window=20, lookback_period=20, threshold=0.5):
         """
         Identify if moovemnte is downware.
         :param window: SMA period.
         :return: return boolean value if trand is upware.
         """
-        if self.data is None:
+        self.data_copy = self.data.copy()
+        if self.data_copy is None:
             print("Data not found.")
             return False, None
 
         # Verify that dataset contain close column
-        if 'Close' not in self.data.columns:
+        if 'Close' not in self.data_copy.columns:
             print("Close column is not present.")
             return False, None
 
-        # SMA calculation
-        self.data['Moving_Average'] = self.data['Close'].rolling(window=window).mean()
+        # Calculate SMA
+        self.data_copy['Moving_Average'] = self.data_copy['Close'].rolling(window=window).mean()
 
-        # Verify if movement is downware
-        is_trend_down = self.data['Close'] < self.data['Moving_Average']
-        if is_trend_down:
-            image =self.image.create_chart_with_SMA(max_points=90)
-        return is_trend_down, image
+        # Determine if Close is above Moving Average
+        self.data_copy['Above_MA'] = self.data_copy['Close'] < self.data_copy['Moving_Average']
+
+        # Calculate the proportion of recent periods where Close is above MA
+        recent_trend = self.data_copy['Above_MA'].iloc[-lookback_period:]
+        downward_trend_proportion = recent_trend.sum() / len(recent_trend)
+        is_trend_down = downward_trend_proportion >= threshold
+        # if is_trend_down:
+        #     image =self.image.create_chart_with_SMA(max_points=90)
+
+
+        return is_trend_down #, image
 
     def _calculate_RSI(self, window=14):
         """
@@ -66,7 +80,8 @@ class TrendMovementAnalyzer:
         :param window: Numero di periodi da usare per calcolare l'RSI.
         :return: Serie RSI.
         """
-        delta = self.data['Close'].diff()
+        self.data_copy = self.data.copy()
+        delta = self.data_copy['Close'].diff()
         gain = (delta.where(delta > 0, 0)).rolling(window=window).mean()
         loss = (-delta.where(delta < 0, 0)).rolling(window=window).mean()
 
@@ -82,19 +97,20 @@ class TrendMovementAnalyzer:
         :param window: period number for to define RSI.
         :return: Bool, True if trend is up, False otherwise.
         """
-        if self.data is None:
+        self.data_copy = self.data.copy()
+        if self.data_copy is None:
             print("Data not found.")
             return False, None
 
         # RSI
-        self.data['RSI'] = self._calculate_RSI(window)
+        self.data_copy['RSI'] = self._calculate_RSI(window)
 
         # Verify if movement is upware
-        is_trend_up = self.data['RSI'] > rsi_threshold
-        if is_trend_up:
-            image =self.image.create_chart_with_RSI(max_points=90)
+        is_trend_up = self.data_copy['RSI'] > rsi_threshold
+        # if is_trend_up:
+        #     image =self.image.create_chart_with_RSI(max_points=90)
 
-        return is_trend_up, image
+        return is_trend_up#, image
 
     def is_downward_trend_using_RSI(self, rsi_threshold=50, window=14):
         """
@@ -103,19 +119,20 @@ class TrendMovementAnalyzer:
         :param window: period number for to devine RSI.
         :return: Bool, True if trend is down, False otherwise.
         """
-        if self.data is None:
+        self.data_copy = self.data.copy()
+        if self.data_copy is None:
             print("Data not found.")
             return False, None
 
         # RSI
-        self.data['RSI'] = self._calculate_RSI(window)
+        self.data_copy['RSI'] = self._calculate_RSI(window)
 
         # Verify if movement is downware
-        is_trend_down = self.data['RSI'] < rsi_threshold
-        if is_trend_down:
-            image =self.image.create_chart_with_RSI(max_points=90)
+        is_trend_down = self.data_copy['RSI'] < rsi_threshold
+        # if is_trend_down:
+        #     image =self.image.create_chart_with_RSI(max_points=90)
 
-        return is_trend_down, image
+        return is_trend_down#, image
 
     def _calculate_MACD(self, span_short=12, span_long=26, span_signal=9):
         """
@@ -124,28 +141,29 @@ class TrendMovementAnalyzer:
         :param span_long: Span for the long-term EMA.
         :param span_signal: Span for the signal line.
         """
-        self.data['EMA_short'] = self.data['Close'].ewm(span=span_short, adjust=False).mean()
-        self.data['EMA_long'] = self.data['Close'].ewm(span=span_long, adjust=False).mean()
-        self.data['MACD'] = self.data['EMA_short'] - self.data['EMA_long']
-        self.data['Signal_Line'] = self.data['MACD'].ewm(span=span_signal, adjust=False).mean()
+        self.data_copy['EMA_short'] = self.data_copy['Close'].ewm(span=span_short, adjust=False).mean()
+        self.data_copy['EMA_long'] = self.data_copy['Close'].ewm(span=span_long, adjust=False).mean()
+        self.data_copy['MACD'] = self.data_copy['EMA_short'] - self.data_copy['EMA_long']
+        self.data_copy['Signal_Line'] = self.data_copy['MACD'].ewm(span=span_signal, adjust=False).mean()
 
     def is_upward_trend_using_MACD(self):
         """
         Determines if there is an upward trend using MACD.
         :return: Bool, True if there is an upward trend, False otherwise.
         """
-        if self.data is None:
+        self.data_copy = self.data.copy()
+        if self.data_copy is None:
             print("Data not loaded.")
             return False, None
 
         self._calculate_MACD()
 
         # Check if MACD is above the signal line
-        is_trend_up = self.data['MACD'].iloc[-1] > self.data['Signal_Line'].iloc[-1]
-        if is_trend_up:
-            image =self.image.create_chart_with_MACD(max_points=90)
+        is_trend_up = self.data_copy['MACD'].iloc[-1] > self.data_copy['Signal_Line'].iloc[-1]
+        # if is_trend_up:
+        #     image =self.image.create_chart_with_MACD(max_points=90)
 
-        return is_trend_up, image
+        return is_trend_up#, image
 
 
     def is_downward_trend_using_MACD(self):
@@ -153,16 +171,17 @@ class TrendMovementAnalyzer:
         Determines if there is a downward trend using MACD.
         :return: Bool, True if there is a downward trend, False otherwise.
         """
-        if self.data is None:
+        self.data_copy = self.data.copy()
+        if self.data_copy is None:
             print("Data not loaded.")
             return False, None
 
         self._calculate_MACD()
-        is_trend_down= self.data['MACD'].iloc[-1] < self.data['Signal_Line'].iloc[-1]
-        if is_trend_down:
-            image =self.image.create_chart_with_MACD(max_points=90)
+        is_trend_down= self.data_copy['MACD'].iloc[-1] < self.data_copy['Signal_Line'].iloc[-1]
+        # if is_trend_down:
+        #     image =self.image.create_chart_with_MACD(max_points=90)
 
-        return is_trend_down, image
+        return is_trend_down#, image
 
     def is_lateral_movement_bollinger_bands(self, window=20, num_std_dev=2,threshold_percentage=0.05):
         """
@@ -171,43 +190,46 @@ class TrendMovementAnalyzer:
         :param num_std_dev: Number of standard deviations for the bands.
         :return: Bool, True if there is a lateral movement, False otherwise.
         """
-        self.data['SMA'] = self.data['Close'].rolling(window=window).mean()
-        self.data['STD_DEV'] = self.data['Close'].rolling(window=window).std()
+        self.data_copy = self.data.copy()
+        self.data_copy['SMA'] = self.data_copy['Close'].rolling(window=window).mean()
+        self.data_copy['STD_DEV'] = self.data_copy['Close'].rolling(window=window).std()
         
-        self.data['Upper_Band'] = self.data['SMA'] + (self.data['STD_DEV'] * num_std_dev)
-        self.data['Lower_Band'] = self.data['SMA'] - (self.data['STD_DEV'] * num_std_dev)
+        self.data_copy['Upper_Band'] = self.data_copy['SMA'] + (self.data_copy['STD_DEV'] * num_std_dev)
+        self.data_copy['Lower_Band'] = self.data_copy['SMA'] - (self.data_copy['STD_DEV'] * num_std_dev)
     
-        band_width = (self.data['Upper_Band'] - self.data['Lower_Band']) / self.data['SMA']
-        return band_width.iloc[-1] < threshold_percentage # Define a threshold for narrow bands
+        band_width = (self.data_copy['Upper_Band'] - self.data_copy['Lower_Band']) / self.data_copy['SMA']
+        is_lateral= band_width.iloc[-1] < threshold_percentage # Define a threshold for narrow bands
 
+
+        return is_lateral
     def calculate_ADX(self, window=14):
         # Calcolo delle differenze positive e negative
-        self.data['+DM'] = self.data['High'].diff()
-        self.data['-DM'] = self.data['Low'].diff()
+        self.data_copy['+DM'] = self.data_copy['High'].diff()
+        self.data_copy['-DM'] = self.data_copy['Low'].diff()
 
         # Determina quali differenze devono essere considerate
-        self.data['+DM'] = self.data.apply(lambda row: row['+DM'] if row['+DM'] > row['-DM'] and row['+DM'] > 0 else 0,
+        self.data_copy['+DM'] = self.data_copy.apply(lambda row: row['+DM'] if row['+DM'] > row['-DM'] and row['+DM'] > 0 else 0,
                                            axis=1)
-        self.data['-DM'] = self.data.apply(lambda row: -row['-DM'] if row['-DM'] > row['+DM'] and row['-DM'] > 0 else 0,
+        self.data_copy['-DM'] = self.data_copy.apply(lambda row: -row['-DM'] if row['-DM'] > row['+DM'] and row['-DM'] > 0 else 0,
                                            axis=1)
 
         # Shift the 'Close' column by one to get the previous value
-        self.data['Prev_Close'] = self.data['Close'].shift()
+        self.data_copy['Prev_Close'] = self.data_copy['Close'].shift()
 
         # Now apply your function
-        self.data['TR'] = self.data.apply(lambda row: max(abs(row['High'] - row['Low']),
+        self.data_copy['TR'] = self.data_copy.apply(lambda row: max(abs(row['High'] - row['Low']),
                                                           abs(row['High'] - row['Prev_Close']),
                                                           abs(row['Low'] - row['Prev_Close'])), axis=1)
 
         # Calcola gli indicatori direzionali lisciati
-        self.data['+DMI'] = self.data['+DM'].rolling(window=window).mean() / self.data['TR'].rolling(
+        self.data_copy['+DMI'] = self.data_copy['+DM'].rolling(window=window).mean() / self.data_copy['TR'].rolling(
             window=window).mean()
-        self.data['-DMI'] = self.data['-DM'].rolling(window=window).mean() / self.data['TR'].rolling(
+        self.data_copy['-DMI'] = self.data_copy['-DM'].rolling(window=window).mean() / self.data_copy['TR'].rolling(
             window=window).mean()
 
         # Calcola l'ADX
-        self.data['DX'] = (abs(self.data['+DMI'] - self.data['-DMI']) / (self.data['+DMI'] + self.data['-DMI'])) * 100
-        self.data['ADX'] = self.data['DX'].rolling(window=window).mean()
+        self.data_copy['DX'] = (abs(self.data_copy['+DMI'] - self.data_copy['-DMI']) / (self.data_copy['+DMI'] + self.data_copy['-DMI'])) * 100
+        self.data_copy['ADX'] = self.data_copy['DX'].rolling(window=window).mean()
 
     def is_lateral_movement_ADX(self, window=14, adx_threshold=25):
         """
@@ -215,17 +237,19 @@ class TrendMovementAnalyzer:
         :param window: Number of periods for the ADX calculation.
         :return: Bool, True if there is a lateral movement, False otherwise.
         """
+        self.data_copy = self.data.copy()
         self.calculate_ADX(window)
 
-        if not self.data['ADX'].empty:
-            is_lateral = self.data['ADX'].iloc[-1] < adx_threshold
+        if not self.data_copy['ADX'].empty:
+            is_lateral = self.data_copy['ADX'].iloc[-1] < adx_threshold
         else:
             print("ADX empty")
+            return False, None
         image_path = None
-        if is_lateral:
-            image_path = self.image.create_chart_with_MACD(max_points=90)
+        # if is_lateral:
+        #     image_path = self.image.create_chart_with_MACD(max_points=90)
 
-        return is_lateral, image_path
+        return is_lateral#, image_path
 
     def is_lateral_movement_percent(self, last_periods=10, threshold=0.05):
         """
@@ -234,57 +258,97 @@ class TrendMovementAnalyzer:
         :param threshold: Threshold for defining a lateral movement.
         :return: Bool, True if there is a lateral movement, False otherwise.
         """
-        if self.data is None:
+        self.data_copy = self.data.copy()
+        if self.data_copy is None:
             print("Data not found.")
             return False, None
 
         # Verify that dataset contain close column
-        if 'Close' not in self.data.columns:
+        if 'Close' not in self.data_copy.columns:
             print("Close column is not present.")
             return False, None
 
-        if len(self.data) < last_periods:
+        if len(self.data_copy) < last_periods:
             return False, None
 
             # Verify variation price
-        self.data['Price_Change'] = self.data['Close'].pct_change()
+        self.data_copy['Price_Change'] = self.data_copy['Close'].pct_change()
 
-        cum_change = self.data['Price_Change'].rolling(window=last_periods).sum().abs()
+        cum_change = self.data_copy['Price_Change'].rolling(window=last_periods).sum().abs()
 
         # Verify if movement is lateral
         is_lateral = cum_change.iloc[-1] < threshold
 
-        image_path = None
-        if is_lateral:
-            image_path = self.image.create_chart_with_MACD(max_points=90)
+        # image_path = None
+        # if is_lateral:
+        #     image_path = self.image.create_chart_with_MACD(max_points=90)
+        return is_lateral#, image_path
 
-        return is_lateral, image_path
+    def evaluate_trend_and_laterality(self, periods= [40], lateral_check_method="percent", lateral_threshold=0.05):
+        """
+        Valuta il trend (sia in salita che in discesa) e verifica se l'ultimo movimento è laterale.
+        :param periods: Lista di periodi per le medie mobili.
+        :param lateral_check_method: Metodo per controllare il movimento laterale ('percent', 'ADX', 'Bollinger').
+        :param lateral_threshold: Soglia per il movimento laterale.
+        :return: Dict con i risultati della valutazione del trend e del movimento laterale.
+        """
+        self.data_copy = self.data.copy()
+        trend_results = {}
+        for period in periods:
+            trend_up = self.is_upward_trend_SMA(window=period)
+            trend_down = self.is_downward_trend_SMA(window=period)
+
+            if trend_up and not trend_down:
+                trend_results[str(period)] = True
+            elif trend_down and not trend_up:
+                trend_results[str(period)] = True
+            else:
+                trend_results[str(period)] = False
+
+        if lateral_check_method == "percent":
+            lateral_movement = self.is_lateral_movement_percent(last_periods=periods[-1], threshold=lateral_threshold)
+        elif lateral_check_method == "ADX":
+            lateral_movement = self.is_lateral_movement_ADX(window=periods[-1], adx_threshold=lateral_threshold)
+        elif lateral_check_method == "Bollinger":
+            lateral_movement = self.is_lateral_movement_bollinger_bands(window=periods[-1],
+                                                                        threshold_percentage=lateral_threshold)
+        else:
+            raise ValueError("Invalid lateral check method.")
+
+        trend_results["Lateral Movement"] = True if lateral_movement else False
+        overall_trend = all(trend_results.values())
+        return overall_trend
+
+    def create_tmp_image(self):
+        return self.image.create_chart_with_SMA(max_points=90)
 
     def clear_img_temp_files(self):
         self.image.clear_temp_files()
 
-
 def main():
     report = ReportGenerator()
-    report.add_title(title="Report blocked stock")
+    report.add_title(title="Report lateral movement")
 
-    with open("Trading/methodology/strategy_parameter.json", 'r') as file:
+    source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
+    with open(f"{source_directory}/Trading/methodology/strategy_parameter.json", 'r') as file:
         param_data = json.load(file)
 
-    with open("Portfolio_management/json_files/SP500-stock.json", 'r') as file:
+    with open(f"{source_directory}/json_files/SP500-stock.json", 'r') as file:
         tickers = json.load(file)
         tickers_list = list(tickers.keys())
 
     for item in tickers_list:
-        data = pd.read_csv(f"Trading/Data/Daily/{item}_historical_data.csv")
+        data = pd.read_csv(f"{source_directory}/Trading/Data/Daily/{item}_historical_data.csv")
         enhanced_strategy = TrendMovementAnalyzer(data, max_price=50)
-        result, image = enhanced_strategy.is_lateral_movement_percent()
+        image = CandlestickChartGenerator(data)
+        result = enhanced_strategy.evaluate_trend_and_laterality()
         if result:
+            image = image.create_simple_chart(max_points=90)
             print(f'stock = {item} -- FOUND ')
             report.add_content(f'stock = {item} ')
-            report.add_commented_image(df=data, comment=f'Description = {result["details"]}', image_path=image)
+            report.add_commented_image(df=data, comment=f'Description', image_path=image)
         print(f"checked stock {item}")
-    file_report = report.save_report(filename="Report_blocked_stock")
+    file_report = report.save_report(filename="Report_lateral_movement")
     enhanced_strategy.clear_img_temp_files()
     return file_report
 

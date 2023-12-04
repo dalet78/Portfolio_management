@@ -77,26 +77,6 @@ class TradingAnalyzer:
                     if support <= close_price <= support * 1.01 or support <= open_price <= support * 1.01:
                         touch_support_count += 1
 
-        """ 
-        for price in self.dataset["Close"][-period:]:
-            if self.max_price is not None and pd.isna(price):
-                continue
-
-            if self.max_price is not None and price > self.max_price:
-                continue
-
-            # Checking for resistance interactions
-            if resistance is not None and price < resistance:
-                below_resistance_count += 1
-                if resistance * 0.99 <= price <= resistance:
-                    touch_resistance_count += 1
-
-            # Checking for support interactions
-            if support is not None and price > support:
-                above_support_count += 1
-                if support <= price <= support * 1.01:
-                    touch_support_count += 1
-"""
         interesting_below_resistance = below_resistance_count >45 and touch_resistance_count > 3
         interesting_above_support = above_support_count > 45 and touch_support_count > 3
 

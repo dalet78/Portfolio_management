@@ -15,7 +15,7 @@ class CandlestickChartGenerator:
         self.mpf_style = mpf.make_mpf_style(base_mpf_style='nightclouds',
                                             marketcolors=mpf.make_marketcolors(up='red', down='white', inherit=True),
                                             rc={'figure.facecolor': 'black', 'axes.facecolor': 'black'})
-        self.tmp_dir = "/tmp/img"  # Modifica il percorso secondo le tue esigenze
+        self.tmp_dir = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management/Reports/Data/tmp/img"  # Modifica il percorso secondo le tue esigenze
         self.created_files = []  # Lista per tenere traccia dei file creati
         self.check_file = FileChecker()  # Assicurati che FileChecker sia definito correttamente
 
