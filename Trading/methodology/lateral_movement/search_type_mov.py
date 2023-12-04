@@ -183,7 +183,7 @@ class TrendMovementAnalyzer:
 
         return is_trend_down#, image
 
-    def is_lateral_movement_bollinger_bands(self, window=20, num_std_dev=2,threshold_percentage=0.05):
+    def is_lateral_movement_bollinger_bands(self, window=20, num_std_dev=2, threshold_percentage=0.05):
         """
         Determines if there is a lateral movement using Bollinger Bands.
         :param window: Number of periods for the moving average.
@@ -308,7 +308,7 @@ class TrendMovementAnalyzer:
         if lateral_check_method == "percent":
             lateral_movement = self.is_lateral_movement_percent(last_periods=periods[-1], threshold=lateral_threshold)
         elif lateral_check_method == "ADX":
-            lateral_movement = self.is_lateral_movement_ADX(window=periods[-1], adx_threshold=lateral_threshold)
+            lateral_movement = self.is_lateral_movement_ADX(window=periods[-1], adx_threshold =lateral_threshold)
         elif lateral_check_method == "Bollinger":
             lateral_movement = self.is_lateral_movement_bollinger_bands(window=periods[-1],
                                                                         threshold_percentage=lateral_threshold)
@@ -339,15 +339,18 @@ def main():
 
     for item in tickers_list:
         data = pd.read_csv(f"{source_directory}/Trading/Data/Daily/{item}_historical_data.csv")
-        enhanced_strategy = TrendMovementAnalyzer(data, max_price=50)
-        image = CandlestickChartGenerator(data)
-        result = enhanced_strategy.evaluate_trend_and_laterality()
-        if result:
-            image = image.create_simple_chart(max_points=90)
-            print(f'stock = {item} -- FOUND ')
-            report.add_content(f'stock = {item} ')
-            report.add_commented_image(df=data, comment=f'Description', image_path=image)
-        print(f"checked stock {item}")
+        if data["Close"].iloc[-1] < 50:
+            enhanced_strategy = TrendMovementAnalyzer(data)
+            image = CandlestickChartGenerator(data)
+            result = enhanced_strategy.evaluate_trend_and_laterality()
+            if result:
+                image = image.create_simple_chart(max_points=50)
+                print(f'stock = {item} -- FOUND ')
+                report.add_content(f'stock = {item} ')
+                report.add_commented_image(df=data, comment=f'Description', image_path=image)
+            print(f"checked stock {item}")
+        else:
+            print(f"stock {item} is over price")
     file_report = report.save_report(filename="Report_lateral_movement")
     enhanced_strategy.clear_img_temp_files()
     return file_report

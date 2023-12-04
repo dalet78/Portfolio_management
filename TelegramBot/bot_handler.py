@@ -33,10 +33,10 @@ class CommandBot:
                  InlineKeyboardButton("TBD2", callback_data="action_option2")],
                 [InlineKeyboardButton("Back to main menu", callback_data="menu_top")]
             ]
-        elif menu == 'updatedatabase':
+        elif menu == 'crypto':
             keyboard = [
-                [InlineKeyboardButton("Update daily", callback_data="action_updatedaily"),
-                 InlineKeyboardButton("update weekly", callback_data="action_updateweekly")],
+                [InlineKeyboardButton("TBD", callback_data="action_updatedaily"),
+                 InlineKeyboardButton("TBD", callback_data="action_updateweekly")],
                 [InlineKeyboardButton("Back to main menu", callback_data="menu_top")]
             ]
         elif menu == 'catchtrade':
@@ -55,8 +55,8 @@ class CommandBot:
             ]
         else:
             keyboard = [
-                [InlineKeyboardButton("Update Database", callback_data="menu_updatedatabase"),
-                 InlineKeyboardButton("Catch trading", callback_data="menu_catchtrade")],
+                [InlineKeyboardButton("Stock", callback_data="menu_catchtrade"),
+                 InlineKeyboardButton("Cripto", callback_data="menu_crypto")],
                 [InlineKeyboardButton("Macroeconomic tool", callback_data="menu_macrotool"),
                  InlineKeyboardButton("Special Tool", callback_data="menu_specialtool")]
             ]

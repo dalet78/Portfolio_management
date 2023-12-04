@@ -2,6 +2,7 @@ import os
 import yfinance as yf
 from datetime import datetime, timedelta
 import pandas as pd
+import shutil
 
 class StockDataDownloader:
     def __init__(self, stock_list, interval='1d'):
@@ -19,17 +20,19 @@ class StockDataDownloader:
         if not os.path.exists(self.data_path):
             os.makedirs(self.data_path)
 
-    def _download_data(self):
+    def download_data(self):
         end_date = datetime.now()
-        start_date = end_date - timedelta(days=20*365)  # 20 anni fa
-
+        start_date = end_date - timedelta(days=0.2*365)  # 1 anni fa
+        self.delete_folder_contents(self.data_path)
         for ticker in self.tickers[:]:
             try:
                 data = yf.download(ticker, start=start_date, end=end_date, interval=self.interval)
-                data.to_csv(f"{self.data_path}/{ticker}_historical_data.csv")
+                data.to_csv(f"{self.data_path}{ticker}_historical_data.csv")
+                print(f"Dati aggiornati per {ticker}")
             except Exception as e:
                 print(f"Failed to download data for {ticker}: {e}")
                 self.tickers.remove(ticker)  # Rimuovi il ticker dalla lista
+
 
     def update_data(self):
         end_date = datetime.now()
@@ -39,7 +42,7 @@ class StockDataDownloader:
             os.makedirs(self.data_path)
         
         for ticker in self.tickers[:]:
-            csv_file = f"{self.data_path}/{ticker}_historical_data.csv"
+            csv_file = f"{self.data_path}{ticker}_historical_data.csv"
             
             try:
                 df = pd.read_csv(csv_file, index_col='Date')
@@ -70,3 +73,14 @@ class StockDataDownloader:
             except (IndexError, Exception) as e:
                 print(f"Errore durante la lettura o il download di {ticker}: {e}")
                 self.tickers.remove(ticker)  # Rimuovi il ticker dalla lista
+
+    def delete_folder_contents(self, folder):
+        for filename in os.listdir(folder):
+            file_path = os.path.join(folder, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print(f'Failed to delete {file_path}. Reason: {e}')
