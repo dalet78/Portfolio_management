@@ -2,8 +2,8 @@ import csv
 import json
 
 # Sostituisci 'path_to_your_csv.csv' con il percorso del tuo file CSV
-csv_file_path = 'json_files/SP500-stock.csv'
-json_file_path = 'json_files/SP500-stock.json'
+csv_file_path = '/home/dp/PycharmProjects/Portfolio_management/Portfolio_management/json_files/russell.csv'
+json_file_path = '/home/dp/PycharmProjects/Portfolio_management/Portfolio_management/json_files/russell200.json'
 
 data = {}
 with open(csv_file_path, mode='r') as file:
