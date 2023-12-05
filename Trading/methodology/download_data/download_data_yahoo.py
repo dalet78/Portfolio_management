@@ -4,15 +4,20 @@ from datetime import datetime, timedelta
 import pandas as pd
 import shutil
 
+source_directory ="/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
 class StockDataDownloader:
-    def __init__(self, stock_list, interval='1d'):
+    def __init__(self, stock_list, interval='1d', index = "SP500"):
         self.tickers = stock_list
         self.interval = interval
 
-        if interval == '1d':
-            self.data_path = 'Trading/Data/Daily/'
-        elif interval == '1wk':
-            self.data_path = 'Trading/Data/Weekly/'
+        if interval == '1d' and index == "SP500":
+            self.data_path = f'{source_directory}/Trading/Data/SP500/Daily/'
+        elif interval == '1wk'and index == "SP500":
+            self.data_path = f'{source_directory}/Trading/Data/SP500/Weekly/'
+        elif interval == '1d' and index == "Russel":
+            self.data_path = f'{source_directory}/Trading/Data/Russel/Daily/'
+        elif interval == '1wk'and index == "Russel":
+            self.data_path = f'{source_directory}/Trading/Data/Russel/Weekly/'
         else:
             raise ValueError("Invalid interval. Choose '1d' for daily or '1wk' for weekly data.")
 

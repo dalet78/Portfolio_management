@@ -30,7 +30,16 @@ def download_data_daily():
     tickers_list = list(tickers.keys())
 
     # Utilizzo della classe StockDataDownloader
-    downloader = StockDataDownloader(tickers_list)
+    downloader = StockDataDownloader(tickers_list, index = "SP500" )
+    downloader.download_data()
+    with open(f"{source_directory}/json_files/russell2000.json", 'r') as file:
+        tickers = json.load(file)
+
+    # Lista dei ticker
+    tickers_list = list(tickers.keys())
+
+    # Utilizzo della classe StockDataDownloader
+    downloader = StockDataDownloader(tickers_list, index = "Russel")
     downloader.download_data()
     stop_downloading()
 
@@ -40,7 +49,14 @@ def download_data_weekly():
     # Lista dei ticker
     tickers_list = list(tickers.keys())
     # Utilizzo della classe StockDataDownloader
-    downloader = StockDataDownloader(tickers_list, interval='1wk')
+    downloader = StockDataDownloader(tickers_list, interval='1wk', index = "SP500")
+    downloader.download_data()
+    with open( f"{source_directory}/json_files/russell2000.json", 'r') as file:
+        tickers = json.load(file)
+    # Lista dei ticker
+    tickers_list = list(tickers.keys())
+    # Utilizzo della classe StockDataDownloader
+    downloader = StockDataDownloader(tickers_list, interval='1wk', index = "Russel")
     downloader.download_data()
     stop_downloading()
 
