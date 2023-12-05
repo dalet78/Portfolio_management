@@ -184,24 +184,19 @@ class TrendMovementAnalyzer:
         return is_trend_down#, image
 
     def is_lateral_movement_bollinger_bands(self, window=20, num_std_dev=2, threshold_percentage=0.05):
-        """
-        Determines if there is a lateral movement using Bollinger Bands.
-        :param window: Number of periods for the moving average.
-        :param num_std_dev: Number of standard deviations for the bands.
-        :return: Bool, True if there is a lateral movement, False otherwise.
-        """
         self.data_copy = self.data.copy()
         self.data_copy['SMA'] = self.data_copy['Close'].rolling(window=window).mean()
         self.data_copy['STD_DEV'] = self.data_copy['Close'].rolling(window=window).std()
-        
         self.data_copy['Upper_Band'] = self.data_copy['SMA'] + (self.data_copy['STD_DEV'] * num_std_dev)
         self.data_copy['Lower_Band'] = self.data_copy['SMA'] - (self.data_copy['STD_DEV'] * num_std_dev)
-    
+     
         band_width = (self.data_copy['Upper_Band'] - self.data_copy['Lower_Band']) / self.data_copy['SMA']
-        is_lateral= band_width.iloc[-1] < threshold_percentage # Define a threshold for narrow bands
+        narrow_band = band_width < threshold_percentage
+        max_streak = narrow_band.cumsum() - narrow_band.cumsum().where(~narrow_band).ffill().fillna(0).max()
+        is_lateral = narrow_band.iloc[-1]
+    
+        return is_lateral, max_streak
 
-
-        return is_lateral
     def calculate_ADX(self, window=14):
         # Calcolo delle differenze positive e negative
         self.data_copy['+DM'] = self.data_copy['High'].diff()
@@ -237,19 +232,18 @@ class TrendMovementAnalyzer:
         :param window: Number of periods for the ADX calculation.
         :return: Bool, True if there is a lateral movement, False otherwise.
         """
-        self.data_copy = self.data.copy()
+         self.data_copy = self.data.copy()
         self.calculate_ADX(window)
-
+    
         if not self.data_copy['ADX'].empty:
-            is_lateral = self.data_copy['ADX'].iloc[-1] < adx_threshold
+            below_threshold = self.data_copy['ADX'] < adx_threshold
+            max_streak = below_threshold.cumsum() - below_threshold.cumsum().where(~below_threshold).ffill().fillna(0).max()
+            is_lateral = below_threshold.iloc[-1]
         else:
             print("ADX empty")
             return False, None
-        image_path = None
-        # if is_lateral:
-        #     image_path = self.image.create_chart_with_MACD(max_points=90)
-
-        return is_lateral#, image_path
+    
+        return is_lateral, max_streak
 
     def is_lateral_movement_percent(self, last_periods=10, threshold=0.05):
         """
@@ -259,30 +253,17 @@ class TrendMovementAnalyzer:
         :return: Bool, True if there is a lateral movement, False otherwise.
         """
         self.data_copy = self.data.copy()
-        if self.data_copy is None:
-            print("Data not found.")
-            return False, None
 
-        # Verify that dataset contain close column
-        if 'Close' not in self.data_copy.columns:
-            print("Close column is not present.")
+        if self.data_copy is None or 'Close' not in self.data_copy.columns or len(self.data_copy) < last_periods:
             return False, None
-
-        if len(self.data_copy) < last_periods:
-            return False, None
-
-            # Verify variation price
+    
         self.data_copy['Price_Change'] = self.data_copy['Close'].pct_change()
-
         cum_change = self.data_copy['Price_Change'].rolling(window=last_periods).sum().abs()
+        lateral_periods = cum_change < threshold
+        max_streak = lateral_periods.cumsum() - lateral_periods.cumsum().where(~lateral_periods).ffill().fillna(0).max()
+        is_lateral = lateral_periods.iloc[-1]
 
-        # Verify if movement is lateral
-        is_lateral = cum_change.iloc[-1] < threshold
-
-        # image_path = None
-        # if is_lateral:
-        #     image_path = self.image.create_chart_with_MACD(max_points=90)
-        return is_lateral#, image_path
+        return is_lateral, max_streak
 
     def evaluate_trend_and_laterality(self, periods= [40], lateral_check_method="percent", lateral_threshold=0.05):
         """
