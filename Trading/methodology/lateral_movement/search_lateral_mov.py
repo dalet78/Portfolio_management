@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from scipy.signal import find_peaks
-from Trading.methodology.lateral_movement.search_type_mov import 
+from Trading.methodology.lateral_movement.search_type_mov import TrendMovementAnalyzer
 
 class SupportResistanceFinder:
     def __init__(self, data):
@@ -52,3 +52,34 @@ class SupportResistanceFinder:
         support_levels = -min_peaks.max()
 
         return support_levels, resistance_levels
+
+
+def analyze_stock_for_lateral_movement(data, method='ADX', **kwargs):
+    """
+    Analizza se lo stock è in movimento laterale e calcola le linee di supporto e resistenza.
+    :param data: DataFrame con i dati dello stock.
+    :param method: Metodo per determinare il movimento laterale ('ADX', 'Percent', 'Bollinger').
+    :param kwargs: Parametri aggiuntivi per i metodi di movimento laterale.
+    :return: Tuple con (is_lateral, max_streak, support_line, resistance_line) se il movimento è laterale, altrimenti (False, None, None, None).
+    """
+    lateral_checker = TrendMovementAnalyzer(data)
+    support_finder = SupportResistanceFinder(data)
+
+    # Determina se il movimento è laterale
+    if method == 'ADX':
+        is_lateral, max_streak = lateral_checker.is_lateral_movement_ADX(**kwargs)
+    elif method == 'Percent':
+        is_lateral, max_streak = lateral_checker.is_lateral_movement_percent(**kwargs)
+    elif method == 'Bollinger':
+        is_lateral, max_streak = lateral_checker.is_lateral_movement_bollinger_bands(**kwargs)
+    else:
+        raise ValueError("Invalid method specified")
+
+    if not is_lateral:
+        return False, None, None, None
+
+    # Trova le linee di supporto e resistenza
+    support_line, resistance_line = support_finder.find_support_resistance()
+
+    return is_lateral, max_streak, support_line, resistance_line
+
