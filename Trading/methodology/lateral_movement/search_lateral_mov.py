@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from scipy.signal import find_peaks
+from Trading.methodology.lateral_movement.search_type_mov import 
 
 class SupportResistanceFinder:
     def __init__(self, data):
@@ -11,45 +12,6 @@ class SupportResistanceFinder:
         :param num_std_dev: Numero di deviazioni standard per le bande.
         """
         self.data = data
-
-
-    def calculate_bollinger_bands(self):
-        """
-        Calcola le bande di Bollinger.
-        """
-        self.data['Middle Band'] = self.data['Close'].rolling(window=self.window_size).mean()
-        self.data['Standard Deviation'] = self.data['Close'].rolling(window=self.window_size).std()
-        self.data['Upper Band'] = self.data['Middle Band'] + (self.data['Standard Deviation'] * self.num_std_dev)
-        self.data['Lower Band'] = self.data['Middle Band'] - (self.data['Standard Deviation'] * self.num_std_dev)
-
-    def find_peaks_for_series(self, series):
-        """
-        Trova i picchi per una serie di dati.
-        :param series: Serie di dati (prezzo di apertura, massimo, minimo o chiusura).
-        """
-        peaks, _ = find_peaks(series)
-        return series.iloc[peaks]
-
-    def find_support_resistance(self):
-        """
-                Trova le linee di supporto e resistenza nel periodo laterale.
-                """
-        is_lateral, max_streak = self.is_lateral_trend()
-        if not is_lateral:
-            return None, None  # Nessun trend laterale trovato
-
-        # Determina l'intervallo di tempo per il periodo laterale
-        lateral_period = self.data.index[-int(max_streak):]
-
-        # Trova i picchi massimi e minimi nel periodo laterale
-        max_peaks = pd.concat([self.find_peaks_for_series(self.data[col], lateral_period) for col in ['High']])
-        min_peaks = pd.concat([self.find_peaks_for_series(-self.data[col], lateral_period) for col in ['Low']])
-
-        # Calcola le linee di trend di supporto e resistenza
-        resistance_line = self.calculate_trend_lines(max_peaks)
-        support_line = self.calculate_trend_lines(-min_peaks)
-
-        return support_line, resistance_line
 
     def calculate_trend_lines(self, peak_points):
         """
