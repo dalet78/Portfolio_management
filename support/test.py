@@ -1,6 +1,6 @@
 
-import time, json
-from Trading.methodology.download_data.download_data_yahoo import StockDataDownloader
+import json
+from libs.download_data import StockDataDownloader
 source_directory ="/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
 
 with open(f"{source_directory}/json_files/russell2000.json", 'r') as file:

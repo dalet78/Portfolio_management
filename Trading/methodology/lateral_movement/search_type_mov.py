@@ -232,7 +232,7 @@ class TrendMovementAnalyzer:
         :param window: Number of periods for the ADX calculation.
         :return: Bool, True if there is a lateral movement, False otherwise.
         """
-         self.data_copy = self.data.copy()
+        self.data_copy = self.data.copy()
         self.calculate_ADX(window)
     
         if not self.data_copy['ADX'].empty:
@@ -319,7 +319,7 @@ def main():
         tickers_list = list(tickers.keys())
 
     for item in tickers_list:
-        data = pd.read_csv(f"{source_directory}/Trading/Data/Daily/{item}_historical_data.csv")
+        data = pd.read_csv(f"{source_directory}/Data/Daily/{item}_historical_data.csv")
         if data["Close"].iloc[-1] < 50:
             enhanced_strategy = TrendMovementAnalyzer(data)
             image = CandlestickChartGenerator(data)

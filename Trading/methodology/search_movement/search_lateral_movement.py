@@ -16,7 +16,7 @@ def find_lateral_mov():
         tickers_list = list(tickers.keys())
 
     for item in tickers_list:
-        data = pd.read_csv(f"/home/dp/PycharmProjects/Portfolio_management/Portfolio_management/Trading/Data/Daily/{item}_historical_data.csv")
+        data = pd.read_csv(f"/Data/Daily/{item}_historical_data.csv")
         enhanced_strategy = TrendMovementAnalyzer(data, max_price=50)
         result, image = enhanced_strategy.is_lateral_movement_percent()
         if result:

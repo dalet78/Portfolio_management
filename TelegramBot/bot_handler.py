@@ -18,7 +18,7 @@ class CommandBot:
         self.bot.add_handler(CallbackQueryHandler(self.handle_callback))
         logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         self.logger = logging.getLogger(__name__)
-        # self.command = Bot_Option()
+
 
     def start(self) -> None:
         """Start the bot."""
@@ -41,10 +41,10 @@ class CommandBot:
             ]
         elif menu == 'catchtrade':
             keyboard = [
-                [InlineKeyboardButton("find blocked stock", callback_data="action_findblockedstock"),
-                 InlineKeyboardButton("find lateral move", callback_data="action_findlateralmov")],
-                [InlineKeyboardButton("method 3", callback_data="action_option_3"),
-                 InlineKeyboardButton("method 4", callback_data="action_option_4")],
+                [InlineKeyboardButton("S&P500", callback_data="menu_catchtradesp500"),
+                 InlineKeyboardButton("Nasdaq100", callback_data="menu_catchtradenasdaq")],
+                [InlineKeyboardButton("Russel2000", callback_data="menu_catchtraderussel"),
+                 InlineKeyboardButton("method 4", callback_data="menu_option_4")],
                 [InlineKeyboardButton("Back to main menu", callback_data="menu_top")]
             ]
         elif menu == 'macrotool':
@@ -53,13 +53,34 @@ class CommandBot:
                  InlineKeyboardButton("Download report", callback_data="action_downloadmacroreport")],
                 [InlineKeyboardButton("Back to main menu", callback_data="menu_top")]
             ]
-        else:
+        elif menu == 'top':
             keyboard = [
                 [InlineKeyboardButton("Stock", callback_data="menu_catchtrade"),
                  InlineKeyboardButton("Cripto", callback_data="menu_crypto")],
                 [InlineKeyboardButton("Macroeconomic tool", callback_data="menu_macrotool"),
                  InlineKeyboardButton("Special Tool", callback_data="menu_specialtool")]
             ]
+        elif menu == 'catchtraderussel':
+            keyboard = [
+                [InlineKeyboardButton("find blocked stock", callback_data="action_findblockedstockrussel"),
+                 InlineKeyboardButton("find lateral move", callback_data="action_findlateralmovrussel")],
+                [InlineKeyboardButton("Back to previous menu", callback_data="menu_catchtrade")]
+            ]
+        elif menu == 'catchtradesp500':
+            keyboard = [
+                [InlineKeyboardButton("find blocked stock", callback_data="action_findblockedstocksp500"),
+                 InlineKeyboardButton("find lateral move", callback_data="action_findlateralmovsp500")],
+                [InlineKeyboardButton("Back to previous menu", callback_data="menu_catchtrade")]
+            ]
+        elif menu == 'catchtradenasdaq':
+            keyboard = [
+                [InlineKeyboardButton("find blocked stock", callback_data="action_findblockedstocknasdaq"),
+                 InlineKeyboardButton("find lateral move", callback_data="action_findlateralmovnasdaq")],
+                [InlineKeyboardButton("Back to previous menu", callback_data="menu_catchtrade")]
+            ]
+        else:
+            keyboard = self.create_level_menu('top')
+
         return InlineKeyboardMarkup(keyboard)
 
     @Client.on_message(filters.command("start"))
@@ -91,9 +112,23 @@ class CommandBot:
         elif action == "updateweekly":
             download_data_weekly()
             callback_query.message.reply_text("Download weekly data finish!")
-        elif action == "findblockedstock":
+        elif action == "findblockedstockrussel":
             try:
-                file_report = blocked_stock()
+                file_report = blocked_stock(index="Russel")
+                self.send_generated_pdf(client, callback_query.message.chat.id, file_report)
+                callback_query.message.reply_text("PDF generate and sent!")
+            except subprocess.CalledProcessError as e:
+                callback_query.message.reply_text(f"Error generate: {e}")
+        elif action == "findblockedstocksp500":
+            try:
+                file_report = blocked_stock(index="SP500")
+                self.send_generated_pdf(client, callback_query.message.chat.id, file_report)
+                callback_query.message.reply_text("PDF generate and sent!")
+            except subprocess.CalledProcessError as e:
+                callback_query.message.reply_text(f"Error generate: {e}")
+        elif action == "findblockedstocknasdaq":
+            try:
+                file_report = blocked_stock(index="Nasdaq")
                 self.send_generated_pdf(client, callback_query.message.chat.id, file_report)
                 callback_query.message.reply_text("PDF generate and sent!")
             except subprocess.CalledProcessError as e:

@@ -2,7 +2,7 @@ import schedule
 import time, json
 import threading
 from TelegramBot.bot_handler import CommandBot
-from Trading.methodology.download_data.download_data_yahoo import StockDataDownloader
+from libs.download_data.download_data_yahoo import StockDataDownloader
 
 source_directory ="/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
 should_continue = True

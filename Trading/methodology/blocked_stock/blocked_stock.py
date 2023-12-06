@@ -5,13 +5,12 @@ import pandas as pd
 
 
 class TradingAnalyzer:
-    def __init__(self, dataset, max_price=None):
+    def __init__(self, dataset):
         """
         Initialize the TradingAnalyzer with a stock dataset.
         :param dataset: List of stock prices (float).
         """
         self.dataset = dataset
-        self.max_price = max_price
         self.image = CandlestickChartGenerator(self.dataset)
 
 
@@ -21,8 +20,7 @@ class TradingAnalyzer:
         :return: The last stock price.
         """
         if not self.dataset.empty:
-            last_price = self.dataset["Close"].iloc[-1]
-            return last_price if self.max_price is None or last_price <= self.max_price else None
+            return self.dataset["Close"].iloc[-1]
         return None
 
     def calculate_support_resistance(self, price):
@@ -56,12 +54,6 @@ class TradingAnalyzer:
             row = self.dataset.iloc[index]  # Ottieni la riga corrente
             open_price = row['Open']
             close_price = row['Close']
-
-            if self.max_price is not None and (pd.isna(open_price) or pd.isna(close_price)):
-                continue
-
-            if self.max_price is not None and (open_price > self.max_price or close_price > self.max_price):
-                continue
 
             # Checking for resistance interactions
             if resistance is not None:
@@ -126,7 +118,7 @@ def main():
 
     for item in tickers_list:
         data = pd.read_csv(f"Trading/Data/Daily/{item}_historical_data.csv")
-        enhanced_strategy = TradingAnalyzer(data, max_price=50)
+        enhanced_strategy = TradingAnalyzer(data)
         result, image = enhanced_strategy.check_price_range()
         if result:
             print(f'stock = {item} -- FOUND ')
