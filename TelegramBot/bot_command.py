@@ -38,16 +38,31 @@ def blocked_stock(index="Russel"):
         param_data = json.load(file)
 
     tickers_list = return_filtred_list(index=index)
+    # Controlla se la lista dei ticker è vuota
+    if not tickers_list:
+        # Aggiungi un messaggio nel report o registra un log
+        report.add_content("Nessun ticker soddisfa i criteri di selezione.")
+        print("Nessun ticker soddisfa i criteri di selezione.")
+    else:
 
-    for item in tickers_list:
-        data = pd.read_csv(f"{source_directory}/Data/{index}/Daily/{item}_historical_data.csv", parse_dates=['Date'])
-        enhanced_strategy = TradingAnalyzer(data)
-        result, image = enhanced_strategy.check_price_range()
-        if result:
-            print(f'stock = {item} -- FOUND ')
-            report.add_content(f'stock = {item} ')
-            report.add_commented_image(df=data, comment=f'Description = {result["details"]}', image_path=image)
-        print(f"checked stock {item}")
+        for item in tickers_list:
+            try:
+                data = pd.read_csv(f"{source_directory}/Data/{index}/Daily/{item}_historical_data.csv", parse_dates=['Date'])
+                enhanced_strategy = TradingAnalyzer(data)
+                result, image = enhanced_strategy.check_price_range()
+
+                if result:
+                    report.add_content(f'stock = {item} ')
+                    report.add_commented_image(df=data, comment=f'Description = {result["details"]}', image_path=image)
+
+            except FileNotFoundError:
+                # Gestisci l'errore se il file non viene trovato
+                print(f"File non trovato per {item}")
+            except Exception as e:
+                # Gestisci altri errori generici
+                print(f"Errore durante l'elaborazione di {item}: {e}")
+
+        # Salva il report e pulisci i file temporanei
     file_report = report.save_report(filename=f"{index}_Report_blocked_stock")
     enhanced_strategy.clear_img_temp_files()
     return file_report
