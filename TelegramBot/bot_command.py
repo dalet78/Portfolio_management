@@ -49,7 +49,7 @@ def blocked_stock(index="Russel"):
             try:
                 data = pd.read_csv(f"{source_directory}/Data/{index}/Daily/{item}_historical_data.csv", parse_dates=['Date'])
                 enhanced_strategy = TradingAnalyzer(data)
-                result, image = enhanced_strategy.check_price_range()
+                result, image = enhanced_strategy.check_signal(period=30)
 
                 if result:
                     report.add_content(f'stock = {item} ')

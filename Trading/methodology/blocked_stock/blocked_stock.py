@@ -13,14 +13,17 @@ class TradingAnalyzer:
         self.dataset = dataset
         self.image = CandlestickChartGenerator(self.dataset)
 
+    def get_last_value(self, dataset_subset=None):
+        """
+        Get the last value from the dataset or a subset of it.
+        :param dataset_subset: Optional subset of the dataset to consider. If None, uses the entire dataset.
+        :return: The last stock price in the dataset or subset.
+        """
+        # Utilizza il subset del dataset se fornito, altrimenti utilizza l'intero dataset
+        dataset_to_use = dataset_subset if dataset_subset is not None else self.dataset
 
-    def get_last_value(self):
-        """
-        Get the last value from the dataset.
-        :return: The last stock price.
-        """
-        if not self.dataset.empty:
-            return self.dataset["Close"].iloc[-1]
+        if not dataset_to_use.empty:
+            return dataset_to_use["Close"].iloc[-1]
         return None
 
     def calculate_support_resistance(self, price):
@@ -33,68 +36,96 @@ class TradingAnalyzer:
         support = int(price) if price and not pd.isna(price) else None
         return support, resistance
 
-    def check_price_range(self, period=60):
+    def check_signal(self, period=30, date=None):
         """
         Check if the stock price remains below resistance for more than 30 sessions and count how many times it touches or comes close to resistance within a 1% margin. Then do the opposite for support.
+        If a specific date is provided, checks the signal for that date. Otherwise, checks for the last 'period' sessions.
         :param period: The number of periods to check.
+        :param date: Optional specific date to check the signal for.
         :return: A dictionary with details of price interactions with support and resistance.
         """
-        if len(self.dataset) < period:
-            return False
+        dataset_to_use = self.dataset
 
-        last_price = self.get_last_value()
+        if date:
+            trade_date = date
+        else:
+            # Prendi la data dell'ultima sessione nel periodo analizzato
+            trade_date = self.dataset.iloc[-1].name
+
+        if len(dataset_to_use) < period:
+            return False, None
+
+        last_price = self.get_last_value(dataset_to_use)
         support, resistance = self.calculate_support_resistance(last_price)
 
-        below_resistance_count = 0
+        consecutive_below_resistance = 0
+        consecutive_above_support = 0
+        max_consecutive_below_resistance = 0
+        max_consecutive_above_support = 0
         touch_resistance_count = 0
-        above_support_count = 0
         touch_support_count = 0
 
-        for index in range(-period, 0):  # Utilizza un indice per accedere a più colonne
-            row = self.dataset.iloc[index]  # Ottieni la riga corrente
-            open_price = row['Open']
-            close_price = row['Close']
+        for index in range(0, period):
+            row = self.dataset.iloc[-index]
+            open_price, high_price, low_price, close_price = row['Open'], row['High'], row['Low'], row['Close']
 
-            # Checking for resistance interactions
-            if resistance is not None:
-                if open_price < resistance and close_price < resistance:
-                    below_resistance_count += 1
-                    if resistance * 0.99 <= close_price <= resistance or resistance * 0.99 <= open_price <= resistance:
-                        touch_resistance_count += 1
+            # Check for consecutive resistance interactions
+            if resistance is not None and close_price <= resistance and open_price <= resistance:
+                consecutive_below_resistance += 1
+            else:
+                max_consecutive_below_resistance = max(max_consecutive_below_resistance, consecutive_below_resistance)
+                consecutive_below_resistance = 0
 
-            # Checking for support interactions
-            if support is not None:
-                if open_price > support and close_price > support:
-                    above_support_count += 1
-                    if support <= close_price <= support * 1.01 or support <= open_price <= support * 1.01:
-                        touch_support_count += 1
+            # Check for consecutive support interactions
+            if support is not None and close_price >= support and open_price>= support:
+                consecutive_above_support += 1
+            else:
+                max_consecutive_above_support = max(max_consecutive_above_support, consecutive_above_support)
+                consecutive_above_support = 0
 
-        interesting_below_resistance = below_resistance_count >45 and touch_resistance_count > 3
-        interesting_above_support = above_support_count > 45 and touch_support_count > 3
+            # Check for resistance and support touches
+            if high_price >= resistance * 0.99 and high_price <= resistance:
+                touch_resistance_count += 1
+            if low_price <= support * 1.01 and low_price >= support:
+                touch_support_count += 1
+
+        interesting_below_resistance = max_consecutive_below_resistance >= period-3
+        interesting_above_support = max_consecutive_above_support >= period-3
 
         if interesting_below_resistance :
-            image = self.image.create_chart_with_horizontal_lines(lines=[resistance], max_points=90)
+            image = self.image.create_chart_with_horizontal_lines(lines=[resistance], max_points=period)
             result = {
                 "status": interesting_below_resistance,
                 "details":{
                     "resistence": resistance,
-                    "below_resistance_count": below_resistance_count,
+                    "position": "buy",
+                    "below_resistance_count": touch_support_count,
                     "touch_resistance_count": touch_resistance_count,
-                }
+                    "enter_price": resistance + 0.10,
+                    "stop_loss": resistance - 0.20,
+                    "take_profit":  resistance + 0.50,
+                    "trade_date" : trade_date
+            }
             }
         elif interesting_above_support:
-            image = self.image.create_chart_with_horizontal_lines(lines=[support], max_points=90)
+            image = self.image.create_chart_with_horizontal_lines(lines=[support], max_points=period)
             result = {
                 "status": interesting_above_support,
                 "details": {
                     "support": support,
-                    "above_support_count": above_support_count,
-                    "touch_support_count": touch_support_count
+                    "position": "sell",
+                    "above_support_count": touch_support_count,
+                    "touch_support_count": touch_support_count,
+                    "enter_price": support - 0.10,
+                    "stop_loss": support + 0.20,
+                    "take_profit": support - 0.50,
+                    "trade_date" : trade_date
                 }
             }
         else:
             result = False
             image = None
+
         return result, image
 
     def clear_img_temp_files(self):
@@ -119,7 +150,7 @@ def main():
     for item in tickers_list:
         data = pd.read_csv(f"Trading/Data/Daily/{item}_historical_data.csv")
         enhanced_strategy = TradingAnalyzer(data)
-        result, image = enhanced_strategy.check_price_range()
+        result, image = enhanced_strategy.check_signal()
         if result:
             print(f'stock = {item} -- FOUND ')
             report.add_content(f'stock = {item} ')
