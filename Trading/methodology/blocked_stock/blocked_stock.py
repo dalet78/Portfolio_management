@@ -36,26 +36,23 @@ class TradingAnalyzer:
         support = int(price) if price and not pd.isna(price) else None
         return support, resistance
 
-    def check_signal(self, period=30, date=None):
+    def check_signal(self, period=30, use_previous_day=False):
         """
         Check if the stock price remains below resistance for more than 30 sessions and count how many times it touches or comes close to resistance within a 1% margin. Then do the opposite for support.
-        If a specific date is provided, checks the signal for that date. Otherwise, checks for the last 'period' sessions.
+        If 'use_previous_day' is True, considers the dataset starting from the previous day.
         :param period: The number of periods to check.
-        :param date: Optional specific date to check the signal for.
+        :param use_previous_day: Boolean to consider the dataset from the previous day.
         :return: A dictionary with details of price interactions with support and resistance.
         """
         dataset_to_use = self.dataset
 
-        if date:
-            trade_date = date
-        else:
-            # Prendi la data dell'ultima sessione nel periodo analizzato
-            trade_date = self.dataset.iloc[-1].name
+        # Adjust the start index based on 'use_previous_day'
+        start_index = -1 if use_previous_day else 0
 
         if len(dataset_to_use) < period:
             return False, None
 
-        last_price = self.get_last_value(dataset_to_use)
+        last_price = dataset_to_use['Close'][-1]
         support, resistance = self.calculate_support_resistance(last_price)
 
         consecutive_below_resistance = 0
@@ -65,9 +62,11 @@ class TradingAnalyzer:
         touch_resistance_count = 0
         touch_support_count = 0
 
-        for index in range(0, period):
-            row = self.dataset.iloc[-index]
-            open_price, high_price, low_price, close_price = row['Open'], row['High'], row['Low'], row['Close']
+        for index in range(0, period):  # Adjust loop range
+            open_price = dataset_to_use.Open[-period +index]
+            high_price = dataset_to_use.High[-period +index]
+            low_price = dataset_to_use.Low[-period +index]
+            close_price = dataset_to_use.Close[-period +index]
 
             # Check for consecutive resistance interactions
             if resistance is not None and close_price <= resistance and open_price <= resistance:
@@ -103,8 +102,7 @@ class TradingAnalyzer:
                     "touch_resistance_count": touch_resistance_count,
                     "enter_price": resistance + 0.10,
                     "stop_loss": resistance - 0.20,
-                    "take_profit":  resistance + 0.50,
-                    "trade_date" : trade_date
+                    "take_profit":  resistance + 0.50
             }
             }
         elif interesting_above_support:
@@ -118,8 +116,7 @@ class TradingAnalyzer:
                     "touch_support_count": touch_support_count,
                     "enter_price": support - 0.10,
                     "stop_loss": support + 0.20,
-                    "take_profit": support - 0.50,
-                    "trade_date" : trade_date
+                    "take_profit": support - 0.50
                 }
             }
         else:
