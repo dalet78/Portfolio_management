@@ -52,7 +52,16 @@ class TradingAnalyzer:
         if len(dataset_to_use) < period:
             return False, None
 
-        last_price = dataset_to_use['Close'][-1]
+        if not isinstance(dataset_to_use.index, pd.DatetimeIndex):
+            # Se l'indice non è del tipo DateTimeIndex, prova a convertirlo
+            # Assicurati che ci sia una colonna che possa essere convertita in un indice di date
+            # Ad esempio, se hai una colonna 'Date' nel DataFrame
+            dataset_to_use['Date'] = pd.to_datetime(dataset_to_use['Date'])
+            dataset_to_use.set_index('Date', inplace=True)
+
+        trade_date = dataset_to_use.index[-1].strftime('%Y-%m-%d')
+        # last_price = dataset_to_use['Close'][-1]
+        last_price = dataset_to_use['Close'].iloc[-1]
         support, resistance = self.calculate_support_resistance(last_price)
 
         consecutive_below_resistance = 0
@@ -63,10 +72,14 @@ class TradingAnalyzer:
         touch_support_count = 0
 
         for index in range(0, period):  # Adjust loop range
-            open_price = dataset_to_use.Open[-period +index]
-            high_price = dataset_to_use.High[-period +index]
-            low_price = dataset_to_use.Low[-period +index]
-            close_price = dataset_to_use.Close[-period +index]
+            # open_price = dataset_to_use.Open[-period +index]
+            # high_price = dataset_to_use.High[-period +index]
+            # low_price = dataset_to_use.Low[-period +index]
+            # close_price = dataset_to_use.Close[-period +index]
+            open_price = dataset_to_use['Open'].iloc[-period + index]
+            high_price = dataset_to_use['High'].iloc[-period + index]
+            low_price = dataset_to_use['Low'].iloc[-period + index]
+            close_price = dataset_to_use['Close'].iloc[-period + index]
 
             # Check for consecutive resistance interactions
             if resistance is not None and close_price <= resistance and open_price <= resistance:
@@ -92,7 +105,7 @@ class TradingAnalyzer:
         interesting_above_support = max_consecutive_above_support >= period-3
 
         if interesting_below_resistance :
-            image = self.image.create_chart_with_horizontal_lines(lines=[resistance], max_points=period)
+            image = None #self.image.create_chart_with_horizontal_lines(lines=[resistance], max_points=period)
             result = {
                 "status": interesting_below_resistance,
                 "details":{
@@ -102,11 +115,12 @@ class TradingAnalyzer:
                     "touch_resistance_count": touch_resistance_count,
                     "enter_price": resistance + 0.10,
                     "stop_loss": resistance - 0.20,
-                    "take_profit":  resistance + 0.50
-            }
+                    "take_profit":  resistance + 0.50,
+                    "trade_date": trade_date
+                }
             }
         elif interesting_above_support:
-            image = self.image.create_chart_with_horizontal_lines(lines=[support], max_points=period)
+            image = None #self.image.create_chart_with_horizontal_lines(lines=[support], max_points=period)
             result = {
                 "status": interesting_above_support,
                 "details": {
@@ -116,11 +130,19 @@ class TradingAnalyzer:
                     "touch_support_count": touch_support_count,
                     "enter_price": support - 0.10,
                     "stop_loss": support + 0.20,
-                    "take_profit": support - 0.50
+                    "take_profit": support - 0.50,
+                    "trade_date": trade_date
                 }
             }
         else:
-            result = False
+            result = {
+                "status": "not_interesting",
+                "details": {
+                    "position": "hold",
+                    "support": None,
+                    "trade_date": trade_date
+                }
+            }
             image = None
 
         return result, image

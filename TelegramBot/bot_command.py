@@ -50,8 +50,7 @@ def blocked_stock(index="Russel"):
                 data = pd.read_csv(f"{source_directory}/Data/{index}/Daily/{item}_historical_data.csv", parse_dates=['Date'])
                 enhanced_strategy = TradingAnalyzer(data)
                 result, image = enhanced_strategy.check_signal(period=30)
-
-                if result:
+                if result["details"]["position"] != "hold":
                     report.add_content(f'stock = {item} ')
                     report.add_commented_image(df=data, comment=f'Description = {result["details"]}', image_path=image)
 
