@@ -1,0 +1,514 @@
+Report
+INTC
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]              -15.412042
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: objectCMCSA
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]              -11.943114
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: objectCSCO
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]              -15.933967
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: objectCSX
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]               -9.969958
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: objectWBA
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]              -52.898107
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: objectKHC
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]                8.246185
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: objectEBAY
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]                 -38.003
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: objectJD
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]              -66.758828
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: objectUAL
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]               -7.808275
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: objectWDC
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]              -16.518404
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: objectHAS
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]              -51.498856
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: objectAAL
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]              -24.145531
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: objectLBTYK
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]              -37.136548
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: objectFOXA
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]              -18.062398
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: objectFOX
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]              -17.979505
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: objectLBTYA
+ Start                     2021-12-09 00:00:00
+End                       2023-12-08 00:00:00
+Duration                    729 days 00:00:00
+Exposure Time [%]                         0.0
+Equity Final [$]                      10000.0
+Equity Peak [$]                       10000.0
+Return [%]                                0.0
+Buy & Hold Return [%]              -40.368321
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+_strategy                             MyStrat
+_equity_curve                           Eq...
+_trades                   Empty DataFrame
+...
+dtype: object

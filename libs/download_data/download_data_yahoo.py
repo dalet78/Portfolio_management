@@ -31,7 +31,7 @@ class StockDataDownloader:
 
     def download_data(self):
         end_date = datetime.now()
-        start_date = end_date - timedelta(days=20*365)  # 20 anni fa
+        start_date = end_date - timedelta(days=2*365)  # 20 anni fa
         self.delete_folder_contents(self.data_path)
         for ticker in self.tickers[:]:
             try:
