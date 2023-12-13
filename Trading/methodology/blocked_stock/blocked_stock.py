@@ -56,98 +56,17 @@ class TradingAnalyzer:
             dataset_to_use.set_index('Date', inplace=True)
 
         # trade_date = dataset_to_use.index[-1].strftime('%Y-%m-%d')
-        last_price = dataset_to_use['Close'].iloc[-1]
-        support, resistance = self.calculate_support_resistance(last_price)
         dataset_to_use['support'] = [self.calculate_support_resistance(dataset_to_use['Close'].iloc[i])[0] for i in
                                      range(len(dataset_to_use))]
         dataset_to_use['resistance'] = [self.calculate_support_resistance(dataset_to_use['Close'].iloc[i])[1] for i in
                                         range(len(dataset_to_use))]
 
-        # consecutive_below_resistance = 0
-        # consecutive_above_support = 0
-        # max_consecutive_below_resistance = 0
-        # max_consecutive_above_support = 0
-        # touch_resistance_count = 0
-        # touch_support_count = 0
         # Aggiunta delle colonne is_interesting e signal
         dataset_to_use['is_interesting'] = 0
         dataset_to_use['signal'] = 0
 
-        # for index in range(0, period):  # Adjust loop range
-        #     open_price = dataset_to_use['Open'].iloc[-period + index]
-        #     high_price = dataset_to_use['High'].iloc[-period + index]
-        #     low_price = dataset_to_use['Low'].iloc[-period + index]
-        #     close_price = dataset_to_use['Close'].iloc[-period + index]
-        #
-        #     # Check for consecutive resistance interactions
-        #     if resistance is not None and close_price <= resistance and open_price <= resistance:
-        #         consecutive_below_resistance += 1
-        #     else:
-        #         max_consecutive_below_resistance = max(max_consecutive_below_resistance, consecutive_below_resistance)
-        #         consecutive_below_resistance = 0
-        #
-        #     # Check for consecutive support interactions
-        #     if support is not None and close_price >= support and open_price >= support:
-        #         consecutive_above_support += 1
-        #     else:
-        #         max_consecutive_above_support = max(max_consecutive_above_support, consecutive_above_support)
-        #         consecutive_above_support = 0
-        #
-        #     # Check for resistance and support touches
-        #     if high_price >= resistance * 0.98 and high_price <= resistance:
-        #         touch_resistance_count += 1
-        #     if low_price <= support * 1.02 and low_price >= support:
-        #         touch_support_count += 1
+        dataset_to_use = self.calculate_interesting_parameter(dataset_to_use, period)
 
-        # interesting_below_resistance = max_consecutive_below_resistance >= period - 3
-        # interesting_above_support = max_consecutive_above_support >= period - 3
-
-        # Analisi della resistenza e del supporto
-        support_resistence_col, sup_res_gap_touch_count, sup_res_gap_touch= []
-        for i in range(len(dataset_to_use) - 20, -1, -1):
-            # current_close = dataset_to_use['Close'].iloc[i]
-            current_support = dataset_to_use['support'].iloc[i]
-            current_resistance = dataset_to_use['resistance'].iloc[i]
-            df_segment = dataset_to_use.iloc[i:i+20]
-            support_resistence_verify = check_support_resistance_break(
-                                        df=df_segment,
-                                        current_support=current_support,
-                                        current_resistance=current_resistance
-                                    )
-            sup_res_approach_count_approx= check_hloc_proximity(df=df_segment,
-                                        support_value=current_support,
-                                        resistance_value=current_resistance)
-            sup_res_gap_touch_count= check_hloc_proximity(df=df_segment,
-                                        support_value=current_support,
-                                        resistance_value=current_resistance)
-            
-            support_resistence_col.append(support_resistence_verify)
-            sup_res_continues_touch.append(sup_res_approach_count_approx)
-            sup_res_gap_touch.append(sup_res_gap_touch_count)
-            
-            # support_approach_count_gap = self.check_hloc_proximity_with_gap(df=df_segment,
-            #                                                     reference_value=current_support, role='support')
-            # resistance_approach_count_gap = self.check_hloc_proximity_with_gap(df=df_segment,
-            #                                                     reference_value=current_resistance, role='resistance')
-            # support_approach_count_approx = self.check_hloc_proximity(df=df_segment,
-            #                                                     reference_value=current_support, role='support')
-            # resistance_approach_count_approx = self.check_hloc_proximity(df=df_segment,
-            #                                                     reference_value=current_resistance, role='resistance')
-
-        dataset_to_use['support_resistence_col'] = [val for val in support_resistence_col for _ in range(20)][:len(dataset_to_use)] 
-        dataset_to_use['sup_res_continues_touch'] = [val for val in sup_res_continues_touch for _ in range(20)][:len(dataset_to_use)]
-        dataset_to_use['sup_res_gap_touch'] = [val for val in sup_res_gap_touch for _ in range(20)][:len(dataset_to_use)]
-            # Impostazione della colonna is_interesting
-            # if (support_resistence_verify == 3
-            #         and (support_approach_count_gap or support_approach_count_approx) and
-            #         (resistance_approach_count_gap or resistance_approach_count_approx)) :
-            #     dataset_to_use['is_interesting'].iloc[i] = 3
-            # elif support_resistence_verify ==1 and (support_approach_count_gap or support_approach_count_approx):
-            #     dataset_to_use['is_interesting'].iloc[i] = 1
-            # elif support_resistence_verify ==2 and (resistance_approach_count_gap or resistance_approach_count_approx):
-            #     dataset_to_use['is_interesting'].iloc[i] = 2
-            # else:
-            #     dataset_to_use['is_interesting'].iloc[i] = 0
         dataset_to_use = self.calculate_interesting_column(dataset_to_use)
 
         # Calcolo del signal in base alle ultime condizioni di is_interesting
@@ -155,6 +74,34 @@ class TradingAnalyzer:
         result, image = self.analyze_interesting_data(dataset_to_use, period)
 
         return result, image, dataset_to_use
+
+    def calculate_interesting_parameter(self, dataset_to_use, period):
+        support_resistence_col, sup_res_gap_touch_count, sup_res_gap_touch= []
+        for i in range(len(dataset_to_use) - period, -1, -1):
+            # current_close = dataset_to_use['Close'].iloc[i]
+            current_support = dataset_to_use['support'].iloc[i]
+            current_resistance = dataset_to_use['resistance'].iloc[i]
+            df_segment = dataset_to_use.iloc[i:i+period]
+            support_resistence_verify = self.check_support_resistance_break(
+                                        df=df_segment,
+                                        current_support=current_support,
+                                        current_resistance=current_resistance
+                                    )
+            sup_res_approach_count_approx= self.check_hloc_proximity(df=df_segment,
+                                        support_value=current_support,
+                                        resistance_value=current_resistance)
+            sup_res_gap_touch_count= self.check_hloc_proximity(df=df_segment,
+                                        support_value=current_support,
+                                        resistance_value=current_resistance)
+            
+            support_resistence_col.append(support_resistence_verify)
+            sup_res_approach_count_approx.append(sup_res_approach_count_approx)
+            sup_res_gap_touch.append(sup_res_gap_touch_count)
+
+        dataset_to_use['support_resistence_col'] = [val for val in support_resistence_col for _ in range(20)][:len(dataset_to_use)] 
+        dataset_to_use['sup_res_continues_touch'] = [val for val in sup_res_continues_touch for _ in range(20)][:len(dataset_to_use)]
+        dataset_to_use['sup_res_gap_touch'] = [val for val in sup_res_gap_touch for _ in range(20)][:len(dataset_to_use)]
+        return dataset_to_use
 
     def analyze_interesting_data(dataset_to_use, period):
         """
