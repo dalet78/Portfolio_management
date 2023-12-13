@@ -76,7 +76,7 @@ class TradingAnalyzer:
         return result, image, dataset_to_use
 
     def calculate_interesting_parameter(self, dataset_to_use, period):
-        support_resistence_col, sup_res_gap_touch_count, sup_res_gap_touch= []
+        support_resistence_col, sup_res_gap_touch_count, sup_res_touch_count= [],[],[]
         for i in range(len(dataset_to_use) - period, -1, -1):
             # current_close = dataset_to_use['Close'].iloc[i]
             current_support = dataset_to_use['support'].iloc[i]
@@ -84,26 +84,26 @@ class TradingAnalyzer:
             df_segment = dataset_to_use.iloc[i:i+period]
             support_resistence_verify = self.check_support_resistance_break(
                                         df=df_segment,
-                                        current_support=current_support,
-                                        current_resistance=current_resistance
+                                        support_value=current_support,
+                                        resistance_value=current_resistance
                                     )
-            sup_res_approach_count_approx= self.check_hloc_proximity(df=df_segment,
+            sup_res_approach_count_list= self.check_hloc_proximity(df=df_segment,
                                         support_value=current_support,
                                         resistance_value=current_resistance)
-            sup_res_gap_touch_count= self.check_hloc_proximity(df=df_segment,
+            sup_res_gap_touch_count_list= self.check_hloc_proximity(df=df_segment,
                                         support_value=current_support,
                                         resistance_value=current_resistance)
             
             support_resistence_col.append(support_resistence_verify)
-            sup_res_approach_count_approx.append(sup_res_approach_count_approx)
-            sup_res_gap_touch.append(sup_res_gap_touch_count)
+            sup_res_touch_count.append(sup_res_approach_count_list)
+            sup_res_gap_touch_count.append(sup_res_gap_touch_count_list)
 
         dataset_to_use['support_resistence_col'] = [val for val in support_resistence_col for _ in range(20)][:len(dataset_to_use)] 
-        dataset_to_use['sup_res_continues_touch'] = [val for val in sup_res_continues_touch for _ in range(20)][:len(dataset_to_use)]
-        dataset_to_use['sup_res_gap_touch'] = [val for val in sup_res_gap_touch for _ in range(20)][:len(dataset_to_use)]
+        dataset_to_use['sup_res_approach_count_approx'] = [val for val in sup_res_touch_count for _ in range(20)][:len(dataset_to_use)]
+        dataset_to_use['sup_res_gap_touch'] = [val for val in sup_res_gap_touch_count for _ in range(20)][:len(dataset_to_use)]
         return dataset_to_use
 
-    def analyze_interesting_data(dataset_to_use, period):
+    def analyze_interesting_data(self, dataset_to_use, period):
         """
         Analizza i dati per 'is_interesting' e genera i dettagli e un grafico corrispondente.
 
@@ -116,7 +116,7 @@ class TradingAnalyzer:
         """
         if dataset_to_use['is_interesting'].iloc[-1] == 1:
             previous_support = dataset_to_use['support'].iloc[-1]
-            image = self.image.create_chart_with_horizontal_lines(lines=[support], max_points=period+10)
+            image = self.image.create_chart_with_horizontal_lines(lines=[int(previous_support)], max_points=period+10)
             result = {
                 "status": "below_resistance",
                 "details": {
@@ -128,7 +128,7 @@ class TradingAnalyzer:
             }
         elif dataset_to_use['is_interesting'].iloc[-1] == 2:
             previous_resistance = dataset_to_use['resistance'].iloc[-1]
-            image = self.image.create_chart_with_horizontal_lines(lines=[resistance], max_points=period+10)
+            image = self.image.create_chart_with_horizontal_lines(lines=[int(previous_resistance)], max_points=period+10)
             result = {
                 "status": "above_support",
                 "details": {
@@ -141,7 +141,7 @@ class TradingAnalyzer:
         elif dataset_to_use['is_interesting'].iloc[-1] == 3:
             previous_support = dataset_to_use['support'].iloc[-1]
             previous_resistance = dataset_to_use['resistance'].iloc[-1]
-            image = self.image.create_chart_with_more_horizontal_lines(lines=[support, resistance],
+            image = self.image.create_chart_with_more_horizontal_lines(lines=[int(previous_support), int(previous_resistance)],
                                                                        max_points=period+10)
             result = {
                 "status": "both_support_and_resistance",
@@ -158,11 +158,11 @@ class TradingAnalyzer:
     
     def calculate_interesting_column(self, dataset_to_use):
         for i, row in dataset_to_use.iterrows():
-            if (row['support_resistence_col'] == 3) and (row['sup_res_gap_touch'] == 3 or row['sup_res_continues_touch'] == 3):
+            if (row['support_resistence_col'] == 3) and (row['sup_res_approach_count_approx'] == 3 or row['sup_res_gap_touch'] == 3):
                 dataset_to_use.at[i, 'is_interesting'] = 3
-            elif row['support_resistence_col'] == 1 and (row['sup_res_continues_touch'] == 1 or row['sup_res_gap_touch'] == 1):
+            elif row['support_resistence_col'] == 1 and (row['sup_res_gap_touch'] == 1 or row['sup_res_approach_count_approx'] == 1):
                 dataset_to_use.at[i, 'is_interesting'] = 1
-            elif row['support_resistence_col'] == 2 and (row['sup_res_continues_touch'] == 2 or row['sup_res_gap_touch'] == 2):
+            elif row['support_resistence_col'] == 2 and (row['sup_res_gap_touch'] == 2 or row['sup_res_approach_count_approx'] == 2):
                 dataset_to_use.at[i, 'is_interesting'] = 2
             else:
                 dataset_to_use.at[i, 'is_interesting'] = 0
@@ -221,7 +221,7 @@ class TradingAnalyzer:
                     dataset_to_use.at[i, 'signal'] = 2
             return dataset_to_use
 
-    def check_support_resistance_break(self, df, lower_threshold, upper_threshold, columns=['Open', 'Close']):
+    def check_support_resistance_break(self, df, support_value, resistance_value, columns=['Open', 'Close']):
         """
         Verifica se il supporto o la resistenza sono stati violati in un dato periodo.
 
@@ -238,13 +238,13 @@ class TradingAnalyzer:
         """
 
         #controlla le soglie
-        if ((df[columns] > current_resistance) & (df[columns] < current_resistance)).all(axis=None):
+        if ((df[columns] > support_value) & (df[columns] < resistance_value)).all(axis=None):
             return 3
         # Controlla se tutti i valori sono sopra la soglia inferiore
-        elif (df[columns] > current_resistance).all(axis=None):
+        elif (df[columns] > support_value).all(axis=None):
             return 1
         # Controlla se tutti i valori sono sotto la soglia superiore
-        elif (df[columns] < current_resistance).all(axis=None):
+        elif (df[columns] < resistance_value).all(axis=None):
             return 2
         else:
             return 0
@@ -294,7 +294,7 @@ class TradingAnalyzer:
 
         return 0
 
-    def check_hloc_proximity_with_gap(self, resistance_value, support_value, approximation=0.02, min_gap=3):
+    def check_hloc_proximity_with_gap(self,df, resistance_value, support_value, approximation=0.02, min_gap=3):
         """
         Verifica se un valore HLOC si avvicina alla resistenza e/o al supporto
         almeno due volte, con almeno tre righe di differenza tra queste occorrenze.
@@ -347,7 +347,7 @@ class TradingAnalyzer:
 
 
 
-def main(index="SP500"):
+def main(index="Russel"):
     start_time = time.time()  # Registra l'ora di inizio
     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
     report = ReportGenerator()
