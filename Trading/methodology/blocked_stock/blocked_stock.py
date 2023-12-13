@@ -52,9 +52,6 @@ class TradingAnalyzer:
             return False, None, None
 
         if not isinstance(dataset_to_use.index, pd.DatetimeIndex):
-            # Se l'indice non è del tipo DateTimeIndex, prova a convertirlo
-            # Assicurati che ci sia una colonna che possa essere convertita in un indice di date
-            # Ad esempio, se hai una colonna 'Date' nel DataFrame
             dataset_to_use['Date'] = pd.to_datetime(dataset_to_use['Date'])
             dataset_to_use.set_index('Date', inplace=True)
 
@@ -106,40 +103,60 @@ class TradingAnalyzer:
         # interesting_above_support = max_consecutive_above_support >= period - 3
 
         # Analisi della resistenza e del supporto
-        support_resistence_col= []
-        for i in range(len(dataset_to_use) - period, -1, -1):
+        support_resistence_col, sup_res_gap_touch_count, sup_res_gap_touch= []
+        for i in range(len(dataset_to_use) - 20, -1, -1):
             # current_close = dataset_to_use['Close'].iloc[i]
             current_support = dataset_to_use['support'].iloc[i]
             current_resistance = dataset_to_use['resistance'].iloc[i]
-
-            df_segment = dataset_to_use.iloc[i:i+period]
-            support_resistence_verify = self.check_support_resistance_break(
+            df_segment = dataset_to_use.iloc[i:i+20]
+            support_resistence_verify = check_support_resistance_break(
                                         df=df_segment,
                                         current_support=current_support,
                                         current_resistance=current_resistance
                                     )
+            sup_res_approach_count_approx= check_hloc_proximity(df=df_segment,
+                                        support_value=current_support,
+                                        resistance_value=current_resistance)
+            sup_res_gap_touch_count= check_hloc_proximity(df=df_segment,
+                                        support_value=current_support,
+                                        resistance_value=current_resistance)
+            
             support_resistence_col.append(support_resistence_verify)
+            sup_res_continues_touch.append(sup_res_approach_count_approx)
+            sup_res_gap_touch.append(sup_res_gap_touch_count)
+            
+            # support_approach_count_gap = self.check_hloc_proximity_with_gap(df=df_segment,
+            #                                                     reference_value=current_support, role='support')
+            # resistance_approach_count_gap = self.check_hloc_proximity_with_gap(df=df_segment,
+            #                                                     reference_value=current_resistance, role='resistance')
+            # support_approach_count_approx = self.check_hloc_proximity(df=df_segment,
+            #                                                     reference_value=current_support, role='support')
+            # resistance_approach_count_approx = self.check_hloc_proximity(df=df_segment,
+            #                                                     reference_value=current_resistance, role='resistance')
 
-            support_approach_count_gap = self.check_hloc_proximity_with_gap(df=df_segment,
-                                                                reference_value=current_support, role='support')
-            resistance_approach_count_gap = self.check_hloc_proximity_with_gap(df=df_segment,
-                                                                reference_value=current_resistance, role='resistance')
-            support_approach_count_approx = self.check_hloc_proximity(df=df_segment,
-                                                                reference_value=current_support, role='support')
-            resistance_approach_count_approx = self.check_hloc_proximity(df=df_segment,
-                                                                reference_value=current_resistance, role='resistance')
-
+        dataset_to_use['support_resistence_col'] = [val for val in support_resistence_col for _ in range(20)][:len(dataset_to_use)] 
+        dataset_to_use['sup_res_continues_touch'] = [val for val in sup_res_continues_touch for _ in range(20)][:len(dataset_to_use)]
+        dataset_to_use['sup_res_gap_touch'] = [val for val in sup_res_gap_touch for _ in range(20)][:len(dataset_to_use)]
             # Impostazione della colonna is_interesting
-            if (support_resistence_verify == 3
-                    and (support_approach_count_gap or support_approach_count_approx) and
-                    (resistance_approach_count_gap or resistance_approach_count_approx)) :
-                dataset_to_use['is_interesting'].iloc[i] = 3
-            elif support_resistence_verify ==1 and (support_approach_count_gap or support_approach_count_approx):
-                dataset_to_use['is_interesting'].iloc[i] = 1
-            elif support_resistence_verify ==2 and (resistance_approach_count_gap or resistance_approach_count_approx):
-                dataset_to_use['is_interesting'].iloc[i] = 2
+            # if (support_resistence_verify == 3
+            #         and (support_approach_count_gap or support_approach_count_approx) and
+            #         (resistance_approach_count_gap or resistance_approach_count_approx)) :
+            #     dataset_to_use['is_interesting'].iloc[i] = 3
+            # elif support_resistence_verify ==1 and (support_approach_count_gap or support_approach_count_approx):
+            #     dataset_to_use['is_interesting'].iloc[i] = 1
+            # elif support_resistence_verify ==2 and (resistance_approach_count_gap or resistance_approach_count_approx):
+            #     dataset_to_use['is_interesting'].iloc[i] = 2
+            # else:
+            #     dataset_to_use['is_interesting'].iloc[i] = 0
+        for i, row in dataset_to_use.iterrows():
+            if (row['support_resistence_col'] == 3) and (row['sup_res_gap_touch'] == 3 or row['sup_res_continues_touch'] == 3):
+                dataset_to_use.at[i, 'is_interesting'] = 3
+            elif row['support_resistence_col'] == 1 and (row['sup_res_continues_touch'] == 1 or row['sup_res_gap_touch'] == 1):
+                dataset_to_use.at[i, 'is_interesting'] = 1
+            elif row['support_resistence_col'] == 2 and (row['sup_res_continues_touch'] == 2 or row['sup_res_gap_touch'] == 2):
+                dataset_to_use.at[i, 'is_interesting'] = 2
             else:
-                dataset_to_use['is_interesting'].iloc[i] = 0
+                dataset_to_use.at[i, 'is_interesting'] = 0
 
         # Calcolo del signal in base alle ultime condizioni di is_interesting
         for i in range(1, len(dataset_to_use)):
@@ -227,7 +244,7 @@ class TradingAnalyzer:
     def clear_img_temp_files(self):
         self.image.clear_temp_files()
 
-    def check_support_resistance_break(self, df, lower_threshold, upper_threshold, columns=['open', 'close']):
+    def check_support_resistance_break(self, df, lower_threshold, upper_threshold, columns=['Open', 'Close']):
         """
         Verifica se il supporto o la resistenza sono stati violati in un dato periodo.
 
@@ -244,91 +261,112 @@ class TradingAnalyzer:
         """
 
         #controlla le soglie
-        if all((df[columns] > lower_threshold) & (df[columns] < upper_threshold)).all(axis=None):
+        if ((df[columns] > current_resistance) & (df[columns] < current_resistance)).all(axis=None):
             return 3
-        elif all(df[columns] > lower_threshold).all(axis=None):
+        # Controlla se tutti i valori sono sopra la soglia inferiore
+        elif (df[columns] > current_resistance).all(axis=None):
             return 1
-        elif all(df[columns] < upper_threshold).all(axis=None):
+        # Controlla se tutti i valori sono sotto la soglia superiore
+        elif (df[columns] < current_resistance).all(axis=None):
             return 2
         else:
             return 0
 
+    def check_hloc_proximity(self, df, resistance_value, support_value, approximation=0.02):
+    """
+    Verifica se High/Low del DataFrame tocca la resistenza/supporto per tre volte consecutive.
 
-    def check_hloc_proximity(self, df, reference_value, role, approximation=0.02):
-        """
-        Verifica se almeno uno dei valori HLOC si avvicina al valore di riferimento
-        (considerato come resistenza o supporto) con un'approssimazione del 2% per
-        almeno tre volte consecutive.
+    Args:
+    df (pd.DataFrame): DataFrame contenente le colonne HLOC.
+    resistance_value (float): Valore di riferimento per la resistenza.
+    support_value (float): Valore di riferimento per il supporto.
+    approximation (float): Percentuale di approssimazione (default 2%).
 
-        Args:
-        df (pd.DataFrame): DataFrame contenente le colonne HLOC.
-        reference_value (float): Valore di riferimento per il confronto.
-        role (str): 'resistance' o 'support', a seconda del ruolo del valore di riferimento.
-        approximation (float): Percentuale di approssimazione (default 2%).
+    Returns:
+    int: 3 se tocca sia resistenza che supporto, 2 se tocca solo resistenza,
+         1 se tocca solo supporto, 0 altrimenti.
+    """
+    lower_resistance = resistance_value * (1 - approximation)
+    upper_resistance = resistance_value * (1 + approximation)
+    lower_support = support_value * (1 - approximation)
+    upper_support = support_value * (1 + approximation)
 
-        Returns:
-        bool: True se la condizione è soddisfatta, altrimenti False.
-        """
-        # Calcola il limite inferiore e superiore
-        lower_bound = reference_value * (1 - approximation)
-        upper_bound = reference_value * (1 + approximation)
+    resistance_count = 0
+    support_count = 0
 
-        # Conta le occorrenze consecutive
-        consecutive_count = 0
+    for index, row in df.iterrows():
+        # Controlla la resistenza
+        if lower_resistance <= row['High'] <= upper_resistance:
+            resistance_count += 1
+        else:
+            resistance_count = 0
 
-        for index, row in df.iterrows():
-            if role == 'resistance' and row['High'] >= upper_bound:
-                # Verifica per la resistenza
-                consecutive_count += 1
-                if consecutive_count >= 3:
-                    return True
-            elif role == 'support' and row['Low'] <= lower_bound:
-                # Verifica per il supporto
-                consecutive_count += 1
-                if consecutive_count >= 3:
-                    return True
-            else:
-                consecutive_count = 0
+        # Controlla il supporto
+        if lower_support <= row['Low'] <= upper_support:
+            support_count += 1
+        else:
+            support_count = 0
 
-        return False
+        # Verifica le condizioni
+        if resistance_count >= 3 and support_count >= 3:
+            return 3
+        elif resistance_count >= 3:
+            return 2
+        elif support_count >= 3:
+            return 1
 
-    def check_hloc_proximity_with_gap(self, df, reference_value, role, approximation=0.02, min_gap=3):
-        """
-        Verifica se un valore HLOC si avvicina al valore predefinito (considerato come resistenza o supporto)
-        almeno due volte, con almeno tre righe di differenza tra queste due occorrenze.
+    return 0
 
-        Args:
-        df (pd.DataFrame): DataFrame contenente le colonne HLOC.
-        reference_value (float): Valore di riferimento per il confronto.
-        role (str): 'resistance' o 'support', a seconda del ruolo del valore di riferimento.
-        approximation (float): Percentuale di approssimazione (default 2%).
-        min_gap (int): Numero minimo di righe di differenza tra le occorrenze.
+    def check_hloc_proximity_with_gap(self, resistance_value, support_value, approximation=0.02, min_gap=3):
+    """
+    Verifica se un valore HLOC si avvicina alla resistenza e/o al supporto
+    almeno due volte, con almeno tre righe di differenza tra queste occorrenze.
 
-        Returns:
-        bool: True se la condizione è soddisfatta, altrimenti False.
-        """
-        # Calcola il limite inferiore e superiore
-        lower_bound = reference_value * (1 - approximation)
-        upper_bound = reference_value * (1 + approximation)
+    Args:
+    df (pd.DataFrame): DataFrame contenente le colonne HLOC.
+    resistance_value (float): Valore di riferimento per la resistenza.
+    support_value (float): Valore di riferimento per il supporto.
+    approximation (float): Percentuale di approssimazione (default 2%).
+    min_gap (int): Numero minimo di righe di differenza tra le occorrenze.
 
-        # Indice dell'ultima occorrenza in termini di posizione
-        last_occurrence_pos = None
+    Returns:
+    int: 3 per contatti sia con resistenza che supporto, 2 solo resistenza,
+         1 solo supporto, 0 altrimenti.
+    """
+    lower_resistance = resistance_value * (1 - approximation)
+    upper_resistance = resistance_value * (1 + approximation)
+    lower_support = support_value * (1 - approximation)
+    upper_support = support_value * (1 + approximation)
 
-        for index, row in df.iterrows():
-            current_pos = df.index.get_loc(index)
+    last_resistance_pos = None
+    resistance_touch_count = 0
 
-            if role == 'resistance' and row['High'] >= upper_bound:
-                # Verifica per la resistenza
-                if last_occurrence_pos is not None and (current_pos - last_occurrence_pos) >= min_gap:
-                    return True
-                last_occurrence_pos = current_pos
-            elif role == 'support' and row['Low'] <= lower_bound:
-                # Verifica per il supporto
-                if last_occurrence_pos is not None and (current_pos - last_occurrence_pos) >= min_gap:
-                    return True
-                last_occurrence_pos = current_pos
+    last_support_pos = None
+    support_touch_count = 0
 
-        return False
+    for index, row in df.iterrows():
+        current_pos = df.index.get_loc(index)
+
+        # Controlla la resistenza
+        if lower_resistance <= row['High'] <= upper_resistance:
+            if last_resistance_pos is not None and (current_pos - last_resistance_pos) >= min_gap:
+                resistance_touch_count += 1
+            last_resistance_pos = current_pos
+
+        # Controlla il supporto
+        if lower_support <= row['Low'] <= upper_support:
+            if last_support_pos is not None and (current_pos - last_support_pos) >= min_gap:
+                support_touch_count += 1
+            last_support_pos = current_pos
+
+        if resistance_touch_count >= 2 and support_touch_count >= 2:
+            return 3
+        elif resistance_touch_count >= 2:
+            return 2
+        elif support_touch_count >= 2:
+            return 1
+
+    return 0
 
 
 
