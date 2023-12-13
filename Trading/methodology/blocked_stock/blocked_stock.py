@@ -106,20 +106,19 @@ class TradingAnalyzer:
         # interesting_above_support = max_consecutive_above_support >= period - 3
 
         # Analisi della resistenza e del supporto
-        for i in range(len(dataset_to_use) - period, len(dataset_to_use)):
+        support_resistence_col= []
+        for i in range(len(dataset_to_use) - period, -1, -1):
             # current_close = dataset_to_use['Close'].iloc[i]
             current_support = dataset_to_use['support'].iloc[i]
             current_resistance = dataset_to_use['resistance'].iloc[i]
 
             df_segment = dataset_to_use.iloc[i:i+period]
-            support_broken, resistance_broken = self.check_support_resistance_break(
+            support_resistence_verify = self.check_support_resistance_break(
                                         df=df_segment,
-                                        period=period,
                                         current_support=current_support,
                                         current_resistance=current_resistance
                                     )
-
-
+            support_resistence_col.append(support_resistence_verify)
 
             support_approach_count_gap = self.check_hloc_proximity_with_gap(df=df_segment,
                                                                 reference_value=current_support, role='support')
@@ -131,13 +130,13 @@ class TradingAnalyzer:
                                                                 reference_value=current_resistance, role='resistance')
 
             # Impostazione della colonna is_interesting
-            if (not support_broken and not resistance_broken
+            if (support_resistence_verify == 3
                     and (support_approach_count_gap or support_approach_count_approx) and
                     (resistance_approach_count_gap or resistance_approach_count_approx)) :
                 dataset_to_use['is_interesting'].iloc[i] = 3
-            elif not support_broken and (support_approach_count_gap or support_approach_count_approx):
+            elif support_resistence_verify ==1 and (support_approach_count_gap or support_approach_count_approx):
                 dataset_to_use['is_interesting'].iloc[i] = 1
-            elif not resistance_broken and (resistance_approach_count_gap or resistance_approach_count_approx):
+            elif support_resistence_verify ==2 and (resistance_approach_count_gap or resistance_approach_count_approx):
                 dataset_to_use['is_interesting'].iloc[i] = 2
             else:
                 dataset_to_use['is_interesting'].iloc[i] = 0
@@ -228,7 +227,7 @@ class TradingAnalyzer:
     def clear_img_temp_files(self):
         self.image.clear_temp_files()
 
-    def check_support_resistance_break(self, df, period, current_support, current_resistance):
+    def check_support_resistance_break(self, df, lower_threshold, upper_threshold, columns=['open', 'close']):
         """
         Verifica se il supporto o la resistenza sono stati violati in un dato periodo.
 
@@ -243,24 +242,17 @@ class TradingAnalyzer:
         (bool, bool): Tuple dove il primo valore indica se il supporto è stato rotto,
                       e il secondo valore indica se la resistenza è stata rotta.
         """
-        support_broken = False
-        resistance_broken = False
 
-        # Assicurati che df abbia un numero sufficiente di righe
-        if len(df) < period:
-            raise ValueError("Il DataFrame non contiene un numero sufficiente di righe per il periodo specificato.")
+        #controlla le soglie
+        if all((df[columns] > lower_threshold) & (df[columns] < upper_threshold)).all(axis=None):
+            return 3
+        elif all(df[columns] > lower_threshold).all(axis=None):
+            return 1
+        elif all(df[columns] < upper_threshold).all(axis=None):
+            return 2
+        else:
+            return 0
 
-        # Itera attraverso il periodo specificato
-        for i in range(len(df)):
-            if df['Close'].iloc[i] > current_resistance or df['Open'].iloc[i] > current_resistance:
-                resistance_broken = True
-            if df['Close'].iloc[i] < current_support or df['Open'].iloc[i] < current_support:
-                support_broken = True
-
-            if support_broken or resistance_broken:
-                break
-
-        return support_broken, resistance_broken
 
     def check_hloc_proximity(self, df, reference_value, role, approximation=0.02):
         """
@@ -340,7 +332,7 @@ class TradingAnalyzer:
 
 
 
-def main(index="Russel"):
+def main(index="SP500"):
     start_time = time.time()  # Registra l'ora di inizio
     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
     report = ReportGenerator()
