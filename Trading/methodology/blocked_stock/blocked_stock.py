@@ -77,11 +77,11 @@ class TradingAnalyzer:
 
     def calculate_interesting_parameter(self, dataset_to_use, period):
         support_resistence_col, sup_res_gap_touch_count, sup_res_touch_count= [],[],[]
-        for i in range(len(dataset_to_use) - period, -1, -1):
+        for i in range(len(dataset_to_use) - 1, period - 2, -1):
             # current_close = dataset_to_use['Close'].iloc[i]
             current_support = dataset_to_use['support'].iloc[i]
             current_resistance = dataset_to_use['resistance'].iloc[i]
-            df_segment = dataset_to_use.iloc[i:i+period]
+            df_segment = dataset_to_use.iloc[i-period+1:i+1]
             support_resistence_verify = self.check_support_resistance_break(
                                         df=df_segment,
                                         support_value=current_support,
@@ -90,7 +90,7 @@ class TradingAnalyzer:
             sup_res_approach_count_list= self.check_hloc_proximity(df=df_segment,
                                         support_value=current_support,
                                         resistance_value=current_resistance)
-            sup_res_gap_touch_count_list= self.check_hloc_proximity(df=df_segment,
+            sup_res_gap_touch_count_list= self.check_hloc_proximity_with_gap(df=df_segment,
                                         support_value=current_support,
                                         resistance_value=current_resistance)
             
@@ -98,9 +98,15 @@ class TradingAnalyzer:
             sup_res_touch_count.append(sup_res_approach_count_list)
             sup_res_gap_touch_count.append(sup_res_gap_touch_count_list)
 
-        dataset_to_use['support_resistence_col'] = [val for val in support_resistence_col for _ in range(20)][:len(dataset_to_use)] 
-        dataset_to_use['sup_res_approach_count_approx'] = [val for val in sup_res_touch_count for _ in range(20)][:len(dataset_to_use)]
-        dataset_to_use['sup_res_gap_touch'] = [val for val in sup_res_gap_touch_count for _ in range(20)][:len(dataset_to_use)]
+        nan_list = [pd.NA] * (period - 1)
+        support_resistence_col_r = list(reversed(support_resistence_col))
+        sup_res_touch_count_r = list(reversed(sup_res_touch_count))
+        sup_res_gap_touch_count_r = list(reversed(sup_res_gap_touch_count))
+        #dataset_to_use['support_resistence_col'] = [val for val in support_resistence_col for _ in range(20)][:len(dataset_to_use)]
+        dataset_to_use['support_resistence_col']= nan_list + support_resistence_col_r
+        dataset_to_use['sup_res_approach_count_approx']= nan_list + sup_res_touch_count_r
+        dataset_to_use['sup_res_gap_touch']= nan_list + sup_res_gap_touch_count_r
+        dataset_to_use = dataset_to_use.dropna()
         return dataset_to_use
 
     def analyze_interesting_data(self, dataset_to_use, period):
@@ -114,11 +120,14 @@ class TradingAnalyzer:
         Returns:
         tuple: Una tupla contenente un dizionario con i risultati e un'immagine del grafico.
         """
+        last_row = dataset_to_use.iloc[-1]
+        if last_row['is_interesting'] != 0:
+            print(last_row)
         if dataset_to_use['is_interesting'].iloc[-1] == 1:
             previous_support = dataset_to_use['support'].iloc[-1]
             image = self.image.create_chart_with_horizontal_lines(lines=[int(previous_support)], max_points=period+10)
             result = {
-                "status": "below_resistance",
+                "status": "above_support",
                 "details": {
                     "support": previous_support,
                     "enter_price": previous_support - 0.10,
@@ -130,7 +139,7 @@ class TradingAnalyzer:
             previous_resistance = dataset_to_use['resistance'].iloc[-1]
             image = self.image.create_chart_with_horizontal_lines(lines=[int(previous_resistance)], max_points=period+10)
             result = {
-                "status": "above_support",
+                "status": "below_resistance",
                 "details": {
                     "resistance": previous_resistance,
                     "enter_price": previous_resistance + 0.10,
@@ -221,7 +230,7 @@ class TradingAnalyzer:
                     dataset_to_use.at[i, 'signal'] = 2
             return dataset_to_use
 
-    def check_support_resistance_break(self, df, support_value, resistance_value, columns=['Open', 'Close']):
+    def check_support_resistance_break(self, df, support_value, resistance_value, columns=['Open', 'Close', 'High', 'Low']):
         """
         Verifica se il supporto o la resistenza sono stati violati in un dato periodo.
 
@@ -236,7 +245,6 @@ class TradingAnalyzer:
         (bool, bool): Tuple dove il primo valore indica se il supporto è stato rotto,
                       e il secondo valore indica se la resistenza è stata rotta.
         """
-
         #controlla le soglie
         if ((df[columns] > support_value) & (df[columns] < resistance_value)).all(axis=None):
             return 3
@@ -294,7 +302,7 @@ class TradingAnalyzer:
 
         return 0
 
-    def check_hloc_proximity_with_gap(self,df, resistance_value, support_value, approximation=0.02, min_gap=3):
+    def check_hloc_proximity_with_gap(self, df, resistance_value, support_value, approximation=0.02, min_gap=3):
         """
         Verifica se un valore HLOC si avvicina alla resistenza e/o al supporto
         almeno due volte, con almeno tre righe di differenza tra queste occorrenze.

@@ -1,4 +1,5 @@
 import json
+import time
 import pandas as pd
 from libs.download_data.download_data_yahoo import StockDataDownloader
 from libs.filtered_stock import return_filtred_list
@@ -31,6 +32,7 @@ def download_data_daily():
     # stop_downloading()
 
 def blocked_stock(index="Russel"):
+    start_time = time.time()
     report = ReportGenerator()
     report.add_title(title=f"{index} Report blocked stock")
 
@@ -47,24 +49,36 @@ def blocked_stock(index="Russel"):
 
         for item in tickers_list:
             try:
-                data = pd.read_csv(f"{source_directory}/Data/{index}/Daily/{item}_historical_data.csv", parse_dates=['Date'])
+                data = pd.read_csv(f"{source_directory}/Data/{index}/Daily/{item}_historical_data.csv",
+                                   parse_dates=['Date'])
+                data = data.tail(60)
                 enhanced_strategy = TradingAnalyzer(data)
-                result, image = enhanced_strategy.check_signal(period=30)
-                if result["details"]["position"] != "hold":
-                    report.add_content(f'stock = {item} ')
+                print(f'stock = {item}')
+                result, image, new_data = enhanced_strategy.check_signal(period=20)
+                if result:
+                    report.add_content(f'stock = {item} \n')
                     report.add_commented_image(df=data, comment=f'Description = {result["details"]}', image_path=image)
 
+                last_signal = new_data['signal'].iloc[-1]
+                if last_signal == 1:
+                    print(f"Segnale di vendita (sell) per {item}")
+                    # Aggiungi logica per gestire il segnale di vendita
+                elif last_signal == 2:
+                    print(f"Segnale di acquisto (buy) per {item}")
+                    # Aggiungi logica per gestire il segnale di acquisto
             except FileNotFoundError:
-                # Gestisci l'errore se il file non viene trovato
-                print(f"File non trovato per {item}")
+                    # Gestisci l'errore se il file non viene trovato
+                    print(f"File non trovato per {item}")
             except Exception as e:
                 # Gestisci altri errori generici
                 print(f"Errore durante l'elaborazione di {item}: {e}")
-
         # Salva il report e pulisci i file temporanei
-    file_report = report.save_report(filename=f"{index}_Report_blocked_stock")
-    enhanced_strategy.clear_img_temp_files()
-    return file_report
+        file_report = report.save_report(filename=f"{index}_Report_blocked_stock")
+        enhanced_strategy.clear_img_temp_files()
+        end_time = time.time()  # Registra l'ora di fine
+        duration = end_time - start_time  # Calcola la durata totale
+        print(f"Tempo di elaborazione {index}: {duration} secondi.")
+        return file_report
 
 
 def find_lateral_mov():
