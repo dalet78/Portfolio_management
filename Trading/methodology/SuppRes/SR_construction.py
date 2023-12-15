@@ -21,7 +21,7 @@ class StockAnalysis:
         # Assicurati che la cartella esista per il file di output
         os.makedirs(os.path.dirname(self.filepath), exist_ok=True)
 
-    def _identify_pivots(self, close_prices, thresholds=(25, 50, 75), days=(7, 5, 3)):
+    def identify_pivots(self, close_prices, thresholds=(25, 50, 75), days=(7, 5, 3)):
         pivots = []
         for i in range(max(days), len(close_prices) - max(days)):
             # Determinare il numero di giorni da considerare in base al prezzo
@@ -105,7 +105,7 @@ class StockAnalysis:
         close_prices = self.data['Close']
 
         # Identificazione dei Pivot
-        pivots = self._identify_pivots(close_prices)
+        pivots = self.identify_pivots(close_prices)
 
         # Raggruppamento e normalizzazione dei Pivot
         # support_resistance_levels = self._group_and_normalize_pivots(pivots, close_prices)
@@ -115,7 +115,7 @@ class StockAnalysis:
         self.data['SMA'] = self.data['Close'].rolling(window=window_size).mean()
 
         # Identificare i Pivot
-        pivots = self._identify_pivots(self.data['Close'])
+        pivots = self.identify_pivots(self.data['Close'])
 
         # Filtrare i Pivot in Base alla Media Mobile
         filtered_pivots = []
