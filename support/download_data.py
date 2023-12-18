@@ -54,3 +54,4 @@ def download_data_daily():
 
 if __name__ == '__main__':
     download_data_daily()
+    download_data_weekly()
