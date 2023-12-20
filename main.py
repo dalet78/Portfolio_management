@@ -1,28 +1,29 @@
 import schedule
-import time, json
+import time
+import json
 import threading
 from TelegramBot.bot_handler import CommandBot
-from Trading.methodology.download_data.download_data_yahoo import StockDataDownloader
+from libs.download_data.download_data_yahoo import StockDataDownloader
 
-source_directory ="/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
+source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
 should_continue = True
 
 def start_bot():
-    while True:
-        try:
+    #while True:
+     #   try:
             bot = CommandBot()
             bot.start()
-        except Exception as e:
-            print(f"Bot crashed due to {e}. Restarting...")
-            time.sleep(5)  # Wait for 5 seconds before restarting
+      #  except Exception as e:
+       #     print(f"Bot crashed due to {e}. Restarting...")
+        #    time.sleep(5)  # Wait for 5 seconds before restarting
 
 def download_data():
     global should_continue
-    days = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
     for day in days:
         schedule.every().day.at("04:00").do(download_data_daily)
 
-    schedule.every().saturday.at("05:00").do(download_data_weekly)
+    schedule.every().monday.at("05:00").do(download_data_weekly)
     while should_continue:
         schedule.run_pending()
         time.sleep(60)
@@ -73,6 +74,7 @@ if __name__ == '__main__':
     download_thread = threading.Thread(target=download_data)
     download_thread.start()
 
-    # Avvia il bot in a separate thread
-    bot_thread = threading.Thread(target=start_bot)
-    bot_thread.start()
+    # Start the bot in a separate thread
+   # bot_thread = threading.Thread(target=start_bot)
+    #bot_thread.start()
+    start_bot()
