@@ -86,4 +86,105 @@ class ChannelDetector:
         fig.show()
 
 
+def check_pivot_trends_with_sl(dataframe):
+    """
+    Set 'pivot_high_trend' to True for all rows between two increasing pivot highs,
+    and 'pivot_low_trend' to True for all rows between two decreasing pivot lows.
+    Also, set the stop loss value based on the last pivot.
+    
+    :param dataframe: Pandas DataFrame with columns 'isPivot', 'Price', 'High', 'Low'.
+                      'isPivot' - 2 indicates a pivot high and 1 indicates a pivot low.
+    :return: Updated DataFrame with new columns 'pivot_high_trend', 'pivot_low_trend', 'stop_loss'.
+    """
+    
+    # Initialize trend indicators and stop loss
+    dataframe['pivot_high_trend'] = False
+    dataframe['pivot_low_trend'] = False
+    dataframe['stop_loss'] = None
+    
+    # Calculate pivot high and low trends
+    last_pivot_high_idx = None
+    last_pivot_low_idx = None
+    last_pivot_high_value = None
+    last_pivot_low_value = None
+    
+    for i, row in dataframe.iterrows():
+        if row['isPivot'] == 2:  # Pivot High
+            if last_pivot_high_value is not None and row['High'] > last_pivot_high_value:
+                dataframe.loc[last_pivot_high_idx:i, 'pivot_high_trend'] = True
+            last_pivot_high_idx = i
+            last_pivot_high_value = row['High']
+    
+        elif row['isPivot'] == 1:  # Pivot Low
+            if last_pivot_low_value is not None and row['Low'] < last_pivot_low_value:
+                dataframe.loc[last_pivot_low_idx:i, 'pivot_low_trend'] = True
+            last_pivot_low_idx = i
+            last_pivot_low_value = row['Low']
+    
+        # Set stop loss based on the last pivot
+        if row['isPivot'] == 2 and last_pivot_low_value is not None:
+            dataframe.at[i, 'stop_loss'] = last_pivot_low_value
+        elif row['isPivot'] == 1 and last_pivot_high_value is not None:
+            dataframe.at[i, 'stop_loss'] = last_pivot_high_value
+    
+    return dataframe
 
+def check_pivot_trends_with_numbero_and_sl(dataframe, min_consecutive_high_pivots=2, min_consecutive_low_pivots=2):
+    """
+    Set 'pivot_high_trend' to True for all rows between two increasing pivot highs,
+    and 'pivot_low_trend' to True for all rows between two decreasing pivot lows.
+    Also, set the stop loss value based on the last pivot.
+    
+    :param dataframe: Pandas DataFrame with columns 'isPivot', 'Price', 'High', 'Low'.
+                      'isPivot' - 2 indicates a pivot high and 1 indicates a pivot low.
+    :param min_consecutive_high_pivots: Minimum number of consecutive pivot highs to consider a high trend.
+    :param min_consecutive_low_pivots: Minimum number of consecutive pivot lows to consider a low trend.
+    :return: Updated DataFrame with new columns 'pivot_high_trend', 'pivot_low_trend', 'stop_loss'.
+    """
+    
+    # Initialize trend indicators and stop loss
+    dataframe['pivot_high_trend'] = False
+    dataframe['pivot_low_trend'] = False
+    dataframe['stop_loss'] = None
+    
+    # Variables to track consecutive pivot highs and lows
+    consecutive_high_pivots = 0
+    consecutive_low_pivots = 0
+    last_pivot_high_idx = None
+    last_pivot_low_idx = None
+    last_pivot_high_value = None
+    last_pivot_low_value = None
+    
+    for i, row in dataframe.iterrows():
+        if row['isPivot'] == 2:  # Pivot High
+            if last_pivot_high_value is None or row['High'] > last_pivot_high_value:
+                consecutive_high_pivots += 1
+            else:
+                consecutive_high_pivots = 1
+            
+            if consecutive_high_pivots >= min_consecutive_high_pivots:
+                dataframe.loc[last_pivot_high_idx:i, 'pivot_high_trend'] = True
+            
+            last_pivot_high_idx = i
+            last_pivot_high_value = row['High']
+    
+        elif row['isPivot'] == 1:  # Pivot Low
+            if last_pivot_low_value is None or row['Low'] < last_pivot_low_value:
+                consecutive_low_pivots += 1
+            else:
+                consecutive_low_pivots = 1
+
+            if consecutive_low_pivots >= min_consecutive_low_pivots:
+                dataframe.loc[last_pivot_low_idx:i, 'pivot_low_trend'] = True
+
+            last_pivot_low_idx = i
+            last_pivot_low_value = row['Low']
+    
+        # Set stop loss based on the last pivot
+        if row['isPivot'] == 2 and last_pivot_low_value is not None:
+            dataframe.at[i, 'stop_loss'] = last_pivot_low_value
+        elif row['isPivot'] == 1 and last_pivot_high_value is not None:
+            dataframe.at[i, 'stop_loss'] = last_pivot_high_value
+    
+    return dataframe
+    
