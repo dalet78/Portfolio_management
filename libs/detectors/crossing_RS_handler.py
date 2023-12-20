@@ -152,6 +152,35 @@ def check_pre_cross_break(dataframe, level, lookback_periods=5, check_periods=20
 
     return dataframe
 
+def analyze_cross_trend_condition(dataframe):
+    """
+    Analyze the DataFrame and add a new column 'trend_condition_met' indicating whether the trend condition
+    is met for each cross. For a cross of type 2, the condition is met if the pivot_high_trend for the last
+    pivot point (isPivot) - 2 is True. For a cross of type 1, the condition is met if the pivot_low_trend 
+    for the last pivot point (isPivot) - 2 is True.
+
+    :param dataframe: Pandas DataFrame with market data including 'isPivot', 'cross_type', 
+                      'pivot_high_trend', and 'pivot_low_trend' columns.
+    :return: Modified DataFrame with an added 'trend_condition_met' column.
+    """
+    dataframe['trend_condition_met'] = False
+
+    for i in range(len(dataframe)):
+        if dataframe.at[i, 'cross_type'] == 2:
+            # Identificare il penultimo punto pivot prima del cross
+            prev_pivots = dataframe[dataframe['isPivot'] > 0].iloc[:i]
+            if len(prev_pivots) >= 2:
+                trend_condition = prev_pivots.iloc[-2]['pivot_high_trend']
+                dataframe.at[i, 'trend_condition_met'] = trend_condition
+
+        elif dataframe.at[i, 'cross_type'] == 1:
+            # Identificare il penultimo punto pivot prima del cross
+            prev_pivots = dataframe[dataframe['isPivot'] > 0].iloc[:i]
+            if len(prev_pivots) >= 2:
+                trend_condition = prev_pivots.iloc[-2]['pivot_low_trend']
+                dataframe.at[i, 'trend_condition_met'] = trend_condition
+
+    return dataframe
 
 
 
