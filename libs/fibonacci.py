@@ -28,3 +28,25 @@ class FibonacciRetracementCalculator:
             self.df[f'Fib_{key}'] = value
 
         return self.df
+
+    def calculate_fibonacci_for_all_trends(self):
+        """
+        Identify all sequences of pivot highs and lows in the DataFrame and calculate Fibonacci retracement levels.
+        :return: DataFrame with Fibonacci level columns added for each identified trend.
+        """
+        # Assuming the DataFrame has 'isPivot' column with 2 for pivot highs and 1 for pivot lows
+        if 'isPivot' in self.df.columns:
+            pivot_highs = self.df[self.df['isPivot'] == 2]
+            pivot_lows = self.df[self.df['isPivot'] == 1]
+
+            trend_counter = 0
+            for high_index, high_row in pivot_highs.iterrows():
+                for low_index, low_row in pivot_lows.iterrows():
+                    if low_index > high_index:  # Identify a trend
+                        trend_counter += 1
+                        self.add_fibonacci_levels(high_row['High'], low_row['Low'], f'trend_{trend_counter}')
+                        break  # Move to the next pivot high after processing a trend
+        else:
+            print("DataFrame does not contain pivot point information.")
+        
+        return self.df
