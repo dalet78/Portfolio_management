@@ -60,6 +60,17 @@ class CandlestickChartGenerator:
         add_plots = [mpf.make_addplot([line]*len(self.df[-max_points:]), type='line') for line in lines]
         return self._plot_to_file(max_points, addplot=add_plots)
 
+    def create_chart_with_horizontal_lines_and_volume(self, lines, max_points=None):
+        # Preparazione dei dati per il grafico delle linee orizzontali
+        add_plots = [mpf.make_addplot([line] * len(self.df[-max_points:]), type='line') for line in lines]
+
+        # Aggiunta del grafico del volume
+        volume_plot = mpf.make_addplot(self.df['Volume'][-max_points:], type='bar', panel=1, color='blue', alpha=0.5)
+        add_plots.append(volume_plot)
+
+        # Creazione del grafico con mplfinance
+        return self._plot_to_file(max_points, addplot=add_plots)
+
     def create_chart_with_more_horizontal_lines(self, lines, max_points=None):
         # Assicurati che 'lines' sia una lista di valori
         if not isinstance(lines, list):

@@ -6,6 +6,7 @@ from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, 
 import json
 from .bot_command import *
 import subprocess
+from libs.detectors.crossing_RS_handler import breakout_finder, fakeout_finder
 
 class CommandBot:
     def __init__(self):
@@ -63,19 +64,25 @@ class CommandBot:
         elif menu == 'catchtraderussel':
             keyboard = [
                 [InlineKeyboardButton("find blocked stock", callback_data="action_findblockedstockrussel"),
-                 InlineKeyboardButton("find lateral move", callback_data="action_findlateralmovrussel")],
+                 InlineKeyboardButton("catch possible breakout", callback_data="action_findbreakoutrussel")],
+                [InlineKeyboardButton("catch possible fakeout", callback_data="action_findfakeoutrussel"),
+                 InlineKeyboardButton("TBD", callback_data="action_findlateralmovsp500")],
                 [InlineKeyboardButton("Back to previous menu", callback_data="menu_catchtrade")]
             ]
         elif menu == 'catchtradesp500':
             keyboard = [
                 [InlineKeyboardButton("find blocked stock", callback_data="action_findblockedstocksp500"),
-                 InlineKeyboardButton("find lateral move", callback_data="action_findlateralmovsp500")],
+                 InlineKeyboardButton("catch possible breakout", callback_data="action_findlbreakoutsp500")],
+                [InlineKeyboardButton("catch possible fakeout", callback_data="action_findfakeoutsp500"),
+                 InlineKeyboardButton("TBD", callback_data="action_findlateralmovsp500")],
                 [InlineKeyboardButton("Back to previous menu", callback_data="menu_catchtrade")]
             ]
         elif menu == 'catchtradenasdaq':
             keyboard = [
                 [InlineKeyboardButton("find blocked stock", callback_data="action_findblockedstocknasdaq"),
-                 InlineKeyboardButton("find lateral move", callback_data="action_findlateralmovnasdaq")],
+                 InlineKeyboardButton("catch possible breakout", callback_data="action_findbreakoutnasdaq")],
+                [InlineKeyboardButton("catch possible fakeout", callback_data="action_findfakeoutnasdaq"),
+                 InlineKeyboardButton("TBD", callback_data="action_findlateralmovsp500")],
                 [InlineKeyboardButton("Back to previous menu", callback_data="menu_catchtrade")]
             ]
         else:
@@ -133,9 +140,44 @@ class CommandBot:
                 callback_query.message.reply_text("PDF generate and sent!")
             except subprocess.CalledProcessError as e:
                 callback_query.message.reply_text(f"Error generate: {e}")
-        elif action == "findlateralmov":
+        elif action == "findbreakoutrussel":
             try:
-                file_report = find_lateral_mov()
+                file_report = breakout_finder(index="Russel")
+                self.send_generated_pdf(client, callback_query.message.chat.id, file_report)
+                callback_query.message.reply_text("PDF generate and sent!")
+            except subprocess.CalledProcessError as e:
+                callback_query.message.reply_text(f"Error generate: {e}")
+        elif action == "findlbreakoutsp500":
+            try:
+                file_report = breakout_finder(index="SP500")
+                self.send_generated_pdf(client, callback_query.message.chat.id, file_report)
+                callback_query.message.reply_text("PDF generate and sent!")
+            except subprocess.CalledProcessError as e:
+                callback_query.message.reply_text(f"Error generate: {e}")
+        elif action == "findbreakoutnasdaq":
+            try:
+                file_report = breakout_finder(index="Nasdaq")
+                self.send_generated_pdf(client, callback_query.message.chat.id, file_report)
+                callback_query.message.reply_text("PDF generate and sent!")
+            except subprocess.CalledProcessError as e:
+                callback_query.message.reply_text(f"Error generate: {e}")
+        elif action == "findfakeoutrussel":
+            try:
+                file_report = fakeout_finder(index="Russel")
+                self.send_generated_pdf(client, callback_query.message.chat.id, file_report)
+                callback_query.message.reply_text("PDF generate and sent!")
+            except subprocess.CalledProcessError as e:
+                callback_query.message.reply_text(f"Error generate: {e}")
+        elif action == "findfakeoutsp500":
+            try:
+                file_report = fakeout_finder(index="SP500")
+                self.send_generated_pdf(client, callback_query.message.chat.id, file_report)
+                callback_query.message.reply_text("PDF generate and sent!")
+            except subprocess.CalledProcessError as e:
+                callback_query.message.reply_text(f"Error generate: {e}")
+        elif action == "findfakeoutnasdaq":
+            try:
+                file_report = fakeout_finder(index="Nasdaq")
                 self.send_generated_pdf(client, callback_query.message.chat.id, file_report)
                 callback_query.message.reply_text("PDF generate and sent!")
             except subprocess.CalledProcessError as e:

@@ -306,7 +306,6 @@ def breakout_one(index="Russel"):
                 else:
                     data = check_pivot_trends_with_sl(data)
                 data.to_csv('/home/dp/PycharmProjects/Portfolio_management/Portfolio_management/Reports/Data/tmp/tmp.csv')
-                data = verify_breakout_volume(data)
                 if data['cross_type'].iloc[-1] == 2 and pivot_high_trend:
                     # Gli ultimi 2 HH sono in aumento, utilizza lo stop loss calcolato
                     # SL = stop_loss
