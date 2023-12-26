@@ -48,3 +48,63 @@ class VWAPCalculator:
         self.calculate_standard_deviation()
         self.calculate_second_level_deviation()
         return self.data
+
+
+import pandas as pd
+
+class TradingVWAP:
+    def __init__(self, data):
+        """
+        Initialize with a dataframe containing at least 'price' and 'volume' columns.
+        """
+        self.data = data
+
+    def calculate_vwap(self, timeframe):
+        """
+        Calculate VWAP for a given timeframe.
+        """
+        df = self.data.copy()
+        df['Datetime'] = pd.to_datetime(df['Datetime'])
+        df.set_index('Datetime', inplace=True)
+        df['Cumulative_Price_Volume'] = (df['Price'] * df['Volume']).cumsum()
+        df['Cumulative_Volume'] = df['Volume'].cumsum()
+        df['VWAP'] = df['Cumulative_Price_Volume'] / df['Cumulative_Volume']
+
+        if timeframe in ['D', 'W', 'M', 'Q', 'A']:
+            vwap = df.resample(timeframe).last()['VWAP']
+        else:
+            raise ValueError("Unsupported timeframe. Choose 'D', 'W', 'M', 'Q', or 'A'.")
+        
+        return vwap
+
+    def calculate_std_deviation(self, vwap_series):
+        """
+        Calculate the standard deviation for a given VWAP series.
+        """
+        return vwap_series.std()
+
+    def get_last_values(self, series, n):
+        """
+        Get the last 'n' values from a series.
+        """
+        return series[-n:]
+
+    def build_tuples(self):
+        """
+        Build tuples of the last 3 values for 'W', 'M', 'Q', 'A' and last 5 for 'D'.
+        """
+        tuples_dict = {}
+        for timeframe in ['D', 'W', 'M', 'Q', 'A']:
+            vwap = self.calculate_vwap(timeframe)
+            std_dev = self.calculate_std_deviation(vwap)
+            last_values_vwap = self.get_last_values(vwap, 5 if timeframe == 'D' else 3)
+            last_values_std_dev = self.get_last_values(std_dev, 5 if timeframe == 'D' else 3)
+            tuples_dict[timeframe] = (last_values_vwap, last_values_std_dev)
+
+        return tuples_dict
+
+# Example usage:
+data = pd.read_csv('Data/SP500/Daily/AAL_historical_data.csv')  # Ensure this has 'Datetime', 'Price', and 'Volume'
+trading_vwap = TradingVWAP(data)
+tuples = trading_vwap.build_tuples()
+print(tuples)
