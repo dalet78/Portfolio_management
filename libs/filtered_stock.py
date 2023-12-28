@@ -2,7 +2,7 @@ import json
 import pandas as pd
 
 source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
-def return_filtred_list(index="SP500", price_range= (10,50), volume_range=(0,5000000000)):
+def return_filtred_list(index="SP500", price_range= (10,50), volume_range=(1000000,5000000000)):
     """
       Legge i ticker dagli stock SP500 e Russell2000, li combina e filtra in base al prezzo e al volume.
 
