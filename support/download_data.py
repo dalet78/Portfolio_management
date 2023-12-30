@@ -52,6 +52,26 @@ def download_data_daily():
     downloader = StockDataDownloader(tickers_list, index = "Russel")
     downloader.download_data()
 
+def download_data_5min():
+    with open(f"{source_directory}/json_files/SP500-stock.json", 'r') as file:
+        tickers = json.load(file)
+
+    # Lista dei ticker
+    tickers_list = list(tickers.keys())
+
+    # Utilizzo della classe StockDataDownloader
+    downloader = StockDataDownloader(tickers_list, interval='5m', index = "SP500")
+    downloader.download_data_5min()
+    with open( f"{source_directory}/json_files/nasdaq.json", 'r') as file:
+        tickers = json.load(file)
+    # Lista dei ticker
+    tickers_list = list(tickers.keys())
+    # Utilizzo della classe StockDataDownloader
+    downloader = StockDataDownloader(tickers_list, interval='5m', index = "Nasdaq")
+    downloader.download_data_5min()
+
+
 if __name__ == '__main__':
-    download_data_daily()
+    #download_data_daily()
+    download_data_5min()
     #download_data_weekly()

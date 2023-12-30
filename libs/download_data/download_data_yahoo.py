@@ -14,6 +14,8 @@ class StockDataDownloader:
             self.data_path = f'{source_directory}/Data/SP500/Daily/'
         elif interval == '1wk'and index == "SP500":
             self.data_path = f'{source_directory}/Data/SP500/Weekly/'
+        elif interval == '5m'and index == "SP500":
+            self.data_path = f'{source_directory}/Data/SP500/5min/'
         elif interval == '1d' and index == "Russel":
             self.data_path = f'{source_directory}/Data/Russel/Daily/'
         elif interval == '1wk'and index == "Russel":
@@ -22,6 +24,8 @@ class StockDataDownloader:
             self.data_path = f'{source_directory}/Data/Nasdaq/Daily/'
         elif interval == '1wk'and index == "Nasdaq":
             self.data_path = f'{source_directory}/Data/Nasdaq/Weekly/'
+        elif interval == '5m'and index == "Nasdaq":
+            self.data_path = f'{source_directory}/Data/Nasdaq/5min/'
         else:
             raise ValueError("Invalid interval. Choose '1d' for daily or '1wk' for weekly data.")
 
@@ -42,6 +46,16 @@ class StockDataDownloader:
                 print(f"Failed to download data for {ticker}: {e}")
                 self.tickers.remove(ticker)  # Rimuovi il ticker dalla lista
 
+    def download_data_5min(self):
+        self.delete_folder_contents(self.data_path)
+        for ticker in self.tickers[:]:
+            try:
+                data = yf.download(ticker, period="1mo", interval=self.interval)
+                data.to_csv(f"{self.data_path}{ticker}_historical_data.csv")
+                print(f"Dati aggiornati per {ticker}")
+            except Exception as e:
+                print(f"Failed to download data for {ticker}: {e}")
+                self.tickers.remove(ticker)
 
     def update_data(self):
         end_date = datetime.now()
