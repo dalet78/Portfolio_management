@@ -102,6 +102,16 @@ def merge_specific_dfs_if_overlap(dfs, values, first_index, second_index, overla
     # Nessuna azione richiesta o indici non validi, restituisci l'originale
     return dfs
 
+def reorder_dfs(dfs):
+    """
+    Riordina gli DataFrame in base al primo timestamp di ciascuno.
+
+    :param dfs: Lista dei DataFrame da riordinare.
+    :return: Lista dei DataFrame riordinati.
+    """
+    # Ottieni il primo timestamp di ciascun DataFrame e usa come chiave per l'ordinamento
+    dfs.sort(key=lambda x: x.index.min())
+    return dfs
 
 def iterative_merge_dfs(dfs, overlap_threshold):
     """
@@ -120,7 +130,7 @@ def iterative_merge_dfs(dfs, overlap_threshold):
 
         # Controlla la sovrapposizione e unisci se necessario
         dfs = merge_specific_dfs_if_overlap(dfs, values, first_index_to_check, second_index_to_check, overlap_threshold)
-
+        dfs = reorder_dfs(dfs)
         # Se il numero di DataFrame è cambiato, significa che c'è stata un'unione
         if len(dfs) < original_length:
             # Ricalcola i valori di market profile per tutti i DataFrame
@@ -137,7 +147,7 @@ def iterative_merge_dfs(dfs, overlap_threshold):
 
 # Percorso del file di dati
 source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
-data_filepath = f"{source_directory}/Data/SP500/5min/A_historical_data.csv"
+data_filepath = f"{source_directory}/Data/SP500/5min/AAL_historical_data.csv"
 
 # Carica i dati
 df = load_data(data_filepath)
@@ -161,3 +171,5 @@ dfs_per_day, market_profile_values = iterative_merge_dfs(dfs_per_day, overlap_th
 values_df = pd.DataFrame(market_profile_values)
 
 print(dfs_per_day)
+print(market_profile_values)
+print(values_df)
