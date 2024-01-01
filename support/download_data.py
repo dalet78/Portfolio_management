@@ -72,6 +72,6 @@ def download_data_5min():
 
 
 if __name__ == '__main__':
-    #download_data_daily()
+    download_data_daily()
     download_data_5min()
-    #download_data_weekly()
+    download_data_weekly()

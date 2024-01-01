@@ -38,15 +38,12 @@ def calculate_market_profile_values(dfs_per_day):
 
 def calculate_overlap_percent(range1, range2):
     """Calcola la sovrapposizione percentuale tra due intervalli."""
-    try:
-        max_start = max(filter(None, [range1[0], range2[0]]))  # Ignora i valori None
-        min_end = min(filter(None, [range1[1], range2[1]]))  # Ignora i valori None
-        overlap = max(0, min_end - max_start)
-        total_range = min(filter(None, [range1[1], range2[1]])) - max(filter(None, [range1[0], range2[0]]))
-        return (overlap / total_range) * 100 if total_range else 0
-    except ValueError:
-        # Gestisci il caso in cui tutti i valori sono None
-        return 0
+    max_start = max(range1[0], range2[0])
+    min_end = min(range1[1], range2[1])
+    overlap = max(0, min_end - max_start)
+    total_range = min(range1[1], range2[1]) - max(range1[0], range2[0])
+    return (overlap / total_range) * 100 if total_range else 0
+
 
 def check_value_area_overlap(values, first_index, second_index, overlap_threshold):
     """
@@ -60,22 +57,18 @@ def check_value_area_overlap(values, first_index, second_index, overlap_threshol
     """
     # Assicurati che gli indici siano validi e che ci siano abbastanza dati
     if first_index < len(values) and second_index < len(values) and first_index != second_index:
-        # Verifica che entrambi i giorni abbiano valori validi
-        if values[first_index]['VAL'] is None or values[first_index]['VAH'] is None or \
-                values[second_index]['VAL'] is None or values[second_index]['VAH'] is None:
-            return False
-            # Ottieni le value area dei giorni specificati
-    first_day = values[first_index]
-    second_day = values[second_index]
+        # Ottieni le value area dei giorni specificati
+        first_day = values[first_index]
+        second_day = values[second_index]
 
-    # Calcola la sovrapposizione percentuale
-    overlap_percent = calculate_overlap_percent(
-        (first_day['VAL'], first_day['VAH']),
-        (second_day['VAL'], second_day['VAH'])
-    )
+        # Calcola la sovrapposizione percentuale
+        overlap_percent = calculate_overlap_percent(
+            (first_day['VAL'], first_day['VAH']),
+            (second_day['VAL'], second_day['VAH'])
+        )
 
-    # Controlla se la sovrapposizione è almeno della soglia specificata
-    return overlap_percent >= overlap_threshold
+        # Controlla se la sovrapposizione è almeno della soglia specificata
+        return overlap_percent >= overlap_threshold
 
     return False  # Restituisce False se gli indici non sono validi o non ci sono abbastanza dati
 
