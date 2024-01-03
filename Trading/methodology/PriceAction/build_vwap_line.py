@@ -43,7 +43,7 @@ def vwap_stock_finder(index="Russel"):
 
                 # Ottieni i dati per settimana, mese, quadrimestre e anno
                 timeframes = [
-                    #('Venerdì precedente', trading_vwap.get_previous_friday_vwap_and_std()),
+                    ('Venerdì precedente', trading_vwap.get_previous_friday_vwap_and_std()),
                     ('Ultimo giorno del mese precedente', trading_vwap.get_last_month_vwap_and_std()),
                     ('Ultimo giorno del quadrimestre precedente', trading_vwap.get_last_quarter_vwap_and_std()),
                     ('Ultimo giorno utile dell\'anno precedente', trading_vwap.get_last_year_vwap_and_std())
