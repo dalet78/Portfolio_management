@@ -1,0 +1,29 @@
+{
+  "stocks": [
+    {
+      "name": "StockA",
+      "marketProfiles": [
+        {"VAH": valore, "POC": valore, "VAL": valore},
+        // ... altri profili di mercato per StockA
+      ],
+      "VWAPs": {
+        "weekly": [vwap - devStd, vwap, vwap + devStd],
+        "monthly": [vwap - devStd, vwap, vwap + devStd],
+        "quarterly": [vwap - devStd, vwap, vwap + devStd]
+      }
+    },
+    {
+      "name": "StockB",
+      "marketProfiles": [
+        {"VAH": valore, "POC": valore, "VAL": valore},
+        // ... altri profili di mercato per StockB
+      ],
+      "VWAPs": {
+        "weekly": [vwap - devStd, vwap, vwap + devStd],
+        "monthly": [vwap - devStd, vwap, vwap + devStd],
+        "quarterly": [vwap - devStd, vwap, vwap + devStd]
+      }
+    }
+    // ... altri stock
+  ]
+}
