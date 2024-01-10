@@ -20,6 +20,8 @@ class StockDataDownloader:
             self.data_path = f'{source_directory}/Data/Russel/Daily/'
         elif interval == '1wk'and index == "Russel":
             self.data_path = f'{source_directory}/Data/Russel/Weekly/'
+        elif interval == '5m' and index == "Russel":
+            self.data_path = f'{source_directory}/Data/Russel/5min/'
         elif interval == '1d' and index == "Nasdaq":
             self.data_path = f'{source_directory}/Data/Nasdaq/Daily/'
         elif interval == '1wk'and index == "Nasdaq":

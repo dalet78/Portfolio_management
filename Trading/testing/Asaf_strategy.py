@@ -116,7 +116,7 @@ def Asaf_trading(index = "SP500"):
                     win_rate = stats['Win Rate [%]']
 
                     # Controlla se il stock soddisfa i criteri
-                    if total_trades > 3 and win_rate > 20:
+                    if total_trades > 3 and win_rate > 40:
                         # Salva il grafico in una variabile
                         fig = bt.plot()
 
@@ -136,6 +136,6 @@ def Asaf_trading(index = "SP500"):
 # Preparazione per il backtesting
 if __name__ == "__main__":
     Asaf_trading(index="Nasdaq")
-    #Asaf_trading(index="Russel")
+    Asaf_trading(index="Russel")
     Asaf_trading(index="SP500")
 

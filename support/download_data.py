@@ -69,9 +69,18 @@ def download_data_5min():
     # Utilizzo della classe StockDataDownloader
     downloader = StockDataDownloader(tickers_list, interval='5m', index = "Nasdaq")
     downloader.download_data_5min()
+    with open(f"{source_directory}/json_files/russell2000.json", 'r') as file:
+        tickers = json.load(file)
+
+    # Lista dei ticker
+    tickers_list = list(tickers.keys())
+
+    # Utilizzo della classe StockDataDownloader
+    downloader = StockDataDownloader(tickers_list, interval='5m', index = "Russel")
+    downloader.download_data_5min()
 
 
 if __name__ == '__main__':
     download_data_daily()
     download_data_5min()
-    download_data_weekly()
+    #download_data_weekly()
