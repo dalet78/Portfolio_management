@@ -12,6 +12,8 @@ def vwap_stock_finder(index="Russel"):
     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
     report = ReportGenerator()
     report.add_title(title=f"{index} Possible vwap stock")
+    # Inizializza il dizionario JSON
+                json_data = {"stocks": []}
 
     with open(f"{source_directory}/Trading/methodology/strategy_parameter.json", 'r') as file:
         param_data = json.load(file)
@@ -24,7 +26,6 @@ def vwap_stock_finder(index="Russel"):
         report.add_content("Nessun ticker soddisfa i criteri di selezione.")
         print("Nessun ticker soddisfa i criteri di selezione.")
     else:
-
         for item in tickers_list:
             print(f'Analyze stock = {item}')
             result = False
@@ -36,36 +37,59 @@ def vwap_stock_finder(index="Russel"):
                     raise ValueError(
                         "Il DataFrame deve contenere le colonne 'Date', 'High', 'Low', 'Open', 'Close' e 'Volume'.")
 
-                threshold = 0.2
+                
+                # threshold = 0.2
                 trading_vwap = TradingVWAP(data)
-                last_close_price = data['Close'].iloc[-1]
-                vwap_values = []
-                std_devs = []
+                # last_close_price = data['Close'].iloc[-1]
+                # vwap_values = []
+                # std_devs = []
 
                 # Ottieni i dati per settimana, mese, quadrimestre e anno
-                timeframes = [
-                    ('Venerdì precedente', trading_vwap.get_previous_friday_vwap_and_std()),
-                    ('Ultimo giorno del mese precedente', trading_vwap.get_last_month_vwap_and_std()),
-                    ('Ultimo giorno del quadrimestre precedente', trading_vwap.get_last_quarter_vwap_and_std()),
-                    ('Ultimo giorno utile dell\'anno precedente', trading_vwap.get_last_year_vwap_and_std())
-                ]
+                # timeframes = [
+                #     ('Venerdì precedente', trading_vwap.get_previous_friday_vwap_and_std()),
+                #     ('Ultimo giorno del mese precedente', trading_vwap.get_last_month_vwap_and_std()),
+                #     ('Ultimo giorno del quadrimestre precedente', trading_vwap.get_last_quarter_vwap_and_std()),
+                #     ('Ultimo giorno utile dell\'anno precedente', trading_vwap.get_last_year_vwap_and_std())
+                # ]
+                 stock_data = {
+                        "name": item,
+                        "marketProfiles": [],  # Puoi aggiungere i dati del market profile qui
+                        "VWAPs": {}
+                    }
+
+                # Calcola i VWAP e le deviazioni standard
+                vwap_weekly, std_weekly = trading_vwap.get_previous_friday_vwap_and_std()
+                vwap_monthly, std_monthly = trading_vwap.get_last_month_vwap_and_std()
+                vwap_quarterly, std_quarterly = trading_vwap.get_last_quarter_vwap_and_std()
+            
+                # Struttura per memorizzare i dati di uno stock
+                stock_data = {
+                    "name": item,
+                    "marketProfiles": [],  # Aggiungi qui i dati del market profile se necessario
+                    "VWAPs": {
+                        "weekly": [vwap_weekly - std_weekly, vwap_weekly, vwap_weekly + std_weekly],
+                        "monthly": [vwap_monthly - std_monthly, vwap_monthly, vwap_monthly + std_monthly],
+                        "quarterly": [vwap_quarterly - std_quarterly, vwap_quarterly, vwap_quarterly + std_quarterly]
+                    }
+                }
+
 
                 # Controlla la vicinanza del prezzo di chiusura ai valori VWAP
-                for label, (vwap, std) in timeframes:
-                    vwap_minus_std, vwap_plus_std = vwap - std, vwap + std
+                # for label, (vwap, std) in timeframes:
+                #     vwap_minus_std, vwap_plus_std = vwap - std, vwap + std
 
-                    if abs(last_close_price - vwap_minus_std) <= threshold or \
-                            abs(last_close_price - vwap) <= threshold or \
-                            abs(last_close_price - vwap_plus_std) <= threshold:
-                        close_to_vwap_stocks.append((item, label))
-                        exit_values = [vwap_minus_std, vwap, vwap_plus_std]
-                        image = CandlestickChartGenerator(data)
-                        image_path = image.create_chart_with_horizontal_lines_and_volume(lines=exit_values,
-                                                                                         max_points=90)
-                        report.add_content(f'Stock = {item} vicino al VWAP del {label}\n')
-                        report.add_commented_image(df=data, comment=f'VWAP values = {exit_values}\n',
-                                                   image_path=image_path)
-                        break
+                #     if abs(last_close_price - vwap_minus_std) <= threshold or \
+                #             abs(last_close_price - vwap) <= threshold or \
+                #             abs(last_close_price - vwap_plus_std) <= threshold:
+                #         close_to_vwap_stocks.append((item, label))
+                #         exit_values = [vwap_minus_std, vwap, vwap_plus_std]
+                #         image = CandlestickChartGenerator(data)
+                #         image_path = image.create_chart_with_horizontal_lines_and_volume(lines=exit_values,
+                #                                                                          max_points=90)
+                #         report.add_content(f'Stock = {item} vicino al VWAP del {label}\n')
+                #         report.add_commented_image(df=data, comment=f'VWAP values = {exit_values}\n',
+                #                                    image_path=image_path)
+                #         break
 
             except FileNotFoundError:
                 print(f"File non trovato per {item}")
