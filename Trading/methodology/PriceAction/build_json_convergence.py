@@ -10,8 +10,6 @@ from libs.filtered_stock import return_filtred_list
 def vwap_stock_finder(index="Russel"):
     start_time = time.time()  # Registra l'ora di inizio
     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
-    report = ReportGenerator()
-    report.add_title(title=f"{index} Possible vwap stock")
     # Inizializza il dizionario JSON
     json_data = {"stocks": []}
 
@@ -135,8 +133,6 @@ def vwap_stock_finder(index="Russel"):
             except Exception as e:
                 print(f"Errore durante l'elaborazione di {item}: {e}")
 
-            file_report = report.save_report(filename=f"{index}_vwap_analysis")
-            print(f"Report salvato in: {file_report}")
             duration = time.time() - start_time
             print(f"Tempo di esecuzione: {duration:.2f} secondi")
 
@@ -172,26 +168,22 @@ def find_close_market_profile_values(index="SP500"):
                         "vwapPeriod": period,
                         "vwapValues": vwap
                     })
+        # save json in file
+        with open(f'{source_directory}/Data/{index}_stocks_cong_data.json', 'w') as f:
+            json.dump(congruence_list_nasdaq, f, indent=4)
+    
 
-    return close_values
-
-def find_stock_near_congruence(congruence_list):
+def find_stock_near_congruence(index= ):
     start_time = time.time()  # Registra l'ora di inizio
     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
+    with open(f'{source_directory}/Data/{index}_stocks_cong_data.json', 'r') as f:
+            stock_data = json.load(f)
     report = ReportGenerator()
-    report.add_title(title=f"sp500 Possible CONGRUENCE stock")
-    for stock in congruence_list['stocks']:
-        item = stock['name']
-        print(f'Analyze stock = {item}')
-        try:
-            data = pd.read_csv(f"{source_directory}/Data/sp500/Daily/{item}_historical_data.csv",
-                               parse_dates=['Date'])
-            data['Close'].iloc[-1]
-
-        except FileNotFoundError:
-            print(f"File non trovato per {item}")
-        except Exception as e:
-            print(f"Errore durante l'elaborazione di {item}: {e}")
+    report.add_title(title=f"{index} Possible CONGRUENCE stock")
+    for item in stock_data:
+        
+    file_report = report.save_report(filename=f"{index}_Report_blocked_stock")
+    
 
 
 if __name__ == '__main__':
@@ -199,11 +191,9 @@ if __name__ == '__main__':
     #vwap_stock_finder(index = "Nasdaq")
     #vwap_stock_finder(index = "SP500")
     #vwap_stock_finder(index="Russel")
-    congruence_list_nasdaq = find_close_market_profile_values(index = "Nasdaq")
-    congruence_list_SP500 = find_close_market_profile_values(index="SP500")
-    # save json in file
-    with open(f'{source_directory}/Data/Nasdaq_stocks_cong_data.json', 'w') as f:
-        json.dump(congruence_list_nasdaq, f, indent=4)
-    with open(f'{source_directory}/Data/SP500_stocks_cong_data.json', 'w') as f:
-        json.dump(congruence_list_SP500, f, indent=4)
+    find_close_market_profile_values(index = "Nasdaq")
+    find_close_market_profile_values(index="SP500")
+    
+    
+    
 
