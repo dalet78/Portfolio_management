@@ -21,7 +21,6 @@ def vwap_stock_finder(index="Russel"):
     # Controlla se la lista dei ticker è vuota
     if not tickers_list:
         # Aggiungi un messaggio nel report o registra un log
-        report.add_content("Nessun ticker soddisfa i criteri di selezione.")
         print("Nessun ticker soddisfa i criteri di selezione.")
     else:
         for item in tickers_list:
@@ -170,10 +169,10 @@ def find_close_market_profile_values(index="SP500"):
                     })
         # save json in file
         with open(f'{source_directory}/Data/{index}_stocks_cong_data.json', 'w') as f:
-            json.dump(congruence_list_nasdaq, f, indent=4)
+            json.dump(f'congruence_list_{index}', f, indent=4)
     
 
-def find_stock_near_congruence(index= ):
+def find_stock_near_congruence(index= "SP500"):
     start_time = time.time()  # Registra l'ora di inizio
     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
     with open(f'{source_directory}/Data/{index}_stocks_cong_data.json', 'r') as f:
@@ -181,8 +180,19 @@ def find_stock_near_congruence(index= ):
     report = ReportGenerator()
     report.add_title(title=f"{index} Possible CONGRUENCE stock")
     for item in stock_data:
+        item_data = item["stock"]
+        report.add_content(f'stock = {item_data} - vwap type = {item["vwapPeriod"]}\n')
+        data_filepath = f"{source_directory}/Data/{index}/5min/{item_data}_historical_data.csv"
+        # Carica i dati
+        df = load_data(data_filepath)
+        image = CandlestickChartGenerator(df)
+        image_path = image.create_chart_with_areas(market_profile=item['marketProfile'], vwap_values=item['vwapValues']
+                                                   ,max_points=90)
+        report.add_commented_image(df=df, comment=f'market_profile={item["marketProfile"]}\n'
+                                                  f'vwap_values={item["vwapValues"]}\n'
+                                                  f'', image_path=image_path)
         
-    file_report = report.save_report(filename=f"{index}_Report_blocked_stock")
+    file_report = report.save_report(filename=f"{index}_convergence_stock")
     
 
 
@@ -191,8 +201,10 @@ if __name__ == '__main__':
     #vwap_stock_finder(index = "Nasdaq")
     #vwap_stock_finder(index = "SP500")
     #vwap_stock_finder(index="Russel")
-    find_close_market_profile_values(index = "Nasdaq")
-    find_close_market_profile_values(index="SP500")
+    #find_close_market_profile_values(index = "Nasdaq")
+    #find_close_market_profile_values(index="SP500")
+    find_stock_near_congruence(index="Nasdaq")
+    find_stock_near_congruence(index="SP500")
     
     
     

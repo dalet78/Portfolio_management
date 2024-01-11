@@ -153,12 +153,34 @@ class CandlestickChartGenerator:
         vwap_area = [vwap_values['VAL'], vwap_values['POC'], vwap_values['VAH']]
 
         # Aggiungi le linee orizzontali per le aree
-        add_plots = [mpf.make_addplot([line]*len(df_to_plot), type='line') for line in mp_area + vwap_area]
+        # Aggiungi le linee orizzontali per le aree e crea le legende
+        colors = ['green', 'blue', 'red', 'purple', 'orange', 'brown']
 
-        # Creazione e salvataggio del grafico
+        # Aggiungi le linee orizzontali per le aree, usando un colore diverso per ciascuna
+        add_plots = []
+        i = 0  # indice per i colori
+
+        for label, line in market_profile.items():
+            add_plots.append(mpf.make_addplot([line] * len(df_to_plot), type='line', linestyle='dashdot',
+                                              color=colors[i % len(colors)], label=f'Market {label}'))
+            i += 1
+
+        for label, line in vwap_values.items():
+            add_plots.append(mpf.make_addplot([line] * len(df_to_plot), type='line', linestyle='dashdot',
+                                              color=colors[i % len(colors)], label=f'VWAP {label}'))
+            i += 1
+
         temp_file_path = self._generate_temp_file_path()
+        # Creazione e salvataggio del grafico
         mpf.plot(df_to_plot, type='candlestick', style=self.mpf_style,
-                 addplot=add_plots, savefig=temp_file_path)
+                 addplot=add_plots, title='Stock Analysis', ylabel='Price', savefig=temp_file_path)
+        #
+        # add_plots = [mpf.make_addplot([line]*len(df_to_plot), type='line') for line in mp_area + vwap_area]
+        #
+        # # Creazione e salvataggio del grafico
+        #
+        # mpf.plot(df_to_plot, type='candlestick', style=self.mpf_style,
+        #          addplot=add_plots, savefig=temp_file_path)
         return temp_file_path
         
     def clear_temp_files(self):
