@@ -195,8 +195,15 @@ def find_stock_near_congruence(congruence_list):
 
 
 if __name__ == '__main__':
+    source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
     #vwap_stock_finder(index = "Nasdaq")
     #vwap_stock_finder(index = "SP500")
     #vwap_stock_finder(index="Russel")
-    congruence_list = find_close_market_profile_values()
-    print(congruence_list)
+    congruence_list_nasdaq = find_close_market_profile_values(index = "Nasdaq")
+    congruence_list_SP500 = find_close_market_profile_values(index="SP500")
+    # save json in file
+    with open(f'{source_directory}/Data/Nasdaq_stocks_cong_data.json', 'w') as f:
+        json.dump(congruence_list_nasdaq, f, indent=4)
+    with open(f'{source_directory}/Data/SP500_stocks_cong_data.json', 'w') as f:
+        json.dump(congruence_list_SP500, f, indent=4)
+

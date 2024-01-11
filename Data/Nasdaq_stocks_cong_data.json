@@ -1,0 +1,156 @@
+[
+    {
+        "stock": "CMCSA",
+        "marketProfile": {
+            "VAL": 43.64,
+            "POC": 43.94,
+            "VAH": 44.3
+        },
+        "vwapPeriod": "weekly",
+        "vwapValues": {
+            "VAL": 43.8,
+            "POC": 43.94,
+            "VAH": 44.09
+        }
+    },
+    {
+        "stock": "CSX",
+        "marketProfile": {
+            "VAL": 34.57,
+            "POC": 34.73,
+            "VAH": 34.78
+        },
+        "vwapPeriod": "weekly",
+        "vwapValues": {
+            "VAL": 34.65,
+            "POC": 34.74,
+            "VAH": 34.83
+        }
+    },
+    {
+        "stock": "WBA",
+        "marketProfile": {
+            "VAL": 26.22,
+            "POC": 26.62,
+            "VAH": 26.78
+        },
+        "vwapPeriod": "weekly",
+        "vwapValues": {
+            "VAL": 26.26,
+            "POC": 26.49,
+            "VAH": 26.72
+        }
+    },
+    {
+        "stock": "EBAY",
+        "marketProfile": {
+            "VAL": 40.78,
+            "POC": 42.44,
+            "VAH": 42.66
+        },
+        "vwapPeriod": "monthly",
+        "vwapValues": {
+            "VAL": 41.46,
+            "POC": 42.41,
+            "VAH": 43.37
+        }
+    },
+    {
+        "stock": "AAL",
+        "marketProfile": {
+            "VAL": 14.28,
+            "POC": 14.33,
+            "VAH": 14.37
+        },
+        "vwapPeriod": "monthly",
+        "vwapValues": {
+            "VAL": 13.47,
+            "POC": 13.92,
+            "VAH": 14.37
+        }
+    },
+    {
+        "stock": "FOXA",
+        "marketProfile": {
+            "VAL": 28.9,
+            "POC": 29.55,
+            "VAH": 29.78
+        },
+        "vwapPeriod": "weekly",
+        "vwapValues": {
+            "VAL": 29.67,
+            "POC": 29.73,
+            "VAH": 29.79
+        }
+    },
+    {
+        "stock": "FOXA",
+        "marketProfile": {
+            "VAL": 29.72,
+            "POC": 30.25,
+            "VAH": 30.31
+        },
+        "vwapPeriod": "weekly",
+        "vwapValues": {
+            "VAL": 29.67,
+            "POC": 29.73,
+            "VAH": 29.79
+        }
+    },
+    {
+        "stock": "FOXA",
+        "marketProfile": {
+            "VAL": 29.72,
+            "POC": 30.25,
+            "VAH": 30.31
+        },
+        "vwapPeriod": "quarterly",
+        "vwapValues": {
+            "VAL": 29.64,
+            "POC": 30.27,
+            "VAH": 30.91
+        }
+    },
+    {
+        "stock": "FOX",
+        "marketProfile": {
+            "VAL": 27.43,
+            "POC": 27.71,
+            "VAH": 27.87
+        },
+        "vwapPeriod": "weekly",
+        "vwapValues": {
+            "VAL": 27.66,
+            "POC": 27.7,
+            "VAH": 27.74
+        }
+    },
+    {
+        "stock": "FOX",
+        "marketProfile": {
+            "VAL": 27.43,
+            "POC": 27.71,
+            "VAH": 27.87
+        },
+        "vwapPeriod": "monthly",
+        "vwapValues": {
+            "VAL": 27.46,
+            "POC": 27.71,
+            "VAH": 27.97
+        }
+    },
+    {
+        "stock": "FOX",
+        "marketProfile": {
+            "VAL": 28.17,
+            "POC": 28.49,
+            "VAH": 28.55
+        },
+        "vwapPeriod": "quarterly",
+        "vwapValues": {
+            "VAL": 27.59,
+            "POC": 28.09,
+            "VAH": 28.59
+        }
+    }
+]
