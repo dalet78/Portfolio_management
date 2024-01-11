@@ -132,7 +132,35 @@ class CandlestickChartGenerator:
 
         # Uso della funzione _plot_to_file per creare il grafico
         return self._plot_to_file(max_points, addplot=[apd_macd, apd_signal], panel_ratios=panel_ratios)
+    
+    def create_chart_with_areas(self, market_profile, vwap_values, max_points=None):
+        """
+        Crea un grafico che mostra le aree di Market Profile e VWAP.
 
+        :param market_profile: Dizionario con i valori di VAL, POC, VAH per Market Profile.
+        :param vwap_values: Dizionario con i valori di VAL, POC, VAH per VWAP.
+        :param max_points: Numero massimo di punti da visualizzare.
+        """
+        # Assicurati che df sia indicizzato correttamente
+        if not isinstance(self.df.index, pd.DatetimeIndex):
+            self.df.index = pd.to_datetime(self.df.index)
+
+        # Tronca il DataFrame se necessario
+        df_to_plot = self.df if max_points is None else self.df[-max_points:]
+
+        # Creazione delle aree per Market Profile e VWAP
+        mp_area = [market_profile['VAL'], market_profile['POC'], market_profile['VAH']]
+        vwap_area = [vwap_values['VAL'], vwap_values['POC'], vwap_values['VAH']]
+
+        # Aggiungi le linee orizzontali per le aree
+        add_plots = [mpf.make_addplot([line]*len(df_to_plot), type='line') for line in mp_area + vwap_area]
+
+        # Creazione e salvataggio del grafico
+        temp_file_path = self._generate_temp_file_path()
+        mpf.plot(df_to_plot, type='candlestick', style=self.mpf_style,
+                 addplot=add_plots, savefig=temp_file_path)
+        return temp_file_path
+        
     def clear_temp_files(self):
         for item in os.listdir(self.tmp_dir):
             item_path = os.path.join(self.tmp_dir, item)
