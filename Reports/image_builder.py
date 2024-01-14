@@ -133,14 +133,19 @@ class CandlestickChartGenerator:
         # Uso della funzione _plot_to_file per creare il grafico
         return self._plot_to_file(max_points, addplot=[apd_macd, apd_signal], panel_ratios=panel_ratios)
     
-    def create_chart_with_areas(self, market_profile, vwap_values, max_points=None):
+    def create_chart_with_areas(self, item, max_points=None):
         """
-        Crea un grafico che mostra le aree di Market Profile e VWAP.
+           Crea un grafico che mostra le aree di Market Profile e VWAP.
 
-        :param market_profile: Dizionario con i valori di VAL, POC, VAH per Market Profile.
-        :param vwap_values: Dizionario con i valori di VAL, POC, VAH per VWAP.
-        :param max_points: Numero massimo di punti da visualizzare.
-        """
+           :param item: Dizionario con i valori di mp, mp_type, vwap e vwap_type.
+           :param max_points: Numero massimo di punti da visualizzare.
+           """
+        # Estrai i valori e i tipi da item
+        mp_value = item['mp']
+        mp_type = item['mp_type']
+        vwap_value = item['vwap']
+        vwap_type = item['vwap_type']
+
         # Assicurati che df sia indicizzato correttamente
         if not isinstance(self.df.index, pd.DatetimeIndex):
             self.df.index = pd.to_datetime(self.df.index)
@@ -149,23 +154,21 @@ class CandlestickChartGenerator:
         df_to_plot = self.df if max_points is None else self.df[-max_points:]
 
         # Creazione delle aree per Market Profile e VWAP
-        mp_area = [market_profile['VAL'], market_profile['POC'], market_profile['VAH']]
-        vwap_area = [vwap_values['VAL'], vwap_values['POC'], vwap_values['VAH']]
+        mp_area = {mp_type: mp_value}
+        vwap_area = {vwap_type: vwap_value}
 
         # Aggiungi le linee orizzontali per le aree
-        # Aggiungi le linee orizzontali per le aree e crea le legende
-        colors = ['green', 'blue', 'red', 'purple', 'orange', 'brown']
+        colors = ['purple', 'orange']
 
-        # Aggiungi le linee orizzontali per le aree, usando un colore diverso per ciascuna
         add_plots = []
         i = 0  # indice per i colori
 
-        for label, line in market_profile.items():
+        for label, line in mp_area.items():
             add_plots.append(mpf.make_addplot([line] * len(df_to_plot), type='line', linestyle='dashdot',
                                               color=colors[i % len(colors)], label=f'Market {label}'))
             i += 1
 
-        for label, line in vwap_values.items():
+        for label, line in vwap_area.items():
             add_plots.append(mpf.make_addplot([line] * len(df_to_plot), type='line', linestyle='dashdot',
                                               color=colors[i % len(colors)], label=f'VWAP {label}'))
             i += 1
@@ -174,13 +177,7 @@ class CandlestickChartGenerator:
         # Creazione e salvataggio del grafico
         mpf.plot(df_to_plot, type='candlestick', style=self.mpf_style,
                  addplot=add_plots, title='Stock Analysis', ylabel='Price', savefig=temp_file_path)
-        #
-        # add_plots = [mpf.make_addplot([line]*len(df_to_plot), type='line') for line in mp_area + vwap_area]
-        #
-        # # Creazione e salvataggio del grafico
-        #
-        # mpf.plot(df_to_plot, type='candlestick', style=self.mpf_style,
-        #          addplot=add_plots, savefig=temp_file_path)
+
         return temp_file_path
         
     def clear_temp_files(self):

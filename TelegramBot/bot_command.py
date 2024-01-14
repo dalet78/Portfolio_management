@@ -1,12 +1,13 @@
-import json
 import time
 import pandas as pd
-from libs.download_data.download_data_yahoo import StockDataDownloader
 from libs.filtered_stock import return_filtred_list
 from Reports.report_builder import ReportGenerator
 from Reports.image_builder import CandlestickChartGenerator
 from Trading.methodology.blocked_stock.blocked_stock import TradingAnalyzer
 from Trading.methodology.lateral_movement.search_type_mov import TrendMovementAnalyzer
+from support.download_data import *
+from support.miscela import *
+from Trading.methodology.Asaf_method.Asaf_strategy import Asaf_trading
 
 
 source_directory ="/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
@@ -110,3 +111,16 @@ def find_lateral_mov():
     file_report = report.save_report(filename="Report_lateral_movement")
     enhanced_strategy.clear_img_temp_files()
     return file_report
+
+def daily_routine_command():
+    # download_data_5min()
+    # download_data_daily()
+    # file_report1 = blocked_stock(index="SP500")
+    # file_report2 = blocked_stock(index="Nasdaq")
+    # file_report3 = blocked_stock(index="Russel")
+    folder_name = crea_cartella_con_data()
+    # sposta_file_in_cartella(file_report1, folder_name)
+    # sposta_file_in_cartella(file_report2, folder_name)
+    # sposta_file_in_cartella(file_report3, folder_name)
+
+    return folder_name

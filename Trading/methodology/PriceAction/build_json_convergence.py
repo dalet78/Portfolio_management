@@ -8,7 +8,7 @@ from libs.indicators.vmp_association_handler import *
 from libs.filtered_stock import return_filtred_list
 
 def vwap_stock_finder(index="Russel"):
-    start_time = time.time()  # Registra l'ora di inizio
+
     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
     # Inizializza il dizionario JSON
     json_data = {"stocks": []}
@@ -132,8 +132,7 @@ def vwap_stock_finder(index="Russel"):
             except Exception as e:
                 print(f"Errore durante l'elaborazione di {item}: {e}")
 
-            duration = time.time() - start_time
-            print(f"Tempo di esecuzione: {duration:.2f} secondi")
+
 
         #save json in file
         with open(f'{source_directory}/Data/{index}_stocks_vwap_data.json', 'w') as f:
@@ -158,53 +157,128 @@ def find_close_market_profile_values(index="SP500"):
             # Confronta con ogni periodo di VWAP (weekly, monthly, quarterly)
             for period, vwap in vwap_values.items():
                 # Calcola la differenza e verifica se è inferiore o uguale a 0.05
-                if abs(mp["VAL"] - vwap["VAL"]) <= 0.05 or \
-                   abs(mp["POC"] - vwap["POC"]) <= 0.05 or \
-                   abs(mp["VAH"] - vwap["VAH"]) <= 0.05:
+                if abs(mp["VAL"] - vwap["VAL"]) <= 0.05:
                     close_values.append({
                         "stock": stock["name"],
-                        "marketProfile": mp,
+                        "mp_type" : "VAL",
+                        "mp": mp["VAL"],
                         "vwapPeriod": period,
-                        "vwapValues": vwap
+                        "vwap_type": "VAL",
+                        "vwap": vwap["VAL"]
                     })
-        # save json in file
-        with open(f'{source_directory}/Data/{index}_stocks_cong_data.json', 'w') as f:
-            json.dump(f'congruence_list_{index}', f, indent=4)
+                elif abs(mp["VAL"] - vwap["POC"]) <= 0.05:
+                    close_values.append({
+                        "stock": stock["name"],
+                        "mp_type": "VAL",
+                        "mp": mp["VAL"],
+                        "vwapPeriod": period,
+                        "vwap_type": "POC",
+                        "vwap": vwap["POC"]
+                    })
+                elif abs(mp["VAL"] - vwap["VAH"]) <= 0.05:
+                    close_values.append({
+                        "stock": stock["name"],
+                        "mp_type": "VAL",
+                        "mp": mp["VAL"],
+                        "vwapPeriod": period,
+                        "vwap_type": "VAH",
+                        "vwap": vwap["VAH"]
+                    })
+                elif abs(mp["POC"] - vwap["VAL"]) <= 0.05:
+                    close_values.append({
+                        "stock": stock["name"],
+                        "mp_type": "POC",
+                        "mp": mp["POC"],
+                        "vwapPeriod": period,
+                        "vwap_type": "VAL",
+                        "vwap": vwap["VAL"]
+                    })
+                elif abs(mp["POC"] - vwap["POC"]) <= 0.05:
+                    close_values.append({
+                        "stock": stock["name"],
+                        "mp_type": "POC",
+                        "mp": mp["POC"],
+                        "vwapPeriod": period,
+                        "vwap_type": "VAL",
+                        "vwap": vwap["POC"]
+                    })
+                elif abs(mp["POC"] - vwap["VAH"]) <= 0.05:
+                    close_values.append({
+                        "stock": stock["name"],
+                        "mp_type": "POC",
+                        "mp": mp["POC"],
+                        "vwapPeriod": period,
+                        "vwap_type": "VAL",
+                        "vwap": vwap["VAH"]
+                    })
+                elif abs(mp["VAH"] - vwap["VAL"]) <= 0.05:
+                    close_values.append({
+                        "stock": stock["name"],
+                        "mp_type": "VAH",
+                        "mp": mp["VAH"],
+                        "vwapPeriod": period,
+                        "vwap_type": "VAL",
+                        "vwap": vwap["VAL"]
+                    })
+                elif abs(mp["VAH"] - vwap["POC"]) <= 0.05:
+                    close_values.append({
+                        "stock": stock["name"],
+                        "mp_type": "VAH",
+                        "mp": mp["VAH"],
+                        "vwapPeriod": period,
+                        "vwap_type": "VAL",
+                        "vwap": vwap["POC"]
+                    })
+                elif abs(mp["VAH"] - vwap["VAH"]) <= 0.05:
+                    close_values.append({
+                        "stock": stock["name"],
+                        "mp_type": "VAH",
+                        "mp": mp["VAH"],
+                        "vwapPeriod": period,
+                        "vwap_type": "VAL",
+                        "vwap": vwap["VAH"]
+                    })
+    # save json in file
+    with open(f'{source_directory}/Data/{index}_stocks_cong_data.json', 'w') as f:
+        json.dump(close_values, f, indent=4)
     
 
 def find_stock_near_congruence(index= "SP500"):
-    start_time = time.time()  # Registra l'ora di inizio
     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
     with open(f'{source_directory}/Data/{index}_stocks_cong_data.json', 'r') as f:
             stock_data = json.load(f)
     report = ReportGenerator()
     report.add_title(title=f"{index} Possible CONGRUENCE stock")
+    threshold_value = 0.02
     for item in stock_data:
         item_data = item["stock"]
-        report.add_content(f'stock = {item_data} - vwap type = {item["vwapPeriod"]}\n')
         data_filepath = f"{source_directory}/Data/{index}/5min/{item_data}_historical_data.csv"
         # Carica i dati
         df = load_data(data_filepath)
-        image = CandlestickChartGenerator(df)
-        image_path = image.create_chart_with_areas(market_profile=item['marketProfile'], vwap_values=item['vwapValues']
-                                                   ,max_points=90)
-        report.add_commented_image(df=df, comment=f'market_profile={item["marketProfile"]}\n'
-                                                  f'vwap_values={item["vwapValues"]}\n'
-                                                  f'', image_path=image_path)
+        if abs(df["Close"].iloc[-1]-item["mp"])<= threshold_value*df["Close"].iloc[-1]:
+            image = CandlestickChartGenerator(df)
+            image_path = image.create_chart_with_areas(item, max_points=180)
+            report.add_content(f'stock = {item_data} - vwap type = {item["vwapPeriod"]}\n')
+            report.add_commented_image(df=df, comment=f'market_profile={item["mp_type"]} - {item["mp"]} '
+                                                      f'vwap_values={item["vwap_type"]} - {item["vwap"]} '
+                                                      , image_path=image_path)
         
     file_report = report.save_report(filename=f"{index}_convergence_stock")
     
 
 
 if __name__ == '__main__':
-    source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
-    #vwap_stock_finder(index = "Nasdaq")
-    #vwap_stock_finder(index = "SP500")
-    #vwap_stock_finder(index="Russel")
-    #find_close_market_profile_values(index = "Nasdaq")
-    #find_close_market_profile_values(index="SP500")
+    start_time = time.time()  # Registra l'ora di inizio
+    #source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
+    vwap_stock_finder(index = "Nasdaq")
+    vwap_stock_finder(index = "SP500")
+    vwap_stock_finder(index="Russel")
+    find_close_market_profile_values(index="Nasdaq")
+    find_close_market_profile_values(index="SP500")
     find_stock_near_congruence(index="Nasdaq")
     find_stock_near_congruence(index="SP500")
+    duration = time.time() - start_time
+    print(f"Tempo di esecuzione: {duration:.2f} secondi")
     
     
     

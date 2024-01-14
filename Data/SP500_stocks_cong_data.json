@@ -1,1388 +1,1458 @@
 [
     {
         "stock": "AES",
-        "marketProfile": {
-            "VAL": 19.24,
-            "POC": 19.36,
-            "VAH": 19.41
-        },
+        "mp_type": "POC",
+        "mp": 18.85,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 19.26,
-            "POC": 19.29,
-            "VAH": 19.32
-        }
+        "vwap_type": "VAL",
+        "vwap": 18.81
     },
     {
         "stock": "AES",
-        "marketProfile": {
-            "VAL": 18.7,
-            "POC": 18.71,
-            "VAH": 18.93
-        },
+        "mp_type": "VAL",
+        "mp": 18.47,
+        "vwapPeriod": "quarterly",
+        "vwap_type": "VAH",
+        "vwap": 18.42
+    },
+    {
+        "stock": "AES",
+        "mp_type": "VAL",
+        "mp": 19.24,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAH",
+        "vwap": 19.2
+    },
+    {
+        "stock": "AES",
+        "mp_type": "POC",
+        "mp": 19.36,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 18.09,
-            "POC": 18.73,
-            "VAH": 19.36
-        }
+        "vwap_type": "VAL",
+        "vwap": 19.36
+    },
+    {
+        "stock": "AES",
+        "mp_type": "VAL",
+        "mp": 18.7,
+        "vwapPeriod": "monthly",
+        "vwap_type": "POC",
+        "vwap": 18.73
     },
     {
         "stock": "ALK",
-        "marketProfile": {
-            "VAL": 35.96,
-            "POC": 35.96,
-            "VAH": 37.84
-        },
+        "mp_type": "VAL",
+        "mp": 35.96,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 36.01,
-            "POC": 38.19,
-            "VAH": 40.37
-        }
+        "vwap_type": "VAL",
+        "vwap": 36.01
     },
     {
         "stock": "MO",
-        "marketProfile": {
-            "VAL": 41.28,
-            "POC": 41.39,
-            "VAH": 41.54
-        },
+        "mp_type": "VAH",
+        "mp": 40.46,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 40.49,
-            "POC": 41.37,
-            "VAH": 42.24
-        }
+        "vwap_type": "VAL",
+        "vwap": 40.49
     },
     {
         "stock": "MO",
-        "marketProfile": {
-            "VAL": 41.28,
-            "POC": 41.39,
-            "VAH": 41.54
-        },
+        "mp_type": "VAL",
+        "mp": 41.41,
+        "vwapPeriod": "monthly",
+        "vwap_type": "POC",
+        "vwap": 41.37
+    },
+    {
+        "stock": "MO",
+        "mp_type": "VAL",
+        "mp": 41.41,
         "vwapPeriod": "quarterly",
-        "vwapValues": {
-            "VAL": 40.38,
-            "POC": 41.37,
-            "VAH": 42.36
-        }
+        "vwap_type": "POC",
+        "vwap": 41.37
     },
     {
         "stock": "AAL",
-        "marketProfile": {
-            "VAL": 14.28,
-            "POC": 14.33,
-            "VAH": 14.37
-        },
+        "mp_type": "POC",
+        "mp": 14.33,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 13.47,
-            "POC": 13.92,
-            "VAH": 14.37
-        }
+        "vwap_type": "VAL",
+        "vwap": 14.37
+    },
+    {
+        "stock": "AAL",
+        "mp_type": "POC",
+        "mp": 14.4,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 14.37
     },
     {
         "stock": "APA",
-        "marketProfile": {
-            "VAL": 35.66,
-            "POC": 35.89,
-            "VAH": 36.52
-        },
+        "mp_type": "VAH",
+        "mp": 36.52,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 36.48
+    },
+    {
+        "stock": "APA",
+        "mp_type": "VAH",
+        "mp": 36.52,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 34.56,
-            "POC": 35.53,
-            "VAH": 36.5
-        }
+        "vwap_type": "VAL",
+        "vwap": 36.5
     },
     {
         "stock": "T",
-        "marketProfile": {
-            "VAL": 16.47,
-            "POC": 16.55,
-            "VAH": 16.61
-        },
+        "mp_type": "VAL",
+        "mp": 16.47,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 16.45,
-            "POC": 16.67,
-            "VAH": 16.89
-        }
+        "vwap_type": "VAL",
+        "vwap": 16.45
     },
     {
         "stock": "T",
-        "marketProfile": {
-            "VAL": 16.47,
-            "POC": 16.55,
-            "VAH": 16.61
-        },
+        "mp_type": "POC",
+        "mp": 16.55,
         "vwapPeriod": "quarterly",
-        "vwapValues": {
-            "VAL": 14.98,
-            "POC": 15.79,
-            "VAH": 16.59
-        }
+        "vwap_type": "VAL",
+        "vwap": 16.59
+    },
+    {
+        "stock": "T",
+        "mp_type": "VAL",
+        "mp": 17.21,
+        "vwapPeriod": "weekly",
+        "vwap_type": "POC",
+        "vwap": 17.25
     },
     {
         "stock": "BKR",
-        "marketProfile": {
-            "VAL": 33.91,
-            "POC": 34.03,
-            "VAH": 34.35
-        },
+        "mp_type": "VAH",
+        "mp": 34.35,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 32.52,
-            "POC": 33.46,
-            "VAH": 34.39
-        }
+        "vwap_type": "VAL",
+        "vwap": 34.39
+    },
+    {
+        "stock": "BKR",
+        "mp_type": "POC",
+        "mp": 33.41,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 33.4
+    },
+    {
+        "stock": "BAC",
+        "mp_type": "POC",
+        "mp": 33.87,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 33.86
     },
     {
         "stock": "BBWI",
-        "marketProfile": {
-            "VAL": 41.14,
-            "POC": 43.07,
-            "VAH": 43.12
-        },
+        "mp_type": "POC",
+        "mp": 43.07,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 36.89,
-            "POC": 40.0,
-            "VAH": 43.11
-        }
+        "vwap_type": "VAL",
+        "vwap": 43.11
     },
     {
         "stock": "BAX",
-        "marketProfile": {
-            "VAL": 38.41,
-            "POC": 38.64,
-            "VAH": 38.98
-        },
+        "mp_type": "VAL",
+        "mp": 38.41,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 38.54,
-            "POC": 38.65,
-            "VAH": 38.75
-        }
-    },
-    {
-        "stock": "BWA",
-        "marketProfile": {
-            "VAL": 35.84,
-            "POC": 36.0,
-            "VAH": 36.21
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 35.92,
-            "POC": 35.95,
-            "VAH": 35.97
-        }
-    },
-    {
-        "stock": "CZR",
-        "marketProfile": {
-            "VAL": 46.37,
-            "POC": 47.41,
-            "VAH": 47.64
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 47.03,
-            "POC": 47.37,
-            "VAH": 47.71
-        }
+        "vwap_type": "VAL",
+        "vwap": 38.38
     },
     {
         "stock": "CCL",
-        "marketProfile": {
-            "VAL": 17.79,
-            "POC": 18.72,
-            "VAH": 18.96
-        },
+        "mp_type": "VAH",
+        "mp": 18.98,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 17.04,
-            "POC": 18.02,
-            "VAH": 18.99
-        }
+        "vwap_type": "VAL",
+        "vwap": 18.99
     },
     {
         "stock": "CNP",
-        "marketProfile": {
-            "VAL": 28.31,
-            "POC": 28.55,
-            "VAH": 28.62
-        },
+        "mp_type": "VAL",
+        "mp": 28.62,
         "vwapPeriod": "quarterly",
-        "vwapValues": {
-            "VAL": 26.94,
-            "POC": 27.78,
-            "VAH": 28.63
-        }
+        "vwap_type": "VAH",
+        "vwap": 28.63
     },
     {
-        "stock": "CFG",
-        "marketProfile": {
-            "VAL": 33.48,
-            "POC": 33.53,
-            "VAH": 33.62
-        },
+        "stock": "CNP",
+        "mp_type": "VAH",
+        "mp": 28.62,
+        "vwapPeriod": "quarterly",
+        "vwap_type": "VAL",
+        "vwap": 28.63
+    },
+    {
+        "stock": "CNP",
+        "mp_type": "POC",
+        "mp": 29.25,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 33.27,
-            "POC": 33.42,
-            "VAH": 33.57
-        }
+        "vwap_type": "VAL",
+        "vwap": 29.23
+    },
+    {
+        "stock": "CNP",
+        "mp_type": "POC",
+        "mp": 29.25,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 29.21
     },
     {
         "stock": "CFG",
-        "marketProfile": {
-            "VAL": 33.48,
-            "POC": 33.53,
-            "VAH": 33.62
-        },
+        "mp_type": "VAH",
+        "mp": 33.62,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 29.3,
-            "POC": 31.45,
-            "VAH": 33.61
-        }
+        "vwap_type": "VAL",
+        "vwap": 33.61
     },
     {
         "stock": "CMCSA",
-        "marketProfile": {
-            "VAL": 43.64,
-            "POC": 43.94,
-            "VAH": 44.3
-        },
+        "mp_type": "VAL",
+        "mp": 43.64,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 43.8,
-            "POC": 43.94,
-            "VAH": 44.09
-        }
+        "vwap_type": "VAH",
+        "vwap": 43.63
     },
     {
         "stock": "CAG",
-        "marketProfile": {
-            "VAL": 28.3,
-            "POC": 28.48,
-            "VAH": 28.63
-        },
+        "mp_type": "POC",
+        "mp": 28.48,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 28.44,
-            "POC": 28.53,
-            "VAH": 28.62
-        }
+        "vwap_type": "VAL",
+        "vwap": 28.5
     },
     {
-        "stock": "GLW",
-        "marketProfile": {
-            "VAL": 30.2,
-            "POC": 30.46,
-            "VAH": 30.46
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 30.4,
-            "POC": 30.49,
-            "VAH": 30.58
-        }
-    },
-    {
-        "stock": "GLW",
-        "marketProfile": {
-            "VAL": 30.2,
-            "POC": 30.46,
-            "VAH": 30.46
-        },
+        "stock": "CAG",
+        "mp_type": "POC",
+        "mp": 28.48,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 29.03,
-            "POC": 29.75,
-            "VAH": 30.47
-        }
+        "vwap_type": "VAL",
+        "vwap": 28.5
+    },
+    {
+        "stock": "CPRT",
+        "mp_type": "VAH",
+        "mp": 49.82,
+        "vwapPeriod": "quarterly",
+        "vwap_type": "VAL",
+        "vwap": 49.78
+    },
+    {
+        "stock": "CPRT",
+        "mp_type": "VAH",
+        "mp": 47.09,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 47.06
     },
     {
         "stock": "GLW",
-        "marketProfile": {
-            "VAL": 30.3,
-            "POC": 30.46,
-            "VAH": 30.66
-        },
+        "mp_type": "POC",
+        "mp": 30.46,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 30.4,
-            "POC": 30.49,
-            "VAH": 30.58
-        }
+        "vwap_type": "VAL",
+        "vwap": 30.45
+    },
+    {
+        "stock": "GLW",
+        "mp_type": "POC",
+        "mp": 30.46,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 30.47
+    },
+    {
+        "stock": "GLW",
+        "mp_type": "VAL",
+        "mp": 30.3,
+        "vwapPeriod": "weekly",
+        "vwap_type": "POC",
+        "vwap": 30.3
+    },
+    {
+        "stock": "GLW",
+        "mp_type": "POC",
+        "mp": 30.46,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 30.47
+    },
+    {
+        "stock": "GLW",
+        "mp_type": "VAL",
+        "mp": 30.47,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAH",
+        "vwap": 30.45
+    },
+    {
+        "stock": "GLW",
+        "mp_type": "VAL",
+        "mp": 30.47,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAH",
+        "vwap": 30.47
+    },
+    {
+        "stock": "CTVA",
+        "mp_type": "POC",
+        "mp": 47.85,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 47.9
     },
     {
         "stock": "CTRA",
-        "marketProfile": {
-            "VAL": 25.42,
-            "POC": 25.55,
-            "VAH": 25.83
-        },
+        "mp_type": "VAH",
+        "mp": 25.8,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 25.8
+    },
+    {
+        "stock": "CTRA",
+        "mp_type": "VAL",
+        "mp": 25.42,
         "vwapPeriod": "quarterly",
-        "vwapValues": {
-            "VAL": 25.46,
-            "POC": 26.8,
-            "VAH": 28.15
-        }
+        "vwap_type": "VAL",
+        "vwap": 25.46
+    },
+    {
+        "stock": "CTRA",
+        "mp_type": "POC",
+        "mp": 25.55,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 25.56
+    },
+    {
+        "stock": "CTRA",
+        "mp_type": "VAL",
+        "mp": 25.37,
+        "vwapPeriod": "monthly",
+        "vwap_type": "POC",
+        "vwap": 25.37
     },
     {
         "stock": "CSX",
-        "marketProfile": {
-            "VAL": 34.57,
-            "POC": 34.73,
-            "VAH": 34.78
-        },
+        "mp_type": "POC",
+        "mp": 34.73,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 34.65,
-            "POC": 34.74,
-            "VAH": 34.83
-        }
+        "vwap_type": "VAL",
+        "vwap": 34.68
+    },
+    {
+        "stock": "CSX",
+        "mp_type": "VAL",
+        "mp": 34.53,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAH",
+        "vwap": 34.58
+    },
+    {
+        "stock": "XRAY",
+        "mp_type": "VAL",
+        "mp": 35.6,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAH",
+        "vwap": 35.64
     },
     {
         "stock": "DVN",
-        "marketProfile": {
-            "VAL": 45.48,
-            "POC": 45.85,
-            "VAH": 46.59
-        },
+        "mp_type": "POC",
+        "mp": 45.85,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 45.59,
-            "POC": 46.11,
-            "VAH": 46.64
-        }
+        "vwap_type": "VAL",
+        "vwap": 45.85
     },
     {
         "stock": "EBAY",
-        "marketProfile": {
-            "VAL": 40.78,
-            "POC": 42.44,
-            "VAH": 42.66
-        },
+        "mp_type": "POC",
+        "mp": 42.44,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 41.46,
-            "POC": 42.41,
-            "VAH": 43.37
-        }
+        "vwap_type": "VAL",
+        "vwap": 42.41
+    },
+    {
+        "stock": "EBAY",
+        "mp_type": "VAL",
+        "mp": 43.21,
+        "vwapPeriod": "weekly",
+        "vwap_type": "POC",
+        "vwap": 43.22
+    },
+    {
+        "stock": "EBAY",
+        "mp_type": "VAL",
+        "mp": 42.44,
+        "vwapPeriod": "monthly",
+        "vwap_type": "POC",
+        "vwap": 42.41
+    },
+    {
+        "stock": "EXC",
+        "mp_type": "VAH",
+        "mp": 35.3,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 35.27
+    },
+    {
+        "stock": "EXC",
+        "mp_type": "VAL",
+        "mp": 36.1,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 36.13
     },
     {
         "stock": "FITB",
-        "marketProfile": {
-            "VAL": 34.69,
-            "POC": 35.07,
-            "VAH": 35.14
-        },
+        "mp_type": "POC",
+        "mp": 35.07,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 35.03
+    },
+    {
+        "stock": "FITB",
+        "mp_type": "VAL",
+        "mp": 34.97,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 34.64,
-            "POC": 34.78,
-            "VAH": 34.91
-        }
+        "vwap_type": "VAH",
+        "vwap": 34.96
+    },
+    {
+        "stock": "FE",
+        "mp_type": "VAL",
+        "mp": 36.92,
+        "vwapPeriod": "monthly",
+        "vwap_type": "POC",
+        "vwap": 36.95
+    },
+    {
+        "stock": "FE",
+        "mp_type": "VAH",
+        "mp": 36.44,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 36.43
+    },
+    {
+        "stock": "FE",
+        "mp_type": "VAH",
+        "mp": 38.0,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 38.04
     },
     {
         "stock": "F",
-        "marketProfile": {
-            "VAL": 11.05,
-            "POC": 11.16,
-            "VAH": 11.25
-        },
+        "mp_type": "VAL",
+        "mp": 11.93,
+        "vwapPeriod": "weekly",
+        "vwap_type": "POC",
+        "vwap": 11.88
+    },
+    {
+        "stock": "F",
+        "mp_type": "POC",
+        "mp": 11.98,
         "vwapPeriod": "quarterly",
-        "vwapValues": {
-            "VAL": 10.26,
-            "POC": 11.13,
-            "VAH": 12.01
-        }
+        "vwap_type": "VAL",
+        "vwap": 12.01
+    },
+    {
+        "stock": "F",
+        "mp_type": "POC",
+        "mp": 11.86,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 11.88
     },
     {
         "stock": "FOXA",
-        "marketProfile": {
-            "VAL": 28.9,
-            "POC": 29.55,
-            "VAH": 29.78
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 29.67,
-            "POC": 29.73,
-            "VAH": 29.79
-        }
-    },
-    {
-        "stock": "FOXA",
-        "marketProfile": {
-            "VAL": 29.72,
-            "POC": 30.25,
-            "VAH": 30.31
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 29.67,
-            "POC": 29.73,
-            "VAH": 29.79
-        }
-    },
-    {
-        "stock": "FOXA",
-        "marketProfile": {
-            "VAL": 29.72,
-            "POC": 30.25,
-            "VAH": 30.31
-        },
-        "vwapPeriod": "quarterly",
-        "vwapValues": {
-            "VAL": 29.64,
-            "POC": 30.27,
-            "VAH": 30.91
-        }
-    },
-    {
-        "stock": "FOX",
-        "marketProfile": {
-            "VAL": 27.43,
-            "POC": 27.71,
-            "VAH": 27.87
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 27.66,
-            "POC": 27.7,
-            "VAH": 27.74
-        }
-    },
-    {
-        "stock": "FOX",
-        "marketProfile": {
-            "VAL": 27.43,
-            "POC": 27.71,
-            "VAH": 27.87
-        },
+        "mp_type": "VAL",
+        "mp": 29.72,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 27.46,
-            "POC": 27.71,
-            "VAH": 27.97
-        }
+        "vwap_type": "POC",
+        "vwap": 29.73
+    },
+    {
+        "stock": "FOXA",
+        "mp_type": "POC",
+        "mp": 30.25,
+        "vwapPeriod": "quarterly",
+        "vwap_type": "VAL",
+        "vwap": 30.27
     },
     {
         "stock": "FOX",
-        "marketProfile": {
-            "VAL": 28.17,
-            "POC": 28.49,
-            "VAH": 28.55
-        },
+        "mp_type": "VAH",
+        "mp": 28.05,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 28.04
+    },
+    {
+        "stock": "FOX",
+        "mp_type": "VAL",
+        "mp": 27.43,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 27.46
+    },
+    {
+        "stock": "FOX",
+        "mp_type": "VAH",
+        "mp": 28.05,
         "vwapPeriod": "quarterly",
-        "vwapValues": {
-            "VAL": 27.59,
-            "POC": 28.09,
-            "VAH": 28.59
-        }
+        "vwap_type": "VAL",
+        "vwap": 28.09
     },
     {
         "stock": "BEN",
-        "marketProfile": {
-            "VAL": 29.23,
-            "POC": 29.3,
-            "VAH": 29.91
-        },
+        "mp_type": "VAH",
+        "mp": 29.91,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 25.89,
-            "POC": 27.91,
-            "VAH": 29.93
-        }
+        "vwap_type": "VAL",
+        "vwap": 29.93
+    },
+    {
+        "stock": "BEN",
+        "mp_type": "VAL",
+        "mp": 29.1,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAH",
+        "vwap": 29.09
+    },
+    {
+        "stock": "FCX",
+        "mp_type": "VAH",
+        "mp": 41.98,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 41.95
+    },
+    {
+        "stock": "FCX",
+        "mp_type": "VAH",
+        "mp": 41.55,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 41.53
     },
     {
         "stock": "GEN",
-        "marketProfile": {
-            "VAL": 23.03,
-            "POC": 23.06,
-            "VAH": 23.28
-        },
+        "mp_type": "VAL",
+        "mp": 22.63,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 22.87,
-            "POC": 23.02,
-            "VAH": 23.16
-        }
+        "vwap_type": "VAH",
+        "vwap": 22.67
+    },
+    {
+        "stock": "GM",
+        "mp_type": "VAL",
+        "mp": 36.07,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAH",
+        "vwap": 36.11
     },
     {
         "stock": "HAL",
-        "marketProfile": {
-            "VAL": 36.26,
-            "POC": 36.64,
-            "VAH": 36.89
-        },
+        "mp_type": "VAL",
+        "mp": 36.26,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 36.19,
-            "POC": 36.61,
-            "VAH": 37.03
-        }
+        "vwap_type": "POC",
+        "vwap": 36.24
+    },
+    {
+        "stock": "HAS",
+        "mp_type": "VAH",
+        "mp": 48.5,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 48.53
     },
     {
         "stock": "PEAK",
-        "marketProfile": {
-            "VAL": 19.92,
-            "POC": 19.98,
-            "VAH": 20.08
-        },
+        "mp_type": "POC",
+        "mp": 19.53,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 19.89,
-            "POC": 19.98,
-            "VAH": 20.06
-        }
+        "vwap_type": "VAL",
+        "vwap": 19.54
+    },
+    {
+        "stock": "PEAK",
+        "mp_type": "VAL",
+        "mp": 19.24,
+        "vwapPeriod": "monthly",
+        "vwap_type": "POC",
+        "vwap": 19.2
+    },
+    {
+        "stock": "PEAK",
+        "mp_type": "VAL",
+        "mp": 19.92,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAH",
+        "vwap": 19.89
+    },
+    {
+        "stock": "PEAK",
+        "mp_type": "VAL",
+        "mp": 19.52,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 19.54
     },
     {
         "stock": "HPE",
-        "marketProfile": {
-            "VAL": 16.3,
-            "POC": 16.46,
-            "VAH": 16.55
-        },
+        "mp_type": "VAL",
+        "mp": 16.71,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 16.31,
-            "POC": 16.69,
-            "VAH": 17.08
-        }
+        "vwap_type": "POC",
+        "vwap": 16.69
     },
     {
         "stock": "HPE",
-        "marketProfile": {
-            "VAL": 17.08,
-            "POC": 17.15,
-            "VAH": 17.19
-        },
+        "mp_type": "VAL",
+        "mp": 17.08,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 17.05,
-            "POC": 17.12,
-            "VAH": 17.19
-        }
+        "vwap_type": "POC",
+        "vwap": 17.03
     },
     {
         "stock": "HPE",
-        "marketProfile": {
-            "VAL": 17.04,
-            "POC": 17.1,
-            "VAH": 17.23
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 17.05,
-            "POC": 17.12,
-            "VAH": 17.19
-        }
-    },
-    {
-        "stock": "HRL",
-        "marketProfile": {
-            "VAL": 31.39,
-            "POC": 31.68,
-            "VAH": 31.75
-        },
+        "mp_type": "VAL",
+        "mp": 17.08,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 31.41,
-            "POC": 31.69,
-            "VAH": 31.97
-        }
+        "vwap_type": "VAH",
+        "vwap": 17.08
     },
     {
-        "stock": "HRL",
-        "marketProfile": {
-            "VAL": 31.79,
-            "POC": 31.96,
-            "VAH": 31.99
-        },
+        "stock": "HPE",
+        "mp_type": "VAL",
+        "mp": 17.04,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 31.72,
-            "POC": 31.87,
-            "VAH": 32.01
-        }
+        "vwap_type": "POC",
+        "vwap": 17.03
     },
     {
-        "stock": "HRL",
-        "marketProfile": {
-            "VAL": 31.79,
-            "POC": 31.96,
-            "VAH": 31.99
-        },
+        "stock": "HPE",
+        "mp_type": "VAL",
+        "mp": 17.04,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 31.41,
-            "POC": 31.69,
-            "VAH": 31.97
-        }
+        "vwap_type": "VAH",
+        "vwap": 17.08
     },
     {
-        "stock": "HPQ",
-        "marketProfile": {
-            "VAL": 30.15,
-            "POC": 30.37,
-            "VAH": 30.56
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 30.12,
-            "POC": 30.23,
-            "VAH": 30.35
-        }
-    },
-    {
-        "stock": "HPQ",
-        "marketProfile": {
-            "VAL": 30.15,
-            "POC": 30.37,
-            "VAH": 30.56
-        },
+        "stock": "HPE",
+        "mp_type": "POC",
+        "mp": 16.33,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 29.34,
-            "POC": 29.95,
-            "VAH": 30.56
-        }
+        "vwap_type": "VAL",
+        "vwap": 16.31
     },
     {
-        "stock": "HPQ",
-        "marketProfile": {
-            "VAL": 30.15,
-            "POC": 30.29,
-            "VAH": 30.5
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 30.12,
-            "POC": 30.23,
-            "VAH": 30.35
-        }
-    },
-    {
-        "stock": "HBAN",
-        "marketProfile": {
-            "VAL": 11.84,
-            "POC": 11.9,
-            "VAH": 12.03
-        },
-        "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 11.85,
-            "POC": 12.35,
-            "VAH": 12.85
-        }
-    },
-    {
-        "stock": "HBAN",
-        "marketProfile": {
-            "VAL": 11.84,
-            "POC": 11.9,
-            "VAH": 12.03
-        },
+        "stock": "HPE",
+        "mp_type": "POC",
+        "mp": 16.33,
         "vwapPeriod": "quarterly",
-        "vwapValues": {
-            "VAL": 9.83,
-            "POC": 10.93,
-            "VAH": 12.03
-        }
+        "vwap_type": "VAL",
+        "vwap": 16.3
     },
     {
-        "stock": "HBAN",
-        "marketProfile": {
-            "VAL": 12.69,
-            "POC": 12.78,
-            "VAH": 12.87
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 12.74,
-            "POC": 12.77,
-            "VAH": 12.8
-        }
-    },
-    {
-        "stock": "HBAN",
-        "marketProfile": {
-            "VAL": 12.69,
-            "POC": 12.78,
-            "VAH": 12.87
-        },
+        "stock": "HRL",
+        "mp_type": "VAL",
+        "mp": 31.39,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 11.85,
-            "POC": 12.35,
-            "VAH": 12.85
-        }
+        "vwap_type": "VAL",
+        "vwap": 31.41
+    },
+    {
+        "stock": "HRL",
+        "mp_type": "POC",
+        "mp": 31.96,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 31.97
+    },
+    {
+        "stock": "HST",
+        "mp_type": "VAL",
+        "mp": 19.7,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAH",
+        "vwap": 19.71
+    },
+    {
+        "stock": "HPQ",
+        "mp_type": "VAL",
+        "mp": 29.79,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 29.81
+    },
+    {
+        "stock": "HPQ",
+        "mp_type": "VAL",
+        "mp": 29.93,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAH",
+        "vwap": 29.89
+    },
+    {
+        "stock": "HPQ",
+        "mp_type": "VAL",
+        "mp": 29.93,
+        "vwapPeriod": "monthly",
+        "vwap_type": "POC",
+        "vwap": 29.95
+    },
+    {
+        "stock": "HBAN",
+        "mp_type": "POC",
+        "mp": 12.78,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 12.76
+    },
+    {
+        "stock": "HBAN",
+        "mp_type": "VAH",
+        "mp": 12.87,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 12.85
+    },
+    {
+        "stock": "HBAN",
+        "mp_type": "VAL",
+        "mp": 12.9,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAH",
+        "vwap": 12.91
+    },
+    {
+        "stock": "INTC",
+        "mp_type": "POC",
+        "mp": 46.48,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 46.51
     },
     {
         "stock": "IP",
-        "marketProfile": {
-            "VAL": 36.14,
-            "POC": 36.91,
-            "VAH": 37.07
-        },
+        "mp_type": "VAL",
+        "mp": 36.3,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 36.19,
-            "POC": 36.37,
-            "VAH": 36.54
-        }
+        "vwap_type": "VAL",
+        "vwap": 36.27
     },
     {
-        "stock": "IPG",
-        "marketProfile": {
-            "VAL": 31.26,
-            "POC": 31.55,
-            "VAH": 31.77
-        },
+        "stock": "IP",
+        "mp_type": "VAH",
+        "mp": 36.73,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 31.25,
-            "POC": 32.1,
-            "VAH": 32.94
-        }
+        "vwap_type": "VAL",
+        "vwap": 36.77
     },
     {
-        "stock": "IPG",
-        "marketProfile": {
-            "VAL": 31.26,
-            "POC": 31.55,
-            "VAH": 31.77
-        },
+        "stock": "IP",
+        "mp_type": "POC",
+        "mp": 36.48,
         "vwapPeriod": "quarterly",
-        "vwapValues": {
-            "VAL": 28.47,
-            "POC": 30.1,
-            "VAH": 31.73
-        }
+        "vwap_type": "VAL",
+        "vwap": 36.49
     },
     {
         "stock": "IPG",
-        "marketProfile": {
-            "VAL": 32.75,
-            "POC": 32.89,
-            "VAH": 33.25
-        },
+        "mp_type": "VAL",
+        "mp": 32.75,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 32.73,
-            "POC": 32.9,
-            "VAH": 33.07
-        }
+        "vwap_type": "VAH",
+        "vwap": 32.8
+    },
+    {
+        "stock": "IPG",
+        "mp_type": "POC",
+        "mp": 32.89,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 32.94
+    },
+    {
+        "stock": "IPG",
+        "mp_type": "VAH",
+        "mp": 32.47,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 32.5
+    },
+    {
+        "stock": "IVZ",
+        "mp_type": "POC",
+        "mp": 17.6,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 17.56
+    },
+    {
+        "stock": "IVZ",
+        "mp_type": "POC",
+        "mp": 17.78,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 17.77
+    },
+    {
+        "stock": "IVZ",
+        "mp_type": "POC",
+        "mp": 17.78,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 17.83
     },
     {
         "stock": "INVH",
-        "marketProfile": {
-            "VAL": 33.96,
-            "POC": 34.1,
-            "VAH": 34.55
-        },
+        "mp_type": "POC",
+        "mp": 34.39,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 34.18,
-            "POC": 34.35,
-            "VAH": 34.52
-        }
+        "vwap_type": "VAL",
+        "vwap": 34.39
+    },
+    {
+        "stock": "INVH",
+        "mp_type": "POC",
+        "mp": 33.85,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 33.84
     },
     {
         "stock": "JNPR",
-        "marketProfile": {
-            "VAL": 29.18,
-            "POC": 29.36,
-            "VAH": 29.52
-        },
+        "mp_type": "POC",
+        "mp": 29.48,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 29.4,
-            "POC": 29.47,
-            "VAH": 29.55
-        }
+        "vwap_type": "VAL",
+        "vwap": 29.46
     },
     {
         "stock": "JNPR",
-        "marketProfile": {
-            "VAL": 29.18,
-            "POC": 29.36,
-            "VAH": 29.52
-        },
+        "mp_type": "POC",
+        "mp": 29.48,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 28.88,
-            "POC": 29.2,
-            "VAH": 29.52
-        }
+        "vwap_type": "VAL",
+        "vwap": 29.52
+    },
+    {
+        "stock": "JNPR",
+        "mp_type": "POC",
+        "mp": 30.03,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 30.03
     },
     {
         "stock": "KVUE",
-        "marketProfile": {
-            "VAL": 21.28,
-            "POC": 21.36,
-            "VAH": 21.58
-        },
+        "mp_type": "VAH",
+        "mp": 21.1,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 21.32,
-            "POC": 21.43,
-            "VAH": 21.53
-        }
+        "vwap_type": "VAL",
+        "vwap": 21.08
+    },
+    {
+        "stock": "KVUE",
+        "mp_type": "VAL",
+        "mp": 21.28,
+        "vwapPeriod": "weekly",
+        "vwap_type": "POC",
+        "vwap": 21.31
     },
     {
         "stock": "KDP",
-        "marketProfile": {
-            "VAL": 32.21,
-            "POC": 32.41,
-            "VAH": 32.62
-        },
+        "mp_type": "VAH",
+        "mp": 32.62,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 32.62
+    },
+    {
+        "stock": "KDP",
+        "mp_type": "VAH",
+        "mp": 32.62,
         "vwapPeriod": "quarterly",
-        "vwapValues": {
-            "VAL": 29.71,
-            "POC": 31.17,
-            "VAH": 32.63
-        }
+        "vwap_type": "VAL",
+        "vwap": 32.63
+    },
+    {
+        "stock": "KDP",
+        "mp_type": "VAL",
+        "mp": 33.25,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAH",
+        "vwap": 33.23
     },
     {
         "stock": "KEY",
-        "marketProfile": {
-            "VAL": 14.41,
-            "POC": 14.48,
-            "VAH": 14.59
-        },
+        "mp_type": "VAH",
+        "mp": 14.41,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 14.4,
-            "POC": 14.45,
-            "VAH": 14.5
-        }
+        "vwap_type": "VAL",
+        "vwap": 14.42
+    },
+    {
+        "stock": "KEY",
+        "mp_type": "VAL",
+        "mp": 14.41,
+        "vwapPeriod": "weekly",
+        "vwap_type": "POC",
+        "vwap": 14.42
+    },
+    {
+        "stock": "KEY",
+        "mp_type": "POC",
+        "mp": 14.48,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 14.48
     },
     {
         "stock": "KIM",
-        "marketProfile": {
-            "VAL": 21.65,
-            "POC": 21.74,
-            "VAH": 21.86
-        },
+        "mp_type": "VAH",
+        "mp": 20.91,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 21.53,
-            "POC": 21.69,
-            "VAH": 21.85
-        }
+        "vwap_type": "VAL",
+        "vwap": 20.94
     },
     {
         "stock": "KMI",
-        "marketProfile": {
-            "VAL": 17.55,
-            "POC": 17.7,
-            "VAH": 17.78
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 17.65,
-            "POC": 17.73,
-            "VAH": 17.81
-        }
-    },
-    {
-        "stock": "KMI",
-        "marketProfile": {
-            "VAL": 17.55,
-            "POC": 17.7,
-            "VAH": 17.78
-        },
+        "mp_type": "VAH",
+        "mp": 17.78,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 17.48,
-            "POC": 17.62,
-            "VAH": 17.75
-        }
+        "vwap_type": "VAL",
+        "vwap": 17.75
+    },
+    {
+        "stock": "KMI",
+        "mp_type": "VAL",
+        "mp": 17.55,
+        "vwapPeriod": "quarterly",
+        "vwap_type": "VAH",
+        "vwap": 17.56
+    },
+    {
+        "stock": "KMI",
+        "mp_type": "VAL",
+        "mp": 17.95,
+        "vwapPeriod": "weekly",
+        "vwap_type": "POC",
+        "vwap": 17.95
     },
     {
         "stock": "KR",
-        "marketProfile": {
-            "VAL": 44.92,
-            "POC": 45.21,
-            "VAH": 45.46
-        },
+        "mp_type": "POC",
+        "mp": 45.21,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 45.2
+    },
+    {
+        "stock": "KR",
+        "mp_type": "POC",
+        "mp": 45.94,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 45.1,
-            "POC": 45.27,
-            "VAH": 45.44
-        }
+        "vwap_type": "VAL",
+        "vwap": 45.92
     },
     {
         "stock": "LKQ",
-        "marketProfile": {
-            "VAL": 46.37,
-            "POC": 46.5,
-            "VAH": 46.94
-        },
+        "mp_type": "POC",
+        "mp": 46.5,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 46.51
+    },
+    {
+        "stock": "LKQ",
+        "mp_type": "POC",
+        "mp": 46.5,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 45.41,
-            "POC": 46.55,
-            "VAH": 47.69
-        }
+        "vwap_type": "VAL",
+        "vwap": 46.55
+    },
+    {
+        "stock": "LKQ",
+        "mp_type": "VAL",
+        "mp": 47.73,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAH",
+        "vwap": 47.69
     },
     {
         "stock": "MRO",
-        "marketProfile": {
-            "VAL": 24.53,
-            "POC": 24.64,
-            "VAH": 24.97
-        },
+        "mp_type": "VAL",
+        "mp": 24.53,
+        "vwapPeriod": "weekly",
+        "vwap_type": "POC",
+        "vwap": 24.51
+    },
+    {
+        "stock": "MRO",
+        "mp_type": "VAH",
+        "mp": 24.97,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 23.9,
-            "POC": 24.45,
-            "VAH": 25.01
-        }
+        "vwap_type": "VAL",
+        "vwap": 25.01
     },
     {
         "stock": "MTCH",
-        "marketProfile": {
-            "VAL": 35.43,
-            "POC": 35.87,
-            "VAH": 36.59
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 35.37,
-            "POC": 35.96,
-            "VAH": 36.55
-        }
-    },
-    {
-        "stock": "MGM",
-        "marketProfile": {
-            "VAL": 42.73,
-            "POC": 42.94,
-            "VAH": 43.55
-        },
+        "mp_type": "VAL",
+        "mp": 33.98,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 40.95,
-            "POC": 42.95,
-            "VAH": 44.95
-        }
+        "vwap_type": "POC",
+        "vwap": 33.96
+    },
+    {
+        "stock": "MTCH",
+        "mp_type": "VAH",
+        "mp": 36.59,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 36.56
+    },
+    {
+        "stock": "MTCH",
+        "mp_type": "VAL",
+        "mp": 35.43,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAH",
+        "vwap": 35.38
     },
     {
         "stock": "MGM",
-        "marketProfile": {
-            "VAL": 44.12,
-            "POC": 44.39,
-            "VAH": 45.05
-        },
+        "mp_type": "VAL",
+        "mp": 44.12,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 44.59,
-            "POC": 44.81,
-            "VAH": 45.04
-        }
+        "vwap_type": "VAL",
+        "vwap": 44.11
     },
     {
         "stock": "MOS",
-        "marketProfile": {
-            "VAL": 35.92,
-            "POC": 35.98,
-            "VAH": 36.55
-        },
+        "mp_type": "VAH",
+        "mp": 36.55,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 35.91,
-            "POC": 36.24,
-            "VAH": 36.57
-        }
+        "vwap_type": "VAL",
+        "vwap": 36.58
     },
     {
         "stock": "NEM",
-        "marketProfile": {
-            "VAL": 41.39,
-            "POC": 41.8,
-            "VAH": 41.96
-        },
+        "mp_type": "VAH",
+        "mp": 41.96,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 39.43,
-            "POC": 40.68,
-            "VAH": 41.93
-        }
+        "vwap_type": "VAL",
+        "vwap": 41.93
+    },
+    {
+        "stock": "NEM",
+        "mp_type": "VAL",
+        "mp": 39.76,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 39.72
     },
     {
         "stock": "NWSA",
-        "marketProfile": {
-            "VAL": 24.3,
-            "POC": 24.44,
-            "VAH": 24.69
-        },
+        "mp_type": "VAL",
+        "mp": 24.33,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 24.09,
-            "POC": 24.39,
-            "VAH": 24.68
-        }
+        "vwap_type": "POC",
+        "vwap": 24.33
     },
     {
         "stock": "NI",
-        "marketProfile": {
-            "VAL": 26.39,
-            "POC": 26.49,
-            "VAH": 26.54
-        },
+        "mp_type": "VAL",
+        "mp": 26.39,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 26.17,
-            "POC": 26.38,
-            "VAH": 26.58
-        }
+        "vwap_type": "POC",
+        "vwap": 26.38
     },
     {
-        "stock": "NCLH",
-        "marketProfile": {
-            "VAL": 20.15,
-            "POC": 20.35,
-            "VAH": 20.63
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 20.22,
-            "POC": 20.38,
-            "VAH": 20.53
-        }
-    },
-    {
-        "stock": "NCLH",
-        "marketProfile": {
-            "VAL": 20.23,
-            "POC": 20.38,
-            "VAH": 20.49
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 20.22,
-            "POC": 20.38,
-            "VAH": 20.53
-        }
-    },
-    {
-        "stock": "PARA",
-        "marketProfile": {
-            "VAL": 15.64,
-            "POC": 15.7,
-            "VAH": 16.18
-        },
-        "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 15.02,
-            "POC": 15.58,
-            "VAH": 16.14
-        }
-    },
-    {
-        "stock": "PARA",
-        "marketProfile": {
-            "VAL": 14.98,
-            "POC": 15.0,
-            "VAH": 15.14
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 14.87,
-            "POC": 14.99,
-            "VAH": 15.11
-        }
-    },
-    {
-        "stock": "PARA",
-        "marketProfile": {
-            "VAL": 14.98,
-            "POC": 15.0,
-            "VAH": 15.14
-        },
-        "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 15.02,
-            "POC": 15.58,
-            "VAH": 16.14
-        }
-    },
-    {
-        "stock": "PARA",
-        "marketProfile": {
-            "VAL": 14.98,
-            "POC": 15.0,
-            "VAH": 15.14
-        },
+        "stock": "NI",
+        "mp_type": "POC",
+        "mp": 26.49,
         "vwapPeriod": "quarterly",
-        "vwapValues": {
-            "VAL": 11.61,
-            "POC": 13.38,
-            "VAH": 15.15
-        }
+        "vwap_type": "VAL",
+        "vwap": 26.44
+    },
+    {
+        "stock": "NI",
+        "mp_type": "VAL",
+        "mp": 26.82,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 26.82
+    },
+    {
+        "stock": "PARA",
+        "mp_type": "VAH",
+        "mp": 16.18,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 16.14
+    },
+    {
+        "stock": "PARA",
+        "mp_type": "VAL",
+        "mp": 14.98,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 15.02
+    },
+    {
+        "stock": "PARA",
+        "mp_type": "VAH",
+        "mp": 15.14,
+        "vwapPeriod": "quarterly",
+        "vwap_type": "VAL",
+        "vwap": 15.15
     },
     {
         "stock": "PCG",
-        "marketProfile": {
-            "VAL": 17.46,
-            "POC": 17.63,
-            "VAH": 17.66
-        },
+        "mp_type": "POC",
+        "mp": 17.63,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 17.31,
-            "POC": 17.6,
-            "VAH": 17.88
-        }
+        "vwap_type": "VAL",
+        "vwap": 17.6
+    },
+    {
+        "stock": "PCG",
+        "mp_type": "VAL",
+        "mp": 17.92,
+        "vwapPeriod": "weekly",
+        "vwap_type": "POC",
+        "vwap": 17.91
+    },
+    {
+        "stock": "PCG",
+        "mp_type": "VAL",
+        "mp": 17.92,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAH",
+        "vwap": 17.88
+    },
+    {
+        "stock": "PPL",
+        "mp_type": "VAL",
+        "mp": 27.56,
+        "vwapPeriod": "weekly",
+        "vwap_type": "POC",
+        "vwap": 27.59
     },
     {
         "stock": "RF",
-        "marketProfile": {
-            "VAL": 19.41,
-            "POC": 19.55,
-            "VAH": 19.62
-        },
+        "mp_type": "VAL",
+        "mp": 19.41,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 19.44,
-            "POC": 19.5,
-            "VAH": 19.55
-        }
+        "vwap_type": "VAH",
+        "vwap": 19.37
+    },
+    {
+        "stock": "RF",
+        "mp_type": "VAL",
+        "mp": 19.11,
+        "vwapPeriod": "weekly",
+        "vwap_type": "POC",
+        "vwap": 19.14
     },
     {
         "stock": "ROL",
-        "marketProfile": {
-            "VAL": 43.59,
-            "POC": 43.69,
-            "VAH": 43.82
-        },
+        "mp_type": "VAL",
+        "mp": 41.87,
+        "vwapPeriod": "quarterly",
+        "vwap_type": "VAH",
+        "vwap": 41.84
+    },
+    {
+        "stock": "ROL",
+        "mp_type": "POC",
+        "mp": 42.8,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 43.28,
-            "POC": 43.53,
-            "VAH": 43.78
-        }
+        "vwap_type": "VAL",
+        "vwap": 42.83
+    },
+    {
+        "stock": "SLB",
+        "mp_type": "POC",
+        "mp": 52.42,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 52.39
+    },
+    {
+        "stock": "SLB",
+        "mp_type": "POC",
+        "mp": 52.05,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 52.08
+    },
+    {
+        "stock": "SEE",
+        "mp_type": "POC",
+        "mp": 36.59,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 36.62
+    },
+    {
+        "stock": "SEE",
+        "mp_type": "VAL",
+        "mp": 36.36,
+        "vwapPeriod": "weekly",
+        "vwap_type": "POC",
+        "vwap": 36.32
     },
     {
         "stock": "LUV",
-        "marketProfile": {
-            "VAL": 28.88,
-            "POC": 29.14,
-            "VAH": 29.37
-        },
-        "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 29.03,
-            "POC": 29.17,
-            "VAH": 29.31
-        }
+        "mp_type": "VAL",
+        "mp": 28.87,
+        "vwapPeriod": "monthly",
+        "vwap_type": "POC",
+        "vwap": 28.85
+    },
+    {
+        "stock": "LUV",
+        "mp_type": "VAL",
+        "mp": 28.88,
+        "vwapPeriod": "monthly",
+        "vwap_type": "POC",
+        "vwap": 28.85
     },
     {
         "stock": "SYF",
-        "marketProfile": {
-            "VAL": 37.94,
-            "POC": 38.23,
-            "VAH": 38.37
-        },
+        "mp_type": "POC",
+        "mp": 38.23,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 38.17,
-            "POC": 38.25,
-            "VAH": 38.34
-        }
+        "vwap_type": "VAL",
+        "vwap": 38.22
+    },
+    {
+        "stock": "SYF",
+        "mp_type": "POC",
+        "mp": 38.23,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 38.25
+    },
+    {
+        "stock": "TPR",
+        "mp_type": "POC",
+        "mp": 36.85,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 36.9
     },
     {
         "stock": "TFC",
-        "marketProfile": {
-            "VAL": 36.3,
-            "POC": 36.69,
-            "VAH": 37.21
-        },
+        "mp_type": "POC",
+        "mp": 36.69,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 36.98,
-            "POC": 37.11,
-            "VAH": 37.24
-        }
+        "vwap_type": "VAL",
+        "vwap": 36.72
+    },
+    {
+        "stock": "UDR",
+        "mp_type": "VAL",
+        "mp": 37.62,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 37.63
+    },
+    {
+        "stock": "UDR",
+        "mp_type": "POC",
+        "mp": 38.0,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 37.98
     },
     {
         "stock": "VZ",
-        "marketProfile": {
-            "VAL": 37.44,
-            "POC": 37.71,
-            "VAH": 37.75
-        },
+        "mp_type": "POC",
+        "mp": 37.71,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 37.27,
-            "POC": 37.75,
-            "VAH": 38.23
-        }
+        "vwap_type": "VAL",
+        "vwap": 37.75
     },
     {
         "stock": "VFC",
-        "marketProfile": {
-            "VAL": 17.12,
-            "POC": 17.18,
-            "VAH": 17.36
-        },
+        "mp_type": "VAL",
+        "mp": 18.53,
         "vwapPeriod": "quarterly",
-        "vwapValues": {
-            "VAL": 15.72,
-            "POC": 17.14,
-            "VAH": 18.56
-        }
+        "vwap_type": "VAH",
+        "vwap": 18.56
+    },
+    {
+        "stock": "VFC",
+        "mp_type": "POC",
+        "mp": 17.18,
+        "vwapPeriod": "quarterly",
+        "vwap_type": "VAL",
+        "vwap": 17.14
+    },
+    {
+        "stock": "VTRS",
+        "mp_type": "VAL",
+        "mp": 10.13,
+        "vwapPeriod": "monthly",
+        "vwap_type": "POC",
+        "vwap": 10.17
+    },
+    {
+        "stock": "VTRS",
+        "mp_type": "VAL",
+        "mp": 10.13,
+        "vwapPeriod": "quarterly",
+        "vwap_type": "VAH",
+        "vwap": 10.11
+    },
+    {
+        "stock": "VTRS",
+        "mp_type": "VAL",
+        "mp": 10.63,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAH",
+        "vwap": 10.65
     },
     {
         "stock": "VICI",
-        "marketProfile": {
-            "VAL": 31.35,
-            "POC": 31.83,
-            "VAH": 31.92
-        },
+        "mp_type": "POC",
+        "mp": 31.83,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 31.6,
-            "POC": 31.82,
-            "VAH": 32.04
-        }
+        "vwap_type": "VAL",
+        "vwap": 31.81
     },
     {
-        "stock": "WBA",
-        "marketProfile": {
-            "VAL": 26.22,
-            "POC": 26.62,
-            "VAH": 26.78
-        },
+        "stock": "VICI",
+        "mp_type": "POC",
+        "mp": 32.12,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 26.26,
-            "POC": 26.49,
-            "VAH": 26.72
-        }
+        "vwap_type": "VAL",
+        "vwap": 32.14
     },
     {
         "stock": "WBD",
-        "marketProfile": {
-            "VAL": 11.08,
-            "POC": 11.23,
-            "VAH": 11.53
-        },
+        "mp_type": "VAL",
+        "mp": 11.25,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 11.23
+    },
+    {
+        "stock": "WBD",
+        "mp_type": "POC",
+        "mp": 11.5,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 11.09,
-            "POC": 11.54,
-            "VAH": 11.99
-        }
+        "vwap_type": "VAL",
+        "vwap": 11.54
     },
     {
         "stock": "WBD",
-        "marketProfile": {
-            "VAL": 11.08,
-            "POC": 11.23,
-            "VAH": 11.53
-        },
+        "mp_type": "POC",
+        "mp": 11.5,
         "vwapPeriod": "quarterly",
-        "vwapValues": {
-            "VAL": 10.1,
-            "POC": 10.79,
-            "VAH": 11.48
-        }
+        "vwap_type": "VAL",
+        "vwap": 11.48
     },
     {
         "stock": "WBD",
-        "marketProfile": {
-            "VAL": 11.25,
-            "POC": 11.5,
-            "VAH": 11.54
-        },
+        "mp_type": "VAL",
+        "mp": 11.22,
         "vwapPeriod": "weekly",
-        "vwapValues": {
-            "VAL": 11.39,
-            "POC": 11.48,
-            "VAH": 11.58
-        }
-    },
-    {
-        "stock": "WBD",
-        "marketProfile": {
-            "VAL": 11.25,
-            "POC": 11.5,
-            "VAH": 11.54
-        },
-        "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 11.09,
-            "POC": 11.54,
-            "VAH": 11.99
-        }
+        "vwap_type": "VAL",
+        "vwap": 11.23
     },
     {
         "stock": "WFC",
-        "marketProfile": {
-            "VAL": 49.23,
-            "POC": 49.91,
-            "VAH": 50.0
-        },
+        "mp_type": "VAL",
+        "mp": 49.95,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 45.61,
-            "POC": 47.79,
-            "VAH": 49.98
-        }
+        "vwap_type": "VAH",
+        "vwap": 49.98
+    },
+    {
+        "stock": "WFC",
+        "mp_type": "VAH",
+        "mp": 50.0,
+        "vwapPeriod": "monthly",
+        "vwap_type": "VAL",
+        "vwap": 49.98
+    },
+    {
+        "stock": "WRK",
+        "mp_type": "VAL",
+        "mp": 41.88,
+        "vwapPeriod": "monthly",
+        "vwap_type": "POC",
+        "vwap": 41.92
     },
     {
         "stock": "WY",
-        "marketProfile": {
-            "VAL": 34.1,
-            "POC": 34.35,
-            "VAH": 34.55
-        },
+        "mp_type": "VAL",
+        "mp": 33.45,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 33.48
+    },
+    {
+        "stock": "WY",
+        "mp_type": "VAH",
+        "mp": 34.55,
+        "vwapPeriod": "weekly",
+        "vwap_type": "VAL",
+        "vwap": 34.58
+    },
+    {
+        "stock": "WY",
+        "mp_type": "VAH",
+        "mp": 34.55,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 31.27,
-            "POC": 32.89,
-            "VAH": 34.51
-        }
+        "vwap_type": "VAL",
+        "vwap": 34.51
     },
     {
         "stock": "WMB",
-        "marketProfile": {
-            "VAL": 34.5,
-            "POC": 34.66,
-            "VAH": 35.1
-        },
+        "mp_type": "VAL",
+        "mp": 34.5,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 34.47,
-            "POC": 35.26,
-            "VAH": 36.05
-        }
+        "vwap_type": "VAL",
+        "vwap": 34.47
     },
     {
         "stock": "WMB",
-        "marketProfile": {
-            "VAL": 35.02,
-            "POC": 35.25,
-            "VAH": 35.45
-        },
+        "mp_type": "VAH",
+        "mp": 35.1,
+        "vwapPeriod": "quarterly",
+        "vwap_type": "VAL",
+        "vwap": 35.09
+    },
+    {
+        "stock": "WMB",
+        "mp_type": "POC",
+        "mp": 35.25,
         "vwapPeriod": "monthly",
-        "vwapValues": {
-            "VAL": 34.47,
-            "POC": 35.26,
-            "VAH": 36.05
-        }
+        "vwap_type": "VAL",
+        "vwap": 35.26
     }
 ]
