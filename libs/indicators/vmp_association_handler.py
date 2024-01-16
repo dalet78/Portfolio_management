@@ -144,3 +144,26 @@ def iterative_merge_dfs(dfs, overlap_threshold):
         first_index_to_check = second_index_to_check - 1
 
     return dfs, values
+
+def get_last_and_longest_dfs(dfs_per_day, overlap_threshold):
+    # Iterative merge of DataFrames
+    dfs_per_day_merged, merged_market_profile_values = iterative_merge_dfs(dfs_per_day, overlap_threshold)
+
+    # Filtra i valori di market profile basandoti sulla lunghezza del DataFrame associato
+    filtered_market_profiles = [
+        (df, mp) for df, mp in zip(dfs_per_day_merged, merged_market_profile_values) if len(df) >= 234
+    ]
+
+    # Ordina la lista in base alla lunghezza dei DataFrame
+    filtered_market_profiles.sort(key=lambda x: len(x[0]), reverse=True)
+
+    # Restituisci solo gli ultimi due DataFrames
+    if len(filtered_market_profiles) >= 2:
+        last_df1, last_mp1 = filtered_market_profiles[-1]
+        last_df2, last_mp2 = filtered_market_profiles[-2]
+        return last_df1, last_mp1, last_df2, last_mp2
+    elif len(filtered_market_profiles) == 1:
+        last_df, last_mp = filtered_market_profiles[0]
+        return last_df, last_mp, None, None
+    else:
+        return None, None, None, None
