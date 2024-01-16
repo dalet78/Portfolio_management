@@ -54,8 +54,9 @@ def vwap_stock_finder(index="Russel"):
                 # ]
 
                 # Calcola i VWAP e le deviazioni standard
+                vwap_daily, std_daily = trading_vwap.get_last_daily_vwap()
                 vwap_weekly, std_weekly = trading_vwap.get_previous_friday_vwap_and_std()
-                vwap_monthly, std_monthly = trading_vwap.get_last_month_vwap_and_std()
+                #vwap_monthly, std_monthly = trading_vwap.get_last_month_vwap_and_std()
                 vwap_quarterly, std_quarterly = trading_vwap.get_last_quarter_vwap_and_std()
 
                 data_filepath = f"{source_directory}/Data/SP500/5min/{item}_historical_data.csv"
@@ -86,17 +87,17 @@ def vwap_stock_finder(index="Russel"):
                 # Struttura per memorizzare i dati di uno stock
                 stock_data = {
                     "name": item,
-                    "marketProfiles": filtered_market_profiles,  # Aggiungi qui i dati del market profile se necessario
+                    "marketProfiles": filtered_market_profiles,  
                     "VWAPs": {
                         "weekly": {
                             "VAL": round(vwap_weekly - std_weekly, 2),
                             "POC": round(vwap_weekly, 2),
                             "VAH": round(vwap_weekly + std_weekly, 2)
                         },
-                        "monthly": {
-                            "VAL": round(vwap_monthly - std_monthly, 2),
-                            "POC": round(vwap_monthly, 2),
-                            "VAH": round(vwap_monthly + std_monthly, 2)
+                        "daily": {
+                            "VAL": round(vwap_daily - std_daily, 2),
+                            "POC": round(vwap_daily, 2),
+                            "VAH": round(vwap_daily + std_daily, 2)
                         },
                         "quarterly": {
                             "VAL": round(vwap_quarterly - std_quarterly, 2),
