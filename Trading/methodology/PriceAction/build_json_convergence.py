@@ -72,17 +72,19 @@ def vwap_stock_finder(index="Russel"):
                 # Imposta la soglia di sovrapposizione
                 overlap_threshold = 60  # Soglia percentuale per la sovrapposizione
 
-                # Esegui l'iterazione per unire i DataFrame
-                dfs_per_day_merged, merged_market_profile_values= iterative_merge_dfs(dfs_per_day, overlap_threshold)
+                # # Esegui l'iterazione per unire i DataFrame
+                # dfs_per_day_merged, merged_market_profile_values= iterative_merge_dfs(dfs_per_day, overlap_threshold)
 
-                # Filtra i valori di market profile basandoti sulla lunghezza del DataFrame associato
-                filtered_market_profiles = [
-                    mp for df, mp in zip(dfs_per_day_merged, merged_market_profile_values) if len(df) >= 234
-                ]
+                # # Filtra i valori di market profile basandoti sulla lunghezza del DataFrame associato
+                # filtered_market_profiles = [
+                #     mp for df, mp in zip(dfs_per_day_merged, merged_market_profile_values) if len(df) >= 234
+                # ]
 
-                for profile in filtered_market_profiles:
-                    if 'Date' in profile:
-                        del profile['Date']
+                # for profile in filtered_market_profiles:
+                #     if 'Date' in profile:
+                #         del profile['Date']
+                last_df1, last_mp1, last_df2, last_mp2 = get_last_and_longest_dfs(dfs_per_day, overlap_threshold)
+                filtered_market_profiles= [last_df1, last_mp1]
 
                 # Struttura per memorizzare i dati di uno stock
                 stock_data = {
