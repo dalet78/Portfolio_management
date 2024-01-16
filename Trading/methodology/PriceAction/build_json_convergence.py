@@ -264,11 +264,16 @@ def find_stock_near_congruence(index= "SP500"):
                                                       , image_path=image_path)
         
     file_report = report.save_report(filename=f"{index}_convergence_stock")
+    return file_report
     
-
+def find_convergense_value(index="Nasdaq"):
+    vwap_stock_finder(index=index)
+    find_close_market_profile_values(index=index)
+    report_file = find_stock_near_congruence(index=index)
+    return report_file
 
 if __name__ == '__main__':
-    start_time = time.time()  # Registra l'ora di inizio
+    #start_time = time.time()  # Registra l'ora di inizio
     #source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
     vwap_stock_finder(index = "Nasdaq")
     vwap_stock_finder(index = "SP500")
@@ -277,8 +282,8 @@ if __name__ == '__main__':
     find_close_market_profile_values(index="SP500")
     find_stock_near_congruence(index="Nasdaq")
     find_stock_near_congruence(index="SP500")
-    duration = time.time() - start_time
-    print(f"Tempo di esecuzione: {duration:.2f} secondi")
+    #duration = time.time() - start_time
+    #print(f"Tempo di esecuzione: {duration:.2f} secondi")
     
     
     

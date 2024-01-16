@@ -3,12 +3,15 @@ from datetime import datetime
 
 
 source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
-def crea_cartella_con_data():
+def crea_cartella_con_data(weekly=False):
     # Ottieni la data odierna
     data_odierna = datetime.now().strftime("%Y-%m-%d")
 
     # Crea il percorso della cartella con la data odierna
-    percorso_cartella = os.path.join(f"{source_directory}/Reports", data_odierna)
+    if not weekly:
+        percorso_cartella = os.path.join(f"{source_directory}/Reports", data_odierna)
+    else:
+        percorso_cartella = os.path.join(f"{source_directory}/Reports", f"weekly-{data_odierna}")
 
     # Verifica se la cartella esiste già, altrimenti creala
     if not os.path.exists(percorso_cartella):

@@ -21,14 +21,14 @@ class CommandBot:
         logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         self.logger = logging.getLogger(__name__)
         # Pianifica l'esecuzione della routine giornaliera alle 8:00 ogni mattina
-        schedule.every().day.at("08:34").do(self.daily_routine)
+        #schedule.every().day.at("14:53").do(self.daily_routine)
         schedule.every().tuesday.at("08:00").do(self.daily_routine)
         schedule.every().wednesday.at("08:00").do(self.daily_routine)
         schedule.every().thursday.at("08:00").do(self.daily_routine)
         schedule.every().friday.at("08:00").do(self.daily_routine)
         schedule.every().saturday.at("08:00").do(self.daily_routine)
         schedule.every().saturday.at("10:00").do(self.weekly_routine)
-        self.lista_chat_id = ['1458740893']
+        self.lista_chat_id = ['1458740893','5634630295']
 
     def start(self) -> None:
         """Start the bot."""
@@ -39,8 +39,7 @@ class CommandBot:
         # Logica della tua routine quotidiana qui
         # Ad esempio, invio automatico di un file alla chat
         try:
-            folder_report = daily_routine_command() # ... (la tua logica per ottenere il file da inviare)
-            chat_id = '1458740893'
+            folder_report = daily_routine_command()
             # Ottieni il percorso completo della cartella
             folder_path = os.path.join(os.getcwd(), folder_report)
 
@@ -66,9 +65,25 @@ class CommandBot:
         # Logica della tua routine quotidiana qui
         # Ad esempio, invio automatico di un file alla chat
         try:
-            folder_report = daily_routine_command() # ... (la tua logica per ottenere il file da inviare)
-            chat_id = '1458740893'
-            self.send_generated_pdf(self.bot, chat_id, folder_report)
+            folder_report = weekly_routine_command()
+            # Ottieni il percorso completo della cartella
+            folder_path = os.path.join(os.getcwd(), folder_report)
+
+            # Verifica che la cartella esista
+            if os.path.exists(folder_path) and os.path.isdir(folder_path):
+                # Ottieni la lista dei file nella cartella
+                files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+
+                # Invia ciascun file alla chat
+                for chat_id in self.lista_chat_id:  # Sostituisci con l'ID effettivo della tua chat
+                    for file_name in files:
+                        file_path = os.path.join(folder_path, file_name)
+                        self.send_generated_pdf(self.bot, chat_id, file_path)
+
+                    print(f"Tutti i file sono stati inviati alle chat.")
+            else:
+                print(f"La cartella non esiste: {folder_path}")
+
         except Exception as e:
             self.logger.error(f"Errore durante l'esecuzione della routine giornaliera: {e}")
 

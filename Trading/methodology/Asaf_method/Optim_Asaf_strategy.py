@@ -128,6 +128,7 @@ def Asaf_trading(index = "SP500"):
                 # Gestisci altri errori generici
                     print(f"Errore durante l'elaborazione di {item}: {e}")
             file_report = report.save_report(filename=f"{index}_best_vwap_diff_stock")
+            return file_report
 
 def optimize_high_vwap_diff(df):
     best_high_vwap_diff = None

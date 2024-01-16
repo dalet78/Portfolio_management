@@ -8,6 +8,8 @@ from Trading.methodology.lateral_movement.search_type_mov import TrendMovementAn
 from support.download_data import *
 from support.miscela import *
 from Trading.methodology.Asaf_method.Asaf_strategy import Asaf_trading
+from Trading.methodology.Asaf_method.Optim_Asaf_strategy import *
+from Trading.methodology.PriceAction.build_json_convergence import find_convergense_value
 
 
 source_directory ="/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
@@ -33,7 +35,7 @@ def download_data_daily():
     # stop_downloading()
 
 def blocked_stock(index="Russel"):
-    start_time = time.time()
+    #start_time = time.time()
     report = ReportGenerator()
     report.add_title(title=f"{index} Report blocked stock")
 
@@ -76,9 +78,9 @@ def blocked_stock(index="Russel"):
         # Salva il report e pulisci i file temporanei
         file_report = report.save_report(filename=f"{index}_Report_blocked_stock")
         enhanced_strategy.clear_img_temp_files()
-        end_time = time.time()  # Registra l'ora di fine
-        duration = end_time - start_time  # Calcola la durata totale
-        print(f"Tempo di elaborazione {index}: {duration} secondi.")
+        #end_time = time.time()  # Registra l'ora di fine
+        #duration = end_time - start_time  # Calcola la durata totale
+        #print(f"Tempo di elaborazione {index}: {duration} secondi.")
         return file_report
 
 
@@ -113,14 +115,35 @@ def find_lateral_mov():
     return file_report
 
 def daily_routine_command():
-    # download_data_5min()
-    # download_data_daily()
-    # file_report1 = blocked_stock(index="SP500")
-    # file_report2 = blocked_stock(index="Nasdaq")
-    # file_report3 = blocked_stock(index="Russel")
+    #download_data_5min()
+    #download_data_daily()
+    file_report1 = blocked_stock(index="SP500")
+    file_report2 = blocked_stock(index="Nasdaq")
+    file_report3 = blocked_stock(index="Russel")
+    file_report4 = find_convergense_value(index="SP500")
+    file_report5 = find_convergense_value(index="Nasdaq")
+    file_report6 = find_convergense_value(index="Russel")
     folder_name = crea_cartella_con_data()
-    # sposta_file_in_cartella(file_report1, folder_name)
-    # sposta_file_in_cartella(file_report2, folder_name)
-    # sposta_file_in_cartella(file_report3, folder_name)
+    sposta_file_in_cartella(file_report1, folder_name)
+    sposta_file_in_cartella(file_report2, folder_name)
+    sposta_file_in_cartella(file_report3, folder_name)
+    sposta_file_in_cartella(file_report4, folder_name)
+    sposta_file_in_cartella(file_report5, folder_name)
+    sposta_file_in_cartella(file_report6, folder_name)
+    return folder_name
+
+
+def weekly_routine_command():
+    download_data_weekly()
+    file_report1 = Asaf_trading(index="SP500")
+    file_report2 = Asaf_trading(index="Nasdaq")
+    file_report3 = Asaf_trading(index="Russel")
+    folder_name = crea_cartella_con_data()
+    sposta_file_in_cartella(file_report1, folder_name)
+    sposta_file_in_cartella(file_report2, folder_name)
+    sposta_file_in_cartella(file_report3, folder_name)
 
     return folder_name
+
+if __name__ == '__main__':
+    daily_routine_command()
