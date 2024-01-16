@@ -183,6 +183,20 @@ class TradingVWAP:
 
         return np.array(last_5_vwap), np.array(changes)
 
+    def get_last_daily_vwap(self):
+        """
+        Get the last daily VWAP value and its standard deviation.
+        """
+        vwap = self.calculate_vwap('D')  # Calculate the daily VWAP
+        vwap.sort_index(inplace=True)
+    
+        # Filter out NaN values and select the last session
+        last_session_vwap = vwap.dropna().iloc[-1:]
+    
+        # Calculate standard deviation for the last session
+        last_session_std = last_session_vwap.std()
+    
+        return last_session_vwap.iloc[0], last_session_std
 
 # Example usage:
 
