@@ -1,8 +1,7 @@
 from Reports.report_builder import ReportGenerator
 from Reports.image_builder import CandlestickChartGenerator
 import json
-import pandas as pd
-import time
+from datetime import date
 from libs.indicators.vwap_handler import  TradingVWAP
 from libs.indicators.vmp_association_handler import *
 from libs.filtered_stock import return_filtred_list
@@ -40,6 +39,7 @@ def vwap_stock_finder(index="Russel"):
 
                 
                 # threshold = 0.2
+                data = data.rename(columns={'Date': 'Datetime'})
                 trading_vwap = TradingVWAP(data)
                 # last_close_price = data['Close'].iloc[-1]
                 # vwap_values = []
@@ -54,7 +54,7 @@ def vwap_stock_finder(index="Russel"):
                 # ]
 
                 # Calcola i VWAP e le deviazioni standard
-                vwap_daily, std_daily = trading_vwap.get_last_daily_vwap()
+
                 vwap_weekly, std_weekly = trading_vwap.get_previous_friday_vwap_and_std()
                 #vwap_monthly, std_monthly = trading_vwap.get_last_month_vwap_and_std()
                 vwap_quarterly, std_quarterly = trading_vwap.get_last_quarter_vwap_and_std()
@@ -65,6 +65,9 @@ def vwap_stock_finder(index="Russel"):
                 df = load_data(data_filepath)
                 # Controllo VMP e aggiunge VMP line nel json file
                 dfs_per_day = split_data_by_day(df)
+                trading_vwap_daily = TradingVWAP(df)
+                vwap_daily, std_daily = trading_vwap_daily.get_daily_vwap_with_deviation()
+
 
                 # Calcola i valori di market profile per ogni giorno
                 market_profile_values = calculate_market_profile_values(dfs_per_day)
@@ -83,8 +86,10 @@ def vwap_stock_finder(index="Russel"):
                 # for profile in filtered_market_profiles:
                 #     if 'Date' in profile:
                 #         del profile['Date']
-                last_df1, last_mp1, last_df2, last_mp2 = get_last_and_longest_dfs(dfs_per_day, overlap_threshold)
-                filtered_market_profiles= [last_df1, last_mp1]
+                last_df1, last_mp_comp1, last_df2, last_mp2 = get_last_and_longest_dfs(dfs_per_day, overlap_threshold)
+                last_df= [dfs_per_day[-1]]
+                last_mp1 = calculate_market_profile_values(last_df)
+                filtered_market_profiles= [last_mp1, last_mp_comp1]
 
                 # Struttura per memorizzare i dati di uno stock
                 stock_data = {
@@ -138,10 +143,20 @@ def vwap_stock_finder(index="Russel"):
 
 
         #save json in file
-        with open(f'{source_directory}/Data/{index}_stocks_vwap_data.json', 'w') as f:
-            json.dump(json_data, f, indent=4)
+        file_path = f'{source_directory}/Data/{index}_stocks_vwap_data.json'
+
+        # Scrivi il file JSON con la funzione di serializzazione personalizzata
+        with open(file_path, 'w') as f:
+            json.dump(json_data, f, indent=4, default=serialize_date)
 ################################################################################################
 
+
+
+# Funzione di serializzazione personalizzata per oggetti datetime.date
+def serialize_date(obj):
+    if isinstance(obj, date):
+        return obj.isoformat()
+    raise TypeError("Type not serializable")
 
 def find_close_market_profile_values(index="SP500"):
     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
@@ -280,7 +295,7 @@ if __name__ == '__main__':
     #source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
     vwap_stock_finder(index = "Nasdaq")
     vwap_stock_finder(index = "SP500")
-    vwap_stock_finder(index="Russel")
+    #vwap_stock_finder(index="Russel")
     find_close_market_profile_values(index="Nasdaq")
     find_close_market_profile_values(index="SP500")
     find_stock_near_congruence(index="Nasdaq")

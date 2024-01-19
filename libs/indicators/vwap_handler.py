@@ -16,7 +16,7 @@ class TradingVWAP:
         Calculate VWAP for a given timeframe using pandas_ta.
         """
         df = self.data.copy()
-        df.set_index(pd.to_datetime(df['Date']), inplace=True)
+        df.set_index(pd.to_datetime(df['Datetime']), inplace=True)
 
         # Calcola il VWAP usando pandas_ta
         vwap = ta.vwap(df['High'], df['Low'], df['Close'], df['Volume'])
@@ -153,35 +153,19 @@ class TradingVWAP:
 
         return average_last_year_vwap, last_year_std
 
-    def get_last_5_daily_vwap_with_changes(self):
+    def get_daily_vwap_with_deviation(self):
         """
         Get the last 5 daily VWAP values and their changes (differences).
         """
-        vwap = self.calculate_vwap('D')  # Calculate the daily VWAP
-        vwap.sort_index(inplace=True)
+        self.data['price_volume'] =  self.data['Close'] *  self.data['Volume']
+        # Raggruppa per giorno e calcola il VWAP cumulativo per ogni momento
+        # Il calcolo si resetta all'inizio di ogni nuovo giorno
+        self.data['cumulative_price_volume'] = self.data.groupby( self.data.index.normalize())['price_volume'].cumsum()
+        self.data['cumulative_volume'] = self.data.groupby(self.data.index.normalize())['Volume'].cumsum()
+        self.data['vwap'] = self.data['cumulative_price_volume'] / self.data['cumulative_volume']
+        self.data['vwap_std'] = self.data.groupby(self.data.index.normalize())['vwap'].transform('std')
 
-        # Initialize lists to store the last 5 VWAP values and changes
-        last_5_vwap = []
-        changes = []
-
-        # Start from the last day and go backwards until you get 5 valid values
-        for i in range(1, len(vwap) + 1):
-            current_vwap = vwap.iloc[-i]
-            if not np.isnan(current_vwap):
-                # If the current VWAP is not nan, add it to the list
-                last_5_vwap.append(current_vwap)
-                if len(last_5_vwap) > 1:
-                    # Calculate the change from the previous value
-                    changes.append(current_vwap - last_5_vwap[-2])
-                if len(last_5_vwap) == 5:
-                    # If we have 5 values, stop the loop
-                    break
-
-        # Reverse the lists as we collected them in reverse order
-        last_5_vwap.reverse()
-        changes.reverse()
-
-        return np.array(last_5_vwap), np.array(changes)
+        return self.data['vwap'].iloc[-1], self.data['vwap_std'].iloc[-1]
 
     def get_last_daily_vwap(self):
         """
