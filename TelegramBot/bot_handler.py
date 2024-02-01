@@ -21,7 +21,7 @@ class CommandBot:
         logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         self.logger = logging.getLogger(__name__)
         # Pianifica l'esecuzione della routine giornaliera alle 8:00 ogni mattina
-        #schedule.every().day.at("14:53").do(self.daily_routine)
+        schedule.every().day.at("11:19").do(self.daily_routine)
         schedule.every().tuesday.at("08:00").do(self.daily_routine)
         schedule.every().wednesday.at("08:00").do(self.daily_routine)
         schedule.every().thursday.at("08:00").do(self.daily_routine)

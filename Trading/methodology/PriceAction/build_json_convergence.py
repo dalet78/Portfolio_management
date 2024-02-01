@@ -158,10 +158,13 @@ def serialize_date(obj):
         return obj.isoformat()
     raise TypeError("Type not serializable")
 
+
 def find_close_market_profile_values(index="SP500"):
     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
+
     # Lista per tenere traccia dei risultati
     close_values = []
+
     with open(f'{source_directory}/Data/{index}_stocks_vwap_data.json', 'r') as f:
         stock_data = json.load(f)
 
@@ -171,95 +174,133 @@ def find_close_market_profile_values(index="SP500"):
         vwap_values = stock["VWAPs"]
 
         # Scorre attraverso i valori di market profile
-        for mp in market_profiles:
-            # Confronta con ogni periodo di VWAP (weekly, monthly, quarterly)
-            for period, vwap in vwap_values.items():
-                # Calcola la differenza e verifica se è inferiore o uguale a 0.05
-                if abs(mp["VAL"] - vwap["VAL"]) <= 0.05:
-                    close_values.append({
-                        "stock": stock["name"],
-                        "mp_type" : "VAL",
-                        "mp": mp["VAL"],
-                        "vwapPeriod": period,
-                        "vwap_type": "VAL",
-                        "vwap": vwap["VAL"]
-                    })
-                elif abs(mp["VAL"] - vwap["POC"]) <= 0.05:
-                    close_values.append({
-                        "stock": stock["name"],
-                        "mp_type": "VAL",
-                        "mp": mp["VAL"],
-                        "vwapPeriod": period,
-                        "vwap_type": "POC",
-                        "vwap": vwap["POC"]
-                    })
-                elif abs(mp["VAL"] - vwap["VAH"]) <= 0.05:
-                    close_values.append({
-                        "stock": stock["name"],
-                        "mp_type": "VAL",
-                        "mp": mp["VAL"],
-                        "vwapPeriod": period,
-                        "vwap_type": "VAH",
-                        "vwap": vwap["VAH"]
-                    })
-                elif abs(mp["POC"] - vwap["VAL"]) <= 0.05:
-                    close_values.append({
-                        "stock": stock["name"],
-                        "mp_type": "POC",
-                        "mp": mp["POC"],
-                        "vwapPeriod": period,
-                        "vwap_type": "VAL",
-                        "vwap": vwap["VAL"]
-                    })
-                elif abs(mp["POC"] - vwap["POC"]) <= 0.05:
-                    close_values.append({
-                        "stock": stock["name"],
-                        "mp_type": "POC",
-                        "mp": mp["POC"],
-                        "vwapPeriod": period,
-                        "vwap_type": "VAL",
-                        "vwap": vwap["POC"]
-                    })
-                elif abs(mp["POC"] - vwap["VAH"]) <= 0.05:
-                    close_values.append({
-                        "stock": stock["name"],
-                        "mp_type": "POC",
-                        "mp": mp["POC"],
-                        "vwapPeriod": period,
-                        "vwap_type": "VAL",
-                        "vwap": vwap["VAH"]
-                    })
-                elif abs(mp["VAH"] - vwap["VAL"]) <= 0.05:
-                    close_values.append({
-                        "stock": stock["name"],
-                        "mp_type": "VAH",
-                        "mp": mp["VAH"],
-                        "vwapPeriod": period,
-                        "vwap_type": "VAL",
-                        "vwap": vwap["VAL"]
-                    })
-                elif abs(mp["VAH"] - vwap["POC"]) <= 0.05:
-                    close_values.append({
-                        "stock": stock["name"],
-                        "mp_type": "VAH",
-                        "mp": mp["VAH"],
-                        "vwapPeriod": period,
-                        "vwap_type": "VAL",
-                        "vwap": vwap["POC"]
-                    })
-                elif abs(mp["VAH"] - vwap["VAH"]) <= 0.05:
-                    close_values.append({
-                        "stock": stock["name"],
-                        "mp_type": "VAH",
-                        "mp": mp["VAH"],
-                        "vwapPeriod": period,
-                        "vwap_type": "VAL",
-                        "vwap": vwap["VAH"]
-                    })
+        if market_profiles is not None and vwap_values is not None:
+            for mp_list in market_profiles:
+                if mp_list is not None and isinstance(mp_list, list):
+                    for mp in mp_list:
+                        # Verifica se mp è un dizionario prima di accedere alle chiavi
+                        if isinstance(mp, dict):
+                            for period, vwap in vwap_values.items():
+                                for mp_type in ["VAL", "POC", "VAH"]:
+                                    if mp_type in mp and isinstance(mp[mp_type],
+                                                                    (int, float)) and mp_type in vwap and isinstance(
+                                            vwap[mp_type], (int, float)):
+                                        if abs(mp[mp_type] - vwap[mp_type]) <= 0.05:
+                                            close_values.append({
+                                                "stock": stock["name"],
+                                                "mp_type": mp_type,
+                                                "mp": mp[mp_type],
+                                                "vwapPeriod": period,
+                                                "vwap_type": mp_type,
+                                                "vwap": vwap[mp_type]
+                                            })
+
     # save json in file
     with open(f'{source_directory}/Data/{index}_stocks_cong_data.json', 'w') as f:
         json.dump(close_values, f, indent=4)
-    
+
+# def find_close_market_profile_values(index="SP500"):
+#     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
+#     # Lista per tenere traccia dei risultati
+#     close_values = []
+#     with open(f'{source_directory}/Data/{index}_stocks_vwap_data.json', 'r') as f:
+#         stock_data = json.load(f)
+#
+#     for stock in stock_data["stocks"]:
+#         # Ottiene i valori di market profile e VWAP per lo stock corrente
+#         market_profiles = stock["marketProfiles"]
+#         vwap_values = stock["VWAPs"]
+#
+#         # Scorre attraverso i valori di market profile
+#         for mp in market_profiles:
+#             # Confronta con ogni periodo di VWAP (weekly, monthly, quarterly)
+#             for period, vwap in vwap_values.items():
+#                 # Calcola la differenza e verifica se è inferiore o uguale a 0.05
+#                 if abs(mp["VAL"] - vwap["VAL"]) <= 0.05:
+#                     close_values.append({
+#                         "stock": stock["name"],
+#                         "mp_type" : "VAL",
+#                         "mp": mp["VAL"],
+#                         "vwapPeriod": period,
+#                         "vwap_type": "VAL",
+#                         "vwap": vwap["VAL"]
+#                     })
+#                 elif abs(mp["VAL"] - vwap["POC"]) <= 0.05:
+#                     close_values.append({
+#                         "stock": stock["name"],
+#                         "mp_type": "VAL",
+#                         "mp": mp["VAL"],
+#                         "vwapPeriod": period,
+#                         "vwap_type": "POC",
+#                         "vwap": vwap["POC"]
+#                     })
+#                 elif abs(mp["VAL"] - vwap["VAH"]) <= 0.05:
+#                     close_values.append({
+#                         "stock": stock["name"],
+#                         "mp_type": "VAL",
+#                         "mp": mp["VAL"],
+#                         "vwapPeriod": period,
+#                         "vwap_type": "VAH",
+#                         "vwap": vwap["VAH"]
+#                     })
+#                 elif abs(mp["POC"] - vwap["VAL"]) <= 0.05:
+#                     close_values.append({
+#                         "stock": stock["name"],
+#                         "mp_type": "POC",
+#                         "mp": mp["POC"],
+#                         "vwapPeriod": period,
+#                         "vwap_type": "VAL",
+#                         "vwap": vwap["VAL"]
+#                     })
+#                 elif abs(mp["POC"] - vwap["POC"]) <= 0.05:
+#                     close_values.append({
+#                         "stock": stock["name"],
+#                         "mp_type": "POC",
+#                         "mp": mp["POC"],
+#                         "vwapPeriod": period,
+#                         "vwap_type": "VAL",
+#                         "vwap": vwap["POC"]
+#                     })
+#                 elif abs(mp["POC"] - vwap["VAH"]) <= 0.05:
+#                     close_values.append({
+#                         "stock": stock["name"],
+#                         "mp_type": "POC",
+#                         "mp": mp["POC"],
+#                         "vwapPeriod": period,
+#                         "vwap_type": "VAL",
+#                         "vwap": vwap["VAH"]
+#                     })
+#                 elif abs(mp["VAH"] - vwap["VAL"]) <= 0.05:
+#                     close_values.append({
+#                         "stock": stock["name"],
+#                         "mp_type": "VAH",
+#                         "mp": mp["VAH"],
+#                         "vwapPeriod": period,
+#                         "vwap_type": "VAL",
+#                         "vwap": vwap["VAL"]
+#                     })
+#                 elif abs(mp["VAH"] - vwap["POC"]) <= 0.05:
+#                     close_values.append({
+#                         "stock": stock["name"],
+#                         "mp_type": "VAH",
+#                         "mp": mp["VAH"],
+#                         "vwapPeriod": period,
+#                         "vwap_type": "VAL",
+#                         "vwap": vwap["POC"]
+#                     })
+#                 elif abs(mp["VAH"] - vwap["VAH"]) <= 0.05:
+#                     close_values.append({
+#                         "stock": stock["name"],
+#                         "mp_type": "VAH",
+#                         "mp": mp["VAH"],
+#                         "vwapPeriod": period,
+#                         "vwap_type": "VAL",
+#                         "vwap": vwap["VAH"]
+#                     })
+#     # save json in file
+#     with open(f'{source_directory}/Data/{index}_stocks_cong_data.json', 'w') as f:
+#         json.dump(close_values, f, indent=4)
+#
 
 def find_stock_near_congruence(index= "SP500"):
     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
@@ -293,8 +334,8 @@ def find_convergense_value(index="Nasdaq"):
 if __name__ == '__main__':
     #start_time = time.time()  # Registra l'ora di inizio
     #source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
-    vwap_stock_finder(index = "Nasdaq")
-    vwap_stock_finder(index = "SP500")
+    #vwap_stock_finder(index = "Nasdaq")
+    #vwap_stock_finder(index = "SP500")
     #vwap_stock_finder(index="Russel")
     find_close_market_profile_values(index="Nasdaq")
     find_close_market_profile_values(index="SP500")

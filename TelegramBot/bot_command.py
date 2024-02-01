@@ -7,8 +7,9 @@ from Trading.methodology.blocked_stock.blocked_stock import TradingAnalyzer
 from Trading.methodology.lateral_movement.search_type_mov import TrendMovementAnalyzer
 from support.download_data import *
 from support.miscela import *
-from Trading.methodology.Asaf_method.Asaf_strategy import Asaf_trading
+# from Trading.methodology.Asaf_method.Asaf_strategy import Asaf_trading
 from Trading.methodology.Asaf_method.Optim_Asaf_strategy import *
+from Trading.methodology.Asaf_method.Asaf_sma_strategy import sma_cross_trading
 from Trading.methodology.PriceAction.build_json_convergence import find_convergense_value
 
 
@@ -119,31 +120,34 @@ def daily_routine_command():
     #download_data_daily()
     file_report1 = blocked_stock(index="SP500")
     file_report2 = blocked_stock(index="Nasdaq")
-    file_report3 = blocked_stock(index="Russel")
+    #file_report3 = blocked_stock(index="Russel")
     file_report4 = find_convergense_value(index="SP500")
     file_report5 = find_convergense_value(index="Nasdaq")
-    file_report6 = find_convergense_value(index="Russel")
+    #file_report6 = find_convergense_value(index="Russel")
+    folder_name = crea_cartella_con_data()
+    sposta_file_in_cartella(file_report1, folder_name)
+    sposta_file_in_cartella(file_report2, folder_name)
+    #sposta_file_in_cartella(file_report3, folder_name)
+    sposta_file_in_cartella(file_report4, folder_name)
+    sposta_file_in_cartella(file_report5, folder_name)
+    #sposta_file_in_cartella(file_report6, folder_name)
+    return folder_name
+
+
+def weekly_routine_command():
+    #download_data_weekly()
+    file_report1 = Asaf_trading(index="SP500")
+    file_report2 = Asaf_trading(index="Nasdaq")
+    file_report3 = sma_cross_trading(index="SP500")
+    file_report4 = sma_cross_trading(index="Nasdaq")
     folder_name = crea_cartella_con_data()
     sposta_file_in_cartella(file_report1, folder_name)
     sposta_file_in_cartella(file_report2, folder_name)
     sposta_file_in_cartella(file_report3, folder_name)
     sposta_file_in_cartella(file_report4, folder_name)
-    sposta_file_in_cartella(file_report5, folder_name)
-    sposta_file_in_cartella(file_report6, folder_name)
-    return folder_name
-
-
-def weekly_routine_command():
-    download_data_weekly()
-    file_report1 = Asaf_trading(index="SP500")
-    file_report2 = Asaf_trading(index="Nasdaq")
-    file_report3 = Asaf_trading(index="Russel")
-    folder_name = crea_cartella_con_data()
-    sposta_file_in_cartella(file_report1, folder_name)
-    sposta_file_in_cartella(file_report2, folder_name)
-    sposta_file_in_cartella(file_report3, folder_name)
 
     return folder_name
 
 if __name__ == '__main__':
-    daily_routine_command()
+    #daily_routine_command()
+    weekly_routine_command()
