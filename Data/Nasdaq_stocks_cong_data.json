@@ -1,90 +1,26 @@
 [
     {
-        "stock": "INTC",
-        "mp_type": "POC",
-        "mp": 46.87,
-        "vwapPeriod": "daily",
-        "vwap_type": "POC",
-        "vwap": 46.89
-    },
-    {
-        "stock": "CMCSA",
-        "mp_type": "VAL",
-        "mp": 42.34,
-        "vwapPeriod": "daily",
-        "vwap_type": "VAL",
-        "vwap": 42.37
-    },
-    {
-        "stock": "CSX",
-        "mp_type": "VAL",
-        "mp": 34.44,
-        "vwapPeriod": "daily",
-        "vwap_type": "VAL",
-        "vwap": 34.42
-    },
-    {
-        "stock": "CSX",
-        "mp_type": "POC",
-        "mp": 34.5,
-        "vwapPeriod": "daily",
-        "vwap_type": "POC",
-        "vwap": 34.45
-    },
-    {
-        "stock": "WBA",
-        "mp_type": "VAL",
-        "mp": 21.94,
-        "vwapPeriod": "daily",
-        "vwap_type": "VAL",
-        "vwap": 21.97
-    },
-    {
         "stock": "WBA",
         "mp_type": "POC",
-        "mp": 21.97,
-        "vwapPeriod": "daily",
-        "vwap_type": "POC",
-        "vwap": 21.99
-    },
-    {
-        "stock": "KHC",
-        "mp_type": "VAL",
-        "mp": 36.96,
-        "vwapPeriod": "daily",
-        "vwap_type": "VAL",
-        "vwap": 36.97
-    },
-    {
-        "stock": "EBAY",
-        "mp_type": "VAL",
-        "mp": 40.51,
-        "vwapPeriod": "daily",
-        "vwap_type": "VAL",
-        "vwap": 40.53
-    },
-    {
-        "stock": "FOXA",
-        "mp_type": "VAL",
-        "mp": 30.77,
-        "vwapPeriod": "daily",
-        "vwap_type": "VAL",
-        "vwap": 30.78
-    },
-    {
-        "stock": "FOX",
-        "mp_type": "VAH",
-        "mp": 28.65,
+        "mp": 22.71,
         "vwapPeriod": "weekly",
-        "vwap_type": "VAH",
-        "vwap": 28.61
+        "vwap_type": "POC",
+        "vwap": 22.71
     },
     {
-        "stock": "FOX",
+        "stock": "WBA",
         "mp_type": "VAL",
-        "mp": 28.45,
+        "mp": 22.59,
         "vwapPeriod": "daily",
         "vwap_type": "VAL",
-        "vwap": 28.49
+        "vwap": 22.58
+    },
+    {
+        "stock": "AAL",
+        "mp_type": "POC",
+        "mp": 14.57,
+        "vwapPeriod": "weekly",
+        "vwap_type": "POC",
+        "vwap": 14.59
     }
 ]

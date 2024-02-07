@@ -41,32 +41,17 @@ def vwap_stock_finder(index="Russel"):
                 # threshold = 0.2
                 data = data.rename(columns={'Date': 'Datetime'})
                 trading_vwap = TradingVWAP(data)
-                # last_close_price = data['Close'].iloc[-1]
-                # vwap_values = []
-                # std_devs = []
 
-                # Ottieni i dati per settimana, mese, quadrimestre e anno
-                # timeframes = [
-                #     ('Venerdì precedente', trading_vwap.get_previous_friday_vwap_and_std()),
-                #     ('Ultimo giorno del mese precedente', trading_vwap.get_last_month_vwap_and_std()),
-                #     ('Ultimo giorno del quadrimestre precedente', trading_vwap.get_last_quarter_vwap_and_std()),
-                #     ('Ultimo giorno utile dell\'anno precedente', trading_vwap.get_last_year_vwap_and_std())
-                # ]
-
-                # Calcola i VWAP e le deviazioni standard
-
-                vwap_weekly, std_weekly = trading_vwap.get_previous_friday_vwap_and_std()
-                #vwap_monthly, std_monthly = trading_vwap.get_last_month_vwap_and_std()
                 vwap_quarterly, std_quarterly = trading_vwap.get_last_quarter_vwap_and_std()
 
-                data_filepath = f"{source_directory}/Data/SP500/5min/{item}_historical_data.csv"
-
+                data_filepath = f"{source_directory}/Data/{index}/5min/{item}_historical_data.csv"
                 # Carica i dati
                 df = load_data(data_filepath)
                 # Controllo VMP e aggiunge VMP line nel json file
                 dfs_per_day = split_data_by_day(df)
                 trading_vwap_daily = TradingVWAP(df)
-                vwap_daily, std_daily = trading_vwap_daily.get_daily_vwap_with_deviation()
+                vwap_daily, std_daily = trading_vwap_daily.get_last_daily_vwap()
+                vwap_weekly, std_weekly = trading_vwap_daily.get_previous_friday_vwap_and_std()
 
 
                 # Calcola i valori di market profile per ogni giorno
@@ -75,20 +60,11 @@ def vwap_stock_finder(index="Russel"):
                 # Imposta la soglia di sovrapposizione
                 overlap_threshold = 60  # Soglia percentuale per la sovrapposizione
 
-                # # Esegui l'iterazione per unire i DataFrame
-                # dfs_per_day_merged, merged_market_profile_values= iterative_merge_dfs(dfs_per_day, overlap_threshold)
 
-                # # Filtra i valori di market profile basandoti sulla lunghezza del DataFrame associato
-                # filtered_market_profiles = [
-                #     mp for df, mp in zip(dfs_per_day_merged, merged_market_profile_values) if len(df) >= 234
-                # ]
-
-                # for profile in filtered_market_profiles:
-                #     if 'Date' in profile:
-                #         del profile['Date']
-                last_df1, last_mp_comp1, last_df2, last_mp2 = get_last_and_longest_dfs(dfs_per_day, overlap_threshold)
+                last_df1, last_mp_comp1, day_df1, last_df2, last_mp2, day_df2 = get_last_and_longest_dfs(dfs_per_day, overlap_threshold)
                 last_df= [dfs_per_day[-1]]
                 last_mp1 = calculate_market_profile_values(last_df)
+                last_mp_comp1['days']= day_df1
                 filtered_market_profiles= [last_mp1, last_mp_comp1]
 
                 # Struttura per memorizzare i dati di uno stock
@@ -116,23 +92,6 @@ def vwap_stock_finder(index="Russel"):
                 # Converti i valori di market profile in un DataFrame per una migliore visualizzazione
                 values_df = pd.DataFrame(market_profile_values)
 
-                # Controlla la vicinanza del prezzo di chiusura ai valori VWAP
-                # for label, (vwap, std) in timeframes:
-                #     vwap_minus_std, vwap_plus_std = vwap - std, vwap + std
-
-                #     if abs(last_close_price - vwap_minus_std) <= threshold or \
-                #             abs(last_close_price - vwap) <= threshold or \
-                #             abs(last_close_price - vwap_plus_std) <= threshold:
-                #         close_to_vwap_stocks.append((item, label))
-                #         exit_values = [vwap_minus_std, vwap, vwap_plus_std]
-                #         image = CandlestickChartGenerator(data)
-                #         image_path = image.create_chart_with_horizontal_lines_and_volume(lines=exit_values,
-                #                                                                          max_points=90)
-                #         report.add_content(f'Stock = {item} vicino al VWAP del {label}\n')
-                #         report.add_commented_image(df=data, comment=f'VWAP values = {exit_values}\n',
-                #                                    image_path=image_path)
-                #         break
-                # Aggiungi i dati dello stock al JSON
                 json_data["stocks"].append(stock_data)
 
             except FileNotFoundError:
@@ -199,109 +158,6 @@ def find_close_market_profile_values(index="SP500"):
     with open(f'{source_directory}/Data/{index}_stocks_cong_data.json', 'w') as f:
         json.dump(close_values, f, indent=4)
 
-# def find_close_market_profile_values(index="SP500"):
-#     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
-#     # Lista per tenere traccia dei risultati
-#     close_values = []
-#     with open(f'{source_directory}/Data/{index}_stocks_vwap_data.json', 'r') as f:
-#         stock_data = json.load(f)
-#
-#     for stock in stock_data["stocks"]:
-#         # Ottiene i valori di market profile e VWAP per lo stock corrente
-#         market_profiles = stock["marketProfiles"]
-#         vwap_values = stock["VWAPs"]
-#
-#         # Scorre attraverso i valori di market profile
-#         for mp in market_profiles:
-#             # Confronta con ogni periodo di VWAP (weekly, monthly, quarterly)
-#             for period, vwap in vwap_values.items():
-#                 # Calcola la differenza e verifica se è inferiore o uguale a 0.05
-#                 if abs(mp["VAL"] - vwap["VAL"]) <= 0.05:
-#                     close_values.append({
-#                         "stock": stock["name"],
-#                         "mp_type" : "VAL",
-#                         "mp": mp["VAL"],
-#                         "vwapPeriod": period,
-#                         "vwap_type": "VAL",
-#                         "vwap": vwap["VAL"]
-#                     })
-#                 elif abs(mp["VAL"] - vwap["POC"]) <= 0.05:
-#                     close_values.append({
-#                         "stock": stock["name"],
-#                         "mp_type": "VAL",
-#                         "mp": mp["VAL"],
-#                         "vwapPeriod": period,
-#                         "vwap_type": "POC",
-#                         "vwap": vwap["POC"]
-#                     })
-#                 elif abs(mp["VAL"] - vwap["VAH"]) <= 0.05:
-#                     close_values.append({
-#                         "stock": stock["name"],
-#                         "mp_type": "VAL",
-#                         "mp": mp["VAL"],
-#                         "vwapPeriod": period,
-#                         "vwap_type": "VAH",
-#                         "vwap": vwap["VAH"]
-#                     })
-#                 elif abs(mp["POC"] - vwap["VAL"]) <= 0.05:
-#                     close_values.append({
-#                         "stock": stock["name"],
-#                         "mp_type": "POC",
-#                         "mp": mp["POC"],
-#                         "vwapPeriod": period,
-#                         "vwap_type": "VAL",
-#                         "vwap": vwap["VAL"]
-#                     })
-#                 elif abs(mp["POC"] - vwap["POC"]) <= 0.05:
-#                     close_values.append({
-#                         "stock": stock["name"],
-#                         "mp_type": "POC",
-#                         "mp": mp["POC"],
-#                         "vwapPeriod": period,
-#                         "vwap_type": "VAL",
-#                         "vwap": vwap["POC"]
-#                     })
-#                 elif abs(mp["POC"] - vwap["VAH"]) <= 0.05:
-#                     close_values.append({
-#                         "stock": stock["name"],
-#                         "mp_type": "POC",
-#                         "mp": mp["POC"],
-#                         "vwapPeriod": period,
-#                         "vwap_type": "VAL",
-#                         "vwap": vwap["VAH"]
-#                     })
-#                 elif abs(mp["VAH"] - vwap["VAL"]) <= 0.05:
-#                     close_values.append({
-#                         "stock": stock["name"],
-#                         "mp_type": "VAH",
-#                         "mp": mp["VAH"],
-#                         "vwapPeriod": period,
-#                         "vwap_type": "VAL",
-#                         "vwap": vwap["VAL"]
-#                     })
-#                 elif abs(mp["VAH"] - vwap["POC"]) <= 0.05:
-#                     close_values.append({
-#                         "stock": stock["name"],
-#                         "mp_type": "VAH",
-#                         "mp": mp["VAH"],
-#                         "vwapPeriod": period,
-#                         "vwap_type": "VAL",
-#                         "vwap": vwap["POC"]
-#                     })
-#                 elif abs(mp["VAH"] - vwap["VAH"]) <= 0.05:
-#                     close_values.append({
-#                         "stock": stock["name"],
-#                         "mp_type": "VAH",
-#                         "mp": mp["VAH"],
-#                         "vwapPeriod": period,
-#                         "vwap_type": "VAL",
-#                         "vwap": vwap["VAH"]
-#                     })
-#     # save json in file
-#     with open(f'{source_directory}/Data/{index}_stocks_cong_data.json', 'w') as f:
-#         json.dump(close_values, f, indent=4)
-#
-
 def find_stock_near_congruence(index= "SP500"):
     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
     with open(f'{source_directory}/Data/{index}_stocks_cong_data.json', 'r') as f:
@@ -334,8 +190,8 @@ def find_convergense_value(index="Nasdaq"):
 if __name__ == '__main__':
     #start_time = time.time()  # Registra l'ora di inizio
     #source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
-    #vwap_stock_finder(index = "Nasdaq")
-    #vwap_stock_finder(index = "SP500")
+    vwap_stock_finder(index="Nasdaq")
+    vwap_stock_finder(index = "SP500")
     #vwap_stock_finder(index="Russel")
     find_close_market_profile_values(index="Nasdaq")
     find_close_market_profile_values(index="SP500")

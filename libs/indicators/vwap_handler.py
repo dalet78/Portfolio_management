@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import pandas_ta as ta
 from datetime import datetime, timedelta
+import math
 
 
 class TradingVWAP:
@@ -50,27 +51,16 @@ class TradingVWAP:
         """
         Get the average VWAP of the last week up to the last Friday and the standard deviation of the sessions of that week.
         """
-        vwap = self.calculate_vwap('D')  # Ensure daily VWAP calculation
-        vwap.sort_index(inplace=True)
+        today = self.data.index[-1].date()
+        last_week_start = today - timedelta(days=(today.weekday() + 7))  # Find the start of the last week
 
-        # Find the index of the last Friday
-        today = datetime.now()
-        last_friday = today - timedelta(days=(today.weekday() - 4) % 7 + 7)
-        start_of_week = last_friday - timedelta(days=last_friday.weekday())  # Monday of the week of the last Friday
+        # Filter data for the last week from Monday to Friday
+        last_week_df = self.data.loc[(self.data.index.date >= last_week_start) & (self.data.index.date <= today)]
 
-        # Print the dates for debugging
-        print(f"Inizio della settimana (lunedì): {start_of_week.date()}")
-        print(f"Ultimo venerdì considerato: {last_friday.date()}")
-        # Filter for the VWAP of the last week up to last Friday
-        # Ensure the conditions are enclosed in parentheses
-        last_week_vwap_series = vwap[
-            (vwap.index.date >= start_of_week.date()) & (vwap.index.date <= last_friday.date())]
-        average_last_week_vwap = last_week_vwap_series.mean() if not last_week_vwap_series.empty else np.nan
+        # Calculate VWAP and standard deviation for the last week
+        last_week_vwap, last_week_std = self.get_vwap_with_deviation(df=last_week_df)
 
-        # Calculate the standard deviation for the VWAP values of the last week
-        last_week_std = last_week_vwap_series.std() if not last_week_vwap_series.empty else np.nan
-
-        return average_last_week_vwap, last_week_std
+        return last_week_vwap, last_week_std
 
     def get_last_month_vwap_and_std(self):
         """
@@ -101,10 +91,6 @@ class TradingVWAP:
         """
         Get the average VWAP of the previous quarter and the standard deviation of the sessions of that quarter.
         """
-        vwap = self.calculate_vwap('D')  # Ensure daily VWAP calculation
-        vwap.sort_index(inplace=True)
-
-        # Determine the last day of the previous quarter
         today = datetime.now()
         current_quarter = (today.month - 1) // 3 + 1
         first_day_of_current_quarter = datetime(today.year, 3 * current_quarter - 2, 1)
@@ -116,17 +102,13 @@ class TradingVWAP:
         print(f"Primo giorno del quadrimestre precedente: {first_day_of_previous_quarter.date()}")
         print(f"Ultimo giorno del quadrimestre precedente: {last_day_of_previous_quarter.date()}")
 
-        # Filter the data to include only the days from the previous quarter
-        last_quarter_vwap_series = vwap[(vwap.index.date >= first_day_of_previous_quarter.date()) & (
-                    vwap.index.date <= last_day_of_previous_quarter.date())]
+        previous_quarter_df = self.data.loc[(self.data['Datetime'].dt.date >= first_day_of_previous_quarter.date()) &
+                                            (self.data['Datetime'].dt.date <= last_day_of_previous_quarter.date())]
 
-        # Calculate the average VWAP for the previous quarter
-        average_last_quarter_vwap = last_quarter_vwap_series.mean() if not last_quarter_vwap_series.empty else np.nan
+        # Calculate VWAP and standard deviation for the last quarter
+        last_quarter_vwap, last_quarter_std = self.get_vwap_with_deviation(df=previous_quarter_df)
 
-        # Calculate the standard deviation for the VWAP values of the previous quarter
-        last_quarter_std = last_quarter_vwap_series.std() if not last_quarter_vwap_series.empty else np.nan
-
-        return average_last_quarter_vwap, last_quarter_std
+        return last_quarter_vwap, last_quarter_std
 
     def get_last_year_vwap_and_std(self):
         """
@@ -153,34 +135,44 @@ class TradingVWAP:
 
         return average_last_year_vwap, last_year_std
 
-    def get_daily_vwap_with_deviation(self):
+    def get_vwap_with_deviation(self, df):
         """
         Get the last 5 daily VWAP values and their changes (differences).
         """
-        self.data['price_volume'] =  self.data['Close'] *  self.data['Volume']
-        # Raggruppa per giorno e calcola il VWAP cumulativo per ogni momento
-        # Il calcolo si resetta all'inizio di ogni nuovo giorno
-        self.data['cumulative_price_volume'] = self.data.groupby( self.data.index.normalize())['price_volume'].cumsum()
-        self.data['cumulative_volume'] = self.data.groupby(self.data.index.normalize())['Volume'].cumsum()
-        self.data['vwap'] = self.data['cumulative_price_volume'] / self.data['cumulative_volume']
-        self.data['vwap_std'] = self.data.groupby(self.data.index.normalize())['vwap'].transform('std')
+        df.loc[:, 'price_volume'] = df['Close'] * df['Volume']
 
-        return self.data['vwap'].iloc[-1], self.data['vwap_std'].iloc[-1]
+        # Calcola il VWAP cumulativo
+        df.loc[:, 'cumulative_price_volume'] = df['price_volume'].cumsum()
+        df.loc[:, 'cumulative_volume'] = df['Volume'].cumsum()
+        df.loc[:, 'vwap'] = df['cumulative_price_volume'] / df['cumulative_volume']
+        window_length = len(df)
+        df['VWAP_MEAN_DIFF'] = ((df.High + df.Low) / 2) - df.vwap
+        df['SQ_DIFF'] = df.VWAP_MEAN_DIFF.apply(lambda x: math.pow(x, 2))
+        df['SQ_DIFF_MEAN'] = df.SQ_DIFF.expanding().mean()
+        df['STDEV_TT'] = df.SQ_DIFF_MEAN.apply(math.sqrt)
+
+        stdev_multiple_1 = 1.28
+        stdev_multiple_2 = 2.01
+        stdev_multiple_3 = 2.51
+
+        df['STDEV_1'] = df.vwap + stdev_multiple_1 * df['STDEV_TT']
+        df['STDEV_N1'] = df.vwap - stdev_multiple_1 * df['STDEV_TT']
+
+        return df['vwap'].iloc[-1], stdev_multiple_1 * df['STDEV_TT'].iloc[-1]
 
     def get_last_daily_vwap(self):
         """
         Get the last daily VWAP value and its standard deviation.
         """
-        vwap = self.calculate_vwap('D')  # Calculate the daily VWAP
-        vwap.sort_index(inplace=True)
-    
-        # Filter out NaN values and select the last session
-        last_session_vwap = vwap.dropna().iloc[-1:]
-    
+        today = self.data.index[-1].date()
+        yesterday = today - timedelta(days=1)
+
+        day_before_df = self.data.loc[yesterday.strftime('%Y-%m-%d')]
+        last_session_vwap, last_session_std = self.get_vwap_with_deviation(df=day_before_df)
         # Calculate standard deviation for the last session
-        last_session_std = last_session_vwap.std()
+
     
-        return last_session_vwap.iloc[0], last_session_std
+        return last_session_vwap, last_session_std
 
 # Example usage:
 

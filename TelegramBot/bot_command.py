@@ -116,8 +116,8 @@ def find_lateral_mov():
     return file_report
 
 def daily_routine_command():
-    #download_data_5min()
-    #download_data_daily()
+    download_data_5min()
+    download_data_daily()
     file_report1 = blocked_stock(index="SP500")
     file_report2 = blocked_stock(index="Nasdaq")
     #file_report3 = blocked_stock(index="Russel")
@@ -149,5 +149,5 @@ def weekly_routine_command():
     return folder_name
 
 if __name__ == '__main__':
-    #daily_routine_command()
+    daily_routine_command()
     weekly_routine_command()

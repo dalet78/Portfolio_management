@@ -22,7 +22,7 @@ class HOLCStrategy(Strategy):
         super().init()
         price = self.data.Close
         self.ma1 = self.I(SMA, price, 5)
-        self.ma2 = self.I(SMA, price, 10)
+        self.ma2 = self.I(SMA, price, 20)
         # print(df.head())
 
     def next(self):

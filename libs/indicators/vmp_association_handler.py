@@ -160,10 +160,12 @@ def get_last_and_longest_dfs(dfs_per_day, overlap_threshold):
     # Restituisci solo gli ultimi due DataFrames
     if len(filtered_market_profiles) >= 2:
         last_df1, last_mp1 = filtered_market_profiles[-1]
+        day_last_df1 = int(len(filtered_market_profiles[-1][0])/78)
         last_df2, last_mp2 = filtered_market_profiles[-2]
-        return last_df1, last_mp1, last_df2, last_mp2
+        day_last_df2 = int(len(filtered_market_profiles[-2][0]) / 78)
+        return last_df1, last_mp1, day_last_df1, last_df2, last_mp2, day_last_df2
     elif len(filtered_market_profiles) == 1:
         last_df, last_mp = filtered_market_profiles[0]
-        return last_df, last_mp, None, None
+        return last_df, last_mp, None, None, None, None
     else:
-        return None, None, None, None
+        return None, None, None, None, None, None
