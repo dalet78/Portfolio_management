@@ -21,13 +21,13 @@ class CommandBot:
         logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         self.logger = logging.getLogger(__name__)
         # Pianifica l'esecuzione della routine giornaliera alle 8:00 ogni mattina
-        schedule.every().day.at("15:57").do(self.daily_routine)
+        schedule.every().day.at("06:00").do(self.daily_routine)
         #schedule.every().tuesday.at("08:00").do(self.daily_routine)
         #schedule.every().wednesday.at("08:00").do(self.daily_routine)
         #schedule.every().thursday.at("08:00").do(self.daily_routine)
         #schedule.every().friday.at("08:00").do(self.daily_routine)
         #schedule.every().saturday.at("08:00").do(self.daily_routine)
-        schedule.every().day.at("16:10").do(self.weekly_routine)
+        schedule.every().day.at("06:30").do(self.weekly_routine)
         self.lista_chat_id = ['1458740893','5634630295']
 
     def start(self) -> None:
