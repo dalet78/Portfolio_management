@@ -5,7 +5,7 @@ import json
 from libs.filtered_stock import return_filtred_list
 from datetime import time
 from Reports.report_builder import ReportGenerator
-import matplotlib.pyplot as plt
+from Trading.methodology.PriceAction.sma_vwap_sr_support import SupportResistanceFinder
 
 def load_data(filepath):
     """Carica i dati dal file CSV."""
@@ -111,10 +111,13 @@ def Asaf_trading(index = "SP500"):
 
                     best_high_vwap_diff, best_win_rate, total_trades = optimize_high_vwap_diff(df)
                     if best_win_rate > 40:
+                        sr_support = SupportResistanceFinder(data=df)
+                        list_sr = sr_support.find_levels()
                         report.add_content(f"stock = {item}")
                         report.add_content(f"Optimal High_vwap_diff for {item}: {best_high_vwap_diff}")
                         report.add_content(f"Corresponding Win Rate: {best_win_rate}%")
                         report.add_content(f"total trade = {total_trades}\n")
+                        report.add_content(f"support and resistance list: {list_sr} ")
                     print(f"Optimal High_vwap_diff for {item}: {best_high_vwap_diff}")
                     print(f"Corresponding Win Rate: {best_win_rate}% - total trade = {total_trades}")
 
@@ -134,7 +137,7 @@ def optimize_high_vwap_diff(df):
     best_high_vwap_diff = None
     best_win_rate = 0
 
-    for high_vwap_diff_value in np.arange(0.20, 0.61, 0.05):  # 41 valori tra 0.20 e 0.60
+    for high_vwap_diff_value in np.arange(0.30, 0.61, 0.05):  # 41 valori tra 0.20 e 0.60
         # Calcola il segnale in base a High_vwap_diff
         df['numeric_signal'] = np.where(df['High_vwap_diff'] >= high_vwap_diff_value, -1,
                                         np.where(df['Low_vwap_diff'] <= -high_vwap_diff_value, 1, 0))

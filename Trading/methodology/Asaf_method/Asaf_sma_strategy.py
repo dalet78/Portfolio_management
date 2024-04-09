@@ -2,12 +2,13 @@ import pandas as pd
 import numpy as np
 from backtesting import Backtest, Strategy
 from backtesting.lib import crossover
-from backtesting.test import SMA, GOOG
+from backtesting.test import SMA
 import json
 from libs.filtered_stock import return_filtred_list
 from datetime import time
 import matplotlib.pyplot as plt
 from Reports.report_builder import ReportGenerator
+from Trading.methodology.PriceAction.sma_vwap_sr_support import SupportResistanceFinder
 
 def load_data(filepath):
     """Carica i dati dal file CSV."""
@@ -94,10 +95,13 @@ def sma_cross_trading(index = "SP500"):
                     if total_trades > 3 and win_rate > 50:
                         # Salva il grafico in una variabile
                         fig = bt.plot()
+                        sr_support = SupportResistanceFinder(data=df)
+                        list_sr = sr_support.find_levels()
                         report.add_content(f"stock = {item}")
                         # report.add_content(f"Optimal High_vwap_diff for {item}: {best_high_vwap_diff}")
                         report.add_content(f"Corresponding Win Rate: {win_rate}%")
                         report.add_content(f"total trade = {total_trades}\n")
+                        report.add_content(f"support and resistance list: {list_sr} ")
 
                         # Aggiungi il nome dello stock come titolo del grafico
                         print(f'Performance del Backtest per {item} (Win Rate: {win_rate}%)')
@@ -113,7 +117,7 @@ def sma_cross_trading(index = "SP500"):
 
 # Preparazione per il backtesting
 if __name__ == "__main__":
-    sma_cross_trading(index="Nasdaq")
-    #Asaf_trading(index="Russel")
+    # sma_cross_trading(index="Nasdaq")
+    # sma_cross_trading(index="Russel")
     sma_cross_trading(index="SP500")
 
