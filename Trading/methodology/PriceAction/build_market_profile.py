@@ -10,6 +10,14 @@ import pandas_datareader as data
 import os
 
 
+
+def calculate_overlap(interval1, interval2):
+    start1, end1 = interval1
+    start2, end2 = interval2
+    overlap = max(0, min(end1, end2) - max(start1, start2))
+    return overlap
+
+
 def df_last_5_days(df):
     df['Datetime'] = pd.to_datetime(df['Datetime'], utc=True)
 
@@ -73,6 +81,34 @@ def mp_finder(index="SP500"):
                     }
                     results.append(result)
 
+                for i in range(len(results) - 1, 0, -1):
+                    current_entry = results[i]
+                    previous_entry = results[i - 1]
+
+                    # Calcola l'overlap tra le due aree
+                    current_interval = (current_entry["mp_val_area_low"], current_entry["mp_val_area_high"])
+                    previous_interval = (previous_entry["mp_val_area_low"], previous_entry["mp_val_area_high"])
+                    overlap = calculate_overlap(current_interval, previous_interval)
+
+                    # Se l'overlap è almeno del 60%, unisci i dataframe corrispondenti e ricalcola il market profile
+                    if overlap >= 0.6 * (current_interval[1] - current_interval[0]):
+                        combined_df = pd.concat([dfs_last_5_day[i - 1], dfs_last_5_day[i]])
+                        new_profile = MarketProfile(combined_df)
+                        new_profile_slice = new_profile[data.index.min():data.index.max()]
+                        dfs_last_5_day.pop(i)
+                        dfs_last_5_day.pop(i - 1)
+                        dfs_last_5_day.append(combined_df)
+                        date_range = [previous_entry["date"], current_entry["date"]]
+                        new_result = {
+                            'date': date_range,
+                            'mp_poc': new_profile_slice.poc_price,
+                            'mp_val_area_low': new_profile_slice.value_area[0],
+                            'mp_val_area_high': new_profile_slice.value_area[1]
+                        }
+                        break
+                else:
+                    new_result = results
+
                 # Salva i risultati in un file JSON
                 # Percorso completo del file
                 file_path = f"{source_directory}/Data/{index}/5_mp/{item}_result.json"
@@ -86,7 +122,7 @@ def mp_finder(index="SP500"):
 
                 # Ora puoi aprire il file
                 with open(file_path, 'w') as f:
-                    json.dump(results, f, indent=4)
+                    json.dump(new_result, f, indent=4)
             #     last_close_price = data['Close'].iloc[-1]
             #     vwap_values = []
             #     std_devs = []
