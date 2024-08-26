@@ -1,0 +1,29 @@
+[
+    {
+        "date": "2024-04-02",
+        "mp_poc": 143.71,
+        "mp_val_area_low": 143.11,
+        "mp_val_area_high": 144.17
+    },
+    {
+        "date": "2024-04-03",
+        "mp_poc": 141.45,
+        "mp_val_area_low": 141.04,
+        "mp_val_area_high": 142.08
+    },
+    {
+        "date": [
+            "2024-04-04",
+            "2024-04-05"
+        ],
+        "mp_poc": 139.7,
+        "mp_val_area_low": 139.26,
+        "mp_val_area_high": 140.45
+    },
+    {
+        "date": "2024-04-08",
+        "mp_poc": 140.29,
+        "mp_val_area_low": 139.86,
+        "mp_val_area_high": 140.67
+    }
+]

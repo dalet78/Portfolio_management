@@ -5,8 +5,10 @@ from datetime import date
 from libs.indicators.vwap_handler import  TradingVWAP
 from libs.indicators.vmp_association_handler import *
 from libs.filtered_stock import return_filtred_list
+from Trading.methodology.PriceAction.build_market_profile import mp_finder
 
 def vwap_stock_finder(index="Russel"):
+    mp_finder(index=index)
 
     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
     # Inizializza il dizionario JSON
@@ -45,32 +47,21 @@ def vwap_stock_finder(index="Russel"):
                 vwap_quarterly, std_quarterly = trading_vwap.get_last_quarter_vwap_and_std()
 
                 data_filepath = f"{source_directory}/Data/{index}/5min/{item}_historical_data.csv"
+                if not {'Datetime', 'High', 'Low', 'Open', 'Close', 'Volume'}.issubset(data.columns):
+                    raise ValueError(
+                        "Il DataFrame deve contenere le colonne 'Datetime', 'High', 'Low', 'Open', 'Close' e 'Volume'.")
                 # Carica i dati
                 df = load_data(data_filepath)
                 # Controllo VMP e aggiunge VMP line nel json file
-                dfs_per_day = split_data_by_day(df)
+                # dfs_per_day = split_data_by_day(df)
                 trading_vwap_daily = TradingVWAP(df)
-                vwap_daily, std_daily = trading_vwap_daily.get_last_daily_vwap()
                 vwap_weekly, std_weekly = trading_vwap_daily.get_previous_friday_vwap_and_std()
-
-
-                # Calcola i valori di market profile per ogni giorno
-                market_profile_values = calculate_market_profile_values(dfs_per_day)
-
-                # Imposta la soglia di sovrapposizione
-                overlap_threshold = 60  # Soglia percentuale per la sovrapposizione
-
-
-                last_df1, last_mp_comp1, day_df1, last_df2, last_mp2, day_df2 = get_last_and_longest_dfs(dfs_per_day, overlap_threshold)
-                last_df= [dfs_per_day[-1]]
-                last_mp1 = calculate_market_profile_values(last_df)
-                last_mp_comp1['days']= day_df1
-                filtered_market_profiles= [last_mp1, last_mp_comp1]
+                vwap_daily, std_daily = trading_vwap_daily.get_last_daily_vwap()
 
                 # Struttura per memorizzare i dati di uno stock
                 stock_data = {
                     "name": item,
-                    "marketProfiles": filtered_market_profiles,  
+                    "marketProfiles": "",
                     "VWAPs": {
                         "weekly": {
                             "VAL": round(vwap_weekly - std_weekly, 2),
@@ -90,9 +81,12 @@ def vwap_stock_finder(index="Russel"):
                     }
                 }
                 # Converti i valori di market profile in un DataFrame per una migliore visualizzazione
-                values_df = pd.DataFrame(market_profile_values)
-
+                file_path = f"{source_directory}/Data/{index}/5_mp/{item}_result.json"
+                with open(file_path, 'r') as file:
+                    market_profile_dict= json.load(file)
+                stock_data['market_profile_dict'] = market_profile_dict
                 json_data["stocks"].append(stock_data)
+
 
             except FileNotFoundError:
                 print(f"File non trovato per {item}")
@@ -160,11 +154,11 @@ def find_close_market_profile_values(index="SP500"):
 
 def find_stock_near_congruence(index= "SP500"):
     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
-    with open(f'{source_directory}/Data/{index}_stocks_cong_data.json', 'r') as f:
+    with open(f'{source_directory}/Data/{index}_stocks_vwap_data.json', 'r') as f:
             stock_data = json.load(f)
     report = ReportGenerator()
     report.add_title(title=f"{index} Possible CONGRUENCE stock")
-    threshold_value = 0.02
+    threshold_value = 0.0
     for item in stock_data:
         item_data = item["stock"]
         data_filepath = f"{source_directory}/Data/{index}/5min/{item_data}_historical_data.csv"
@@ -180,23 +174,60 @@ def find_stock_near_congruence(index= "SP500"):
         
     file_report = report.save_report(filename=f"{index}_convergence_stock")
     return file_report
-    
-def find_convergense_value(index="Nasdaq"):
+
+def create_file_report(index= "SP500"):
+    source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
+    with open(f'{source_directory}/Data/{index}_stocks_vwap_data.json', 'r') as f:
+        stock_data = json.load(f)
+    report = ReportGenerator()
+    report.add_title(title=f"{index} Area value")
+    for item in stock_data["stocks"]:
+        # Estrai i dati rilevanti
+        name = item["name"]
+        # Aggiungi il nome dello stock al report
+        report.add_content(f"stock = {name}\n")
+        # Aggiungi il vwap dello stock al report
+        report.add_content(
+            f"vwap daily = {item['VWAPs']['daily']['POC']} low ={item['VWAPs']['daily']['VAL']} high {item['VWAPs']['daily']['VAH']}\n")
+        report.add_content(
+            f"vwap weekly = {item['VWAPs']['weekly']['POC']} low ={item['VWAPs']['weekly']['VAL']} high {item['VWAPs']['weekly']['VAH']}\n")
+        report.add_content(
+            f"vwap quarter = {item['VWAPs']['quarterly']['POC']} low ={item['VWAPs']['quarterly']['VAL']} high {item['VWAPs']['quarterly']['VAH']}\n")
+        market_profile_dict = item["market_profile_dict"]
+
+        # Aggiungi il nome dello stock al report
+
+
+        # Itera attraverso ogni voce nel market_profile_dict
+        for profile in market_profile_dict:
+            date = profile["date"]
+            # Controlla se la data è composta
+            if isinstance(date, list):
+                # Aggiungi i dettagli del profilo al report
+                report.add_content(
+                    f'Date: {date}, POC: {profile["mp_poc"]}, VAL Low: {profile["mp_val_area_low"]}, VAL High: {profile["mp_val_area_high"]}\n')
+
+            # Salva il report
+    file_report = report.save_report(filename=f"{index}_convergence_stock")
+    return file_report
+
+
+def find_convergence_value(index="Nasdaq"):
     vwap_stock_finder(index=index)
-    find_close_market_profile_values(index=index)
-    report_file = find_stock_near_congruence(index=index)
+    # find_close_market_profile_values(index=index)
+    report_file = create_file_report(index=index)
     return report_file
 
 if __name__ == '__main__':
     #start_time = time.time()  # Registra l'ora di inizio
     #source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
-    vwap_stock_finder(index="Nasdaq")
-    vwap_stock_finder(index = "SP500")
-    #vwap_stock_finder(index="Russel")
-    find_close_market_profile_values(index="Nasdaq")
-    find_close_market_profile_values(index="SP500")
-    find_stock_near_congruence(index="Nasdaq")
-    find_stock_near_congruence(index="SP500")
+    # vwap_stock_finder(index="Nasdaq")
+    report = find_convergence_value(index = "SP500")
+    # #vwap_stock_finder(index="Russel")
+    # find_close_market_profile_values(index="Nasdaq")
+    # find_close_market_profile_values(index="SP500")
+    # find_stock_near_congruence(index="Nasdaq")
+    # find_stock_near_congruence(index="SP500")
     #duration = time.time() - start_time
     #print(f"Tempo di esecuzione: {duration:.2f} secondi")
     

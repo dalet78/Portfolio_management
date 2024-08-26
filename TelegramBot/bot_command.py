@@ -10,7 +10,7 @@ from support.miscela import *
 # from Trading.methodology.Asaf_method.Asaf_strategy import Asaf_trading
 from Trading.methodology.Asaf_method.Optim_Asaf_strategy import *
 from Trading.methodology.Asaf_method.Asaf_sma_strategy import sma_cross_trading
-from Trading.methodology.PriceAction.build_json_convergence import find_convergense_value
+from Trading.methodology.PriceAction.build_json_convergence import create_file_report
 from Trading.methodology.Asaf_method.Asaf_ema_strategy import ema_cross_trading
 
 
@@ -122,8 +122,8 @@ def daily_routine_command():
     file_report1 = blocked_stock(index="SP500")
     file_report2 = blocked_stock(index="Nasdaq")
     file_report3 = Asaf_trading(index="SP500")
-    file_report4 = find_convergense_value(index="SP500")
-    file_report5 = find_convergense_value(index="Nasdaq")
+    file_report4 = create_file_report(index="SP500")
+    file_report5 = create_file_report(index="Nasdaq")
     file_report6 = Asaf_trading(index="Nasdaq")
     folder_name = crea_cartella_con_data()
     sposta_file_in_cartella(file_report1, folder_name)

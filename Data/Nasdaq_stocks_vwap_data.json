@@ -1,3 +1,451 @@
 {
-    "stocks": []
+    "stocks": [
+        {
+            "name": "INTC",
+            "marketProfiles": "",
+            "VWAPs": {
+                "weekly": {
+                    "VAL": 38.21,
+                    "POC": 40.48,
+                    "VAH": 42.74
+                },
+                "daily": {
+                    "VAL": 37.93,
+                    "POC": 38.24,
+                    "VAH": 38.55
+                },
+                "quarterly": {
+                    "VAL": 44.25,
+                    "POC": 46.52,
+                    "VAH": 48.79
+                }
+            },
+            "market_profile_dict": [
+                {
+                    "date": "2024-04-02",
+                    "mp_poc": 43.96,
+                    "mp_val_area_low": 43.75,
+                    "mp_val_area_high": 44.07
+                },
+                {
+                    "date": "2024-04-03",
+                    "mp_poc": 40.91,
+                    "mp_val_area_low": 40.66,
+                    "mp_val_area_high": 41.26
+                },
+                {
+                    "date": "2024-04-04",
+                    "mp_poc": 39.71,
+                    "mp_val_area_low": 39.71,
+                    "mp_val_area_high": 40.55
+                },
+                {
+                    "date": "2024-04-05",
+                    "mp_poc": 38.69,
+                    "mp_val_area_low": 38.53,
+                    "mp_val_area_high": 38.82
+                },
+                {
+                    "date": "2024-04-08",
+                    "mp_poc": 37.96,
+                    "mp_val_area_low": 37.96,
+                    "mp_val_area_high": 38.5
+                }
+            ]
+        },
+        {
+            "name": "CMCSA",
+            "marketProfiles": "",
+            "VWAPs": {
+                "weekly": {
+                    "VAL": 40.75,
+                    "POC": 41.38,
+                    "VAH": 42.01
+                },
+                "daily": {
+                    "VAL": 40.62,
+                    "POC": 40.74,
+                    "VAH": 40.85
+                },
+                "quarterly": {
+                    "VAL": 42.55,
+                    "POC": 44.16,
+                    "VAH": 45.77
+                }
+            },
+            "market_profile_dict": [
+                {
+                    "date": "2024-04-02",
+                    "mp_poc": 41.82,
+                    "mp_val_area_low": 41.73,
+                    "mp_val_area_high": 42.57
+                },
+                {
+                    "date": "2024-04-03",
+                    "mp_poc": 41.56,
+                    "mp_val_area_low": 41.52,
+                    "mp_val_area_high": 41.63
+                },
+                {
+                    "date": [
+                        "2024-04-04",
+                        "2024-04-05"
+                    ],
+                    "mp_poc": 41.1,
+                    "mp_val_area_low": 40.91,
+                    "mp_val_area_high": 41.57
+                },
+                {
+                    "date": "2024-04-08",
+                    "mp_poc": 40.61,
+                    "mp_val_area_low": 40.6,
+                    "mp_val_area_high": 40.83
+                }
+            ]
+        },
+        {
+            "name": "CSX",
+            "marketProfiles": "",
+            "VWAPs": {
+                "weekly": {
+                    "VAL": 36.18,
+                    "POC": 36.44,
+                    "VAH": 36.71
+                },
+                "daily": {
+                    "VAL": 36.08,
+                    "POC": 36.16,
+                    "VAH": 36.25
+                },
+                "quarterly": {
+                    "VAL": 34.43,
+                    "POC": 34.95,
+                    "VAH": 35.47
+                }
+            },
+            "market_profile_dict": [
+                {
+                    "date": [
+                        "2024-04-02",
+                        "2024-04-03"
+                    ],
+                    "mp_poc": 36.48,
+                    "mp_val_area_low": 36.32,
+                    "mp_val_area_high": 36.62
+                },
+                {
+                    "date": [
+                        "2024-04-04",
+                        "2024-04-05"
+                    ],
+                    "mp_poc": 36.3,
+                    "mp_val_area_low": 36.02,
+                    "mp_val_area_high": 36.5
+                },
+                {
+                    "date": "2024-04-08",
+                    "mp_poc": 36.05,
+                    "mp_val_area_low": 36.05,
+                    "mp_val_area_high": 36.21
+                }
+            ]
+        },
+        {
+            "name": "KHC",
+            "marketProfiles": "",
+            "VWAPs": {
+                "weekly": {
+                    "VAL": 36.98,
+                    "POC": 37.25,
+                    "VAH": 37.52
+                },
+                "daily": {
+                    "VAL": 36.88,
+                    "POC": 37.0,
+                    "VAH": 37.11
+                },
+                "quarterly": {
+                    "VAL": 36.97,
+                    "POC": 37.53,
+                    "VAH": 38.08
+                }
+            },
+            "market_profile_dict": [
+                {
+                    "date": [
+                        "2024-04-02",
+                        "2024-04-03"
+                    ],
+                    "mp_poc": 37.39,
+                    "mp_val_area_low": 37.3,
+                    "mp_val_area_high": 37.43
+                },
+                {
+                    "date": "2024-04-04",
+                    "mp_poc": 37.25,
+                    "mp_val_area_low": 37.23,
+                    "mp_val_area_high": 37.5
+                },
+                {
+                    "date": [
+                        "2024-04-05",
+                        "2024-04-08"
+                    ],
+                    "mp_poc": 37.05,
+                    "mp_val_area_low": 36.83,
+                    "mp_val_area_high": 37.07
+                }
+            ]
+        },
+        {
+            "name": "EBAY",
+            "marketProfiles": "",
+            "VWAPs": {
+                "weekly": {
+                    "VAL": 51.69,
+                    "POC": 51.96,
+                    "VAH": 52.22
+                },
+                "daily": {
+                    "VAL": 51.62,
+                    "POC": 51.83,
+                    "VAH": 52.04
+                },
+                "quarterly": {
+                    "VAL": 40.88,
+                    "POC": 41.89,
+                    "VAH": 42.91
+                }
+            },
+            "market_profile_dict": [
+                {
+                    "date": "2024-04-02",
+                    "mp_poc": 51.87,
+                    "mp_val_area_low": 51.87,
+                    "mp_val_area_high": 52.04
+                },
+                {
+                    "date": "2024-04-03",
+                    "mp_poc": 51.87,
+                    "mp_val_area_low": 51.68,
+                    "mp_val_area_high": 52.07
+                },
+                {
+                    "date": [
+                        "2024-04-04",
+                        "2024-04-05"
+                    ],
+                    "mp_poc": 52.07,
+                    "mp_val_area_low": 51.48,
+                    "mp_val_area_high": 52.13
+                },
+                {
+                    "date": "2024-04-08",
+                    "mp_poc": 51.6,
+                    "mp_val_area_low": 51.55,
+                    "mp_val_area_high": 51.89
+                }
+            ]
+        },
+        {
+            "name": "UAL",
+            "marketProfiles": "",
+            "VWAPs": {
+                "weekly": {
+                    "VAL": 43.05,
+                    "POC": 45.1,
+                    "VAH": 47.16
+                },
+                "daily": {
+                    "VAL": 42.97,
+                    "POC": 43.4,
+                    "VAH": 43.82
+                },
+                "quarterly": {
+                    "VAL": 38.92,
+                    "POC": 40.83,
+                    "VAH": 42.74
+                }
+            },
+            "market_profile_dict": [
+                {
+                    "date": "2024-04-02",
+                    "mp_poc": 45.66,
+                    "mp_val_area_low": 45.44,
+                    "mp_val_area_high": 45.84
+                },
+                {
+                    "date": "2024-04-03",
+                    "mp_poc": 44.62,
+                    "mp_val_area_low": 44.41,
+                    "mp_val_area_high": 45.61
+                },
+                {
+                    "date": "2024-04-04",
+                    "mp_poc": 43.22,
+                    "mp_val_area_low": 43.19,
+                    "mp_val_area_high": 45.3
+                },
+                {
+                    "date": "2024-04-05",
+                    "mp_poc": 43.1,
+                    "mp_val_area_low": 42.87,
+                    "mp_val_area_high": 43.27
+                },
+                {
+                    "date": "2024-04-08",
+                    "mp_poc": 43.16,
+                    "mp_val_area_low": 42.85,
+                    "mp_val_area_high": 43.66
+                }
+            ]
+        },
+        {
+            "name": "HAS",
+            "marketProfiles": "",
+            "VWAPs": {
+                "weekly": {
+                    "VAL": 55.25,
+                    "POC": 56.32,
+                    "VAH": 57.39
+                },
+                "daily": {
+                    "VAL": 57.36,
+                    "POC": 57.7,
+                    "VAH": 58.04
+                },
+                "quarterly": {
+                    "VAL": 47.69,
+                    "POC": 49.09,
+                    "VAH": 50.48
+                }
+            },
+            "market_profile_dict": [
+                {
+                    "date": "2024-04-02",
+                    "mp_poc": 55.76,
+                    "mp_val_area_low": 55.39,
+                    "mp_val_area_high": 55.77
+                },
+                {
+                    "date": "2024-04-03",
+                    "mp_poc": 55.46,
+                    "mp_val_area_low": 55.03,
+                    "mp_val_area_high": 55.67
+                },
+                {
+                    "date": [
+                        "2024-04-04",
+                        "2024-04-05"
+                    ],
+                    "mp_poc": 56.41,
+                    "mp_val_area_low": 56.11,
+                    "mp_val_area_high": 56.81
+                },
+                {
+                    "date": "2024-04-08",
+                    "mp_poc": 57.59,
+                    "mp_val_area_low": 57.55,
+                    "mp_val_area_high": 58.09
+                }
+            ]
+        },
+        {
+            "name": "FOXA",
+            "marketProfiles": "",
+            "VWAPs": {
+                "weekly": {
+                    "VAL": 30.95,
+                    "POC": 31.18,
+                    "VAH": 31.41
+                },
+                "daily": {
+                    "VAL": 31.13,
+                    "POC": 31.21,
+                    "VAH": 31.3
+                },
+                "quarterly": {
+                    "VAL": 30.11,
+                    "POC": 31.07,
+                    "VAH": 32.03
+                }
+            },
+            "market_profile_dict": [
+                {
+                    "date": "2024-04-02",
+                    "mp_poc": 31.04,
+                    "mp_val_area_low": 30.96,
+                    "mp_val_area_high": 31.19
+                },
+                {
+                    "date": [
+                        "2024-04-03",
+                        "2024-04-04"
+                    ],
+                    "mp_poc": 31.14,
+                    "mp_val_area_low": 30.88,
+                    "mp_val_area_high": 31.37
+                },
+                {
+                    "date": "2024-04-05",
+                    "mp_poc": 31.0,
+                    "mp_val_area_low": 30.96,
+                    "mp_val_area_high": 31.11
+                },
+                {
+                    "date": "2024-04-08",
+                    "mp_poc": 31.22,
+                    "mp_val_area_low": 31.14,
+                    "mp_val_area_high": 31.27
+                }
+            ]
+        },
+        {
+            "name": "FOX",
+            "marketProfiles": "",
+            "VWAPs": {
+                "weekly": {
+                    "VAL": 28.36,
+                    "POC": 28.55,
+                    "VAH": 28.75
+                },
+                "daily": {
+                    "VAL": 28.61,
+                    "POC": 28.69,
+                    "VAH": 28.77
+                },
+                "quarterly": {
+                    "VAL": 27.98,
+                    "POC": 28.83,
+                    "VAH": 29.68
+                }
+            },
+            "market_profile_dict": [
+                {
+                    "date": "2024-04-02",
+                    "mp_poc": 28.46,
+                    "mp_val_area_low": 28.39,
+                    "mp_val_area_high": 28.52
+                },
+                {
+                    "date": [
+                        "2024-04-03",
+                        [
+                            "2024-04-04",
+                            "2024-04-05"
+                        ]
+                    ],
+                    "mp_poc": 28.71,
+                    "mp_val_area_low": 28.55,
+                    "mp_val_area_high": 28.74
+                },
+                {
+                    "date": "2024-04-08",
+                    "mp_poc": 28.63,
+                    "mp_val_area_low": 28.55,
+                    "mp_val_area_high": 28.73
+                }
+            ]
+        }
+    ]
 }

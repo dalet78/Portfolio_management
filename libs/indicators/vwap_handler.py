@@ -165,10 +165,13 @@ class TradingVWAP:
         Get the last daily VWAP value and its standard deviation.
         """
         today = self.data.index[-1].date()
-        yesterday = today - timedelta(days=1)
 
-        day_before_df = self.data.loc[yesterday.strftime('%Y-%m-%d')]
-        last_session_vwap, last_session_std = self.get_vwap_with_deviation(df=day_before_df)
+
+
+        self.data_daily = self.data[self.data.index.date == today]
+
+        # day_before_df = self.data.loc[yesterday.strftime('%Y-%m-%d')]
+        last_session_vwap, last_session_std = self.get_vwap_with_deviation(df=self.data_daily)
         # Calculate standard deviation for the last session
 
     

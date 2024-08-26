@@ -28,6 +28,25 @@ def df_last_5_days(df):
     # df_last_5_days = [pd.concat(g, ignore_index=True) for g in [last_5_days]]
     return last_5_days
 
+def return_market_profile(array_df):
+    results =[]
+    for dataframe in array_df:
+        mp = MarketProfile(dataframe)
+        mp_slice = mp[dataframe.index.min():dataframe.index.max()]
+
+        date = dataframe['Datetime'].iloc[0].strftime('%Y-%m-%d')  # Converti in formato data stringa
+        mp_poc = mp_slice.poc_price
+        mp_val_area_low, mp_val_area_high = mp_slice.value_area
+
+        result = {
+            'date': date,
+            'mp_poc': mp_poc,
+            'mp_val_area_low': mp_val_area_low,
+            'mp_val_area_high': mp_val_area_high
+        }
+        results.append(result)
+    return results
+
 def mp_finder(index="SP500"):
     start_time = time.time()  # Registra l'ora di inizio
     source_directory = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
@@ -50,22 +69,22 @@ def mp_finder(index="SP500"):
                                parse_dates=['Datetime'])
             dfs_last_5_day = df_last_5_days(df=data)
 
-            results = []
-            for dataframe in dfs_last_5_day:
-                mp = MarketProfile(dataframe)
-                mp_slice = mp[dataframe.index.min():dataframe.index.max()]
-
-                date = dataframe['Datetime'].iloc[0].strftime('%Y-%m-%d')  # Converti in formato data stringa
-                mp_poc = mp_slice.poc_price
-                mp_val_area_low, mp_val_area_high = mp_slice.value_area
-
-                result = {
-                    'date': date,
-                    'mp_poc': mp_poc,
-                    'mp_val_area_low': mp_val_area_low,
-                    'mp_val_area_high': mp_val_area_high
-                }
-                results.append(result)
+            results = return_market_profile(dfs_last_5_day)
+            # for dataframe in dfs_last_5_day:
+            #     mp = MarketProfile(dataframe)
+            #     mp_slice = mp[dataframe.index.min():dataframe.index.max()]
+            #
+            #     date = dataframe['Datetime'].iloc[0].strftime('%Y-%m-%d')  # Converti in formato data stringa
+            #     mp_poc = mp_slice.poc_price
+            #     mp_val_area_low, mp_val_area_high = mp_slice.value_area
+            #
+            #     result = {
+            #         'date': date,
+            #         'mp_poc': mp_poc,
+            #         'mp_val_area_low': mp_val_area_low,
+            #         'mp_val_area_high': mp_val_area_high
+            #     }
+            #     results.append(result)
 
             # Cerca sovrapposizioni tra due elementi consecutivi
             for i in range(len(results) - 1, 0, -1):
