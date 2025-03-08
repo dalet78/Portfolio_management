@@ -1,0 +1,5 @@
+2025-03-07 16:02:51 - INFO - [<module>] [N/A] Connesso a IBKR
+2025-03-07 16:02:51 - INFO - [wait_for_precise_time] [N/A] Wait 1929.52 seconds for to start at 16:35:00,
+2025-03-07 16:35:01 - INFO - [trading_loop] [N/A] Starting trading loop
+2025-03-07 16:35:01 - INFO - [trading_loop] [N/A] Stocks to trade: ['CTRA', 'EXC', 'FXC', 'KMI']
+2025-03-07 16:35:01 - ERROR - [trading_loop] [N/A] ❌ Error in trading loop: type object 'datetime.time' has no attribute 'time'

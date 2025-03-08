@@ -1,31 +1,29 @@
-from libs.download_data import StockDataDownloader
-import json
-import os
+from ib_insync import *
+import pandas as pd
 
-def download_data_daily():
-    current_path = os.path.dirname(os.path.abspath(__file__))
-    with open(os.path.join(current_path, "json_files/SP500-stock.json"), 'r') as file:
-        tickers = json.load(file)
+# Connessione a TWS
+ib = IB()
+ib.connect('127.0.0.1', 7496, clientId=1)  # Usa 4002 per IB Gateway
 
-# Lista dei ticker
-    tickers_list = list(tickers.keys())
+# Definizione del titolo (esempio: AAPL su NASDAQ)
+contract = Stock('AAPL', 'SMART', 'USD')
 
-# Utilizzo della classe StockDataDownloader
-    downloader = StockDataDownloader(tickers_list)
-    downloader.update_data()
+# Richiesta dati storici (1 giorno di dati con candele da 5 minuti)
+bars = ib.reqHistoricalData(
+    contract,
+    endDateTime='',
+    durationStr='1 D',
+    barSizeSetting='5 mins',
+    whatToShow='TRADES',
+    useRTH=True,
+    formatDate=1
+)
 
-def download_data_weekly():
-    current_path = os.path.dirname(os.path.abspath(__file__))
-    with open(os.path.join(current_path, "json_files/SP500-stock.json"), 'r') as file:
-        tickers = json.load(file)
+# Converti in DataFrame e salva in CSV
+df = util.df(bars)
+df.to_csv('/home/dp/PycharmProjects/Portfolio_management/Portfolio_management/Data/aapl_data_test.csv', index=False)
 
-# Lista dei ticker
-    tickers_list = list(tickers.keys())
+print("Dati salvati in aapl_data.csv")
 
-# Utilizzo della classe StockDataDownloader
-    downloader = StockDataDownloader(tickers_list, interval='1wk')
-    downloader.update_data()
-    
-if __name__ == "__main__":
-    download_data_daily()
-    download_data_weekly()
+# Disconnessione
+ib.disconnect()

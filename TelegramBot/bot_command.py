@@ -1,40 +1,25 @@
-import time
-import pandas as pd
-from libs.filtered_stock import return_filtred_list
-from Reports.report_builder import ReportGenerator
 from Reports.image_builder import CandlestickChartGenerator
 from Trading.methodology.blocked_stock.blocked_stock import TradingAnalyzer
 from Trading.methodology.lateral_movement.search_type_mov import TrendMovementAnalyzer
-from support.download_data import *
+from TelegramBot.commander.download_data import *
 from support.miscela import *
 # from Trading.methodology.Asaf_method.Asaf_strategy import Asaf_trading
 from Trading.methodology.Asaf_method.Optim_Asaf_strategy import *
-from Trading.methodology.Asaf_method.Asaf_sma_strategy import sma_cross_trading
-from Trading.methodology.PriceAction.build_json_convergence import find_convergense_value
-from Trading.methodology.Asaf_method.Asaf_ema_strategy import ema_cross_trading
+
+# from Trading.methodology.PriceAction.build_json_convergence import create_file_report
 
 
 source_directory ="/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
-def download_data_weekly():
-    with open( f"{source_directory}/json_files/SP500-stock.json", 'r') as file:
-        tickers = json.load(file)
-    # Lista dei ticker
-    tickers_list = list(tickers.keys())
-    # Utilizzo della classe StockDataDownloader
-    downloader = StockDataDownloader(tickers_list, interval='1wk')
-    downloader.download_data()
-
-def download_data_daily():
+def download_data(interval='1d'):
     with open(f"{source_directory}/json_files/SP500-stock.json", 'r') as file:
         tickers = json.load(file)
 
     # Lista dei ticker
     tickers_list = list(tickers.keys())
 
-    # Utilizzo della classe StockDataDownloader
-    downloader = StockDataDownloader(tickers_list)
-    downloader.download_data()
-    # stop_downloading()
+    # Utilizzo della classe StockDataDownloader con l'intervallo specificato
+    downloader = StockDataDownloader(tickers_list, interval=interval)
+    # downloader.download_data()
 
 def blocked_stock(index="Russel"):
     #start_time = time.time()
@@ -116,44 +101,91 @@ def find_lateral_mov():
     enhanced_strategy.clear_img_temp_files()
     return file_report
 
-def daily_routine_command():
-    download_data_5min()
-    download_data_daily()
-    file_report1 = blocked_stock(index="SP500")
-    file_report2 = blocked_stock(index="Nasdaq")
-    file_report3 = Asaf_trading(index="SP500")
-    file_report4 = find_convergense_value(index="SP500")
-    file_report5 = find_convergense_value(index="Nasdaq")
-    file_report6 = Asaf_trading(index="Nasdaq")
-    folder_name = crea_cartella_con_data()
-    sposta_file_in_cartella(file_report1, folder_name)
-    sposta_file_in_cartella(file_report2, folder_name)
-    sposta_file_in_cartella(file_report3, folder_name)
-    sposta_file_in_cartella(file_report4, folder_name)
-    sposta_file_in_cartella(file_report5, folder_name)
-    sposta_file_in_cartella(file_report6, folder_name)
-    return folder_name
+# def daily_routine_command():
+#     download_data(interval="5m")
+#     download_data()
+#     file_report1 = blocked_stock(index="SP500")
+#     file_report2 = blocked_stock(index="Nasdaq")
+#     file_report3 = Asaf_trading(index="SP500")
+#     # file_report4 = create_file_report(index="SP500")
+#     # file_report5 = create_file_report(index="Nasdaq")
+#     file_report6 = Asaf_trading(index="Nasdaq")
+#     folder_name = crea_cartella_con_data()
+#     sposta_file_in_cartella(file_report1, folder_name)
+#     sposta_file_in_cartella(file_report2, folder_name)
+#     sposta_file_in_cartella(file_report3, folder_name)
+#     # sposta_file_in_cartella(file_report4, folder_name)
+#     # sposta_file_in_cartella(file_report5, folder_name)
+#     sposta_file_in_cartella(file_report6, folder_name)
+#     return folder_name
+#
+#
+# def weekly_routine_command():
+#     download_data(interval="1wk")
+#     folder_name = crea_cartella_con_data()
+#     file_report1 = ema_cross_trading(index="SP500")
+#     file_report2 = ema_cross_trading(index="Nasdaq")
+#     file_report3 = sma_cross_trading(index="SP500")
+#     file_report4 = sma_cross_trading(index="Nasdaq")
+#     file_report5 = sma_cross_trading(index="Russel")
+#     file_report6 = ema_cross_trading(index="Russel")
+#
+#     sposta_file_in_cartella(file_report1, folder_name)
+#     sposta_file_in_cartella(file_report2, folder_name)
+#     sposta_file_in_cartella(file_report3, folder_name)
+#     sposta_file_in_cartella(file_report4, folder_name)
+#     sposta_file_in_cartella(file_report5, folder_name)
+#     sposta_file_in_cartella(file_report6, folder_name)
+#
+#     return folder_name
 
 
-def weekly_routine_command():
-    #download_data_weekly()
-    folder_name = crea_cartella_con_data()
-    file_report1 = ema_cross_trading(index="SP500")
-    file_report2 = ema_cross_trading(index="Nasdaq")
-    file_report3 = sma_cross_trading(index="SP500")
-    file_report4 = sma_cross_trading(index="Nasdaq")
-    file_report5 = sma_cross_trading(index="Russel")
-    file_report6 = ema_cross_trading(index="Russel")
-
-    sposta_file_in_cartella(file_report1, folder_name)
-    sposta_file_in_cartella(file_report2, folder_name)
-    sposta_file_in_cartella(file_report3, folder_name)
-    sposta_file_in_cartella(file_report4, folder_name)
-    sposta_file_in_cartella(file_report5, folder_name)
-    sposta_file_in_cartella(file_report6, folder_name)
-
-    return folder_name
+# def generate_and_move_reports(indices, strategies_BT, folder_name):
+#     for index in indices:
+#         for strategy in strategies_BT:
+#             file_report = strategy(index=index)
+#             sposta_file_in_cartella(file_report, folder_name)
+#
+# def routine_command(interval_type, indices):
+#     if interval_type == "daily":
+#         download_data(interval="5m")
+#         download_data()
+#         strategies_BT = [blocked_stock, Asaf_trading]
+#     elif interval_type == "weekly":
+#         download_data(interval="1wk")
+#         strategies_BT = [ema_cross_trading, sma_cross_trading]
+#     else:
+#         raise ValueError("Invalid interval type. Use 'daily' or 'weekly'.")
+#
+#     folder_name = crea_cartella_con_data()
+#     generate_and_move_reports(indices, strategies_BT, folder_name)
+#     return folder_name
+#
+#
+# def routine( interval_type):
+#     # Logica della routine
+#     try:
+#         folder_report = bot_command.routine_command(interval_type=interval_type,
+#                                                     indices=["SP500", "Nasdaq", "Russel"])
+#         folder_path = os.path.join(os.getcwd(), folder_report)
+#
+#         # Verifica che la cartella esista
+#         if os.path.exists(folder_path) and os.path.isdir(folder_path):
+#             # Ottieni la lista dei file nella cartella
+#             files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+#
+#             # Invia ciascun file alla chat
+#             for chat_id in self.lista_chat_id:
+#                 for file_name in files:
+#                     file_path = os.path.join(folder_path, file_name)
+#                     self.send_generated_pdf(self.bot, chat_id, file_path)
+#
+#                 print(f"Tutti i file sono stati inviati alle chat.")
+#         else:
+#             print(f"La cartella non esiste: {folder_path}")
+#
+#     except Exception as e:
+#         self.logger.error(f"Errore durante l'esecuzione della routine {interval_type}: {e}")
 
 if __name__ == '__main__':
-    daily_routine_command()
-    weekly_routine_command()
+    pass

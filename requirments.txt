@@ -1,9 +1,0 @@
-pyrogram
-numpy
-pandas
-yfinance
-matplotlib
-docx
-fredapi
-requests
-reportlab
