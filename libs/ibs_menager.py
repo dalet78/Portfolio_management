@@ -1,17 +1,30 @@
 from ib_insync import *
 import random
 from support.logger import Logger
+import asyncio
 
 class IBOrderManager:
-    def __init__(self, host='127.0.0.1', port=7497, client_id=random.randint(100, 999),
+    def __init__(self, host='127.0.0.1', port=7497, client_id=None,
                  log_path="/home/dp/PycharmProjects/Portfolio_management/Portfolio_management/Reports/logs/trading_debug.log"):
         """Initialize IBKR connection and logger."""
         self.ib = IB()
-        self.ib.connect(host, port, client_id)
+        self.client_id = client_id if client_id is not None else random.randint(100, 999)
         self.log = Logger(log_path)
-        self.log.log("Connected to IBKR", level="info")
+        self.pending_trades = {}
 
-        self.pending_trades = {}  # Store pending trades to track updates
+        try:
+            self.connect_to_ib(host, port, self.client_id)  # ✅ Connessione sincrona
+            self.log.log("✅ Connected to IBKR successfully", level="info")
+        except Exception as e:
+            self.log.log(f"❌ Connection failed: {e}", level="error")
+
+    def connect_to_ib(self, host, port, client_id):
+        """Connette IB in modo sincrono"""
+        self.ib.connect(host, port, client_id)
+
+    def is_connected(self):
+        """Return True if IBKR is connected, False otherwise."""
+        return self.ib.isConnected()
 
     def get_stock_data(self, symbol:str, end_time:str=None, duration:str='2 D', bar_size:str="5 mins"):
         """Request historical data for the stock and return a DataFrame."""
@@ -35,37 +48,39 @@ class IBOrderManager:
             self.log.log(f"Error retrieving data: {e}", stock=symbol, level="error")
             return None, None
 
-    def place_order(self, contract: Stock, action: str, quantity: int = 10,
-                    sl_percent: float = 0.007, tp_percent: float = 0.014,
+    def place_order(self, symbol:str, action: str, quantity: int = 10,
                     order_type: str = "market", limit_price: float = None):
         """
-        Place a market or limit order and track it in pending orders.
+        Place a market or limit order and track it in pending trades.
 
         :param contract: Stock contract (es. Stock('AAPL', 'SMART', 'USD'))
         :param action: "BUY" or "SELL"
         :param quantity: Numero di azioni da acquistare/vendere
-        :param sl_percent: Stop Loss in percentuale
-        :param tp_percent: Take Profit in percentuale
         :param order_type: "market" per ordini a mercato, "limit" per ordini limite
         :param limit_price: Prezzo per l'ordine limite (necessario se order_type="limit")
         :return: Order ID
         """
 
+        # ✅ Controllo che action sia una stringa corretta
+        if not isinstance(action, str) or action.upper() not in ["BUY", "SELL"]:
+            raise ValueError(f"❌ Invalid action: {action}. Must be 'BUY' or 'SELL'.")
+
+        contract = Stock(symbol=symbol, exchange="SMART", currency="USD")
         self.ib.qualifyContracts(contract)
 
         if order_type.lower() == "market":
-            order = MarketOrder(action, quantity)
+            order = MarketOrder(action.upper(), quantity)  # ✅ Garantisco che sia maiuscolo
             self.log.log(f"Placing MARKET order for {contract.symbol}: {quantity} shares", stock=contract.symbol)
 
         elif order_type.lower() == "limit":
             if limit_price is None:
-                raise ValueError("Limit price must be specified for limit orders.")
-            order = LimitOrder(action, quantity, limit_price)
+                raise ValueError("❌ Limit price must be specified for limit orders.")
+            order = LimitOrder(action.upper(), quantity, limit_price)
             self.log.log(f"Placing LIMIT order for {contract.symbol}: {quantity} shares at {limit_price}",
                          stock=contract.symbol)
 
         else:
-            raise ValueError("Invalid order type. Use 'market' or 'limit'.")
+            raise ValueError("❌ Invalid order type. Use 'market' or 'limit'.")
 
         # Invia l'ordine
         trade = self.ib.placeOrder(contract, order)
@@ -75,8 +90,14 @@ class IBOrderManager:
 
         return trade.order.orderId
 
-    def update_orders(self, sl_percent, tp_percent):
-        """Update the status of all pending orders and check if they are filled."""
+    def update_orders(self, sl_percent=None, tp_percent=None, sl_base_price=None):
+        """
+        Aggiorna gli ordini aperti e imposta TP/SL al riempimento.
+        Parametri:
+            sl_percent: percentuale per SL (usato insieme a sl_base_price)
+            tp_percent: percentuale per TP
+            sl_base_price: prezzo da cui calcolare lo stop loss (es: minimo candela)
+        """
         self.ib.reqAllOpenOrders()
         self.ib.sleep(1)
 
@@ -84,18 +105,18 @@ class IBOrderManager:
             print(f"DEBUG: Processing order_id {order_id}, trade_info = {trade_info}")
 
             if isinstance(trade_info, tuple) and len(trade_info) == 2:
-                trade, contract = trade_info  # 🔹 Corretto!
+                trade, contract = trade_info
             else:
                 print(f"❌ Errore: trade_info ha un formato inatteso: {trade_info}")
-                continue  # Saltiamo questo elemento se il formato non è corretto
+                continue
 
             trade.update()
             if trade.orderStatus.status == "Filled":
                 self.log.log(f"✅ Order {order_id} filled at {trade.orderStatus.avgFillPrice}", level="info")
-                self.set_tp_sl(trade, sl_percent, tp_percent)  # 🔹 Correggi anche qui!
+                self.set_tp_sl(trade, sl_percent, tp_percent, sl_base_price=sl_base_price)
                 del self.pending_trades[order_id]
 
-    def set_tp_sl(self, trade, sl_percent:float, tp_percent:float):
+    def set_tp_sl(self, trade, sl_percent: float, tp_percent: float, sl_base_price: float = None):
         """Set Take Profit and Stop Loss after the order is executed."""
         contract = trade.contract
         filled_price = trade.orderStatus.avgFillPrice
@@ -105,10 +126,23 @@ class IBOrderManager:
             self.log.log(f"⚠️ Warning: Filled price for {contract.symbol} is 0. TP/SL not placed.", level="warning")
             return
 
-        sl_price = round(filled_price * (1 - sl_percent), 2) if action == 'BUY' else round(
-            filled_price * (1 + sl_percent), 2)
-        tp_price = round(filled_price * (1 + tp_percent), 2) if action == 'BUY' else round(
-            filled_price * (1 - tp_percent), 2)
+        # ✅ Calcolo Stop Loss
+        if sl_base_price is not None:
+            if action == 'BUY':
+                sl_price = round(sl_base_price - (sl_percent * sl_base_price), 2)
+            else:  # SELL
+                sl_price = round(sl_base_price + (sl_percent * sl_base_price), 2)
+        else:
+            if action == 'BUY':
+                sl_price = round(filled_price * (1 - sl_percent), 2)
+            else:
+                sl_price = round(filled_price * (1 + sl_percent), 2)
+
+        # ✅ Calcolo Take Profit (rimane basato su filled_price)
+        if action == 'BUY':
+            tp_price = round(filled_price * (1 + tp_percent), 2)
+        else:
+            tp_price = round(filled_price * (1 - tp_percent), 2)
 
         self.log.log(f"🔹 Setting TP {tp_price} and SL {sl_price} for {contract.symbol}", level="info")
 
@@ -134,15 +168,19 @@ class IBOrderManager:
             position = next((p for p in positions if p.contract.symbol == contract.symbol), None)
 
             if position:
-                action = "SELL" if position.position > 0 else "BUY"  # Se long, vendi. Se short, compra
+                action = "SELL" if position.position > 0 else "BUY"
                 quantity = abs(position.position)
+
+                # ✅ Forza l'uso del router SMART
+                contract.exchange = "SMART"
+                contract.primaryExchange = "NASDAQ"  # opzionale ma consigliato
+                contract.currency = "USD"
 
                 self.log.log(f"🔹 Closing {quantity} shares of {contract.symbol} ({action})", stock=contract.symbol)
 
                 order = MarketOrder(action, quantity)
                 trade = self.ib.placeOrder(contract, order)
 
-                # Aspetta l'aggiornamento dello stato dell'ordine
                 self.ib.sleep(1)
                 trade.update()
 

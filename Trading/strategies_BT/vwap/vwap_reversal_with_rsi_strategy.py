@@ -106,7 +106,7 @@ def vwap_rsi_reversal_trading(index="SP500"):
                     df['rsi'] = talib.RSI(df['Close'], RSI_PERIOD)
 
                     # Perform backtesting
-                    bt = Backtest(df, VWAPRSIReversalStrategy, cash=10000, commission=.002, exclusive_orders=True)
+                    bt = Backtest(df, VWAPRSIReversalStrategy, cash=10000, exclusive_orders=True)
                     stats = bt.run()
 
 

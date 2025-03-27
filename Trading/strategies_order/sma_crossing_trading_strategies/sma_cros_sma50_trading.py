@@ -1,4 +1,4 @@
-import time
+import time as tm
 from datetime import datetime, time, timedelta
 from configuration.strategis_stock_applied import get_stock_list
 from support.logger import Logger
@@ -9,106 +9,154 @@ log = Logger("/home/dp/PycharmProjects/Portfolio_management/Portfolio_management
 ib_manager = IBOrderManager()
 
 # Strategy Parameters
-ENTRY_START_TIME = time(16, 35)
-ENTRY_END_TIME = time(16, 55)
-EXIT_TIME = time(20, 50)
+ENTRY_START_TIME = time(15, 35)
+ENTRY_END_TIME = time(15, 50)
+EXIT_TIME = time(19, 50)
 SMA_SHORT_PERIOD = 5
 SMA_LONG_PERIOD = 20
+SMA_TREND_PERIOD = 50
 SL_PERCENT = 0.007
 TP_PERCENT = 0.014
 REDUCT_TP_PERCENT = 0.01
 FIXED_CAPITAL = 1000
 
-open_positions = {}
+open_positions = {}  # Memorizza le posizioni aperte
+trade_count_per_stock = {}  # Memorizza il numero di trade per ciascun titolo
 MAX_DAILY_TRADES = 5  # Numero massimo di posizioni aperte giornalmente
-daily_trade_count = 0  # Contatore di trade giornalieri
+MAX_TRADES_PER_STOCK = 1  # Limita gli ingressi per ogni titolo
 
-def check_signals(df, stock):
-    """Analyze SMA crossovers and return a BUY/SELL signal considering SMA50 as trend filter."""
+def check_sma_cross_sma50(df, stock):
+    """Analyze SMA crossovers and return a BUY/SELL signal considering SMA50 as trend filter with trade protections."""
     log.log(f"Analyzing SMA signals for {stock}", stock=stock)
 
     try:
         df['SMA5'] = df['close'].rolling(SMA_SHORT_PERIOD).mean()
         df['SMA20'] = df['close'].rolling(SMA_LONG_PERIOD).mean()
-        df['SMA50'] = df['close'].rolling(50).mean()  # Trend filter
+        df['SMA50'] = df['close'].rolling(SMA_TREND_PERIOD).mean()  # Trend filter
 
         sma1, sma2, sma50 = df['SMA5'].iloc[-1], df['SMA20'].iloc[-1], df['SMA50'].iloc[-1]
         prev_sma1, prev_sma2 = df['SMA5'].iloc[-2], df['SMA20'].iloc[-2]
-        candle_direction = 'bullish' if df['close'].iloc[-1] > df['open'].iloc[-1] else 'bearish'
+        candle_close = df['close'].iloc[-1]
 
         log.log(f"SMA5: {sma1}, SMA20: {sma2}, SMA50: {sma50} | Previous SMA5: {prev_sma1}, SMA20: {prev_sma2}", stock=stock)
 
+        # Protezioni contro ingressi multipli
+        if stock in open_positions:
+            log.log(f"❌ Signal ignored: {stock} already has an open position.", stock=stock, level="debug")
+            return None
+
+        if stock not in trade_count_per_stock:
+            trade_count_per_stock[stock] = 0
+
+        if trade_count_per_stock[stock] >= MAX_TRADES_PER_STOCK:
+            log.log(f"⚠️ Max trades reached for {stock}. Skipping signal.", stock=stock, level="debug")
+            return None
+
         # Bullish crossover above SMA50
-        if sma1 > sma2 and prev_sma1 <= prev_sma2 and candle_direction == 'bullish' and df['close'].iloc[-1] > sma50:
-            log.log("BUY signal detected (above SMA50)", stock=stock, level="info")
+        if sma1 > sma2 and prev_sma1 <= prev_sma2 and candle_close > sma50:
+            entry_price = candle_close
+            stop_loss = entry_price - (SL_PERCENT * entry_price)
+            take_profit = entry_price + (TP_PERCENT * entry_price)
+
+            log.log(f"✅ BUY signal detected at {entry_price}, SL: {stop_loss}, TP: {take_profit}", stock=stock, level="info")
+
+            # Registra l'operazione aperta
+            open_positions[stock] = {"type": "BUY", "entry": entry_price, "sl": stop_loss, "tp": take_profit}
+            trade_count_per_stock[stock] += 1
             return 'BUY'
+
         # Bearish crossover below SMA50
-        elif sma1 < sma2 and prev_sma1 >= prev_sma2 and candle_direction == 'bearish' and df['close'].iloc[-1] < sma50:
-            log.log("SELL signal detected (below SMA50)", stock=stock, level="info")
+        elif sma1 < sma2 and prev_sma1 >= prev_sma2 and candle_close < sma50:
+            entry_price = candle_close
+            stop_loss = entry_price + (SL_PERCENT * entry_price)
+            take_profit = entry_price - (TP_PERCENT * entry_price)
+
+            log.log(f"✅ SELL signal detected at {entry_price}, SL: {stop_loss}, TP: {take_profit}", stock=stock, level="info")
+
+            # Registra l'operazione aperta
+            open_positions[stock] = {"type": "SELL", "entry": entry_price, "sl": stop_loss, "tp": take_profit}
+            trade_count_per_stock[stock] += 1
             return 'SELL'
 
         log.log("No signal detected", stock=stock, level="debug")
         return None
     except Exception as e:
-        log.log(f"Error calculating SMA: {e}", stock=stock, level="error")
+        log.log(f"❌ Error calculating SMA: {e}", stock=stock, level="error")
         return None
 
-import time
-from datetime import datetime
 
-def trading_loop():
-    """Main trading loop that handles signals and orders."""
-
-    now = datetime.now().time()
-    log.log("Starting trading loop", level="info")
-    tickers_list = get_stock_list("SMA_Cross_sma50")
-    log.log(f"Stocks to trade: {tickers_list}", level="info")
-    print(f"Stocks to trade: {tickers_list}")
-
-    try:
-        while True:
-            start_time = time.time()
-            now = datetime.now().time()
-            if now >= EXIT_TIME:
-                log.log("Exit time reached, closing open positions", level="info")
-                for pos in ib_manager.ib.positions():
-                    print(f"🔹 Chiudendo {pos.position} azioni di {pos.contract.symbol}")
-                    ib_manager.close_position(pos.contract)
-            else:
-                if ENTRY_START_TIME <= now <= ENTRY_END_TIME:
-                    new_orders = []  # Lista per tracciare nuovi ordini
-                    for ticker in tickers_list:
-                        df, contract = ib_manager.get_stock_data(ticker)
-                        if df is not None:
-                            signal = check_signals(df, ticker)
-                            if signal and ticker not in open_positions:
-                                last_price = df['close'].iloc[-1]
-                                quantity = int(FIXED_CAPITAL / last_price)
-                                order_id = ib_manager.place_order(contract, signal, quantity)
-                                if order_id:
-                                    new_orders.append((order_id, contract))
-
-                    ib_manager.update_orders(sl_percent=SL_PERCENT, tp_percent=TP_PERCENT)
-
-            execution_time = time.time() - start_time
-            sleep_time = 300 - execution_time  # Ensure non-negative sleep time
-            time.sleep(sleep_time)
-    except Exception as e:
-        log.log(f"❌ Error in trading loop: {e}", level="error")
-        time.sleep(5)
-
-
-def wait_for_precise_time(target_time=ENTRY_START_TIME):
-    now = datetime.now()
-    target_datetime = now.replace(hour=target_time.hour, minute=target_time.minute, second=1, microsecond=0)
-    if now > target_datetime:
-        target_datetime += timedelta(days=1)
-
-    wait_seconds = (target_datetime - now).total_seconds()
-    log.log(f"Wait {wait_seconds:.2f} seconds for to start at {target_time},", level="info")
-    time.sleep(wait_seconds)
-
-
-if __name__ == "__main__":
-    wait_for_precise_time()
-    trading_loop()
+#
+# def trading_loop():
+#     """Main trading loop that handles signals and orders."""
+#
+#     now = datetime.now().time()
+#     log.log("Starting trading loop", level="info")
+#     tickers_list = get_stock_list("SMA_Cross_sma50")
+#     log.log(f"Stocks to trade: {tickers_list}", level="info")
+#     print(f"Stocks to trade: {tickers_list}")
+#
+#     try:
+#         while True:
+#             start_time = tm.time()
+#             now = datetime.now().time()
+#             if now >= EXIT_TIME:
+#                 log.log("Exit time reached, closing open positions", level="info")
+#                 for pos in ib_manager.ib.positions():
+#                     print(f"🔹 Chiudendo {pos.position} azioni di {pos.contract.symbol}")
+#                     ib_manager.close_position(pos.contract)
+#             else:
+#                 if ENTRY_START_TIME <= now <= ENTRY_END_TIME:
+#                     new_orders = []  # Lista per tracciare nuovi ordini
+#                     for ticker in tickers_list:
+#                         df, contract = ib_manager.get_stock_data(ticker)
+#                         if df is not None:
+#                             signal = check_signals(df, ticker)
+#                             if signal and ticker not in open_positions:
+#                                 last_price = df['close'].iloc[-1]
+#                                 quantity = int(FIXED_CAPITAL / last_price)
+#
+#                                 # ✅ Verifica che action sia 'BUY' o 'SELL' prima di passarlo a place_order
+#                                 if signal not in ["BUY", "SELL"]:
+#                                     log.log(f"❌ Errore: Segnale non valido per {ticker}: {signal}", stock=ticker,
+#                                             level="error")
+#                                 else:
+#                                     order_id = ib_manager.place_order(ticker, signal, quantity)
+#                                     if order_id:
+#                                         new_orders.append((order_id, contract))
+#
+#                     ib_manager.update_orders(sl_percent=SL_PERCENT, tp_percent=TP_PERCENT)
+#
+#             execution_time = tm.time() - start_time
+#             sleep_time = 300 - execution_time  # Ensure non-negative sleep time
+#             tm.sleep(sleep_time)
+#     except Exception as e:
+#         log.log(f"❌ Error in trading loop: {e}", level="error")
+#         tm.sleep(5)
+#
+#
+# def wait_for_precise_time(target_time=ENTRY_START_TIME):
+#     """Attende fino all'orario specificato."""
+#     now = datetime.now()
+#
+#     # Assicurati che `target_time` sia un oggetto datetime.time
+#     if isinstance(target_time, datetime):
+#         target_time = tm.time()  # Converti in datetm.time
+#
+#     target_datetime = now.replace(hour=target_time.hour, minute=target_time.minute, second=1, microsecond=0)
+#
+#     if now > target_datetime:
+#         target_datetime += timedelta(days=1)  # Se l'orario è già passato oggi, impostalo per domani
+#
+#     wait_seconds = (target_datetime - now).total_seconds()
+#
+#     log.log(f"Wait {wait_seconds:.2f} seconds to start at {target_time}.", level="info")
+#
+#     if wait_seconds > 0:
+#         tm.sleep(wait_seconds)  # ✅ Ora è un numero corretto
+#
+#     log.log("Target time reached. Starting execution.", level="info")
+#
+#
+# if __name__ == "__main__":
+#     wait_for_precise_time()
+#     trading_loop()

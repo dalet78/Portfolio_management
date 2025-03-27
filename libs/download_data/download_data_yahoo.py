@@ -1,6 +1,6 @@
 import os
 import yfinance as yf
-from datetime import datetime, timedelta
+from datetime import datetime, time, timedelta
 import pandas as pd
 import shutil
 from support.data_preparation import DataRefactory

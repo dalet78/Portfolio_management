@@ -1,16 +1,17 @@
 import threading
 import time
 import logging
-import subprocess
+import os
 import schedule
 from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, ReplyKeyboardRemove
-
+from libs.tws_luncher import TWSLauncher
 from TelegramBot.commander import download_data, routine_commander
 from configuration import hours_configuration
 from TelegramBot.bot_parameter import token, api_id, api_hash
 from main_trading import start_trading
+from libs.ibs_menager import IBOrderManager
 
 
 class CommandBot:
@@ -65,8 +66,9 @@ class CommandBot:
                              [InlineKeyboardButton("Back to main menu", callback_data="menu_top")]],
             'top': [[InlineKeyboardButton("Stock", callback_data="menu_catchtrade"),
                      InlineKeyboardButton("Download", callback_data="menu_downloaddata")],
-                    [InlineKeyboardButton("Macroeconomic tool", callback_data="menu_macrotool"),
-                     InlineKeyboardButton("Start Daily Session", callback_data="action_startdailysession")]]
+                    [InlineKeyboardButton("Start TWS", callback_data="action_starttws"),
+                     InlineKeyboardButton("Start Daily Session", callback_data="action_startdailysession")]
+            ]
         }
         return InlineKeyboardMarkup(menus.get(menu, menus['top']))
 
@@ -89,7 +91,8 @@ class CommandBot:
         action_map = {
             "updatedaily": (self.handle_data_download, "daily"),
             "updateweekly": (self.handle_data_download, "weekly"),
-            "startdailysession": (self.start_daily_session,)
+            "startdailysession": (self.start_daily_session,),
+            "starttws": (self.start_tws,)
         }
 
         if action in action_map:
@@ -113,6 +116,30 @@ class CommandBot:
             thread.start()
 
         callback_query.message.reply_text("Daily session started!")
+
+    def start_tws(self, client, callback_query, max_retries=5, wait_time=10, initial_wait=60):
+        """Avvia TWS e verifica la connessione prima di inviare il messaggio di conferma."""
+        tws_path = os.path.expanduser("~/Jts/tws")
+        username = "hcuckr695"
+        password = "IlanaQ!W@e3r4t5"
+
+        tws = TWSLauncher(tws_path, username, password)
+        tws.start_tws()
+
+        # Aspetta un po' prima di iniziare a controllare la connessione
+        time.sleep(initial_wait)  # Aggiunge una pausa per dare tempo a TWS di avviarsi
+
+        # Tentativi di connessione a TWS
+        for attempt in range(1, max_retries + 1):
+            ib_manager = IBOrderManager()  # Crea una nuova istanza a ogni tentativo
+
+            if ib_manager.is_connected():  # Controlla la connessione
+                callback_query.message.reply_text("TWS successfully started!")
+                return
+
+            time.sleep(wait_time)  # Attendi prima di riprovare
+
+        callback_query.message.reply_text("Error: Unable to start TWS after multiple attempts.")
 
     def handle_data_download(self, client, callback_query, period):
         """Download data for the specified period."""

@@ -1,0 +1,8 @@
+{
+    "SPY": "SP500",
+    "IVV": "ISHARE_SP500",
+    "VOO": "VANGUARD_SP500",
+    "SPLG": "SPDR",
+    "DIA": "DIA",
+    "IWM": "IWM"
+}

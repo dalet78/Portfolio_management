@@ -1,12 +1,11 @@
 import os
 import time
 from ib_insync import *
-from datetime import datetime, timedelta
+from datetime import datetime, time, timedelta
 import pandas as pd
 import pytz
 import json
 
-from playhouse.sqlite_udf import duration
 
 from support.data_preparation import DataRefactory
 
@@ -23,6 +22,12 @@ class StockDataDownloader:
             self.data_path = f'{source_directory}/Data/ALL/Weekly/'
         elif interval == '5m' and index == "ALL":
             self.data_path = f'{source_directory}/Data/ALL/5min/'
+        if interval == '1d' and index == "Index":
+            self.data_path = f'{source_directory}/Data/INDEX/Daily/'
+        elif interval == '1wk' and index == "Index":
+            self.data_path = f'{source_directory}/Data/INDEX/Weekly/'
+        elif interval == '5m' and index == "Index":
+            self.data_path = f'{source_directory}/Data/INDEX/5min/'
         else:
             raise ValueError("Invalid interval. Choose '1d' for daily or '1wk' for weekly data.")
 
@@ -171,7 +176,7 @@ class StockDataDownloader:
                 duration = f"{day_missing} D"
                 print(f"Aggiornamento dati per {ticker} da {start_date} a {end_date.date()}")
 
-                contract = Stock(ticker, 'SMART', 'USD')
+                contract = Stock(ticker, 'CBOE', 'USD')
 
                 bars = self.ib.reqHistoricalData(
                     contract,
@@ -396,9 +401,9 @@ class StockDataDownloader:
 
 
 if __name__ == "__main__":
-    with open(f"{source_directory}/json_files/list_companies.json", 'r') as file:
+    with open(f"{source_directory}/json_files/index.json", 'r') as file:
         tickers = json.load(file)
 
     # Lista dei ticker
     tickers_list = list(tickers.keys())
-    downloader = StockDataDownloader(tickers_list, interval='5m', index="ALL").download_historical_data()
+    downloader = StockDataDownloader(tickers_list, interval='5m', index="Index").download_historical_data()
