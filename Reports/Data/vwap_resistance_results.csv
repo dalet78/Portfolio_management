@@ -1,0 +1,71 @@
+Stock,VWAP,Resistances
+AES,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 11.580463546078846}]","[np.float64(16.42), np.float64(22.16), np.float64(22.0)]"
+AMCR,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 10.082220772601303}]",[np.float64(9.91)]
+APA,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 20.648068193251937}]","[np.float64(42.74), np.float64(40.18), np.float64(38.95), np.float64(38.69), np.float64(28.71)]"
+ADM,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 47.10189951216269}]","[np.float64(72.6), np.float64(56.87)]"
+T,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 27.192334457652024}]","[np.float64(14.4), np.float64(19.34), np.float64(27.39)]"
+BKR,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 44.19718102906272}]","[np.float64(33.59), np.float64(43.93)]"
+BAC,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 45.39703260507536}]",[np.float64(38.63)]
+BAX,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 34.396454268123215}]",[np.float64(36.15)]
+BWA,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 29.64007666589246}]",[np.float64(33.5)]
+CZR,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 33.268892689247195}]","[np.float64(39.71), np.float64(50.08), np.float64(49.8)]"
+CPB,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 40.0848669409416}]",[np.float64(44.16)]
+CCL,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 23.64327746548844}]","[np.float64(11.82), np.float64(10.96), np.float64(16.34), np.float64(13.51), np.float64(19.62), np.float64(19.78), np.float64(19.55), np.float64(19.9), np.float64(21.37), np.float64(25.42), np.float64(28.7), np.float64(10.86)]"
+CNP,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 34.12143360263961}]",[np.float64(29.32)]
+CFG,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 45.643266498853635}]",[np.float64(37.59)]
+CMCSA,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 35.78266336215525}]",[np.float64(40.51)]
+CAG,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 25.592044671368402}]","[np.float64(28.83), np.float64(23.35)]"
+CTRA,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 26.69611833211193}]",[np.float64(26.07)]
+CSX,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 31.92324624873264}]","[np.float64(30.02), np.float64(34.27)]"
+DVN,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 35.93367947599213}]","[np.float64(43.2), np.float64(55.06)]"
+DOW,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 37.995398977145484}]","[np.float64(51.18), np.float64(36.86), np.float64(36.66)]"
+EXC,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 44.05355249564344}]",[np.float64(37.83)]
+FITB,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 43.27131048726689}]","[np.float64(23.26), np.float64(26.44), np.float64(27.93), np.float64(28.76), np.float64(29.83), np.float64(30.7), np.float64(31.64), np.float64(39.66)]"
+FE,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 38.34494633054399}]",[np.float64(39.58)]
+BEN,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 20.154150633655924}]",[np.float64(23.41)]
+FCX,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 36.67404502844007}]",[np.float64(43.26)]
+GEN,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 27.194960013205808}]","[np.float64(16.86), np.float64(24.82), np.float64(18.34)]"
+GM,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 48.844424327807246}]","[np.float64(28.11), np.float64(35.0), np.float64(46.98), np.float64(59.89), np.float64(60.74), np.float64(59.65)]"
+HAL,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 26.17472674218845}]",[np.float64(33.21)]
+DOC,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 20.347999965694026}]",[np.float64(19.81)]
+HPE,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 19.71565972417438}]",[np.float64(18.75)]
+HRL,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 28.49584753812592}]",[np.float64(31.84)]
+HST,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 16.07212205041646}]",[np.float64(18.19)]
+HPQ,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 30.58407699565575}]","[np.float64(26.13), np.float64(32.64)]"
+HBAN,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 16.395180953269627}]",[np.float64(14.13)]
+INTC,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 23.744938809377636}]","[np.float64(33.03), np.float64(44.59), np.float64(51.03), np.float64(51.26), np.float64(21.7), np.float64(26.9), np.float64(27.21), np.float64(27.46)]"
+IPG,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 27.211816601711803}]","[np.float64(30.53), np.float64(34.92)]"
+IVZ,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 17.31013558590899}]",[np.float64(16.38)]
+INVH,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 34.14596868299815}]","[np.float64(33.93), np.float64(29.28)]"
+JNPR,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 36.078219707281285}]","[np.float64(25.11), np.float64(28.25), np.float64(37.15), np.float64(39.44), np.float64(34.0), np.float64(33.73)]"
+KVUE,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 23.4274792368999}]",[np.float64(20.76)]
+KDP,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 33.544525203254324}]",[np.float64(32.9)]
+KEY,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 17.21724300995649}]","[np.float64(9.99), np.float64(10.9), np.float64(15.61)]"
+KIM,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 21.963773195788722}]",[np.float64(21.13)]
+KMI,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 26.90250081052699}]","[np.float64(18.95), np.float64(24.74), np.float64(25.43), np.float64(27.45), np.float64(31.06), np.float64(23.97)]"
+KHC,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 30.720862851567695}]","[np.float64(34.17), np.float64(38.93)]"
+LVS,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 44.557721518987336}]",[np.float64(47.43)]
+MTCH,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 31.617919373437292}]","[np.float64(33.96), np.float64(40.39), np.float64(39.87), np.float64(27.92)]"
+MGM,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 34.64267687887589}]",[np.float64(39.95)]
+MRNA,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 30.70786976545426}]","[np.float64(95.71), np.float64(163.44), np.float64(167.68), np.float64(169.25), np.float64(39.01)]"
+MOS,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 24.095136644335977}]",[np.float64(29.52)]
+NEM,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 42.188077185120946}]",[np.float64(42.23)]
+NWSA,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 28.35832866663581}]","[np.float64(21.47), np.float64(26.71)]"
+NI,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 40.48783592106394}]",[np.float64(30.78)]
+NCLH,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 22.906645148990076}]","[np.float64(17.65), np.float64(21.72), np.float64(22.1), np.float64(22.19), np.float64(26.05), np.float64(29.27)]"
+PARA,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 11.337473402695155}]","[np.float64(11.71), np.float64(17.05)]"
+PFE,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 26.16173922595701}]","[np.float64(32.7), np.float64(32.1), np.float64(27.94)]"
+PCG,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 16.36003016175}]",[np.float64(17.98)]
+PPL,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 34.927586778928784}]",[np.float64(29.46)]
+RF,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 23.588625820750547}]",[np.float64(20.91)]
+SLB,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 41.30199977720246}]","[np.float64(60.33), np.float64(46.68)]"
+LUV,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 30.92177665626169}]","[np.float64(29.28), np.float64(35.7)]"
+TFC,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 46.12885408911526}]","[np.float64(28.46), np.float64(40.36)]"
+USB,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 46.60399039132112}]","[np.float64(43.86), np.float64(31.34)]"
+UDR,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 44.99499916770398}]",[np.float64(39.92)]
+VZ,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 42.98752949171132}]","[np.float64(31.52), np.float64(40.43)]"
+VTRS,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 9.260458291821916}]",[np.float64(11.34)]
+VICI,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 32.46449079265208}]","[np.float64(30.32), np.float64(34.28)]"
+WBA,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 10.735471823396281}]","[np.float64(22.24), np.float64(17.95), np.float64(15.74), np.float64(10.04)]"
+WBD,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 11.375638645610806}]","[np.float64(9.17), np.float64(12.69), np.float64(12.63)]"
+WY,"[{'Datetime': Timestamp('2025-02-28 20:55:00'), 'VWAP': 30.11421398952013}]",[np.float64(31.22)]
