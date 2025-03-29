@@ -1,0 +1,14 @@
+from datetime import time
+
+
+START_SESSION = time(16, 30)
+END_SESSION = time(21, 0)
+
+##GENERAL VARIABLES
+open_positions = {}
+trade_count_per_stock = {}
+MAX_DAILY_TRADES = 10
+MAX_TRADES_PER_STOCK = 1
+
+FIXED_CAPITAL = 50000
+CAPITAL_FOR_TRADE = FIXED_CAPITAL/MAX_DAILY_TRADES

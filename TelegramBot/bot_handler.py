@@ -8,7 +8,7 @@ from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, ReplyKeyboardRemove
 from libs.tws_luncher import TWSLauncher
 from TelegramBot.commander import download_data, routine_commander
-from configuration import hours_configuration
+# from configuration import hours_configuration
 from TelegramBot.bot_parameter import token, api_id, api_hash
 from main_trading import start_trading
 from libs.ibs_menager import IBOrderManager
@@ -28,15 +28,15 @@ class CommandBot:
         self.lista_chat_id = ['1458740893', '5634630295']
 
         # Schedule daily, weekly routines
-        schedule.every().day.at(hours_configuration.FIVE_MIN_HOUR_SEND_REPORT).do(
-            routine_commander.routine, bot_instance=self, interval_type="5m"
-        )
-        schedule.every().day.at(hours_configuration.DAILY_HOUR_SEND_REPORT).do(
-            routine_commander.routine, bot_instance=self, interval_type="Daily"
-        )
-        schedule.every().monday.at(hours_configuration.WEEKLY_HOUR_SEND_REPORT).do(
-            routine_commander.routine, bot_instance=self, interval_type="weekly"
-        )
+        # schedule.every().day.at(hours_configuration.FIVE_MIN_HOUR_SEND_REPORT).do(
+        #     routine_commander.routine, bot_instance=self, interval_type="5m"
+        # )
+        # schedule.every().day.at(hours_configuration.DAILY_HOUR_SEND_REPORT).do(
+        #     routine_commander.routine, bot_instance=self, interval_type="Daily"
+        # )
+        # schedule.every().monday.at(hours_configuration.WEEKLY_HOUR_SEND_REPORT).do(
+        #     routine_commander.routine, bot_instance=self, interval_type="weekly"
+        # )
 
         # Add command handlers
         self.bot.add_handler(MessageHandler(self.start_command, filters.command("start")))
@@ -162,6 +162,14 @@ class CommandBot:
         /stop - Stop the bot
         """
         message.reply_text(help_text)
+
+    def send_telegram_message(self, text):
+        """Invia un messaggio Telegram a tutti gli utenti configurati."""
+        for chat_id in self.lista_chat_id:
+            try:
+                self.bot.send_message(chat_id=chat_id, text=text)
+            except Exception as e:
+                self.logger.error(f"❌ Error sending Telegram message to {chat_id}: {e}")
 
 
 if __name__ == '__main__':

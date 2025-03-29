@@ -1,4 +1,6 @@
 from ib_insync import *
+from datetime import datetime
+import pandas as pd
 import random
 from support.logger import Logger
 import asyncio
@@ -90,68 +92,58 @@ class IBOrderManager:
 
         return trade.order.orderId
 
-    def update_orders(self, sl_percent=None, tp_percent=None, sl_base_price=None):
+    def update_orders(self, sl_tp_data):
         """
-        Aggiorna gli ordini aperti e imposta TP/SL al riempimento.
+        Aggiorna gli ordini aperti e imposta SL/TP usando dati già calcolati.
         Parametri:
-            sl_percent: percentuale per SL (usato insieme a sl_base_price)
-            tp_percent: percentuale per TP
-            sl_base_price: prezzo da cui calcolare lo stop loss (es: minimo candela)
+            sl_tp_data: dict {order_id: {"sl": ..., "tp": ...}}
         """
         self.ib.reqAllOpenOrders()
         self.ib.sleep(1)
 
         for order_id, trade_info in list(self.pending_trades.items()):
-            print(f"DEBUG: Processing order_id {order_id}, trade_info = {trade_info}")
-
             if isinstance(trade_info, tuple) and len(trade_info) == 2:
                 trade, contract = trade_info
             else:
-                print(f"❌ Errore: trade_info ha un formato inatteso: {trade_info}")
+                self.log.log(f"❌ Invalid trade_info format for order {order_id}: {trade_info}", level="error")
                 continue
 
             trade.update()
+
             if trade.orderStatus.status == "Filled":
                 self.log.log(f"✅ Order {order_id} filled at {trade.orderStatus.avgFillPrice}", level="info")
-                self.set_tp_sl(trade, sl_percent, tp_percent, sl_base_price=sl_base_price)
+
+                # 🎯 Imposta SL/TP solo se i dati sono presenti
+                sltp = sl_tp_data.get(order_id)
+                if sltp:
+                    sl = sltp.get("sl")
+                    tp = sltp.get("tp")
+                    self.set_tp_sl_direct(trade, sl_price=sl, tp_price=tp)
+                else:
+                    self.log.log(f"⚠️ No SL/TP found for order {order_id}, skipping.", level="warning")
+
                 del self.pending_trades[order_id]
 
-    def set_tp_sl(self, trade, sl_percent: float, tp_percent: float, sl_base_price: float = None):
-        """Set Take Profit and Stop Loss after the order is executed."""
+    def set_tp_sl_direct(self, trade, sl_price: float, tp_price: float):
+        """Set SL/TP usando prezzi assoluti calcolati dalla strategia."""
         contract = trade.contract
-        filled_price = trade.orderStatus.avgFillPrice
         action = trade.order.action
 
-        if filled_price == 0:
-            self.log.log(f"⚠️ Warning: Filled price for {contract.symbol} is 0. TP/SL not placed.", level="warning")
+        if not sl_price or not tp_price:
+            self.log.log(f"⚠️ Missing SL or TP for {contract.symbol}, skipping.", level="warning")
             return
 
-        # ✅ Calcolo Stop Loss
-        if sl_base_price is not None:
-            if action == 'BUY':
-                sl_price = round(sl_base_price - (sl_percent * sl_base_price), 2)
-            else:  # SELL
-                sl_price = round(sl_base_price + (sl_percent * sl_base_price), 2)
-        else:
-            if action == 'BUY':
-                sl_price = round(filled_price * (1 - sl_percent), 2)
-            else:
-                sl_price = round(filled_price * (1 + sl_percent), 2)
-
-        # ✅ Calcolo Take Profit (rimane basato su filled_price)
-        if action == 'BUY':
-            tp_price = round(filled_price * (1 + tp_percent), 2)
-        else:
-            tp_price = round(filled_price * (1 - tp_percent), 2)
-
+        # ✅ Arrotonda i prezzi a 2 decimali
+        sl_price = round(sl_price, 2)
+        tp_price = round(tp_price, 2)
         self.log.log(f"🔹 Setting TP {tp_price} and SL {sl_price} for {contract.symbol}", level="info")
 
-        take_profit_order = LimitOrder('SELL' if action == 'BUY' else 'BUY', trade.order.totalQuantity, tp_price)
-        stop_loss_order = StopOrder('SELL' if action == 'BUY' else 'BUY', trade.order.totalQuantity, sl_price)
+        tp_order = LimitOrder('SELL' if action == 'BUY' else 'BUY', trade.order.totalQuantity, tp_price)
+        sl_order = StopOrder('SELL' if action == 'BUY' else 'BUY', trade.order.totalQuantity, sl_price)
 
-        tp_trade = self.ib.placeOrder(contract, take_profit_order)
+        tp_trade = self.ib.placeOrder(contract, tp_order)
         self.ib.sleep(1)
-        sl_trade = self.ib.placeOrder(contract, stop_loss_order)
+        sl_trade = self.ib.placeOrder(contract, sl_order)
         self.ib.sleep(1)
 
         tp_trade.update()
@@ -159,6 +151,7 @@ class IBOrderManager:
 
         self.log.log(f"✅ TP Order Status: {tp_trade.orderStatus.status} (Price: {tp_price})", level="info")
         self.log.log(f"✅ SL Order Status: {sl_trade.orderStatus.status} (Price: {sl_price})", level="info")
+
 
     def close_position(self, contract):
         """Close an open position for the given contract."""
@@ -217,3 +210,65 @@ class IBOrderManager:
         for trade in self.ib.trades():
             order = trade.order
             print(f"➡️ Trade {trade.order.orderId}: {order.action} {order.totalQuantity} @ {trade.orderStatus.avgFillPrice} ({order.orderType}) - Status: {trade.orderStatus.status}")
+
+    def get_contract(self, symbol: str):
+        """
+        Returns a qualified IBKR Stock contract for a given symbol.
+        """
+        try:
+            contract = Stock(symbol, 'SMART', 'USD')
+            self.ib.qualifyContracts(contract)
+            return contract
+        except Exception as e:
+            self.log.log(f"❌ Failed to get contract for {symbol}: {e}", stock=symbol, level="error")
+            return None
+
+    def get_daily_trade_summary_with_pnl(self):
+        """Restituisce un riepilogo leggibile dei trade eseguiti oggi con PNL reale."""
+        summary = ["📈 Daily Executed Trades with Real PNL:"]
+        trades = self.ib.trades()
+        total_realized_pnl = 0.0
+        today = datetime.now().date()
+
+        found_trades = False
+
+        for trade in trades:
+            order = trade.order
+            status = trade.orderStatus
+
+            if status.status != "Filled":
+                continue
+
+            fill_time = status.completedTime or status.lastFillTime
+            if not fill_time:
+                continue
+
+            # Converte il tempo in datetime
+            try:
+                exec_time = pd.to_datetime(fill_time).tz_localize(None)
+            except:
+                continue
+
+            if exec_time.date() != today:
+                continue  # solo trade di oggi
+
+            found_trades = True
+            symbol = trade.contract.symbol
+            action = order.action
+            qty = order.totalQuantity
+            price = round(status.avgFillPrice, 2)
+            order_type = order.orderType
+            order_id = order.orderId
+            realized_pnl = round(trade.pnl.realized if trade.pnl else 0.0, 2)
+
+            total_realized_pnl += realized_pnl
+
+            summary.append(
+                f"• {symbol} → {action} {qty} @ {price} ({order_type}) [ID: {order_id}] → 💰 PNL: {realized_pnl}"
+            )
+
+        if not found_trades:
+            return "📉 No trades executed today."
+
+        summary.append(f"\n📊 Total Realized PNL: **{round(total_realized_pnl, 2)} USD**")
+        return "\n".join(summary)

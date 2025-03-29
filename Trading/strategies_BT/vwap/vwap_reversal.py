@@ -3,8 +3,8 @@ from datetime import time
 import talib
 
 # Costanti
-ENTRY_START_TIME = time(16, 30)
-ENTRY_END_TIME = time(18, 0)
+ENTRY_START_TIME = time(14, 30)
+ENTRY_END_TIME = time(16, 0)
 EXIT_TIME = time(19, 50)
 ENTRY_THRESHOLD = 0.014  # 1.4%
 SL_PERCENT = 0.007       # 0.7%

@@ -12,7 +12,7 @@ from Trading.strategies_BT.vwap.vwap_reversal import VWAPReversalStrategy, add_v
 DATA_DIRECTORY = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
 ALL_DATA_PATH = f"{DATA_DIRECTORY}/Data/ALL/5min"
 REPORT_DIRECTORY = f"{DATA_DIRECTORY}/Reports/Data"
-REPORT_FILEPATH = f"{REPORT_DIRECTORY}/vwap_diff_strategy_high_risk.csv"
+REPORT_FILEPATH = f"{REPORT_DIRECTORY}/vwap_diff_strategy_high_risk_1430.csv"
 COMMISSION_PER_TRADE = 2  # Commissione fissa per operazione
 RESULT_COLUMNS = ["Stock", "Strategy", "Win Rate", "Max Drawdown", "Return [%]",
                   "Total Trades", "Total Commissions [$]", "Net Return [%]", "CAGR [%]", "Sharpe Ratio"]

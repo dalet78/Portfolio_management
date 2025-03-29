@@ -26,7 +26,7 @@ strategies_stock_applied = {
         "check_function": "check_sma_cross_candle",
         "start_time":time(15, 35),
         "stop_time":time(15, 50)
-    }
+    },
     # "EMA_Cross_cents": {
     #     "tickers": ["UDR"],
     #     "check_function": "check_ema_cross_cents"
@@ -39,10 +39,12 @@ strategies_stock_applied = {
     #     "tickers": ["LVS"],
     #     "check_function": "check_sma_cross_combined"
     # },
-    # "vwap_pivot_breakout": {
-    #     "tickers": ["BAC", "CPB", "CAG", "GM", "DOC", "IPG", "KVUE", "LVS", "NEM", "SLB", "VICI"],
-    #     "check_function": "check_vwap_pivot_breakout"
-    # }
+    "VWAP_diff_signal": {
+        "tickers": ["MGM", "MTCH", "CZR", "WBA", "WBD","CMCSA", "FITB", "IPG", "MOS", "GEN", "WY", "PCG", "DOC"],
+        "check_function": "check_vwap_diff_signal",
+        "start_time":time(16, 30),
+        "stop_time":time(18, 0)
+    }
 }
 
 # Funzione per ottenere la lista di stock data una strategia
