@@ -1,17 +1,17 @@
 from ib_insync import *
+import time
 from datetime import datetime
 import pandas as pd
 import random
-from support.logger import Logger
-import asyncio
+from support.logger import LoggerSingleton
+
 
 class IBOrderManager:
-    def __init__(self, host='127.0.0.1', port=7497, client_id=None,
-                 log_path="/home/dp/PycharmProjects/Portfolio_management/Portfolio_management/Reports/logs/trading_debug.log"):
-        """Initialize IBKR connection and logger."""
+    def __init__(self, host='127.0.0.1', port=7497, client_id=None):
         self.ib = IB()
         self.client_id = client_id if client_id is not None else random.randint(100, 999)
-        self.log = Logger(log_path)
+
+        self.log = LoggerSingleton.get_logger()
         self.pending_trades = {}
 
         try:
@@ -20,9 +20,16 @@ class IBOrderManager:
         except Exception as e:
             self.log.log(f"❌ Connection failed: {e}", level="error")
 
-    def connect_to_ib(self, host, port, client_id):
-        """Connette IB in modo sincrono"""
-        self.ib.connect(host, port, client_id)
+    def connect_to_ib(self, host, port, client_id, retries=10, delay=10):
+        for attempt in range(1, retries + 1):
+            try:
+                if not self.ib.isConnected():
+                    self.ib.connect(host, port, clientId=client_id)
+                    return
+            except Exception as e:
+                self.log.log(f"Attempt {attempt} failed: {e}", level="warning")
+                time.sleep(delay)
+        raise ConnectionError("❌ Unable to connect to IBKR after multiple attempts")
 
     def is_connected(self):
         """Return True if IBKR is connected, False otherwise."""
@@ -125,7 +132,7 @@ class IBOrderManager:
                 del self.pending_trades[order_id]
 
     def set_tp_sl_direct(self, trade, sl_price: float, tp_price: float):
-        """Set SL/TP usando prezzi assoluti calcolati dalla strategia."""
+        """Set SL/TP usando ordini OCA (One Cancels All) per evitare doppie esecuzioni."""
         contract = trade.contract
         action = trade.order.action
 
@@ -133,13 +140,20 @@ class IBOrderManager:
             self.log.log(f"⚠️ Missing SL or TP for {contract.symbol}, skipping.", level="warning")
             return
 
-        # ✅ Arrotonda i prezzi a 2 decimali
         sl_price = round(sl_price, 2)
         tp_price = round(tp_price, 2)
+
         self.log.log(f"🔹 Setting TP {tp_price} and SL {sl_price} for {contract.symbol}", level="info")
 
-        tp_order = LimitOrder('SELL' if action == 'BUY' else 'BUY', trade.order.totalQuantity, tp_price)
-        sl_order = StopOrder('SELL' if action == 'BUY' else 'BUY', trade.order.totalQuantity, sl_price)
+        opposite_action = 'SELL' if action == 'BUY' else 'BUY'
+        quantity = trade.order.totalQuantity
+        oca_group = f"OCA_{contract.symbol}_{int(time.time())}"  # nome univoco del gruppo OCA
+
+        tp_order = LimitOrder(opposite_action, quantity, tp_price,
+                              ocaGroup=oca_group, ocaType=1, transmit=False)
+
+        sl_order = StopOrder(opposite_action, quantity, sl_price,
+                             ocaGroup=oca_group, ocaType=1, transmit=True)  # SL è l'ultimo, trasmette entrambi
 
         tp_trade = self.ib.placeOrder(contract, tp_order)
         self.ib.sleep(1)
@@ -151,7 +165,6 @@ class IBOrderManager:
 
         self.log.log(f"✅ TP Order Status: {tp_trade.orderStatus.status} (Price: {tp_price})", level="info")
         self.log.log(f"✅ SL Order Status: {sl_trade.orderStatus.status} (Price: {sl_price})", level="info")
-
 
     def close_position(self, contract):
         """Close an open position for the given contract."""
@@ -239,7 +252,7 @@ class IBOrderManager:
             if status.status != "Filled":
                 continue
 
-            fill_time = status.completedTime or status.lastFillTime
+            fill_time = getattr(status, "lastFillTime", None)
             if not fill_time:
                 continue
 

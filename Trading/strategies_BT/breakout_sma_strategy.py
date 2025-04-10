@@ -102,7 +102,7 @@ def orb_sma_trading(index="SP500"):
                 print(f'Analyze stock = {item}')
                 try:
                     data_filepath = f"{source_directory}/Data/{index}/5min/{item}_historical_data.csv"
-                    df = DataRefactory.prepare_5m_csv(filepath=data_filepath)
+                    df = DataRefactory.prepare_min_csv(filepath=data_filepath)
 
                     bt = Backtest(df, ORB_SMA20_Strategy, cash=10000, commission=.002, exclusive_orders=True)
                     stats = bt.run()

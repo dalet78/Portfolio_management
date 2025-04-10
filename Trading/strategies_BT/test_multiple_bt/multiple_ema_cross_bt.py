@@ -35,7 +35,7 @@ def run_backtest_for_stock(stock, strategies):
             print(f"⚠️ File non trovato: {data_filepath}")
             return results
 
-        df = DataRefactory.prepare_5m_csv(filepath=data_filepath)
+        df = DataRefactory.prepare_min_csv(filepath=data_filepath)
 
         for strategy in strategies:
             try:

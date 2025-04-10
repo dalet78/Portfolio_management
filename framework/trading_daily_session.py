@@ -1,6 +1,6 @@
 import time as tm
 from datetime import datetime
-from support.logger import Logger
+from support.logger import LoggerSingleton
 from configuration.strategis_stock_applied import get_stock_list, get_all_check_functions, strategies_stock_applied
 from libs.ibs_menager import IBOrderManager
 from configuration import data_configuration_session
@@ -9,52 +9,76 @@ from Trading.strategies_order.ema_crossing_trading_strategies.ema_cros_candle_tr
 from Trading.strategies_order.sma_crossing_trading_strategies.sma_cros_sma50_trading import check_sma_cross_sma50
 from Trading.strategies_order.sma_crossing_trading_strategies.sma_cros_candle_trading import check_sma_cross_candle
 from Trading.strategies_order.vwap_trading_strategies.vwap_diff_trading import check_vwap_diff_signal
+from Trading.strategies_order.vwap_trading_strategies.vwap_diff_trading_with_rsi import check_vwap_diff_signal_with_rsi
 
 class TradingLoopManager:
-    def __init__(self, ib_manager: IBOrderManager, log: Logger):
+    def __init__(self, ib_manager: IBOrderManager):
         self.ib_manager = ib_manager
-        self.log = log
+        self.log = LoggerSingleton.get_logger()
         self.trade_tracker = TradeTracker()
         self._strategy_results = {}
+        self._last_run_times = {}  # dict: strategy_name -> last_run_time
+        self._last_sent_summary_per_stock = {}
 
     def trading_loop(self):
         start_time = tm.time()
         strategy_list = get_all_check_functions()
 
-        ### da modificare dizionario e modificare la funzione per ridare maggiori dati
         for check_function_name in strategy_list:
-            strategy_name, tickers_list, strat_start_time, strat_stop_time = self._get_strategy_data_by_check_function(
-                check_function_name, strategies_stock_applied)
+            strategy_name, tickers_list, strat_start_time, strat_stop_time, frequency, bar_size = (
+                self._get_strategy_data_by_check_function(check_function_name, strategies_stock_applied))
 
             if not strategy_name:
                 self.log.log(f"⚠️ Strategy not found for check function: {check_function_name}", level="warning")
                 continue
 
-            self._run_strategy_if_applicable(strategy_name, tickers_list, strat_start_time, strat_stop_time, check_function_name)
+            last_run = self._last_run_times.get(strategy_name, datetime.min)
+            now = datetime.now()
+
+            if (now - last_run).total_seconds() >= frequency * 60:
+                self._run_strategy_if_applicable(strategy_name, tickers_list, strat_start_time, strat_stop_time,
+                                                 check_function_name, bar_size)
+                self._last_run_times[strategy_name] = now
+            else:
+                self.log.log(f"⏱ Skipping {strategy_name}, not yet time (every {frequency}m)", level="debug")
 
         self.log.log("📊 Updating SL/TP for active orders", level="info")
         self._update_active_orders()
-        if hasattr(self, "telegram_bot"):  # Solo se il bot è stato collegato
-            message = self._format_open_positions_summary()
-            self.telegram_bot.send_telegram_message(message)
+
+        if hasattr(self, "telegram_bot"):
+            summary_text, raw_data = self._format_open_positions_summary()
+
+            for stock, line in raw_data.items():
+                last_line = self._last_sent_summary_per_stock.get(stock)
+                if line != last_line:
+                    self.telegram_bot.send_telegram_message(line)
+                    self._last_sent_summary_per_stock[stock] = line
+
         self._wait_until_next_iteration(start_time)
 
     def _get_strategy_data_by_check_function(self, check_function_name, strategies_dict):
         for strat_name, strat_data in strategies_dict.items():
             if strat_data["check_function"] == check_function_name:
-                return strat_name, strat_data["tickers"], strat_data["start_time"], strat_data["stop_time"]
-        return None, [], None, None
+                return (
+                    strat_name,
+                    strat_data["tickers"],
+                    strat_data["start_time"],
+                    strat_data["stop_time"],
+                    strat_data.get("frequency", 5),
+                    strat_data.get("bar_size", "5 mins")
+                )
+        return None, [], None, None, 5, "5 mins"
 
     def _wait_until_next_iteration(self, start_time):
         execution_time = tm.time() - start_time
-        sleep_time = 300 - execution_time
+        sleep_time = 60 - execution_time  # check ogni minuto
         if sleep_time > 0:
             self.log.log(f"⏳ Sleeping for {sleep_time:.2f} seconds before the next cycle", level="info")
             tm.sleep(sleep_time)
         else:
             self.log.log(f"⚠️ No sleep time, execution took {execution_time:.2f} seconds", level="warning")
 
-    def _run_strategy_if_applicable(self, strategy_name, tickers_list, strat_start_time, strat_stop_time, check_function_name):
+    def _run_strategy_if_applicable(self, strategy_name, tickers_list, strat_start_time, strat_stop_time, check_function_name, bar_size):
         current_time = datetime.now().time()
 
         if not (strat_start_time <= current_time <= strat_stop_time):
@@ -71,9 +95,9 @@ class TradingLoopManager:
         self.log.log(f"🔄 Starting trading loop for strategy: {strategy_name}", level="info")
         print(f"\n🔄 Strategy: {strategy_name}")
         print(f"📈 Stocks to trade: {tickers_list}")
-        self._run_single_trading_iteration(strategy_name, tickers_list, check_signals)
+        self._run_single_trading_iteration(strategy_name, tickers_list, check_signals, bar_size)
 
-    def _run_single_trading_iteration(self, strategy_name, tickers_list, check_signals):
+    def _run_single_trading_iteration(self, strategy_name, tickers_list, check_signals, bar_size):
         try:
             for ticker in tickers_list:
                 # 🔒 Check se è consentito fare un trade
@@ -81,7 +105,7 @@ class TradingLoopManager:
                     self.log.log(f"🚫 Trade not allowed for {ticker} (limit reached)", stock=ticker, level="debug")
                     continue
 
-                df, contract = self.ib_manager.get_stock_data(ticker)
+                df, contract = self.ib_manager.get_stock_data(ticker, bar_size=bar_size)
                 if df is None:
                     continue
 
@@ -153,10 +177,29 @@ class TradingLoopManager:
 
     def _format_open_positions_summary(self):
         message_lines = ["📊 Open Trades Summary:"]
+        required_keys = {'entry_price', 'sl', 'tp', 'type'}
+        raw_data = {}
+
         for stock, data in self.trade_tracker.open_positions.items():
-            line = f"• {stock} → {data['type']} @ {round(data['entry'], 2)} | SL: {round(data['sl'], 2)} | TP: {round(data['tp'], 2)}"
-            message_lines.append(line)
-        return "\n".join(message_lines) if len(message_lines) > 1 else "No open trades."
+            if not required_keys.issubset(data):
+                self.log.log(f"⚠️ Missing required keys in open position data for {stock}: {data}", stock=stock,
+                             level="warning")
+                continue
+
+            try:
+                entry_price = round(data['entry_price'], 2)
+                sl = round(data['sl'], 2)
+                tp = round(data['tp'], 2)
+                trade_type = data['type']
+                line = f"• {stock} → {trade_type} @ {entry_price} | SL: {sl} | TP: {tp}"
+                message_lines.append(line)
+                raw_data[stock] = line
+            except Exception as e:
+                self.log.log(f"❌ Error formatting summary for {stock}: {e}", stock=stock, level="error")
+
+        summary_text = "\n".join(message_lines) if len(message_lines) > 1 else ""
+        return summary_text, raw_data
+
 
 class TradeTracker:
     def __init__(self):

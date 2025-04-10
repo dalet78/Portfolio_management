@@ -53,8 +53,8 @@ os.makedirs(report_folder, exist_ok=True)
 file1 = os.path.join(ALL_DATA_PATH, f"{stock1}_historical_data.csv")
 file2 = os.path.join(ALL_DATA_PATH, f"{stock2}_historical_data.csv")
 
-df1 = DataRefactory.prepare_5m_csv(filepath=file1)
-df2 = DataRefactory.prepare_5m_csv(filepath=file2)
+df1 = DataRefactory.prepare_min_csv(filepath=file1)
+df2 = DataRefactory.prepare_min_csv(filepath=file2)
 
 # === CALCOLI ===
 returns1 = df1['Close'].pct_change().dropna()

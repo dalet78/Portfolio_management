@@ -30,8 +30,8 @@ def run_backtrader_pair_strategy(stock):
         return
 
     # Load and preprocess data using custom function
-    df1 = DataRefactory.prepare_5m_csv(filepath=file1)
-    df2 = DataRefactory.prepare_5m_csv(filepath=file2)
+    df1 = DataRefactory.prepare_min_csv(filepath=file1)
+    df2 = DataRefactory.prepare_min_csv(filepath=file2)
 
     # Convert pandas DataFrame into Backtrader data feeds
     data1 = bt.feeds.PandasData(dataname=df1, name='SPY')

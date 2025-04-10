@@ -29,7 +29,7 @@ def calculate_vwap_and_resistances(stock, eps=0.1, min_samples=2):
 
     print(f"Analizzo dati {stock}")
     # Caricare i dati
-    df =DataRefactory.prepare_5m_csv(filepath=file_path)
+    df =DataRefactory.prepare_min_csv(filepath=file_path)
     # Rimuovere il timezone dalla colonna Datetime
     df.reset_index(inplace=True)
     df['Datetime'] = pd.to_datetime(df['Datetime']).dt.tz_localize(None)

@@ -2,7 +2,7 @@ import json
 import schedule
 import time
 from libs.download_data.download_data_ibs import StockDataDownloader
-# from configuration import hours_configuration
+from configuration import hours_configuration
 
 import json
 

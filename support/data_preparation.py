@@ -5,7 +5,7 @@ class DataRefactory:
     """Classe per la preparazione e la pulizia dei DataFrame."""
 
     @staticmethod
-    def prepare_5m_csv(filepath):
+    def prepare_min_csv(filepath):
         """Carica e prepara i dati da un file CSV con timeframe 5m."""
         df = pd.read_csv(filepath)
         df = df.rename(columns={

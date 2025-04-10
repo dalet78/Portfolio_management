@@ -62,8 +62,8 @@ os.makedirs(report_folder, exist_ok=True)
 file1 = f"{ALL_DATA_PATH}/{stock1}_historical_data.csv"
 file2 = f"{ALL_DATA_PATH}/{stock2}_historical_data.csv"
 
-df1 = DataRefactory.prepare_5m_csv(filepath=file1)
-df2 = DataRefactory.prepare_5m_csv(filepath=file2)
+df1 = DataRefactory.prepare_min_csv(filepath=file1)
+df2 = DataRefactory.prepare_min_csv(filepath=file2)
 df = aggiungi_colonne_pair_trading(df1, df2)
 
 # Salva CSV

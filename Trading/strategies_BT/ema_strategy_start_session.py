@@ -85,7 +85,7 @@ def ema_cross_trading(index = "SP500"):
             print(f'Analyze stock = {item}')
             try:
                 data_filepath = f"{source_directory}/Data/{index}/5min/{item}_historical_data.csv"
-                df = DataRefactory.prepare_5m_csv(filepath=data_filepath)
+                df = DataRefactory.prepare_min_csv(filepath=data_filepath)
 
                 # Esegui il backtesting
                 bt = Backtest(df, HOLCStrategy, cash=10000, exclusive_orders = True)

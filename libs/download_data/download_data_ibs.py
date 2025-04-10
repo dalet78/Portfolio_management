@@ -22,12 +22,16 @@ class StockDataDownloader:
             self.data_path = f'{source_directory}/Data/ALL/Weekly/'
         elif interval == '5m' and index == "ALL":
             self.data_path = f'{source_directory}/Data/ALL/5min/'
-        if interval == '1d' and index == "Index":
+        elif interval == '1m' and index == "ALL":
+            self.data_path = f'{source_directory}/Data/ALL/1min/'
+        elif interval == '1d' and index == "Index":
             self.data_path = f'{source_directory}/Data/INDEX/Daily/'
         elif interval == '1wk' and index == "Index":
             self.data_path = f'{source_directory}/Data/INDEX/Weekly/'
         elif interval == '5m' and index == "Index":
             self.data_path = f'{source_directory}/Data/INDEX/5min/'
+        elif interval == '1m' and index == "Index":
+            self.data_path = f'{source_directory}/Data/INDEX/1min/'
         else:
             raise ValueError("Invalid interval. Choose '1d' for daily or '1wk' for weekly data.")
 
@@ -45,6 +49,10 @@ class StockDataDownloader:
             duration = '1 M'  # Un mese alla volta per 5m
             bar_size = '5 mins'
             multiple_requests = True  # Bisogna scaricare mese per mese
+        elif self.interval == '1m':
+                duration = '1 M'  # Un mese alla volta per 5m
+                bar_size = '1 min'
+                multiple_requests = True
         else:
             duration = '2 Y'  # Due anni in un'unica richiesta per 1d e 1wk
             bar_size = '1 day' if self.interval == '1d' else '1 week'
@@ -78,6 +86,7 @@ class StockDataDownloader:
                             useRTH=True,
                             formatDate=1
                         )
+                        print(f"Scaricando dati per {ticker}... mese {_}")
 
                         if bars:
                             df = util.df(bars)
@@ -401,9 +410,9 @@ class StockDataDownloader:
 
 
 if __name__ == "__main__":
-    with open(f"{source_directory}/json_files/index.json", 'r') as file:
+    with open(f"{source_directory}/json_files/companies_under_50_usd.json", 'r') as file:
         tickers = json.load(file)
 
     # Lista dei ticker
     tickers_list = list(tickers.keys())
-    downloader = StockDataDownloader(tickers_list, interval='5m', index="Index").download_historical_data()
+    downloader = StockDataDownloader(tickers_list, interval='1m', index="ALL").download_historical_data()

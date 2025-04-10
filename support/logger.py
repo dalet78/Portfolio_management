@@ -49,6 +49,18 @@ class Logger:
         else:
             self.logger.info(log_message)  # Stampato a schermo e scritto nel file
 
+class LoggerSingleton:
+    _instance = None
+
+    @classmethod
+    def get_logger(cls, log_file=None):
+        if cls._instance is None:
+            if log_file is None:
+                raise ValueError("You must provide a log file path for first initialization")
+            cls._instance = Logger(log_file)
+        return cls._instance
+
+
 # Esempio di utilizzo
 if __name__ == "__main__":
     log = Logger("logs/trading_log.txt")

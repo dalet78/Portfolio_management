@@ -1,7 +1,7 @@
 from datetime import time
 
 
-START_SESSION = time(16, 30)
+START_SESSION = time(17, 10)
 END_SESSION = time(21, 0)
 
 ##GENERAL VARIABLES

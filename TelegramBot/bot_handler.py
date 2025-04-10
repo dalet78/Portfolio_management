@@ -1,8 +1,11 @@
+import asyncio
 import threading
 import time
 import logging
 import os
 import schedule
+
+from support.logger import LoggerSingleton
 from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, ReplyKeyboardRemove
@@ -20,12 +23,12 @@ class CommandBot:
         self.bot = Client("BOT", api_id=api_id, api_hash=api_hash, bot_token=token)
         self.user_states = {}
         self.session_lock = threading.Lock()
-        self.logger = logging.getLogger(__name__)
+        self.logger = LoggerSingleton.get_logger()
 
         logging.basicConfig(level=logging.INFO,
                             format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-        self.lista_chat_id = ['1458740893', '5634630295']
+        self.lista_chat_id = ['1458740893', '5634630295', '6948150159']
 
         # Schedule daily, weekly routines
         # schedule.every().day.at(hours_configuration.FIVE_MIN_HOUR_SEND_REPORT).do(
@@ -52,7 +55,7 @@ class CommandBot:
 
     def start(self):
         """Start the bot."""
-        self.logger.info("Starting bot")
+        self.logger.log(message="Starting bot", level="info")
         self.bot.run()
 
     def create_level_menu(self, menu="top"):
@@ -102,17 +105,21 @@ class CommandBot:
             callback_query.message.reply_text("Unrecognized action!")
 
     def start_daily_session(self, client, callback_query):
-        """Start daily trading session."""
-        self.logger.info("Starting daily session")
+        self.logger.log(message="Starting daily session", level="info")
 
         def safe_main_trading(*args):
             try:
-                start_trading()  # Usa il nome corretto della funzione
+                asyncio.set_event_loop(asyncio.new_event_loop())
+
+                # ✅ Istanzia IBOrderManager **dentro il thread**
+                ib_manager = IBOrderManager()
+
+                start_trading(bot_instance=self, ib_manager=ib_manager)
             except Exception as e:
-                self.logger.error(f"Error in thread: {e}", exc_info=True)
+                self.logger.log(message=f"Error in thread: {e}", level="error")
 
         with self.session_lock:
-            thread = threading.Thread(target=safe_main_trading, args=(self, callback_query, "daily"), daemon=True)
+            thread = threading.Thread(target=safe_main_trading, daemon=True)
             thread.start()
 
         callback_query.message.reply_text("Daily session started!")
@@ -126,20 +133,20 @@ class CommandBot:
         tws = TWSLauncher(tws_path, username, password)
         tws.start_tws()
 
-        # Aspetta un po' prima di iniziare a controllare la connessione
-        time.sleep(initial_wait)  # Aggiunge una pausa per dare tempo a TWS di avviarsi
+        time.sleep(initial_wait)
 
-        # Tentativi di connessione a TWS
+        # ✅ Inizializza solo una volta
+        ib_manager = IBOrderManager()
+
         for attempt in range(1, max_retries + 1):
-            ib_manager = IBOrderManager()  # Crea una nuova istanza a ogni tentativo
-
-            if ib_manager.is_connected():  # Controlla la connessione
-                callback_query.message.reply_text("TWS successfully started!")
+            if ib_manager.is_connected():
+                callback_query.message.reply_text("✅ TWS successfully started and connected to IBKR!")
                 return
 
-            time.sleep(wait_time)  # Attendi prima di riprovare
+            self.logger.log(message=f"Tentativo {attempt}: IB non ancora connesso, riprovo tra {wait_time}s...", level="warning")
+            time.sleep(wait_time)
 
-        callback_query.message.reply_text("Error: Unable to start TWS after multiple attempts.")
+        callback_query.message.reply_text("❌ Error: Unable to connect to TWS after multiple attempts.")
 
     def handle_data_download(self, client, callback_query, period):
         """Download data for the specified period."""
@@ -169,7 +176,7 @@ class CommandBot:
             try:
                 self.bot.send_message(chat_id=chat_id, text=text)
             except Exception as e:
-                self.logger.error(f"❌ Error sending Telegram message to {chat_id}: {e}")
+                self.logger.log(message=f"❌ Error sending Telegram message to {chat_id}: {e}", level="error")
 
 
 if __name__ == '__main__':

@@ -185,7 +185,7 @@ def find_lateral_mov():
 #             print(f"La cartella non esiste: {folder_path}")
 #
 #     except Exception as e:
-#         self.logger.error(f"Errore durante l'esecuzione della routine {interval_type}: {e}")
+#         self.logger.log(f"Errore durante l'esecuzione della routine {interval_type}: {e}")
 
 if __name__ == '__main__':
     pass

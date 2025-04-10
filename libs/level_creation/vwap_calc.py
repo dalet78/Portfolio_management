@@ -8,14 +8,19 @@ class VWAPCalculator:
         :param df: DataFrame con colonne ['Datetime', 'Open', 'High', 'Low', 'Close', 'Volume']
         """
         self.df = df.copy()
-        self.df['Datetime'] = pd.to_datetime(self.df['Datetime'])
-        self.df = self.df.sort_values('Datetime')
+        if self.df.index.name != 'Datetime':
+            self.df.index = pd.to_datetime(self.df.index)
+            self.df.index.name = 'Datetime'
+        self.df = self.df.sort_index()
 
     def calculate_vwap(self, df: pd.DataFrame) -> pd.DataFrame:
         """
         Calcola il VWAP su un sottoinsieme del DataFrame e aggiunge la variazione percentuale.
         """
-        df['VWAP'] = (df['Close'] * df['Volume']).cumsum() / df['Volume'].cumsum()
+        typical_price = (df['High'] + df['Low'] + df['Close']) / 3
+        cum_vol = df['Volume'].cumsum()
+        cum_pv = (typical_price * df['Volume']).cumsum()
+        df['VWAP'] = cum_pv / cum_vol
         df['VWAP_Change'] = df['VWAP'].pct_change() * 100
         df['VWAP_Std'] = df['Close'].rolling(window=20).std()  # Deviazione standard su 20 periodi
         df['VWAP_Upper'] = df['VWAP'] + df['VWAP_Std']
@@ -23,11 +28,12 @@ class VWAPCalculator:
         return df
 
     def calculate_vwap_daily(self) -> pd.DataFrame:
-        """
-        Calcola il VWAP giornaliero a date fisse.
-        """
-        self.df['Date'] = self.df['Datetime'].dt.floor('D')
-        return self.df.groupby('Date').apply(self.calculate_vwap)
+        self.df['Date'] = self.df.index.date
+        grouped = []
+        for date, group in self.df.groupby('Date'):
+            group = self.calculate_vwap(group)
+            grouped.append(group)
+        return pd.concat(grouped).sort_values('Datetime')
 
     def calculate_vwap_weekly(self) -> pd.DataFrame:
         """
