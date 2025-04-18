@@ -16,6 +16,7 @@ def start_trading(bot_instance, ib_manager):
     manager.telegram_bot = bot_instance
     closing_triggered = False
 
+
     while True:
         now = datetime.now()
         current_time = now.time()
@@ -58,6 +59,7 @@ if __name__ == "__main__":
     bot = CommandBot()
     bot.start()
     start_trading(bot, ib_manager)
+
 
 
 

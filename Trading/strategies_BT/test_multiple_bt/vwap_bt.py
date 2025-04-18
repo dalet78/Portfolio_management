@@ -9,13 +9,15 @@ from libs.level_creation.vwap_calc import VWAPCalculator
 from Trading.strategies_BT.vwap.vwap_reversal_new import VWAPReversal, PandasDataWithVWAP
 from Trading.strategies_BT.vwap.vwap_reversal_rsi import VWAPReversalRSI
 # from Trading.strategies_BT.vwap.vwap_reversal import VWAPReversalStrategy
+from Trading.strategies_BT.vwap.vwap_reversal_theory_game import VWAPReversalTheoryGames
+from Trading.strategies_BT.vwap.vwap_reversal_theory_game_double_agents import VWAPReversalTheoryGamesDoubleAgents
 
 # Costanti
 DATA_DIRECTORY = "/home/dp/PycharmProjects/Portfolio_management/Portfolio_management"
-ALL_DATA_PATH = f"{DATA_DIRECTORY}/Data/ALL/1min"
+ALL_DATA_PATH = f"{DATA_DIRECTORY}/Data/ALL/5min"
 REPORT_DIRECTORY = f"{DATA_DIRECTORY}/Reports/Data"
-REPORT_FILEPATH = f"{REPORT_DIRECTORY}/vwap_diff_strategy_high_risk_1500_tot.csv"
-CSV_BACKTEST = f"{REPORT_DIRECTORY}/vwap_diff_strategy_high_risk_1430_tot_trade.csv"
+REPORT_FILEPATH = f"{REPORT_DIRECTORY}/vwap_diff_strategy_theory_game_tot.csv"
+CSV_BACKTEST = f"{REPORT_DIRECTORY}/vwap_diff_strategy_thory_game_trade.csv"
 COMMISSION_PER_TRADE = 2  # Commissione fissa per operazione
 RESULT_COLUMNS = [
     "Stock", "Strategy", "Win Rate", "Max Drawdown", "Return [%]", "Total Trades",
@@ -27,7 +29,7 @@ os.makedirs(REPORT_DIRECTORY, exist_ok=True)
 
 # Lista degli stock e strategie da testare
 filtered_stocks = return_filtred_list(index="ALL") #["MRNA"] #
-strategies = [VWAPReversal, VWAPReversalRSI]
+strategies = [VWAPReversalTheoryGames, VWAPReversalTheoryGamesDoubleAgents]
 
 def run_backtest_for_stock(stock, strategies):
     results = []

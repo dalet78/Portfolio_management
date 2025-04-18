@@ -38,6 +38,7 @@ def run_backtest_for_stock(stock, strategies):
             return results
 
         df = DataRefactory.prepare_min_csv(filepath=data_filepath)
+        df = add_essential_indicators(df)
         # df = DataRefactory.convert_5m_to_15m(df)
         # Controlla tipo di indice
         if not isinstance(df.index, pd.DatetimeIndex):
@@ -90,6 +91,31 @@ def run_backtest_for_stock(stock, strategies):
         print(f"❌ Errore durante l'elaborazione di {stock}: {e}")
 
     return results
+
+def add_essential_indicators(df: pd.DataFrame) -> pd.DataFrame:
+    df = TrendIndicators(df).sma(5).sma(20).result
+    df = VolumeIndicators(df).vwap().result
+    df = MomentumIndicators(df).rsi(14).result
+    df = VolatilityIndicators(df).atr(14).result
+
+    df['sma_ratio'] = df['SMA_5'] / df['SMA_20']
+    df['volume_ratio'] = df['Volume'] / df['Volume'].rolling(window=20).mean()
+    df['gap'] = df['Open'] - df['Close'].shift(1)
+    df['price_vs_vwap'] = df['Close'] - df['VWAP']
+
+    if not isinstance(df.index, pd.DatetimeIndex):
+        df.index = pd.to_datetime(df.index)
+    df['day_of_week'] = df.index.dayofweek
+
+    # Forza il tipo numerico per evitare problemi con LightGBM
+    numerics = [
+        'SMA_5', 'SMA_20', 'sma_ratio', 'volume_ratio', 'VWAP',
+        'gap', 'RSI_14', 'ATR_14', 'price_vs_vwap', 'day_of_week'
+    ]
+    for col in numerics:
+        df[col] = pd.to_numeric(df[col], errors='coerce')
+
+    return df.dropna()
 
 
 # Esegui il backtest su tutti gli stock

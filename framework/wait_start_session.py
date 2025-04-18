@@ -1,14 +1,16 @@
 import time as tm
-from datetime import datetime, time, timedelta
+from datetime import datetime, timedelta
 from configuration import data_configuration_session
 from support.logger import LoggerSingleton
 
 
 def wait_for_precise_time(
-        interval_minutes = 5,
-        start_hour = 16, start_minute = 30,
-        end_hour = 22, end_minute = 0,
-        tolerance_seconds = 30,
+        interval_minutes = data_configuration_session.INTERVAL_MINUTES,
+        start_hour = data_configuration_session.START_SESSION_HOUR,
+        start_minute = data_configuration_session.START_SESSION_MINUTE,
+        end_hour = data_configuration_session.END_SESSION_HOUR,
+        end_minute = data_configuration_session.END_SESSION_MINUTE,
+        tolerance_seconds = data_configuration_session.TOLLERANCE_SECOND,
         max_wait_minutes = 15
 
     ):

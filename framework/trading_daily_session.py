@@ -1,5 +1,5 @@
+from datetime import datetime, timedelta
 import time as tm
-from datetime import datetime
 from support.logger import LoggerSingleton
 from configuration.strategis_stock_applied import get_stock_list, get_all_check_functions, strategies_stock_applied
 from libs.ibs_menager import IBOrderManager
@@ -10,6 +10,7 @@ from Trading.strategies_order.sma_crossing_trading_strategies.sma_cros_sma50_tra
 from Trading.strategies_order.sma_crossing_trading_strategies.sma_cros_candle_trading import check_sma_cross_candle
 from Trading.strategies_order.vwap_trading_strategies.vwap_diff_trading import check_vwap_diff_signal
 from Trading.strategies_order.vwap_trading_strategies.vwap_diff_trading_with_rsi import check_vwap_diff_signal_with_rsi
+from Trading.strategies_order.vwap_trading_strategies.vwap_diff_trading_with_volume import check_vwap_diff_signal_with_volume
 
 class TradingLoopManager:
     def __init__(self, ib_manager: IBOrderManager):
@@ -21,7 +22,9 @@ class TradingLoopManager:
         self._last_sent_summary_per_stock = {}
 
     def trading_loop(self):
-        start_time = tm.time()
+        reference_time = datetime.now().replace(second=0, microsecond=0)
+        start_time = tm.time()  # Solo per logging o statistiche se vuoi
+
         strategy_list = get_all_check_functions()
 
         for check_function_name in strategy_list:
@@ -33,17 +36,17 @@ class TradingLoopManager:
                 continue
 
             last_run = self._last_run_times.get(strategy_name, datetime.min)
-            now = datetime.now()
 
-            if (now - last_run).total_seconds() >= frequency * 60:
+            if (reference_time - last_run).total_seconds() >= frequency * 60:
                 self._run_strategy_if_applicable(strategy_name, tickers_list, strat_start_time, strat_stop_time,
                                                  check_function_name, bar_size)
-                self._last_run_times[strategy_name] = now
+                self._last_run_times[strategy_name] = reference_time
             else:
                 self.log.log(f"⏱ Skipping {strategy_name}, not yet time (every {frequency}m)", level="debug")
 
         self.log.log("📊 Updating SL/TP for active orders", level="info")
         self._update_active_orders()
+        # self._check_and_update_trailing_sl()
 
         if hasattr(self, "telegram_bot"):
             summary_text, raw_data = self._format_open_positions_summary()
@@ -54,7 +57,8 @@ class TradingLoopManager:
                     self.telegram_bot.send_telegram_message(line)
                     self._last_sent_summary_per_stock[stock] = line
 
-        self._wait_until_next_iteration(start_time)
+        self._wait_until_next_iteration(reference_time)
+
 
     def _get_strategy_data_by_check_function(self, check_function_name, strategies_dict):
         for strat_name, strat_data in strategies_dict.items():
@@ -69,14 +73,21 @@ class TradingLoopManager:
                 )
         return None, [], None, None, 5, "5 mins"
 
-    def _wait_until_next_iteration(self, start_time):
-        execution_time = tm.time() - start_time
-        sleep_time = 60 - execution_time  # check ogni minuto
+    def _wait_until_next_iteration(self, reference_time):
+        next_minute = reference_time + timedelta(minutes=1)
+        now = datetime.now()
+
+        if not isinstance(reference_time, datetime):
+            self.log.log(f"❌ reference_time is not datetime: {type(reference_time)}", level="error")
+            return
+
+        sleep_time = (next_minute - now).total_seconds()
+
         if sleep_time > 0:
             self.log.log(f"⏳ Sleeping for {sleep_time:.2f} seconds before the next cycle", level="info")
             tm.sleep(sleep_time)
         else:
-            self.log.log(f"⚠️ No sleep time, execution took {execution_time:.2f} seconds", level="warning")
+            self.log.log(f"⚠️ No sleep time, execution already late by {-sleep_time:.2f} seconds", level="warning")
 
     def _run_strategy_if_applicable(self, strategy_name, tickers_list, strat_start_time, strat_stop_time, check_function_name, bar_size):
         current_time = datetime.now().time()
@@ -103,6 +114,11 @@ class TradingLoopManager:
                 # 🔒 Check se è consentito fare un trade
                 if not self.trade_tracker.can_trade(stock=ticker):
                     self.log.log(f"🚫 Trade not allowed for {ticker} (limit reached)", stock=ticker, level="debug")
+                    continue
+
+                if self.trade_tracker.in_open_position(ticker):
+                    self.log.log(f"🚫 Position already open for {ticker}, skipping new trade", stock=ticker,
+                                 level="debug")
                     continue
 
                 df, contract = self.ib_manager.get_stock_data(ticker, bar_size=bar_size)
@@ -200,6 +216,41 @@ class TradingLoopManager:
         summary_text = "\n".join(message_lines) if len(message_lines) > 1 else ""
         return summary_text, raw_data
 
+    # def _check_and_update_trailing_sl(self):
+    #     """Aggiorna lo SL se il prezzo ha raggiunto +1% dal prezzo di ingresso."""
+    #
+    #     for stock, trade in self.trade_tracker.open_positions.items():
+    #         if not all(k in trade for k in ("entry_price", "sl", "order_id")):
+    #             continue
+    #
+    #         contract = self.ib_manager.get_contract(stock)
+    #         if not contract:
+    #             self.log.log(f"⚠️ Impossibile ottenere il contratto per {stock}", stock=stock, level="warning")
+    #             continue
+    #
+    #         # Ottieni prezzo attuale di mercato
+    #         ticker_data = self.ib_manager.ib.reqMktData(contract, "", False, False)
+    #         self.ib_manager.ib.sleep(1)
+    #         current_price = ticker_data.last if ticker_data.last else ticker_data.close
+    #
+    #         entry = trade["entry_price"]
+    #         sl = trade["sl"]
+    #
+    #         # Se guadagno ≥ 1%, aggiorna SL
+    #         if current_price >= entry * 1.01:
+    #             new_sl = round(entry + 0.02, 2)
+    #
+    #             if new_sl > sl:
+    #                 self.log.log(
+    #                     f"🔄 Aggiornamento SL per {stock}: da {sl} a {new_sl} (entry: {entry}, current: {current_price})",
+    #                     stock=stock, level="info"
+    #                 )
+    #
+    #                 order_id = trade["order_id"]
+    #                 # Aggiorna solo SL mantenendo TP invariato
+    #                 self.ib_manager.set_tp_sl_direct_from_tracker(stock, order_id, new_sl, trade["tp"])
+    #                 # Salva anche nel tracker
+    #                 self.trade_tracker.open_positions[stock]["sl"] = new_sl
 
 class TradeTracker:
     def __init__(self):

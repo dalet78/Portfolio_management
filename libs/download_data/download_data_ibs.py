@@ -32,6 +32,8 @@ class StockDataDownloader:
             self.data_path = f'{source_directory}/Data/INDEX/5min/'
         elif interval == '1m' and index == "Index":
             self.data_path = f'{source_directory}/Data/INDEX/1min/'
+        elif interval == '5m' and index == "TEST":
+            self.data_path = f'{source_directory}/Data/TEST/5min/'
         else:
             raise ValueError("Invalid interval. Choose '1d' for daily or '1wk' for weekly data.")
 
@@ -414,5 +416,5 @@ if __name__ == "__main__":
         tickers = json.load(file)
 
     # Lista dei ticker
-    tickers_list = list(tickers.keys())
-    downloader = StockDataDownloader(tickers_list, interval='1m', index="ALL").download_historical_data()
+    tickers_list = ["HST"]
+    downloader = StockDataDownloader(tickers_list, interval='5m', index="TEST").download_historical_data()

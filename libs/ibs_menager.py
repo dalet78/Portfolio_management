@@ -132,8 +132,11 @@ class IBOrderManager:
                 del self.pending_trades[order_id]
 
     def set_tp_sl_direct(self, trade, sl_price: float, tp_price: float):
-        """Set SL/TP usando ordini OCA (One Cancels All) per evitare doppie esecuzioni."""
+        """Set SL/TP usando ordini OCA (One Cancels All), con TP come MIT e SL come STOP."""
         contract = trade.contract
+        if not trade.order or not hasattr(trade.order, "action"):
+            self.log.log(f"❌ Invalid trade object, missing 'order.action' for {contract.symbol}", level="error")
+            return
         action = trade.order.action
 
         if not sl_price or not tp_price:
@@ -142,29 +145,59 @@ class IBOrderManager:
 
         sl_price = round(sl_price, 2)
         tp_price = round(tp_price, 2)
+        # tp_limit_price = round(tp_price - 0.05, 2) if action == 'BUY' else round(tp_price + 0.05, 2)
 
-        self.log.log(f"🔹 Setting TP {tp_price} and SL {sl_price} for {contract.symbol}", level="info")
+        self.log.log(f"🔹 Setting TP (LMT) {tp_price} and SL {sl_price} for {contract.symbol}", level="info")
 
         opposite_action = 'SELL' if action == 'BUY' else 'BUY'
         quantity = trade.order.totalQuantity
-        oca_group = f"OCA_{contract.symbol}_{int(time.time())}"  # nome univoco del gruppo OCA
+        oca_group = f"OCA_{contract.symbol}_{int(time.time())}"
 
-        tp_order = LimitOrder(opposite_action, quantity, tp_price,
-                              ocaGroup=oca_group, ocaType=1, transmit=False)
 
-        sl_order = StopOrder(opposite_action, quantity, sl_price,
-                             ocaGroup=oca_group, ocaType=1, transmit=True)  # SL è l'ultimo, trasmette entrambi
+        # 🛡️ SL come Stop Order → transmit=False
+        sl_order = StopOrder(
+            action=opposite_action,
+            totalQuantity=quantity,
+            stopPrice=sl_price,
+            ocaGroup=oca_group,
+            ocaType=1,
+            transmit=True
+        )
 
-        tp_trade = self.ib.placeOrder(contract, tp_order)
-        self.ib.sleep(1)
+        # 🎯 TP come STP LMT → transmit=True (ultimo ordine trasmette entrambi)
+        tp_order = Order(
+            action=opposite_action,
+            orderType='LMT',
+            totalQuantity=quantity,
+            lmtPrice=tp_price,
+            ocaGroup=oca_group,
+            ocaType=1,
+            transmit=True
+        )
+
+        # ⏱️ Invio ordini
         sl_trade = self.ib.placeOrder(contract, sl_order)
-        self.ib.sleep(1)
+        tp_trade = self.ib.placeOrder(contract, tp_order)
+
 
         tp_trade.update()
         sl_trade.update()
 
-        self.log.log(f"✅ TP Order Status: {tp_trade.orderStatus.status} (Price: {tp_price})", level="info")
-        self.log.log(f"✅ SL Order Status: {sl_trade.orderStatus.status} (Price: {sl_price})", level="info")
+        self.log.log(f"✅ TP (MIT) Order Status: {tp_trade.orderStatus.status} (Trigger: {tp_price})", level="info")
+        self.log.log(f"✅ SL (Stop) Order Status: {sl_trade.orderStatus.status} (Trigger: {sl_price})", level="info")
+
+    # def cancel_existing_oca_orders(self, contract, oca_prefix):
+    #     """Annulla gli ordini OCA precedenti relativi a un dato contratto."""
+    #     open_orders = self.ib.reqOpenOrders()
+    #     cancelled = 0
+    #
+    #     for order in open_orders:
+    #         if order.ocaGroup and order.ocaGroup.startswith(oca_prefix):
+    #             self.ib.cancelOrder(order)
+    #             cancelled += 1
+    #
+    #     self.log.log(f"🗑️ Annullati {cancelled} ordini OCA con prefisso '{oca_prefix}' per {contract.symbol}",
+    #                  level="info")
 
     def close_position(self, contract):
         """Close an open position for the given contract."""
@@ -237,50 +270,57 @@ class IBOrderManager:
             return None
 
     def get_daily_trade_summary_with_pnl(self):
-        """Restituisce un riepilogo leggibile dei trade eseguiti oggi con PNL reale."""
+        """
+        Restituisce un riepilogo leggibile dei trade eseguiti oggi con stima del PNL reale.
+        Combina le esecuzioni del giorno con i dati aggiornati di portafoglio.
+        """
         summary = ["📈 Daily Executed Trades with Real PNL:"]
-        trades = self.ib.trades()
         total_realized_pnl = 0.0
         today = datetime.now().date()
 
+        # 🟢 Ottieni esecuzioni (oggetti Fill)
+        executions = self.ib.fills()
+
+        if not executions:
+            return "📉 No trades executed today."
+
         found_trades = False
 
-        for trade in trades:
-            order = trade.order
-            status = trade.orderStatus
-
-            if status.status != "Filled":
-                continue
-
-            fill_time = getattr(status, "lastFillTime", None)
-            if not fill_time:
-                continue
-
-            # Converte il tempo in datetime
-            try:
-                exec_time = pd.to_datetime(fill_time).tz_localize(None)
-            except:
-                continue
-
+        for fill in executions:
+            exec_time = pd.to_datetime(fill.time).tz_localize(None)
             if exec_time.date() != today:
-                continue  # solo trade di oggi
+                continue
 
             found_trades = True
-            symbol = trade.contract.symbol
-            action = order.action
-            qty = order.totalQuantity
-            price = round(status.avgFillPrice, 2)
-            order_type = order.orderType
-            order_id = order.orderId
-            realized_pnl = round(trade.pnl.realized if trade.pnl else 0.0, 2)
 
-            total_realized_pnl += realized_pnl
+            symbol = fill.contract.symbol
+            action = fill.execution.side  # ✅ FIX
+            qty = fill.execution.shares  # ✅ FIX
+            price = round(fill.execution.price, 2)  # ✅ FIX
+            order_id = fill.execution.orderId  # ✅ FIX
 
-            summary.append(
-                f"• {symbol} → {action} {qty} @ {price} ({order_type}) [ID: {order_id}] → 💰 PNL: {realized_pnl}"
-            )
+            summary.append(f"• {symbol} → {action} {qty} @ {price} [Order ID: {order_id}]")
 
-        if not found_trades:
+        # 🔁 Richiesta aggiornamento del portafoglio
+        accounts = self.ib.managedAccounts()
+        if not accounts:
+            self.log.log("❌ No managed accounts available", level="error")
+            return "⚠️ No account found"
+
+        account = accounts[0]
+        self.ib.reqAccountUpdates(True, account)
+        time.sleep(1)
+
+        portfolio = self.ib.portfolio()
+
+        for item in portfolio:
+            if item.position == 0 and item.realizedPNL != 0.0:
+                symbol = item.contract.symbol
+                realized = round(item.realizedPNL, 2)
+                total_realized_pnl += realized
+                summary.append(f"• {symbol} → Realized PNL: {realized} USD")
+
+        if not found_trades and total_realized_pnl == 0:
             return "📉 No trades executed today."
 
         summary.append(f"\n📊 Total Realized PNL: **{round(total_realized_pnl, 2)} USD**")

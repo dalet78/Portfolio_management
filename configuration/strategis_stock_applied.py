@@ -3,21 +3,24 @@ from datetime import time
 # Dizionario con le strategie e le liste di stock corrispondenti
 strategies_stock_applied = {
     "EMA_Cross_ema50": {
-        "tickers": ["CFG", "CZR", "GEN", "PARA", "PPL", "TFC", "WBD"],
+        "tickers": ["CFG", "GEN", "PARA", "PPL", "TFC", "WBD"],
         "check_function": "check_ema_cross_ema50",
         "start_time":time(16, 35),
         "stop_time":time(16, 50),
         "frequency": 5,
-        "bar_size": "5 mins"
-
+        "bar_size": "5 mins",
+        "sl_percent": 0.007,
+        "tp_percent": 0.014
     },
     "EMA_Cross_candle": {
-        "tickers": ["BAX", "CTRA", "EXC", "FITB", "FXC", "KMI", "UDR", "WBA"],
+        "tickers": ["BAX", "CTRA", "EXC", "FITB", "KMI", "UDR"],
         "check_function": "check_ema_cross_candle",
         "start_time":time(16, 35),
         "stop_time":time(16, 50),
         "frequency": 5,
-        "bar_size": "5 mins"
+        "bar_size": "5 mins",
+        "sl_percent": 0.007,
+        "tp_percent": 0.014
     },
 
     "SMA_Cross_sma50": {
@@ -26,7 +29,9 @@ strategies_stock_applied = {
         "start_time":time(16, 35),
         "stop_time":time(16, 50),
         "frequency": 5,
-        "bar_size": "5 mins"
+        "bar_size": "5 mins",
+        "sl_percent": 0.007,
+        "tp_percent": 0.014
     },
     "SMA_Cross_candle": {
         "tickers": ["DVN", "LUV", "NI", "WBD"],
@@ -34,20 +39,10 @@ strategies_stock_applied = {
         "start_time":time(16, 35),
         "stop_time":time(16, 50),
         "frequency": 5,
-        "bar_size": "5 mins"
+        "bar_size": "5 mins",
+        "sl_percent": 0.007,
+        "tp_percent": 0.014
     },
-    # "EMA_Cross_cents": {
-    #     "tickers": ["UDR"],
-    #     "check_function": "check_ema_cross_cents"
-    # },
-    # "SMA_Cross_cents": {
-    #     "tickers": ["BAX"],
-    #     "check_function": "check_sma_cross_cents"
-    # },
-    # "SMA_Cross_combined": {
-    #     "tickers": ["LVS"],
-    #     "check_function": "check_sma_cross_combined"
-    # },
     "VWAP_diff_signal_rsi_1700": {
         "tickers": ["IVZ", "FCX", "HST", "IVZ", "NEM", "LUV"],
         "check_function": "check_vwap_diff_signal_with_rsi",
@@ -57,10 +52,18 @@ strategies_stock_applied = {
         "bar_size": "5 mins"
     },
     "VWAP_diff_signal_1700": {
-        "tickers": ["HBAN", "CZR", "MTCH", "MRNA", "NCHL", "WBD", "CMCSA"],
+        "tickers": ["CZR", "MTCH", "NCHL", "HBAN", "MRNA", "WBD", "CMCSA"],
         "check_function": "check_vwap_diff_signal",
         "start_time":time(17, 30),
         "stop_time":time(19, 0),
+        "frequency": 5,
+        "bar_size": "5 mins"
+    },
+    "VWAP_diff_signal_1700_volume": {
+        "tickers": ["GEN", "HPQ",  "INTC", "RF"],
+        "check_function": "check_vwap_diff_signal_with_volume",
+        "start_time": time(17, 30),
+        "stop_time": time(19, 0),
         "frequency": 5,
         "bar_size": "5 mins"
     }
