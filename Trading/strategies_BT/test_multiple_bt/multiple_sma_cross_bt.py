@@ -24,7 +24,7 @@ os.makedirs(REPORT_DIRECTORY, exist_ok=True)
 
 # Lista degli stock e strategie da testare
 filtered_stocks = return_filtred_list(index="ALL")
-strategies = [HOLCStrategy_cents, HOLCStrategy_Gap, HOLCStrategy_Candle, HOLCStrategy_SMA50, HOLCStrategy_Combined]
+strategies = [HOLCStrategy_SMA50]
 
 
 def run_backtest_for_stock(stock, strategies):

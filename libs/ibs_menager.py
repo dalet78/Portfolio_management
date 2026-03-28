@@ -186,19 +186,6 @@ class IBOrderManager:
         self.log.log(f"✅ TP (MIT) Order Status: {tp_trade.orderStatus.status} (Trigger: {tp_price})", level="info")
         self.log.log(f"✅ SL (Stop) Order Status: {sl_trade.orderStatus.status} (Trigger: {sl_price})", level="info")
 
-    # def cancel_existing_oca_orders(self, contract, oca_prefix):
-    #     """Annulla gli ordini OCA precedenti relativi a un dato contratto."""
-    #     open_orders = self.ib.reqOpenOrders()
-    #     cancelled = 0
-    #
-    #     for order in open_orders:
-    #         if order.ocaGroup and order.ocaGroup.startswith(oca_prefix):
-    #             self.ib.cancelOrder(order)
-    #             cancelled += 1
-    #
-    #     self.log.log(f"🗑️ Annullati {cancelled} ordini OCA con prefisso '{oca_prefix}' per {contract.symbol}",
-    #                  level="info")
-
     def close_position(self, contract):
         """Close an open position for the given contract."""
         try:
@@ -308,7 +295,7 @@ class IBOrderManager:
             return "⚠️ No account found"
 
         account = accounts[0]
-        self.ib.reqAccountUpdates(True, account)
+        self.ib.reqAccountUpdates(account)
         time.sleep(1)
 
         portfolio = self.ib.portfolio()
@@ -325,3 +312,62 @@ class IBOrderManager:
 
         summary.append(f"\n📊 Total Realized PNL: **{round(total_realized_pnl, 2)} USD**")
         return "\n".join(summary)
+
+    def set_tp_sl_direct_from_tracker(self, stock: str, order_id: int, new_sl: float, tp: float):
+        """
+        Aggiorna SL/TP per un ordine esistente usando un nuovo gruppo OCA.
+        Cancella eventuali ordini OCA precedenti associati al contratto.
+        """
+        contract = self.get_contract(stock)
+        if not contract:
+            self.log.log(f"❌ Cannot set SL/TP: contract not found for {stock}", stock=stock, level="error")
+            return
+
+        positions = self.ib.positions()
+        position = next((p for p in positions if p.contract.symbol == stock), None)
+
+        if not position:
+            self.log.log(f"⚠️ No open position for {stock} found while setting SL/TP", stock=stock, level="warning")
+            return
+
+        action = "SELL" if position.position > 0 else "BUY"
+        quantity = abs(position.position)
+
+        # ✅ Cancella eventuali OCA esistenti
+        open_trades = self.ib.trades()
+        cancelled = 0
+        for t in open_trades:
+            if t.order.ocaGroup and t.contract.symbol == stock:
+                self.ib.cancelOrder(t.order)
+                cancelled += 1
+
+        if cancelled:
+            self.log.log(f"🗑️ Cancellati {cancelled} ordini OCA precedenti per {stock}", stock=stock, level="info")
+
+        # ✅ Nuovo gruppo OCA
+        oca_group = f"OCA_{stock}_{int(time.time())}"
+        sl_order = StopOrder(
+            action=action,
+            totalQuantity=quantity,
+            stopPrice=round(new_sl, 2),
+            ocaGroup=oca_group,
+            ocaType=1,
+            transmit=False
+        )
+        tp_order = LimitOrder(
+            action=action,
+            totalQuantity=quantity,
+            lmtPrice=round(tp, 2),
+            ocaGroup=oca_group,
+            ocaType=1,
+            transmit=True
+        )
+
+        self.log.log(
+            f"🔁 Updating SL to {new_sl} and keeping TP {tp} for {stock} (New OCA group: {oca_group})",
+            stock=stock, level="info"
+        )
+
+        self.ib.placeOrder(contract, sl_order)
+        self.ib.placeOrder(contract, tp_order)
+

@@ -1,0 +1,17 @@
+2025-04-17 07:53:07 - INFO - [start_tws] [N/A] Avvio di TWS...
+2025-04-17 07:53:17 - INFO - [start_tws] [N/A] TWS avviato con successo!
+2025-04-17 07:53:17 - INFO - [login] [N/A] Attesa della finestra di login...
+2025-04-17 07:53:32 - INFO - [login] [N/A] Login effettuato con successo!
+2025-04-17 07:53:32 - INFO - [wait_until_tws_ready] [N/A] ⌛ Verifico connessione API TWS tramite ib_insync...
+2025-04-17 07:53:32 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-17 07:53:37 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-17 07:53:42 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-17 07:53:57 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: TimeoutError: 
+2025-04-17 07:54:12 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: TimeoutError: 
+2025-04-17 07:54:18 - INFO - [wait_until_tws_ready] [N/A] ✅ Connessione API a TWS riuscita!
+2025-04-17 07:54:18 - INFO - [__init__] [N/A] ✅ Connected to IBKR successfully
+2025-04-17 07:54:20 - INFO - [start] [N/A] Starting bot
+2025-04-17 07:55:04 - INFO - [start_daily_session] [N/A] Starting daily session
+2025-04-17 07:55:05 - INFO - [__init__] [N/A] ✅ Connected to IBKR successfully
+2025-04-17 07:55:05 - INFO - [wait_for_precise_time] [N/A] 🌅 Troppo presto, attendo l'inizio della sessione alle 16:30:00
+2025-04-17 08:26:43 - INFO - [wait_for_precise_time] [N/A] 🌅 Troppo presto, attendo l'inizio della sessione alle 16:30:00

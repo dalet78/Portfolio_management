@@ -61,6 +61,10 @@ def check_vwap_diff_signal_with_rsi(df, stock, log, trade_tracker,
             risk = entry - sl
             tp = entry + reward_to_risk_ratio * risk
 
+            if tp < vwap:
+                log.log(f"🔁 TP adjusted to VWAP for BUY: from {tp:.2f} to {vwap:.2f}", stock=stock, level="info")
+                tp = vwap
+
             if abs(tp - entry) / entry > max_tp_ratio:
                 log.log(f"⚠️ TP too far for BUY: {tp:.2f} (>{max_tp_ratio * 100:.1f}%)", stock=stock)
                 return {"signal": None, "reason": "tp_too_far_long"}
@@ -77,11 +81,16 @@ def check_vwap_diff_signal_with_rsi(df, stock, log, trade_tracker,
                 "reason": "vwap_reversal_long_rsi"
             }
 
+
         # 🔻 SHORT
         elif (high - vwap) / vwap >= entry_threshold and rsi_val >= rsi_overbought:
             sl = high + sl_percent * high
             risk = sl - entry
             tp = entry - reward_to_risk_ratio * risk
+
+            if tp > vwap:
+                log.log(f"🔁 TP adjusted to VWAP for SELL: from {tp:.2f} to {vwap:.2f}", stock=stock, level="info")
+                tp = vwap
 
             if abs(tp - entry) / entry > max_tp_ratio:
                 log.log(f"⚠️ TP too far for SELL: {tp:.2f} (>{max_tp_ratio * 100:.1f}%)", stock=stock)

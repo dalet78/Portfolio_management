@@ -1,0 +1,32 @@
+2025-05-15 16:26:20 - INFO - [start_tws] [N/A] Avvio di TWS...
+2025-05-15 16:26:30 - INFO - [start_tws] [N/A] TWS avviato con successo!
+2025-05-15 16:26:31 - INFO - [login] [N/A] Attesa della finestra di login...
+2025-05-15 16:26:46 - INFO - [login] [N/A] Login effettuato con successo!
+2025-05-15 16:26:46 - INFO - [wait_until_tws_ready] [N/A] ⌛ Verifico connessione API TWS tramite ib_insync...
+2025-05-15 16:26:46 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:26:51 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:26:56 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:27:01 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:27:06 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:27:11 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:27:16 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:27:21 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:27:26 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:27:31 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:27:36 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:27:41 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:27:46 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:27:51 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:27:56 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:28:01 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:28:06 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:28:11 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:28:16 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-05-15 16:28:31 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: TimeoutError: 
+2025-05-15 16:28:46 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: TimeoutError: 
+2025-05-15 16:29:02 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: TimeoutError: 
+2025-05-15 16:29:17 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: TimeoutError: 
+2025-05-15 16:29:28 - INFO - [wait_until_tws_ready] [N/A] ✅ Connessione API a TWS riuscita!
+2025-05-15 16:29:32 - WARNING - [connect_to_ib] [N/A] Attempt 1 failed: 
+2025-05-15 16:29:42 - INFO - [__init__] [N/A] ✅ Connected to IBKR successfully
+2025-05-15 16:30:09 - INFO - [start] [N/A] Starting bot

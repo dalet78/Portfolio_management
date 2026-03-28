@@ -1,0 +1,50 @@
+2025-04-14 17:59:08 - INFO - [start_tws] [N/A] Avvio di TWS...
+2025-04-14 17:59:18 - INFO - [start_tws] [N/A] TWS avviato con successo!
+2025-04-14 17:59:18 - INFO - [login] [N/A] Attesa della finestra di login...
+2025-04-14 17:59:34 - INFO - [login] [N/A] Login effettuato con successo!
+2025-04-14 17:59:34 - INFO - [wait_until_tws_ready] [N/A] ⌛ Verifico connessione API TWS tramite ib_insync...
+2025-04-14 17:59:34 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-14 17:59:39 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-14 17:59:44 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-14 17:59:59 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: TimeoutError: 
+2025-04-14 18:00:14 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: TimeoutError: 
+2025-04-14 18:00:22 - INFO - [wait_until_tws_ready] [N/A] ✅ Connessione API a TWS riuscita!
+2025-04-14 18:00:24 - INFO - [__init__] [N/A] ✅ Connected to IBKR successfully
+2025-04-14 18:00:29 - INFO - [start] [N/A] Starting bot
+2025-04-14 18:00:32 - INFO - [start_daily_session] [N/A] Starting daily session
+2025-04-14 18:00:33 - INFO - [__init__] [N/A] ✅ Connected to IBKR successfully
+2025-04-14 18:00:33 - INFO - [wait_for_precise_time] [N/A] 🕰️ Aspetto 266.7s per la prossima candela (18:05:00)
+2025-04-14 18:04:34 - INFO - [wait_for_precise_time] [N/A] ⏱️ Meno di 30s alla prossima candela, parto subito.
+2025-04-14 18:04:34 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-14 18:04:34 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-14 18:04:34 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-14 18:04:34 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-14 18:04:34 - INFO - [_run_strategy_if_applicable] [N/A] 🔄 Starting trading loop for strategy: VWAP_diff_signal_rsi_1700
+2025-04-14 18:04:34 - INFO - [get_stock_data] [IVZ] Requesting data for IVZ
+2025-04-14 18:04:34 - ERROR - [get_stock_data] [IVZ] Error retrieving data: Not connected
+2025-04-14 18:04:34 - INFO - [get_stock_data] [FCX] Requesting data for FCX
+2025-04-14 18:04:34 - ERROR - [get_stock_data] [FCX] Error retrieving data: Not connected
+2025-04-14 18:04:34 - INFO - [get_stock_data] [HST] Requesting data for HST
+2025-04-14 18:04:34 - ERROR - [get_stock_data] [HST] Error retrieving data: Not connected
+2025-04-14 18:04:34 - INFO - [get_stock_data] [IVZ] Requesting data for IVZ
+2025-04-14 18:04:34 - ERROR - [get_stock_data] [IVZ] Error retrieving data: Not connected
+2025-04-14 18:04:34 - INFO - [get_stock_data] [NEM] Requesting data for NEM
+2025-04-14 18:04:34 - ERROR - [get_stock_data] [NEM] Error retrieving data: Not connected
+2025-04-14 18:04:34 - INFO - [get_stock_data] [LUV] Requesting data for LUV
+2025-04-14 18:04:34 - ERROR - [get_stock_data] [LUV] Error retrieving data: Not connected
+2025-04-14 18:04:34 - INFO - [_run_strategy_if_applicable] [N/A] 🔄 Starting trading loop for strategy: VWAP_diff_signal_1700
+2025-04-14 18:04:34 - INFO - [get_stock_data] [HBAN] Requesting data for HBAN
+2025-04-14 18:04:34 - ERROR - [get_stock_data] [HBAN] Error retrieving data: Not connected
+2025-04-14 18:04:34 - INFO - [get_stock_data] [CZR] Requesting data for CZR
+2025-04-14 18:04:34 - ERROR - [get_stock_data] [CZR] Error retrieving data: Not connected
+2025-04-14 18:04:34 - INFO - [get_stock_data] [MTCH] Requesting data for MTCH
+2025-04-14 18:04:34 - ERROR - [get_stock_data] [MTCH] Error retrieving data: Not connected
+2025-04-14 18:04:34 - INFO - [get_stock_data] [MRNA] Requesting data for MRNA
+2025-04-14 18:04:34 - ERROR - [get_stock_data] [MRNA] Error retrieving data: Not connected
+2025-04-14 18:04:34 - INFO - [get_stock_data] [NCHL] Requesting data for NCHL
+2025-04-14 18:04:34 - ERROR - [get_stock_data] [NCHL] Error retrieving data: Not connected
+2025-04-14 18:04:34 - INFO - [get_stock_data] [WBD] Requesting data for WBD
+2025-04-14 18:04:34 - ERROR - [get_stock_data] [WBD] Error retrieving data: Not connected
+2025-04-14 18:04:34 - INFO - [get_stock_data] [CMCSA] Requesting data for CMCSA
+2025-04-14 18:04:34 - ERROR - [get_stock_data] [CMCSA] Error retrieving data: Not connected
+2025-04-14 18:04:34 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders

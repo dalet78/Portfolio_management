@@ -1,0 +1,6 @@
+2025-04-16 18:43:57 - INFO - [__init__] [N/A] ✅ Connected to IBKR successfully
+2025-04-16 18:43:57 - INFO - [place_order] [WBD] Placing MARKET order for WBD: 1 shares
+2025-04-16 18:44:01 - INFO - [update_orders] [N/A] ✅ Order 60 filled at 8.08
+2025-04-16 18:44:01 - INFO - [set_tp_sl_direct] [N/A] 🔹 Setting TP (LMT) 9.3 and SL 7.5 for WBD
+2025-04-16 18:44:01 - INFO - [set_tp_sl_direct] [N/A] ✅ TP (MIT) Order Status: PendingSubmit (Trigger: 9.3)
+2025-04-16 18:44:01 - INFO - [set_tp_sl_direct] [N/A] ✅ SL (Stop) Order Status: PendingSubmit (Trigger: 7.5)

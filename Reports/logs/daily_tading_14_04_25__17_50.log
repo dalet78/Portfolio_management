@@ -1,0 +1,29 @@
+2025-04-14 17:50:10 - INFO - [start_tws] [N/A] Avvio di TWS...
+2025-04-14 17:50:20 - INFO - [start_tws] [N/A] TWS avviato con successo!
+2025-04-14 17:50:21 - INFO - [login] [N/A] Attesa della finestra di login...
+2025-04-14 17:50:37 - INFO - [login] [N/A] Login effettuato con successo!
+2025-04-14 17:50:37 - INFO - [wait_until_tws_ready] [N/A] ⌛ Verifico connessione API TWS tramite ib_insync...
+2025-04-14 17:50:37 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-14 17:50:42 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-14 17:50:47 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-14 17:51:02 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: TimeoutError: 
+2025-04-14 17:51:17 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: TimeoutError: 
+2025-04-14 17:51:32 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: TimeoutError: 
+2025-04-14 17:51:43 - INFO - [wait_until_tws_ready] [N/A] ✅ Connessione API a TWS riuscita!
+2025-04-14 17:51:48 - INFO - [__init__] [N/A] ✅ Connected to IBKR successfully
+2025-04-14 17:51:55 - INFO - [start] [N/A] Starting bot
+2025-04-14 17:54:35 - INFO - [start_daily_session] [N/A] Starting daily session
+2025-04-14 17:54:35 - INFO - [__init__] [N/A] ✅ Connected to IBKR successfully
+2025-04-14 17:54:35 - INFO - [wait_for_precise_time] [N/A] ⏱️ Meno di 30s alla prossima candela, parto subito.
+2025-04-14 17:54:35 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-14 17:54:35 - INFO - [_run_strategy_if_applicable] [N/A] 🔄 Starting trading loop for strategy: VWAP_diff_signal_rsi_1700
+2025-04-14 17:54:35 - INFO - [get_stock_data] [IVZ] Requesting data for IVZ
+2025-04-14 17:54:36 - INFO - [get_stock_data] [IVZ] Data received for IVZ: 95 rows
+2025-04-14 17:54:37 - INFO - [check_vwap_diff_signal_with_rsi] [IVZ] Analyzing VWAP reversal signal for IVZ
+2025-04-14 17:54:56 - ERROR - [check_vwap_diff_signal_with_rsi] [IVZ] ❌ Error calculating VWAP+RSI signal: 'RangeIndex' object has no attribute 'date'
+2025-04-14 17:54:57 - DEBUG - [_run_single_trading_iteration] [IVZ] 🔍 Signal for IVZ: None
+2025-04-14 17:54:57 - INFO - [_run_single_trading_iteration] [IVZ] ℹ️ No valid signal for IVZ
+2025-04-14 17:54:57 - INFO - [get_stock_data] [FCX] Requesting data for FCX
+2025-04-14 17:54:58 - INFO - [get_stock_data] [FCX] Data received for FCX: 95 rows
+2025-04-14 17:54:58 - INFO - [check_vwap_diff_signal_with_rsi] [FCX] Analyzing VWAP reversal signal for FCX
+2025-04-14 17:58:56 - INFO - [wait_for_precise_time] [N/A] 🕰️ Aspetto 63.7s per la prossima candela (18:00:00)

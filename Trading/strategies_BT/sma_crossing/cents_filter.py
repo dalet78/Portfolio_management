@@ -5,12 +5,12 @@ from datetime import time
 
 # Strategy Parameters
 ENTRY_START_TIME = time(14, 30)
-ENTRY_END_TIME = time(14, 50)
+ENTRY_END_TIME = time(14, 45)
 EXIT_TIME = time(20, 50)
 SMA_SHORT_PERIOD = 5
 SMA_LONG_PERIOD = 20
-SL_PERCENT = 0.007
-TP_PERCENT = 0.014
+SL_PERCENT = 0.005
+TP_PERCENT = 0.01
 
 
 class HOLCStrategy_cents(Strategy):

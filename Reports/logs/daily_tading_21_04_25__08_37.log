@@ -1,0 +1,27 @@
+2025-04-21 08:37:31 - INFO - [start_tws] [N/A] Avvio di TWS...
+2025-04-21 08:37:41 - INFO - [start_tws] [N/A] TWS avviato con successo!
+2025-04-21 08:37:41 - INFO - [login] [N/A] Attesa della finestra di login...
+2025-04-21 08:37:57 - INFO - [login] [N/A] Login effettuato con successo!
+2025-04-21 08:37:57 - INFO - [wait_until_tws_ready] [N/A] ⌛ Verifico connessione API TWS tramite ib_insync...
+2025-04-21 08:37:57 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-21 08:38:02 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-21 08:38:07 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-21 08:38:22 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: TimeoutError: 
+2025-04-21 08:38:37 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: TimeoutError: 
+2025-04-21 08:38:45 - INFO - [wait_until_tws_ready] [N/A] ✅ Connessione API a TWS riuscita!
+2025-04-21 08:38:47 - INFO - [__init__] [N/A] ✅ Connected to IBKR successfully
+2025-04-21 08:38:48 - INFO - [start] [N/A] Starting bot
+2025-04-21 09:12:12 - INFO - [start_daily_session] [N/A] Starting daily session
+2025-04-21 09:12:12 - INFO - [__init__] [N/A] ✅ Connected to IBKR successfully
+2025-04-21 09:12:12 - INFO - [wait_for_precise_time] [N/A] 🌅 Troppo presto, attendo l'inizio della sessione alle 16:30:00
+2025-04-21 16:30:00 - INFO - [wait_for_precise_time] [N/A] 🎯 Orario valido raggiunto. Avvio operazioni.
+2025-04-21 16:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-21 16:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-21 16:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700_volume' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-21 16:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-21 16:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-21 16:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-21 16:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-21 16:30:00 - INFO - [_update_active_orders_and_telegram] [N/A] 📊 Updating SL/TP for active orders
+2025-04-21 16:30:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.88 seconds before the next cycle
+2025-04-21 16:30:17 - INFO - [wait_for_precise_time] [N/A] 🕰️ Aspetto 282.6s per la prossima candela (16:35:00)

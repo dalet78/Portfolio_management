@@ -1,0 +1,131 @@
+2025-04-07 17:05:44 - INFO - [__init__] [N/A] ✅ Connected to IBKR successfully
+2025-04-07 17:05:44 - INFO - [wait_for_precise_time] [N/A] 🕰️ Aspetto 255.7s per la prossima candela (17:10:00)
+2025-04-07 17:10:00 - INFO - [wait_for_precise_time] [N/A] 🎯 Orario valido raggiunto. Avvio operazioni.
+2025-04-07 17:10:00 - INFO - [_run_strategy_if_applicable] [N/A] 🔄 Starting trading loop for strategy: VWAP_diff_signal_rsi_1700
+2025-04-07 17:10:00 - INFO - [get_stock_data] [IVZ] Requesting data for IVZ
+2025-04-07 17:10:01 - INFO - [get_stock_data] [IVZ] Data received for IVZ: 86 rows
+2025-04-07 17:10:01 - INFO - [check_vwap_diff_signal_with_rsi] [IVZ] Analyzing VWAP reversal signal for IVZ
+2025-04-07 17:10:01 - INFO - [check_vwap_diff_signal_with_rsi] [IVZ] Close: 12.46 | Low: 12.4 | High: 12.53 | VWAP: 12.768217109165313 | RSI: 38.01
+2025-04-07 17:10:01 - DEBUG - [check_vwap_diff_signal_with_rsi] [IVZ] No VWAP+RSI signal detected
+2025-04-07 17:10:01 - DEBUG - [_run_single_trading_iteration] [IVZ] 🔍 Signal for IVZ: None
+2025-04-07 17:10:01 - INFO - [_run_single_trading_iteration] [IVZ] ℹ️ No valid signal for IVZ
+2025-04-07 17:10:01 - INFO - [get_stock_data] [FCX] Requesting data for FCX
+2025-04-07 17:10:02 - INFO - [get_stock_data] [FCX] Data received for FCX: 86 rows
+2025-04-07 17:10:02 - INFO - [check_vwap_diff_signal_with_rsi] [FCX] Analyzing VWAP reversal signal for FCX
+2025-04-07 17:10:02 - INFO - [check_vwap_diff_signal_with_rsi] [FCX] Close: 29.58 | Low: 29.37 | High: 29.66 | VWAP: 29.485570611632898 | RSI: 57.71
+2025-04-07 17:10:02 - DEBUG - [check_vwap_diff_signal_with_rsi] [FCX] No VWAP+RSI signal detected
+2025-04-07 17:10:02 - DEBUG - [_run_single_trading_iteration] [FCX] 🔍 Signal for FCX: None
+2025-04-07 17:10:02 - INFO - [_run_single_trading_iteration] [FCX] ℹ️ No valid signal for FCX
+2025-04-07 17:10:02 - INFO - [get_stock_data] [HST] Requesting data for HST
+2025-04-07 17:10:03 - INFO - [get_stock_data] [HST] Data received for HST: 86 rows
+2025-04-07 17:10:03 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-07 17:10:03 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 12.59 | Low: 12.56 | High: 12.67 | VWAP: 12.846679207649096 | RSI: 37.48
+2025-04-07 17:10:03 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-07 17:10:03 - DEBUG - [_run_single_trading_iteration] [HST] 🔍 Signal for HST: None
+2025-04-07 17:10:03 - INFO - [_run_single_trading_iteration] [HST] ℹ️ No valid signal for HST
+2025-04-07 17:10:03 - INFO - [get_stock_data] [IVZ] Requesting data for IVZ
+2025-04-07 17:10:04 - INFO - [get_stock_data] [IVZ] Data received for IVZ: 86 rows
+2025-04-07 17:10:04 - INFO - [check_vwap_diff_signal_with_rsi] [IVZ] Analyzing VWAP reversal signal for IVZ
+2025-04-07 17:10:04 - INFO - [check_vwap_diff_signal_with_rsi] [IVZ] Close: 12.46 | Low: 12.4 | High: 12.53 | VWAP: 12.768217109165313 | RSI: 38.01
+2025-04-07 17:10:04 - DEBUG - [check_vwap_diff_signal_with_rsi] [IVZ] No VWAP+RSI signal detected
+2025-04-07 17:10:04 - DEBUG - [_run_single_trading_iteration] [IVZ] 🔍 Signal for IVZ: None
+2025-04-07 17:10:04 - INFO - [_run_single_trading_iteration] [IVZ] ℹ️ No valid signal for IVZ
+2025-04-07 17:10:04 - INFO - [get_stock_data] [NEM] Requesting data for NEM
+2025-04-07 17:10:05 - INFO - [get_stock_data] [NEM] Data received for NEM: 87 rows
+2025-04-07 17:10:05 - INFO - [check_vwap_diff_signal_with_rsi] [NEM] Analyzing VWAP reversal signal for NEM
+2025-04-07 17:10:05 - INFO - [check_vwap_diff_signal_with_rsi] [NEM] Close: 45.1 | Low: 45.05 | High: 45.12 | VWAP: 44.54127999437687 | RSI: 64.05
+2025-04-07 17:10:05 - DEBUG - [check_vwap_diff_signal_with_rsi] [NEM] No VWAP+RSI signal detected
+2025-04-07 17:10:05 - DEBUG - [_run_single_trading_iteration] [NEM] 🔍 Signal for NEM: None
+2025-04-07 17:10:05 - INFO - [_run_single_trading_iteration] [NEM] ℹ️ No valid signal for NEM
+2025-04-07 17:10:05 - INFO - [get_stock_data] [LUV] Requesting data for LUV
+2025-04-07 17:10:06 - INFO - [get_stock_data] [LUV] Data received for LUV: 87 rows
+2025-04-07 17:10:06 - INFO - [check_vwap_diff_signal_with_rsi] [LUV] Analyzing VWAP reversal signal for LUV
+2025-04-07 17:10:06 - INFO - [check_vwap_diff_signal_with_rsi] [LUV] Close: 25.48 | Low: 25.44 | High: 25.51 | VWAP: 26.146948423467144 | RSI: 45.74
+2025-04-07 17:10:06 - DEBUG - [check_vwap_diff_signal_with_rsi] [LUV] No VWAP+RSI signal detected
+2025-04-07 17:10:06 - DEBUG - [_run_single_trading_iteration] [LUV] 🔍 Signal for LUV: None
+2025-04-07 17:10:06 - INFO - [_run_single_trading_iteration] [LUV] ℹ️ No valid signal for LUV
+2025-04-07 17:10:06 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-07 17:10:06 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-07 17:10:06 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-07 17:10:06 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-07 17:10:06 - INFO - [_run_strategy_if_applicable] [N/A] 🔄 Starting trading loop for strategy: VWAP_diff_signal_1700
+2025-04-07 17:10:06 - INFO - [get_stock_data] [HBAN] Requesting data for HBAN
+2025-04-07 17:10:07 - INFO - [get_stock_data] [HBAN] Data received for HBAN: 87 rows
+2025-04-07 17:10:07 - INFO - [check_vwap_diff_signal] [HBAN] Analyzing VWAP reversal signal for HBAN
+2025-04-07 17:10:07 - ERROR - [check_vwap_diff_signal] [HBAN] ❌ Error calculating VWAP signal: 'VWAP'
+2025-04-07 17:10:07 - DEBUG - [_run_single_trading_iteration] [HBAN] 🔍 Signal for HBAN: None
+2025-04-07 17:10:07 - INFO - [_run_single_trading_iteration] [HBAN] ℹ️ No valid signal for HBAN
+2025-04-07 17:10:07 - INFO - [get_stock_data] [CZR] Requesting data for CZR
+2025-04-07 17:10:08 - INFO - [get_stock_data] [CZR] Data received for CZR: 87 rows
+2025-04-07 17:10:08 - INFO - [check_vwap_diff_signal] [CZR] Analyzing VWAP reversal signal for CZR
+2025-04-07 17:10:08 - ERROR - [check_vwap_diff_signal] [CZR] ❌ Error calculating VWAP signal: 'VWAP'
+2025-04-07 17:10:08 - DEBUG - [_run_single_trading_iteration] [CZR] 🔍 Signal for CZR: None
+2025-04-07 17:10:08 - INFO - [_run_single_trading_iteration] [CZR] ℹ️ No valid signal for CZR
+2025-04-07 17:10:08 - INFO - [get_stock_data] [MTCH] Requesting data for MTCH
+2025-04-07 17:10:09 - INFO - [get_stock_data] [MTCH] Data received for MTCH: 87 rows
+2025-04-07 17:10:09 - INFO - [check_vwap_diff_signal] [MTCH] Analyzing VWAP reversal signal for MTCH
+2025-04-07 17:10:09 - ERROR - [check_vwap_diff_signal] [MTCH] ❌ Error calculating VWAP signal: 'VWAP'
+2025-04-07 17:10:09 - DEBUG - [_run_single_trading_iteration] [MTCH] 🔍 Signal for MTCH: None
+2025-04-07 17:10:09 - INFO - [_run_single_trading_iteration] [MTCH] ℹ️ No valid signal for MTCH
+2025-04-07 17:10:09 - INFO - [get_stock_data] [MRNA] Requesting data for MRNA
+2025-04-07 17:10:10 - INFO - [get_stock_data] [MRNA] Data received for MRNA: 87 rows
+2025-04-07 17:10:10 - INFO - [check_vwap_diff_signal] [MRNA] Analyzing VWAP reversal signal for MRNA
+2025-04-07 17:10:10 - ERROR - [check_vwap_diff_signal] [MRNA] ❌ Error calculating VWAP signal: 'VWAP'
+2025-04-07 17:10:10 - DEBUG - [_run_single_trading_iteration] [MRNA] 🔍 Signal for MRNA: None
+2025-04-07 17:10:10 - INFO - [_run_single_trading_iteration] [MRNA] ℹ️ No valid signal for MRNA
+2025-04-07 17:10:10 - INFO - [get_stock_data] [NCHL] Requesting data for NCHL
+2025-04-07 17:10:11 - ERROR - [get_stock_data] [NCHL] Error retrieving data: 'NoneType' object has no attribute 'empty'
+2025-04-07 17:10:11 - INFO - [get_stock_data] [WBD] Requesting data for WBD
+2025-04-07 17:10:12 - INFO - [get_stock_data] [WBD] Data received for WBD: 87 rows
+2025-04-07 17:10:12 - INFO - [check_vwap_diff_signal] [WBD] Analyzing VWAP reversal signal for WBD
+2025-04-07 17:10:12 - ERROR - [check_vwap_diff_signal] [WBD] ❌ Error calculating VWAP signal: 'VWAP'
+2025-04-07 17:10:12 - DEBUG - [_run_single_trading_iteration] [WBD] 🔍 Signal for WBD: None
+2025-04-07 17:10:12 - INFO - [_run_single_trading_iteration] [WBD] ℹ️ No valid signal for WBD
+2025-04-07 17:10:12 - INFO - [get_stock_data] [CMCSA] Requesting data for CMCSA
+2025-04-07 17:10:13 - INFO - [get_stock_data] [CMCSA] Data received for CMCSA: 87 rows
+2025-04-07 17:10:13 - INFO - [check_vwap_diff_signal] [CMCSA] Analyzing VWAP reversal signal for CMCSA
+2025-04-07 17:10:13 - ERROR - [check_vwap_diff_signal] [CMCSA] ❌ Error calculating VWAP signal: 'VWAP'
+2025-04-07 17:10:13 - DEBUG - [_run_single_trading_iteration] [CMCSA] 🔍 Signal for CMCSA: None
+2025-04-07 17:10:13 - INFO - [_run_single_trading_iteration] [CMCSA] ℹ️ No valid signal for CMCSA
+2025-04-07 17:10:13 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-07 17:10:14 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 45.35 seconds before the next cycle
+2025-04-07 17:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-07 17:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-07 17:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-07 17:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-07 17:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-07 17:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-07 17:11:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-07 17:11:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.59 seconds before the next cycle
+2025-04-07 17:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-07 17:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-07 17:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-07 17:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-07 17:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-07 17:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-07 17:12:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-07 17:12:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.63 seconds before the next cycle
+2025-04-07 17:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-07 17:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-07 17:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-07 17:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-07 17:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-07 17:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-07 17:13:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-07 17:13:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.60 seconds before the next cycle
+2025-04-07 17:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-07 17:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-07 17:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-07 17:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-07 17:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-07 17:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-07 17:14:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-07 17:14:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.65 seconds before the next cycle
+2025-04-07 17:15:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-07 17:15:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-07 17:15:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-07 17:15:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-07 17:15:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-07 17:15:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-07 17:15:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-07 17:15:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.67 seconds before the next cycle

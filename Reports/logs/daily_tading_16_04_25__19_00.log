@@ -1,0 +1,1341 @@
+2025-04-16 19:00:33 - INFO - [start_tws] [N/A] Avvio di TWS...
+2025-04-16 19:00:43 - INFO - [start_tws] [N/A] TWS avviato con successo!
+2025-04-16 19:00:44 - INFO - [login] [N/A] Attesa della finestra di login...
+2025-04-16 19:00:59 - INFO - [login] [N/A] Login effettuato con successo!
+2025-04-16 19:00:59 - INFO - [wait_until_tws_ready] [N/A] ⌛ Verifico connessione API TWS tramite ib_insync...
+2025-04-16 19:00:59 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-16 19:01:04 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-16 19:01:09 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-16 19:01:14 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 7497)
+2025-04-16 19:01:29 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: TimeoutError: 
+2025-04-16 19:01:44 - DEBUG - [wait_until_tws_ready] [N/A] ⏳ TWS non ancora pronto: TimeoutError: 
+2025-04-16 19:01:51 - INFO - [wait_until_tws_ready] [N/A] ✅ Connessione API a TWS riuscita!
+2025-04-16 19:01:52 - INFO - [__init__] [N/A] ✅ Connected to IBKR successfully
+2025-04-16 19:02:01 - INFO - [start] [N/A] Starting bot
+2025-04-16 19:14:09 - INFO - [start_daily_session] [N/A] Starting daily session
+2025-04-16 19:14:09 - INFO - [__init__] [N/A] ✅ Connected to IBKR successfully
+2025-04-16 19:14:09 - INFO - [wait_for_precise_time] [N/A] 🕰️ Aspetto 50.3s per la prossima candela (19:15:00)
+2025-04-16 19:15:00 - INFO - [wait_for_precise_time] [N/A] 🎯 Orario valido raggiunto. Avvio operazioni.
+2025-04-16 19:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:15:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:15:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.94 seconds before the next cycle
+2025-04-16 19:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:16:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:16:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:17:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:17:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:18:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:18:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:19:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:19:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:20:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:20:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.94 seconds before the next cycle
+2025-04-16 19:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:21:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:21:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:22:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:22:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:23:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:23:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:24:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:24:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:25:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:25:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.94 seconds before the next cycle
+2025-04-16 19:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:26:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:26:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:27:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:27:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:28:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:28:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:29:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:29:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:30:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:30:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.92 seconds before the next cycle
+2025-04-16 19:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:31:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:31:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.92 seconds before the next cycle
+2025-04-16 19:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:32:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:32:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:33:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:33:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:34:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:34:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:35:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:35:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:36:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:36:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:37:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:37:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:38:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:38:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:39:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:39:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:40:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:40:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:41:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:41:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:42:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:42:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:43:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:43:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:44:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:44:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:45:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:45:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:46:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:46:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.92 seconds before the next cycle
+2025-04-16 19:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:47:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:47:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:48:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:48:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.92 seconds before the next cycle
+2025-04-16 19:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:49:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:49:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:50:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:50:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.92 seconds before the next cycle
+2025-04-16 19:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:51:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:51:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:52:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:52:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:53:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:53:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.94 seconds before the next cycle
+2025-04-16 19:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:54:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:54:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 19:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 19:55:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:55:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:56:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:56:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:57:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:57:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:58:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:58:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 19:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 19:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 19:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 19:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 19:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 19:59:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 19:59:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:00:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:00:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:00:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:00:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:00:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:00:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:00:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:00:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:01:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:01:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:01:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:01:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:01:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:01:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:01:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:01:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:02:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:02:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:02:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:02:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:02:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:02:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:02:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:02:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.94 seconds before the next cycle
+2025-04-16 20:03:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:03:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:03:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:03:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:03:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:03:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:03:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:03:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.94 seconds before the next cycle
+2025-04-16 20:04:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:04:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:04:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:04:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:04:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:04:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:04:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:04:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:05:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:05:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:05:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:05:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:05:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:05:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:05:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:05:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:06:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:06:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:06:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:06:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:06:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:06:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:06:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:06:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.92 seconds before the next cycle
+2025-04-16 20:07:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:07:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:07:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:07:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:07:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:07:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:07:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:07:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:08:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:08:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:08:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:08:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:08:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:08:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:08:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:08:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:09:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:09:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:09:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:09:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:09:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:09:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:09:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:09:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.94 seconds before the next cycle
+2025-04-16 20:10:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:10:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:10:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:10:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:10:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:10:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:10:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:10:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:11:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:11:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:12:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:12:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:13:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:13:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:14:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:14:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:15:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:15:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:16:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:16:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.94 seconds before the next cycle
+2025-04-16 20:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:17:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:17:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.91 seconds before the next cycle
+2025-04-16 20:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:18:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:18:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:19:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:19:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:20:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:20:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:21:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:21:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:22:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:22:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:23:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:23:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:24:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:24:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:25:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:25:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.92 seconds before the next cycle
+2025-04-16 20:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:26:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:26:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.94 seconds before the next cycle
+2025-04-16 20:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:27:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:27:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:28:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:28:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:29:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:29:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:30:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:30:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:31:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:31:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:32:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:32:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.92 seconds before the next cycle
+2025-04-16 20:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:33:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:33:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:34:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:34:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:35:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:35:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:36:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:36:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:37:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:37:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:38:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:38:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:39:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:39:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:40:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:40:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.91 seconds before the next cycle
+2025-04-16 20:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:41:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:41:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:42:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:42:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:43:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:43:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:44:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:44:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:45:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:45:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:46:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:46:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:47:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:47:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.94 seconds before the next cycle
+2025-04-16 20:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:48:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:48:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:49:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:49:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:50:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:50:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:51:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:51:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:52:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:52:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:53:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:53:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:54:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:54:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 20:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 20:55:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:55:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:56:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:56:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:57:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:57:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:58:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:58:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 20:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 20:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 20:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 20:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 20:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 20:59:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 20:59:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:00:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:00:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:00:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:00:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:00:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:00:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:00:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:00:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:01:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:01:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:01:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:01:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:01:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:01:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:01:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:01:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:02:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:02:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:02:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:02:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:02:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:02:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:02:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:02:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:03:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:03:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:03:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:03:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:03:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:03:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:03:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:03:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:04:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:04:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:04:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:04:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:04:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:04:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:04:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:04:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:05:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:05:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:05:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:05:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:05:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:05:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:05:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:05:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:06:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:06:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:06:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:06:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:06:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:06:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:06:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:06:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.94 seconds before the next cycle
+2025-04-16 21:07:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:07:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:07:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:07:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:07:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:07:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:07:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:07:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:08:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:08:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:08:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:08:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:08:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:08:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:08:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:08:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:09:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:09:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:09:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:09:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:09:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:09:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:09:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:09:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.92 seconds before the next cycle
+2025-04-16 21:10:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:10:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:10:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:10:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:10:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:10:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:10:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:10:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:11:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:11:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:11:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:12:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:12:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:12:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:13:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:13:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:13:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:14:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:14:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:14:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:15:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:15:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:15:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:16:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:16:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:16:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:17:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:17:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:17:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:18:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:18:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:18:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:19:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:19:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:19:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:20:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:20:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:20:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:21:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:21:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:21:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.94 seconds before the next cycle
+2025-04-16 21:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:22:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:22:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:22:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:23:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:23:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:23:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:24:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:24:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:24:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:25:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:25:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:25:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.94 seconds before the next cycle
+2025-04-16 21:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:26:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:26:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:26:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:27:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:27:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:27:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:28:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:28:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:28:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:29:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:29:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:29:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:30:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:30:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:30:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:31:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:31:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:31:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:32:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:32:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:32:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.94 seconds before the next cycle
+2025-04-16 21:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:33:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:33:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:33:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.92 seconds before the next cycle
+2025-04-16 21:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:34:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:34:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:34:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:35:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:35:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:35:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:36:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:36:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:36:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:37:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:37:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:37:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:38:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:38:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:38:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:39:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:39:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:39:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:40:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:40:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:40:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:41:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:41:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:41:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:42:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:42:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:42:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:43:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:43:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:43:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.95 seconds before the next cycle
+2025-04-16 21:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:44:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:44:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:44:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:45:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:45:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:45:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:46:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:46:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:46:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.94 seconds before the next cycle
+2025-04-16 21:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:47:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:47:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:47:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:48:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:48:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:48:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:49:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:49:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:49:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:50:00 - INFO - [start_trading] [N/A] 🛑 Closing all positions before end of session
+2025-04-16 21:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:50:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:50:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:50:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:51:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:51:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:51:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:52:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:52:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:52:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:53:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:53:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:53:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:54:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:54:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:54:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_sma50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'SMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_ema50' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'VWAP_diff_signal_rsi_1700' not executed because it's outside the time window: 17:30:00 - 19:00:00
+2025-04-16 21:55:00 - INFO - [_run_strategy_if_applicable] [N/A] ⏰ Strategy 'EMA_Cross_candle' not executed because it's outside the time window: 16:35:00 - 16:50:00
+2025-04-16 21:55:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:55:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.92 seconds before the next cycle
+2025-04-16 21:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:56:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:56:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:56:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:57:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:57:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:57:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 21:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:58:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:58:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:58:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.92 seconds before the next cycle
+2025-04-16 21:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_sma50, not yet time (every 5m)
+2025-04-16 21:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping SMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_ema50, not yet time (every 5m)
+2025-04-16 21:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_1700, not yet time (every 5m)
+2025-04-16 21:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping VWAP_diff_signal_rsi_1700, not yet time (every 5m)
+2025-04-16 21:59:00 - DEBUG - [trading_loop] [N/A] ⏱ Skipping EMA_Cross_candle, not yet time (every 5m)
+2025-04-16 21:59:00 - INFO - [trading_loop] [N/A] 📊 Updating SL/TP for active orders
+2025-04-16 21:59:01 - INFO - [_wait_until_next_iteration] [N/A] ⏳ Sleeping for 58.93 seconds before the next cycle
+2025-04-16 22:00:00 - ERROR - [safe_main_trading] [N/A] Error in thread: 'Fill' object has no attribute 'side'
+2025-04-16 22:44:53 - INFO - [wait_for_precise_time] [N/A] 🌙 Sessione chiusa. Aspetto domani alle 16:30:00

@@ -36,13 +36,13 @@ def check_sma_cross_candle(df, stock, log, trade_tracker):
             sl = entry - (SL_PERCENT * entry)
             tp = entry + (TP_PERCENT * entry)
 
-            log.log(f"✅ BUY signal at {entry}, SL: {sl}, TP: {tp}", stock=stock, level="info")
+            log.log(f"✅ BUY signal at {entry}, (SL: {sl}, TP: {tp} will be calculated externally)", stock=stock, level="info")
 
             return {
                 "signal": "BUY",
                 "entry_price": entry,
-                "sl": sl,
-                "tp": tp,
+                "sl": None,
+                "tp": None,
                 "order_type": "market",
                 "indicator": "SMA",
                 "reason": "sma_bullish_crossover_with_candle"
@@ -54,13 +54,13 @@ def check_sma_cross_candle(df, stock, log, trade_tracker):
             sl = entry + (SL_PERCENT * entry)
             tp = entry - (TP_PERCENT * entry)
 
-            log.log(f"✅ SELL signal at {entry}, SL: {sl}, TP: {tp}", stock=stock, level="info")
+            log.log(f"✅ SELL signal at {entry}, (SL: {sl}, TP: {tp} will be calculated externally)", stock=stock, level="info")
 
             return {
                 "signal": "SELL",
                 "entry_price": entry,
-                "sl": sl,
-                "tp": tp,
+                "sl": None,
+                "tp": None,
                 "order_type": "market",
                 "indicator": "SMA",
                 "reason": "sma_bearish_crossover_with_candle"

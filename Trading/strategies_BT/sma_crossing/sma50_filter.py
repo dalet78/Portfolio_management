@@ -2,62 +2,77 @@ from backtesting import Backtest, Strategy
 from backtesting.test import SMA
 from datetime import time
 
-# Strategy Parameters
-ENTRY_START_TIME = time(14, 30)
-ENTRY_END_TIME = time(14, 50)
-EXIT_TIME = time(20, 50)
+# === PARAMETRI STRATEGIA ===
 SMA_SHORT_PERIOD = 5
 SMA_LONG_PERIOD = 20
-SMA_TREND_PERIOD = 50  # Aggiunta della SMA50 per filtro trend
-SL_PERCENT = 0.007
-TP_PERCENT = 0.014
+SMA_TREND_PERIOD = 50
+
+SL_PERCENT = 0.007  # 0.5%
+TP_PERCENT = 0.014   # 1%
+
+# Orari di interesse per il cross (UTC)
+ENTRY_CROSS_TIMES = {time(13, 35), time(13, 40)}
+MARKET_OPEN_TIME = time(13, 30)
 
 class HOLCStrategy_SMA50(Strategy):
     last_trade_date = None
-    trade_results = []  # Lista per registrare i risultati dei trade (+1 successo, -1 fallimento)
+    trade_results = []
+    dubious_trades = []  # Per registrare i trade potenzialmente "dubbi"
 
     def init(self):
         super().init()
         price = self.data.Close
         self.ma1 = self.I(SMA, price, SMA_SHORT_PERIOD)   # SMA5
         self.ma2 = self.I(SMA, price, SMA_LONG_PERIOD)    # SMA20
-        self.ma50 = self.I(SMA, price, SMA_TREND_PERIOD)  # SMA50 (nuovo filtro trend)
+        self.ma50 = self.I(SMA, price, SMA_TREND_PERIOD)  # SMA50 (trend filter)
+
+        # Controllo che i dati inizino a mercato aperto (14:30 UTC)
+        if self.data.index[0].time() != MARKET_OPEN_TIME:
+            print(f"⚠️ ATTENZIONE: i dati iniziano a {self.data.index[0].time()}, non alle {MARKET_OPEN_TIME}.")
+            # In produzione potresti anche lanciare un'eccezione.
 
     def next(self):
-        if len(self.data.Close) < 3:  # Assicura che ci siano abbastanza dati
-            return
+        if len(self.data.Close) < 3:
+            return  # Non abbastanza dati per valutare cross
 
         current_time = self.data.index[-1].time()
         current_date = self.data.index[-1].date()
 
-        # SMA sulla candela di crossover
-        sma1 = self.ma1[-2]  # SMA5 sulla candela di crossover
-        sma2 = self.ma2[-2]  # SMA20 sulla candela di crossover
-        sma50 = self.ma50[-2]  # SMA50 sulla candela di crossover
+        sma1_now = self.ma1[-2]  # Due candele indietro perché il cross si misura sulla chiusa precedente
+        sma2_now = self.ma2[-2]
+        sma50_now = self.ma50[-2]
 
-        # Prezzo di apertura della candela successiva al crossover
-        next_candle_open = self.data.Open[-1]  # ENTRY PRICE all'apertura della candela successiva
+        next_candle_open = self.data.Open[-1]
 
         if self.position:
             last_trade = self.trades[-1] if self.trades else None
-            if last_trade and last_trade.pl is not None:  # Controllo corretto per trade chiuso
+            if last_trade and last_trade.pl is not None:
+                # Controllo se il trade è stato aperto e chiuso nella stessa candela
+                if last_trade.entry_bar == last_trade.exit_bar:
+                    self.dubious_trades.append({
+                        "entry_time": last_trade.entry_time,
+                        "exit_time": last_trade.exit_time,
+                        "pnl": last_trade.pl
+                    })
+
                 profit = last_trade.pl
                 self.trade_results.append(1 if profit > 0 else -1)
-                self.last_trade_date = None  # Resetta la data dell'ultimo trade
+                self.last_trade_date = None
 
-        elif ENTRY_START_TIME <= current_time <= ENTRY_END_TIME and (
+        # Se siamo all'interno delle candele di interesse e non abbiamo ancora tradato oggi
+        elif current_time in ENTRY_CROSS_TIMES and (
                 self.last_trade_date is None or self.last_trade_date != current_date):
 
-            # **Bullish Crossover**: SMA5 > SMA20 e avviene SOPRA la SMA50
-            if sma1 > sma2 and self.ma1[-3] <= self.ma2[-3] and self.data.Close[-1] > sma50:
-                entry_price = next_candle_open  # ENTRY all'apertura della candela successiva
+            # Condizioni di ingresso LONG
+            if sma1_now > sma2_now and self.ma1[-3] <= self.ma2[-3] and self.data.Close[-1] > sma50_now:
+                entry_price = next_candle_open
                 stop_loss = entry_price - (SL_PERCENT * entry_price)
                 take_profit = entry_price + (TP_PERCENT * entry_price)
                 self.buy(limit=entry_price, sl=stop_loss, tp=take_profit)
 
-            # **Bearish Crossover**: SMA5 < SMA20 e avviene SOTTO la SMA50
-            elif sma1 < sma2 and self.ma1[-3] >= self.ma2[-3] and self.data.Close[-1] < sma50:
-                entry_price = next_candle_open  # ENTRY all'apertura della candela successiva
+            # Condizioni di ingresso SHORT
+            elif sma1_now < sma2_now and self.ma1[-3] >= self.ma2[-3] and self.data.Close[-1] < sma50_now:
+                entry_price = next_candle_open
                 stop_loss = entry_price + (SL_PERCENT * entry_price)
                 take_profit = entry_price - (TP_PERCENT * entry_price)
                 self.sell(limit=entry_price, sl=stop_loss, tp=take_profit)
@@ -66,3 +81,6 @@ class HOLCStrategy_SMA50(Strategy):
 
     def get_trade_results(self):
         return self.trade_results
+
+    def get_dubious_trades(self):
+        return self.dubious_trades

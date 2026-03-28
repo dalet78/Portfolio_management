@@ -3,7 +3,7 @@ from datetime import time
 # Dizionario con le strategie e le liste di stock corrispondenti
 strategies_stock_applied = {
     "EMA_Cross_ema50": {
-        "tickers": ["CFG", "GEN", "PARA", "PPL", "TFC", "WBD"],
+        "tickers": ["CFG","CZR", "GEN", "PARA", "PPL", "TFC", "WBD"],
         "check_function": "check_ema_cross_ema50",
         "start_time":time(16, 35),
         "stop_time":time(16, 50),
@@ -49,7 +49,9 @@ strategies_stock_applied = {
         "start_time":time(17, 30),
         "stop_time":time(19, 0),
         "frequency": 5,
-        "bar_size": "5 mins"
+        "bar_size": "5 mins",
+        "sl_percent": None,
+        "tp_percent": None
     },
     "VWAP_diff_signal_1700": {
         "tickers": ["CZR", "MTCH", "NCHL", "HBAN", "MRNA", "WBD", "CMCSA"],
@@ -57,7 +59,9 @@ strategies_stock_applied = {
         "start_time":time(17, 30),
         "stop_time":time(19, 0),
         "frequency": 5,
-        "bar_size": "5 mins"
+        "bar_size": "5 mins",
+        "sl_percent": None,
+        "tp_percent": None
     },
     "VWAP_diff_signal_1700_volume": {
         "tickers": ["GEN", "HPQ",  "INTC", "RF"],
@@ -65,7 +69,9 @@ strategies_stock_applied = {
         "start_time": time(17, 30),
         "stop_time": time(19, 0),
         "frequency": 5,
-        "bar_size": "5 mins"
+        "bar_size": "5 mins",
+        "sl_percent": None,
+        "tp_percent": None
     }
 }
 
@@ -83,4 +89,3 @@ def get_all_check_functions():
 
 # Esempio di utilizzo
 selected_stocks = get_stock_list("SMA_Cross")
-

@@ -1,0 +1,312 @@
+2025-04-13 14:10:04 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:04 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.26 | Low: 13.16 | High: 13.51 | VWAP: 13.26 | RSI: 44.37
+2025-04-13 14:10:04 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.75%, High-VWAP=1.89%
+2025-04-13 14:10:04 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:05 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:05 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.36 | Low: 13.21 | High: 13.38 | VWAP: 13.290550801481032 | RSI: 49.90
+2025-04-13 14:10:05 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.61%, High-VWAP=0.67%
+2025-04-13 14:10:05 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:06 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:06 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.42 | Low: 13.31 | High: 13.45 | VWAP: 13.329458938218576 | RSI: 52.93
+2025-04-13 14:10:06 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.15%, High-VWAP=0.90%
+2025-04-13 14:10:06 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:07 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:07 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.47 | Low: 13.41 | High: 13.53 | VWAP: 13.360560659692815 | RSI: 55.35
+2025-04-13 14:10:07 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.37%, High-VWAP=1.27%
+2025-04-13 14:10:07 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:08 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:08 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.52 | Low: 13.45 | High: 13.56 | VWAP: 13.389766853366442 | RSI: 57.69
+2025-04-13 14:10:08 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.45%, High-VWAP=1.27%
+2025-04-13 14:10:08 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:09 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:09 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.48 | Low: 13.47 | High: 13.56 | VWAP: 13.397644548708257 | RSI: 55.19
+2025-04-13 14:10:09 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.54%, High-VWAP=1.21%
+2025-04-13 14:10:09 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:10 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:10 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.49 | Low: 13.41 | High: 13.51 | VWAP: 13.409046270160085 | RSI: 55.71
+2025-04-13 14:10:10 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.01%, High-VWAP=0.75%
+2025-04-13 14:10:10 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:11 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:11 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.58 | Low: 13.46 | High: 13.58 | VWAP: 13.425601382911015 | RSI: 60.15
+2025-04-13 14:10:11 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.26%, High-VWAP=1.15%
+2025-04-13 14:10:11 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:12 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:12 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.53 | Low: 13.47 | High: 13.59 | VWAP: 13.43148950572045 | RSI: 56.75
+2025-04-13 14:10:12 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.29%, High-VWAP=1.18%
+2025-04-13 14:10:12 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:13 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:13 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.44 | Low: 13.43 | High: 13.57 | VWAP: 13.432401958037296 | RSI: 51.13
+2025-04-13 14:10:13 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.02%, High-VWAP=1.02%
+2025-04-13 14:10:13 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:14 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:14 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.38 | Low: 13.35 | High: 13.45 | VWAP: 13.429582827572071 | RSI: 47.74
+2025-04-13 14:10:14 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.59%, High-VWAP=0.15%
+2025-04-13 14:10:14 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:15 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:15 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.42 | Low: 13.38 | High: 13.43 | VWAP: 13.42880324439465 | RSI: 50.12
+2025-04-13 14:10:15 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.36%, High-VWAP=0.01%
+2025-04-13 14:10:15 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:16 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:16 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.44 | Low: 13.39 | High: 13.48 | VWAP: 13.429919807994311 | RSI: 51.31
+2025-04-13 14:10:16 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.30%, High-VWAP=0.37%
+2025-04-13 14:10:16 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:17 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:17 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.48 | Low: 13.42 | High: 13.51 | VWAP: 13.435488371162082 | RSI: 53.69
+2025-04-13 14:10:17 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.12%, High-VWAP=0.55%
+2025-04-13 14:10:17 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:18 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:18 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.46 | Low: 13.41 | High: 13.48 | VWAP: 13.438394736744366 | RSI: 52.31
+2025-04-13 14:10:18 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.21%, High-VWAP=0.31%
+2025-04-13 14:10:18 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:19 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:19 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.46 | Low: 13.44 | High: 13.49 | VWAP: 13.43957754019613 | RSI: 52.31
+2025-04-13 14:10:19 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.00%, High-VWAP=0.38%
+2025-04-13 14:10:19 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:20 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:20 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.39 | Low: 13.38 | High: 13.46 | VWAP: 13.437186789153914 | RSI: 47.38
+2025-04-13 14:10:20 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.43%, High-VWAP=0.17%
+2025-04-13 14:10:20 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:21 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:21 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.34 | Low: 13.33 | High: 13.42 | VWAP: 13.433602821438686 | RSI: 44.17
+2025-04-13 14:10:21 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.77%, High-VWAP=-0.10%
+2025-04-13 14:10:21 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:22 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:22 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.34 | Low: 13.33 | High: 13.53 | VWAP: 13.422890750854092 | RSI: 44.17
+2025-04-13 14:10:22 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.69%, High-VWAP=0.80%
+2025-04-13 14:10:22 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:23 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:23 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.33 | Low: 13.29 | High: 13.35 | VWAP: 13.416837230089444 | RSI: 43.49
+2025-04-13 14:10:23 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.95%, High-VWAP=-0.50%
+2025-04-13 14:10:23 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:24 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:24 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.29 | Low: 13.29 | High: 13.35 | VWAP: 13.41199263292761 | RSI: 40.77
+2025-04-13 14:10:24 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.91%, High-VWAP=-0.46%
+2025-04-13 14:10:24 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:25 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:25 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.32 | Low: 13.29 | High: 13.33 | VWAP: 13.40916688244232 | RSI: 43.62
+2025-04-13 14:10:25 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.89%, High-VWAP=-0.59%
+2025-04-13 14:10:25 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:26 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:26 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.37 | Low: 13.31 | High: 13.37 | VWAP: 13.406956993008427 | RSI: 48.09
+2025-04-13 14:10:26 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.72%, High-VWAP=-0.28%
+2025-04-13 14:10:26 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:27 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:27 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.42 | Low: 13.36 | High: 13.43 | VWAP: 13.407545658849717 | RSI: 52.17
+2025-04-13 14:10:27 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.35%, High-VWAP=0.17%
+2025-04-13 14:10:27 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:28 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:28 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.43 | Low: 13.4 | High: 13.45 | VWAP: 13.408441392764809 | RSI: 52.97
+2025-04-13 14:10:28 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.06%, High-VWAP=0.31%
+2025-04-13 14:10:28 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:29 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:29 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.46 | Low: 13.4 | High: 13.47 | VWAP: 13.41127352195399 | RSI: 55.37
+2025-04-13 14:10:29 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.08%, High-VWAP=0.44%
+2025-04-13 14:10:29 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:30 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:30 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.43 | Low: 13.41 | High: 13.47 | VWAP: 13.411789744875742 | RSI: 52.49
+2025-04-13 14:10:30 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.01%, High-VWAP=0.43%
+2025-04-13 14:10:30 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:31 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:31 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.43 | Low: 13.4 | High: 13.46 | VWAP: 13.412420931391747 | RSI: 52.49
+2025-04-13 14:10:31 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.09%, High-VWAP=0.35%
+2025-04-13 14:10:31 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:32 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:32 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.42 | Low: 13.41 | High: 13.45 | VWAP: 13.412573898548828 | RSI: 51.45
+2025-04-13 14:10:32 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=0.02%, High-VWAP=0.28%
+2025-04-13 14:10:32 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:33 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:33 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.45 | Low: 13.42 | High: 13.48 | VWAP: 13.41344171653227 | RSI: 54.36
+2025-04-13 14:10:33 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.05%, High-VWAP=0.50%
+2025-04-13 14:10:33 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:34 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:34 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.5 | Low: 13.44 | High: 13.5 | VWAP: 13.414759573277374 | RSI: 58.80
+2025-04-13 14:10:34 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.19%, High-VWAP=0.64%
+2025-04-13 14:10:34 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:35 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:35 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.49 | Low: 13.49 | High: 13.54 | VWAP: 13.416919278178037 | RSI: 57.59
+2025-04-13 14:10:35 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.54%, High-VWAP=0.92%
+2025-04-13 14:10:35 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:36 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:36 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.52 | Low: 13.5 | High: 13.55 | VWAP: 13.418645517343142 | RSI: 60.23
+2025-04-13 14:10:36 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.61%, High-VWAP=0.98%
+2025-04-13 14:10:36 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:37 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:37 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.57 | Low: 13.51 | High: 13.57 | VWAP: 13.420634814135953 | RSI: 64.22
+2025-04-13 14:10:37 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.67%, High-VWAP=1.11%
+2025-04-13 14:10:37 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:38 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:38 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.53 | Low: 13.52 | High: 13.57 | VWAP: 13.422307047815634 | RSI: 59.11
+2025-04-13 14:10:38 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.73%, High-VWAP=1.10%
+2025-04-13 14:10:38 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:39 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:39 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.52 | Low: 13.5 | High: 13.55 | VWAP: 13.4245175666421 | RSI: 57.87
+2025-04-13 14:10:39 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.56%, High-VWAP=0.93%
+2025-04-13 14:10:39 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:40 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:40 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.59 | Low: 13.52 | High: 13.62 | VWAP: 13.42793357868798 | RSI: 63.62
+2025-04-13 14:10:40 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.69%, High-VWAP=1.43%
+2025-04-13 14:10:40 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:41 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:41 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.61 | Low: 13.59 | High: 13.66 | VWAP: 13.431214388926675 | RSI: 65.09
+2025-04-13 14:10:41 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.18%, High-VWAP=1.70%
+2025-04-13 14:10:41 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:42 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:42 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.63 | Low: 13.59 | High: 13.65 | VWAP: 13.43571946941964 | RSI: 66.54
+2025-04-13 14:10:42 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.15%, High-VWAP=1.59%
+2025-04-13 14:10:42 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:43 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:43 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.63 | Low: 13.61 | High: 13.65 | VWAP: 13.440020609569968 | RSI: 66.54
+2025-04-13 14:10:43 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.26%, High-VWAP=1.56%
+2025-04-13 14:10:43 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:44 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:44 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.62 | Low: 13.6 | High: 13.66 | VWAP: 13.443162376276236 | RSI: 64.98
+2025-04-13 14:10:44 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.17%, High-VWAP=1.61%
+2025-04-13 14:10:44 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:45 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:45 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.62 | Low: 13.6 | High: 13.65 | VWAP: 13.445142831365713 | RSI: 64.98
+2025-04-13 14:10:45 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.15%, High-VWAP=1.52%
+2025-04-13 14:10:45 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:46 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:46 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.65 | Low: 13.6 | High: 13.66 | VWAP: 13.447129296853609 | RSI: 67.63
+2025-04-13 14:10:46 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.14%, High-VWAP=1.58%
+2025-04-13 14:10:46 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:47 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:47 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.65 | Low: 13.62 | High: 13.68 | VWAP: 13.4503653783909 | RSI: 67.63
+2025-04-13 14:10:47 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.26%, High-VWAP=1.71%
+2025-04-13 14:10:47 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:48 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:48 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.64 | Low: 13.62 | High: 13.65 | VWAP: 13.452185300272463 | RSI: 65.70
+2025-04-13 14:10:48 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.25%, High-VWAP=1.47%
+2025-04-13 14:10:48 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:49 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:49 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.61 | Low: 13.58 | High: 13.66 | VWAP: 13.455003244984239 | RSI: 60.17
+2025-04-13 14:10:49 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.93%, High-VWAP=1.52%
+2025-04-13 14:10:49 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:50 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:50 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.67 | Low: 13.59 | High: 13.72 | VWAP: 13.465299472702677 | RSI: 66.29
+2025-04-13 14:10:50 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.93%, High-VWAP=1.89%
+2025-04-13 14:10:50 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:51 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:51 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.59 | Low: 13.58 | High: 13.66 | VWAP: 13.468613361569306 | RSI: 54.31
+2025-04-13 14:10:51 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.83%, High-VWAP=1.42%
+2025-04-13 14:10:51 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:52 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:52 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.59 | Low: 13.56 | High: 13.61 | VWAP: 13.474493652369288 | RSI: 54.31
+2025-04-13 14:10:52 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.63%, High-VWAP=1.01%
+2025-04-13 14:10:52 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:53 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:53 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.73 | Low: 13.57 | High: 13.73 | VWAP: 13.481191858149296 | RSI: 66.57
+2025-04-13 14:10:53 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.66%, High-VWAP=1.85%
+2025-04-13 14:10:53 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:54 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:55 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.8 | Low: 13.7 | High: 13.82 | VWAP: 13.492266669868311 | RSI: 70.79
+2025-04-13 14:10:55 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.54%, High-VWAP=2.43%
+2025-04-13 14:10:55 - INFO - [check_vwap_diff_signal_with_rsi] [HST] ✅ SELL signal | Entry: 13.80, SL: 13.92, TP: 13.57, RSI: 70.79
+2025-04-13 14:10:56 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:56 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.78 | Low: 13.75 | High: 13.82 | VWAP: 13.497628597678574 | RSI: 68.14
+2025-04-13 14:10:56 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.87%, High-VWAP=2.39%
+2025-04-13 14:10:56 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:57 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:57 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.83 | Low: 13.77 | High: 13.85 | VWAP: 13.502278775339155 | RSI: 71.06
+2025-04-13 14:10:57 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.98%, High-VWAP=2.58%
+2025-04-13 14:10:57 - INFO - [check_vwap_diff_signal_with_rsi] [HST] ✅ SELL signal | Entry: 13.83, SL: 13.95, TP: 13.60, RSI: 71.06
+2025-04-13 14:10:58 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:58 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.8 | Low: 13.78 | High: 13.84 | VWAP: 13.512832362076864 | RSI: 67.09
+2025-04-13 14:10:58 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.98%, High-VWAP=2.42%
+2025-04-13 14:10:58 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:10:59 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:10:59 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.75 | Low: 13.74 | High: 13.81 | VWAP: 13.518103400238957 | RSI: 60.98
+2025-04-13 14:10:59 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.64%, High-VWAP=2.16%
+2025-04-13 14:10:59 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:00 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:00 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.71 | Low: 13.69 | High: 13.76 | VWAP: 13.519546091354442 | RSI: 56.55
+2025-04-13 14:11:00 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.26%, High-VWAP=1.78%
+2025-04-13 14:11:00 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:01 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:01 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.71 | Low: 13.69 | High: 13.73 | VWAP: 13.521029653814049 | RSI: 56.55
+2025-04-13 14:11:01 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.25%, High-VWAP=1.55%
+2025-04-13 14:11:01 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:02 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:02 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.67 | Low: 13.67 | High: 13.72 | VWAP: 13.522711772064284 | RSI: 52.15
+2025-04-13 14:11:02 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.09%, High-VWAP=1.46%
+2025-04-13 14:11:02 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:03 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:03 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.68 | Low: 13.65 | High: 13.69 | VWAP: 13.52464645311651 | RSI: 53.13
+2025-04-13 14:11:03 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.93%, High-VWAP=1.22%
+2025-04-13 14:11:03 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:04 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:04 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.68 | Low: 13.63 | High: 13.69 | VWAP: 13.526879775305344 | RSI: 53.13
+2025-04-13 14:11:04 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.76%, High-VWAP=1.21%
+2025-04-13 14:11:04 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:05 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:05 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.64 | Low: 13.64 | High: 13.71 | VWAP: 13.533731820027446 | RSI: 48.52
+2025-04-13 14:11:05 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.79%, High-VWAP=1.30%
+2025-04-13 14:11:05 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:06 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:06 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.69 | Low: 13.62 | High: 13.72 | VWAP: 13.542804346708296 | RSI: 53.91
+2025-04-13 14:11:06 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.57%, High-VWAP=1.31%
+2025-04-13 14:11:06 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:07 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:07 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.68 | Low: 13.66 | High: 13.71 | VWAP: 13.544083321447568 | RSI: 52.72
+2025-04-13 14:11:07 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.86%, High-VWAP=1.23%
+2025-04-13 14:11:07 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:08 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:08 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.72 | Low: 13.68 | High: 13.72 | VWAP: 13.545547165747397 | RSI: 56.82
+2025-04-13 14:11:08 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.99%, High-VWAP=1.29%
+2025-04-13 14:11:08 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:09 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:09 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.71 | Low: 13.65 | High: 13.72 | VWAP: 13.546827168477526 | RSI: 55.52
+2025-04-13 14:11:09 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.76%, High-VWAP=1.28%
+2025-04-13 14:11:09 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:10 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:10 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.65 | Low: 13.64 | High: 13.71 | VWAP: 13.547801619641046 | RSI: 48.39
+2025-04-13 14:11:10 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.68%, High-VWAP=1.20%
+2025-04-13 14:11:10 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:11 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:11 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.7 | Low: 13.65 | High: 13.72 | VWAP: 13.549312136796187 | RSI: 53.73
+2025-04-13 14:11:11 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.74%, High-VWAP=1.26%
+2025-04-13 14:11:11 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:12 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:12 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.7 | Low: 13.66 | High: 13.72 | VWAP: 13.55319461740631 | RSI: 53.73
+2025-04-13 14:11:12 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.79%, High-VWAP=1.23%
+2025-04-13 14:11:12 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:13 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:13 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.69 | Low: 13.68 | High: 13.71 | VWAP: 13.554124011580507 | RSI: 52.47
+2025-04-13 14:11:13 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.93%, High-VWAP=1.15%
+2025-04-13 14:11:13 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:14 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:14 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.71 | Low: 13.66 | High: 13.72 | VWAP: 13.55571510164538 | RSI: 54.75
+2025-04-13 14:11:14 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.77%, High-VWAP=1.21%
+2025-04-13 14:11:14 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:15 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:15 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.74 | Low: 13.7 | High: 13.75 | VWAP: 13.557082748225785 | RSI: 58.01
+2025-04-13 14:11:15 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-1.05%, High-VWAP=1.42%
+2025-04-13 14:11:15 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:16 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:16 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.71 | Low: 13.69 | High: 13.74 | VWAP: 13.559563945942191 | RSI: 53.83
+2025-04-13 14:11:16 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.96%, High-VWAP=1.33%
+2025-04-13 14:11:16 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:17 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:17 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.72 | Low: 13.69 | High: 13.72 | VWAP: 13.561202451806802 | RSI: 55.00
+2025-04-13 14:11:17 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.95%, High-VWAP=1.17%
+2025-04-13 14:11:17 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:18 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:18 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.68 | Low: 13.65 | High: 13.72 | VWAP: 13.563026401406388 | RSI: 49.61
+2025-04-13 14:11:18 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.64%, High-VWAP=1.16%
+2025-04-13 14:11:18 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:19 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:19 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.71 | Low: 13.68 | High: 13.71 | VWAP: 13.565212371187462 | RSI: 53.30
+2025-04-13 14:11:19 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.85%, High-VWAP=1.07%
+2025-04-13 14:11:19 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:20 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:20 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.7 | Low: 13.69 | High: 13.71 | VWAP: 13.567754891030946 | RSI: 51.94
+2025-04-13 14:11:20 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.90%, High-VWAP=1.05%
+2025-04-13 14:11:20 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:21 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:21 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.71 | Low: 13.67 | High: 13.73 | VWAP: 13.57702047928557 | RSI: 53.23
+2025-04-13 14:11:21 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.68%, High-VWAP=1.13%
+2025-04-13 14:11:21 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
+2025-04-13 14:11:22 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Analyzing VWAP reversal signal for HST
+2025-04-13 14:11:22 - INFO - [check_vwap_diff_signal_with_rsi] [HST] Close: 13.7 | Low: 13.68 | High: 13.71 | VWAP: 13.590392944505144 | RSI: 51.73
+2025-04-13 14:11:22 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] [HST] Last Candela: VWAP-Low=-0.66%, High-VWAP=0.88%
+2025-04-13 14:11:22 - DEBUG - [check_vwap_diff_signal_with_rsi] [HST] No VWAP+RSI signal detected
